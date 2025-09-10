@@ -1,5 +1,4 @@
-﻿// client/src/components/Checkout/CheckoutModal.tsx
-import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import StripeCheckout from './StripeCheckout';
 import './CheckoutModal.scss';
@@ -18,6 +17,19 @@ interface CheckoutModalProps {
 const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, program }) => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState('');
+
+  // Prevenir scroll cuando el modal está abierto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   const handleSuccess = () => {
     setShowSuccess(true);
@@ -54,7 +66,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, program 
           ×
         </button>
       </div>
-
+      
       {showSuccess ? (
         <div className="success-message">
           <div className="success-icon">✓</div>

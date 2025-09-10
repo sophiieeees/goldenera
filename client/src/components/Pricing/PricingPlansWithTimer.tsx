@@ -184,7 +184,7 @@ const PricingPlansWithTimer: React.FC = () => {
     return num.toString().padStart(2, '0');
   };
 
-  return (
+return (
     <section className="pricing-plans">
       <div className="pricing-plans__container">
         <div className="pricing-plans__header">
@@ -281,11 +281,14 @@ const PricingPlansWithTimer: React.FC = () => {
         </div>
       </div>
 
-      <CheckoutModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        program={selectedPlan}
-      />
+      {/* CAMBIO AQUÍ: Solo renderizar el modal si selectedPlan existe */}
+      {selectedPlan && (
+        <CheckoutModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          program={selectedPlan}
+        />
+      )}
     </section>
   );
 };

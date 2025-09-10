@@ -1,126 +1,244 @@
-﻿// client/src/components/Checkout/CheckoutModal.scss
+﻿// Modal overlay
 .checkout-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
+  padding: 20px;
 }
 
+// Contenedor principal del modal
 .checkout-modal {
   position: relative;
+  width: 100%;
+  max-width: 500px;
+  animation: modalSlideIn 0.3s ease;
+}
+
+// Botón de cerrar
+.modal-header {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+
+  .close-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    color: #333;
+
+    &:hover {
+      background: #fff;
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Contenido del checkout
+.checkout-content {
   background: #fff;
-  border-radius: 16px;
-  max-width: 600px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  outline: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
 
-  .modal-header {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 10;
+// Estilos específicos para StripeCheckout
+.checkout-modal .stripe-checkout {
+  .checkout-header {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    padding: 30px 20px;
+    text-align: center;
 
-    .close-button {
-      background: rgba(255, 255, 255, 0.9);
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
+    h3 {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0 0 10px 0;
+    }
 
-      &:hover {
-        background: #fff;
-        transform: scale(1.1);
+    .price {
+      color: #EAC31B;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0;
+      
+      // MXN como parte del precio
+      &::after {
+        content: " MXN";
+        font-size: 1.3rem;
+        font-weight: 400;
       }
     }
   }
 
-  .checkout-content {
-    padding: 1rem;
+  form {
+    padding: 25px 30px 30px;
   }
 
-  .success-message {
-    text-align: center;
-    padding: 3rem 2rem;
+  .form-group {
+    margin-bottom: 20px;
 
-    .success-icon {
-      width: 80px;
-      height: 80px;
-      background: #4CAF50;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 2rem;
-      font-size: 2rem;
-      color: white;
-      font-weight: bold;
-    }
-
-    h2 {
+    label {
+      display: block;
       color: #333;
-      margin-bottom: 1rem;
-      font-size: 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
     }
 
-    p {
-      color: #666;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      line-height: 1.5;
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #EAC31B;
+        box-shadow: 0 0 0 3px rgba(234, 195, 27, 0.1);
+      }
     }
 
-    .golden-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #EAC31B 0%, #d4ac16 100%);
-      color: #000;
-      padding: 0.5rem 2rem;
-      border-radius: 25px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-top: 1rem;
+    .card-element {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fff;
+      min-height: 42px;
+
+      &:focus-within {
+        border-color: #EAC31B;
+        box-shadow: 0 0 0 3px rgba(234, 195, 27, 0.1);
+      }
     }
   }
 
-  .error-message {
-    background: #ffebee;
-    color: #c62828;
-    padding: 1rem;
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+    background: #EAC31B;
+    color: #000;
+    border: none;
     border-radius: 6px;
-    margin-top: 1rem;
-    border-left: 4px solid #c62828;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 5px;
+
+    &:hover:not(:disabled) {
+      background: #d4ac16;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(234, 195, 27, 0.3);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &.processing {
+      background: #999;
+      color: #fff;
+    }
+  }
+}
+
+// Mensaje de error
+.error-message {
+  background: #fee;
+  color: #c00;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 0 30px 15px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+// Mensaje de éxito
+.success-message {
+  padding: 50px 30px;
+  text-align: center;
+
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    background: #28a745;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+
+  h2 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 5px;
+  }
+
+  .golden-badge {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background: #EAC31B;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 4px;
+  }
+}
+
+// Animación
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 // Responsive
-@media (max-width: 768px) {
+@media (max-width: 540px) {
   .checkout-modal {
-    width: 95%;
-    margin: 1rem;
+    max-width: 95%;
   }
-
-  .success-message {
-    padding: 2rem 1rem;
-
-    h2 {
-      font-size: 1.5rem;
-    }
-
-    p {
-      font-size: 1rem;
+  
+  .checkout-modal .stripe-checkout {
+    form {
+      padding: 20px;
     }
   }
 }

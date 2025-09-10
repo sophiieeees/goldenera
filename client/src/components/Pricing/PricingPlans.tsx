@@ -224,12 +224,13 @@ const PricingPlans: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <CheckoutModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        program={selectedPlan}
-      />
+  {selectedPlan && (
+        <CheckoutModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          program={selectedPlan}
+        />
+      )}
     </section>
   );
 };

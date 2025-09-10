@@ -1,5 +1,4 @@
-﻿// client/src/components/Checkout/StripeCheckout.tsx
-import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
   Elements,
   CardElement,
@@ -9,6 +8,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import stripeService, { CustomerData } from '../../services/stripeService';
 import { stripePromise } from '../../services/stripe';
+import useMetaPixel from '../../hooks/useMetaPixel'; // SOLO ESTO
 import './StripeCheckout.scss';
 
 interface CheckoutFormProps {
@@ -25,6 +25,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ program, onSuccess, onError
   const stripe = useStripe();
   const elements = useElements();
   const { t } = useTranslation();
+  const { trackInitiateCheckout, trackPurchase } = useMetaPixel(); // SOLO ESTO
   
   const [isProcessing, setIsProcessing] = useState(false);
   const [formData, setFormData] = useState({
@@ -32,6 +33,17 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ program, onSuccess, onError
     customerEmail: '',
     customerPhone: ''
   });
+
+  // SOLO AGREGAR ESTE EFECTO
+  useEffect(() => {
+    trackInitiateCheckout({
+      value: program.price,
+      currency: 'MXN',
+      content_ids: [program.id],
+      content_type: 'product',
+      num_items: 1
+    });
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -73,6 +85,14 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ program, onSuccess, onError
       if (result.error) {
         onError(result.error.message || 'Error en el pago');
       } else {
+        // SOLO AGREGAR ESTA LÍNEA
+        trackPurchase({
+          value: program.price,
+          currency: 'MXN',
+          content_ids: [program.id],
+          content_name: program.name,
+          num_items: 1
+        });
         onSuccess();
       }
     } catch (error: any) {
@@ -82,6 +102,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ program, onSuccess, onError
     }
   };
 
+  // TU JSX EXACTO SIN CAMBIOS
   return (
     <form onSubmit={handleSubmit} className="stripe-checkout">
       <div className="checkout-header">
