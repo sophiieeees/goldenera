@@ -110,7 +110,7 @@ const useMetaPixel = () => {
       if (customerData) {
         const userData = formatUserData(customerData);
         window.fbq('track', 'Lead', eventData, { eventID: `lead_${Date.now()}` });
-        window.fbq('init', '719797664420191', userData);
+        window.fbq('init', '329513529716501', userData);
       } else {
         window.fbq('track', 'Lead', eventData);
       }
@@ -132,7 +132,7 @@ const useMetaPixel = () => {
 
       if (customerData) {
         const userData = formatUserData(customerData);
-        window.fbq('init', '719797664420191', userData);
+        window.fbq('init', '329513529716501', userData);
       }
 
       window.fbq('track', 'InitiateCheckout', eventData, {
@@ -156,7 +156,7 @@ const useMetaPixel = () => {
 
       if (customerData) {
         const userData = formatUserData(customerData);
-        window.fbq('init', '719797664420191', userData);
+        window.fbq('init', '329513529716501', userData);
       }
 
       window.fbq('track', 'AddToCart', eventData, {
@@ -179,7 +179,7 @@ const useMetaPixel = () => {
 
       if (customerData) {
         const userData = formatUserData(customerData);
-        window.fbq('init', '719797664420191', userData);
+        window.fbq('init', '329513529716501', userData);
       }
 
       window.fbq('track', 'AddPaymentInfo', eventData, {
@@ -219,7 +219,7 @@ const useMetaPixel = () => {
 
       if (customerData) {
         const userData = formatUserData(customerData);
-        window.fbq('init', '719797664420191', userData);
+        window.fbq('init', '329513529716501', userData);
       }
 
       const eventID = transaction_id || `purchase_${Date.now()}`;
@@ -258,7 +258,7 @@ const useMetaPixel = () => {
 
       if (customerData) {
         const userData = formatUserData(customerData);
-        window.fbq('init', '719797664420191', userData);
+        window.fbq('init', '329513529716501', userData);
       }
 
       window.fbq('track', 'CompleteRegistration', eventData);

@@ -10,6 +10,7 @@ import About from './pages/About/About';
 import JoinClub from './pages/JoinClub/JoinClub';
 import Gallery from './pages/Gallery/Gallery';
 import './styles/global.scss';
+import MerchPage from './pages/Merch/MerchPage';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY!);
 
@@ -34,6 +35,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/join" element={<JoinClub />} />
+              <Route path="/merch" element={<MerchPage />} />
               <Route path="/gallery" element={<Gallery />} />
             </Route>
             {/* Redirect any unknown routes to home */}

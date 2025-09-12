@@ -90,9 +90,14 @@ const Navbar: React.FC = () => {
             <Link to="/join" className={location.pathname === '/join' ? 'active' : ''}>
               {t('nav.join')}
             </Link>
+               {/* AGREGAR LINK DE MERCH */}
+            <Link to="/merch" className={location.pathname === '/merch' ? 'active' : ''}>
+              Merch
+            </Link>
             <Link to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>
               {t('nav.gallery')}
             </Link>
+         
             <button className="language-toggle" onClick={toggleLanguage}>
               {i18n.language === 'es' ? 'EN' : 'ES'}
             </button>
@@ -130,9 +135,14 @@ const Navbar: React.FC = () => {
               <Link to="/join" onClick={closeMenu} className={location.pathname === '/join' ? 'active' : ''}>
                 {t('nav.join')}
               </Link>
+               {/* AGREGAR LINK DE MERCH EN MOBILE */}
+              <Link to="/merch" onClick={closeMenu} className={location.pathname === '/merch' ? 'active' : ''}>
+                Merch
+              </Link>
               <Link to="/gallery" onClick={closeMenu} className={location.pathname === '/gallery' ? 'active' : ''}>
                 {t('nav.gallery')}
               </Link>
+             
             </div>
           </div>
         </>

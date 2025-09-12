@@ -11,6 +11,7 @@ import WhyItWorks from '../../components/ui/WhyItWorks/WhyItWorks';
 import PricingPlansWithTimer from '../../components/Pricing/PricingPlansWithTimer';
 import JoinForm from '../../components/ui/JoinForm/JoinForm';
 import './Home.scss';
+import MerchProducts from '../../components/Merch/MerchProducts';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,6 +33,7 @@ const Home: React.FC = () => {
       <MotivationalPhrase />
       <WhyItWorks />
       <PricingPlansWithTimer />
+      <MerchProducts />
       <JoinForm />
     </div>
   );
