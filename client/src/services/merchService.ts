@@ -1,4 +1,4 @@
-import { stripePromise } from './stripe'; // Usar la misma instancia de stripe
+import { stripePromise } from './stripe';
 import axios from 'axios';
 
 export interface MerchData {
@@ -13,6 +13,20 @@ export interface MerchData {
   city: string;
   state: string;
   zipCode: string;
+  // Nuevos campos para promo codes
+  promoCode?: string;
+  originalAmount?: number;
+  discountAmount?: number;
+  finalAmount?: number;
+}
+
+export interface PromoCodeResponse {
+  valid: boolean;
+  discount?: number;
+  type?: 'percentage' | 'fixed';
+  discountAmount?: number;
+  finalAmount?: number;
+  message: string;
 }
 
 class MerchService {
@@ -28,6 +42,42 @@ class MerchService {
       console.error('Error creating merch payment intent:', error);
       throw error;
     }
+  }
+
+  async validatePromoCode(code: string, amount: number): Promise<PromoCodeResponse> {
+    try {
+      const response = await axios.post(`${this.apiUrl}/apply-promo-code`, {
+        code,
+        amount
+      });
+      return response.data;
+    } catch (error: any) {
+      console.error('Error validating promo code:', error);
+      return {
+        valid: false,
+        message: error.response?.data?.message || 'Código inválido'
+      };
+    }
+  }
+
+  // Guardar códigos usados en localStorage
+  saveUsedCode(code: string) {
+    const usedCodes = this.getUsedCodes();
+    usedCodes.push({
+      code,
+      usedAt: new Date().toISOString()
+    });
+    localStorage.setItem('golden_era_used_codes', JSON.stringify(usedCodes));
+  }
+
+  getUsedCodes(): Array<{code: string, usedAt: string}> {
+    const codes = localStorage.getItem('golden_era_used_codes');
+    return codes ? JSON.parse(codes) : [];
+  }
+
+  isCodeUsed(code: string): boolean {
+    const usedCodes = this.getUsedCodes();
+    return usedCodes.some(item => item.code === code);
   }
 
   async getStripe() {

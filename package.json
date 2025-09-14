@@ -23,7 +23,7 @@
     "netlify-cli": "^17.0.0"
   },
   "dependencies": {
-    "nodemailer": "^7.0.5",
+    "nodemailer": "^7.0.6",
     "stripe": "^18.3.0"
   }
 }

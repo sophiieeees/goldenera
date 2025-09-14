@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Netlify Functions para Golden Era",
   "dependencies": {
-    "nodemailer": "^6.9.8"
+    "nodemailer": "^6.10.1"
   },
   "engines": {
     "node": ">=18.0.0"
