@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+// In production (Railway), use relative URLs since server serves both API and static files
+// In development, use the proxy configured in package.json or REACT_APP_API_URL
+const API_URL = process.env.NODE_ENV === "production"
+  ? ""
+  : (process.env.REACT_APP_API_URL || "");
 
 const api = axios.create({
   baseURL: API_URL,

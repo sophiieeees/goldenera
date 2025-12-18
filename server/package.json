@@ -1,61 +1,22 @@
 {
-  "name": "golden-era-client",
-  "version": "0.1.0",
+  "name": "golden-era-server",
+  "version": "1.0.0",
   "private": true,
-  "proxy": "http://localhost:5000",
-  "dependencies": {
-    "@stripe/react-stripe-js": "^2.4.0",
-    "@stripe/stripe-js": "^2.4.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.68",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "@types/react-modal": "^3.16.3",
-    "@types/react-router-dom": "^5.3.3",
-    "axios": "^1.6.5",
-    "framer-motion": "^10.18.0",
-    "gsap": "^3.12.4",
-    "i18next": "^23.7.16",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-i18next": "^14.0.0",
-    "react-intersection-observer": "^9.5.3",
-    "react-modal": "^3.16.1",
-    "react-router-dom": "^6.21.1",
-    "react-scripts": "5.0.1",
-    "run": "^1.5.0",
-    "sass": "^1.69.7",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
-  },
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "nodemailer": "^6.9.8",
+    "stripe": "^14.14.0"
   },
   "devDependencies": {
-    "@types/gsap": "^3.0.0"
+    "nodemon": "^3.0.2"
   }
 }

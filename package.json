@@ -3,27 +3,24 @@
   "version": "1.0.0",
   "description": "Golden Era Fitness Platform",
   "scripts": {
-    "build": "cd client && npm run build",
-    "start": "cd client && npm start",
-    "dev": "netlify dev",
-    "deploy": "npm run build && netlify deploy",
-    "deploy:prod": "npm run build && netlify deploy --prod",
-    "install:all": "cd client && npm install && cd ../netlify/functions && npm install",
-    "clean": "cd client && rm -rf build node_modules && cd ../netlify/functions && rm -rf node_modules"
+    "start": "cd server && npm start",
+    "dev": "cd client && npm start",
+    "dev:server": "cd server && npm run dev",
+    "build": "cd client && npm install && npm run build && cd ../server && npm install",
+    "install:all": "cd client && npm install && cd ../server && npm install",
+    "deploy:netlify": "cd client && npm run build && netlify deploy",
+    "deploy:netlify:prod": "cd client && npm run build && netlify deploy --prod",
+    "clean": "cd client && rm -rf build node_modules && cd ../server && rm -rf node_modules"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "keywords": [
     "fitness",
     "golden-era",
     "react",
-    "netlify"
+    "express"
   ],
   "author": "Golden Era Team",
-  "license": "MIT",
-  "devDependencies": {
-    "netlify-cli": "^17.0.0"
-  },
-  "dependencies": {
-    "nodemailer": "^7.0.6",
-    "stripe": "^18.3.0"
-  }
+  "license": "MIT"
 }
