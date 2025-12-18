@@ -30,9 +30,9 @@ export interface PromoCodeResponse {
 }
 
 class MerchService {
-  private readonly apiUrl = process.env.NODE_ENV === 'production' 
-    ? '/.netlify/functions' 
-    : 'http://localhost:8888/.netlify/functions';
+  private readonly apiUrl = process.env.REACT_APP_API_URL
+    ? `${process.env.REACT_APP_API_URL}/api`
+    : '/api';
 
   async createPaymentIntent(data: MerchData): Promise<{ clientSecret: string; amount: number }> {
     try {

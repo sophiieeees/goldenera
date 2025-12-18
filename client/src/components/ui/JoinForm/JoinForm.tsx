@@ -143,7 +143,8 @@ const JoinForm: React.FC = () => {
     try {
       console.log('📤 Enviando formulario...', formData);
       
-      const response = await fetch('/.netlify/functions/contact', {
+      const apiUrl = process.env.REACT_APP_API_URL || '';
+      const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
