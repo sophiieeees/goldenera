@@ -238,8 +238,65 @@ app.post('/api/webhook', async (req, res) => {
 
     if (event.type === 'payment_intent.succeeded') {
       const paymentIntent = event.data.object;
+      const metadata = paymentIntent.metadata || {};
       console.log('💰 Pago exitoso:', paymentIntent.id);
-      // Aquí enviarías emails de confirmación
+
+      const programNames = {
+        'standard': 'Golden Era Standard',
+        'ultra-deluxe': 'Golden Era Ultra Deluxe'
+      };
+      const programName = programNames[metadata.programType] || 'Golden Era Program';
+      const amount = paymentIntent.amount / 100;
+
+      // Email de confirmación al cliente
+      if (metadata.customerEmail) {
+        await resend.emails.send({
+          from: FROM_EMAIL,
+          to: metadata.customerEmail,
+          subject: `🏆 ¡Pago Confirmado! - ${programName}`,
+          html: `<div style="font-family: Arial; max-width: 600px;">
+            <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 30px; text-align: center;">
+              <h1 style="color: #000;">🏆 GOLDEN ERA 🏆</h1>
+            </div>
+            <div style="padding: 30px;">
+              <h2>¡Felicidades ${metadata.customerName || ''}!</h2>
+              <p>Tu pago ha sido procesado exitosamente.</p>
+              <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <p><strong>Programa:</strong> ${programName}</p>
+                <p><strong>Total pagado:</strong> $${amount.toLocaleString('es-MX')} MXN</p>
+                <p><strong>ID de transacción:</strong> ${paymentIntent.id}</p>
+              </div>
+              <p>En breve recibirás acceso a tu programa. Si tienes alguna duda, contáctanos por WhatsApp:</p>
+              <div style="text-align: center; margin: 30px 0;">
+                <a href="https://wa.me/5217202533388"
+                   style="background: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold;">
+                  💬 CONTACTAR POR WHATSAPP
+                </a>
+              </div>
+              <p style="color: #888; font-size: 12px;">¡Tu transformación comienza ahora! 💪</p>
+            </div>
+          </div>`
+        });
+      }
+
+      // Notificación al admin
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: process.env.ADMIN_EMAIL,
+        subject: `💰 VENTA CONFIRMADA: ${programName} - $${amount} MXN`,
+        html: `<div style="font-family: Arial;">
+          <h2 style="color: #28a745;">💰 PAGO CONFIRMADO</h2>
+          <div style="background: #f5f5f5; padding: 20px; border-radius: 10px;">
+            <p><strong>Cliente:</strong> ${metadata.customerName || 'N/A'}</p>
+            <p><strong>Email:</strong> ${metadata.customerEmail || 'N/A'}</p>
+            <p><strong>Teléfono:</strong> ${metadata.customerPhone || 'N/A'}</p>
+            <p><strong>Programa:</strong> ${programName}</p>
+            <p><strong>Monto:</strong> $${amount.toLocaleString('es-MX')} MXN</p>
+            <p><strong>ID Stripe:</strong> ${paymentIntent.id}</p>
+            <p><strong>Fecha:</strong> ${new Date().toLocaleString('es-MX')}</p>
+          </div>
+        </div>`
+      });
     }
 
     res.json({ received: true });
@@ -259,8 +316,73 @@ app.post('/api/merch-webhook', async (req, res) => {
       ? stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET)
       : JSON.parse(req.body);
 
-    if (event.type === 'payment_intent.succeeded' && event.data.object.metadata.productId) {
-      console.log('💰 Merch sale:', event.data.object.id);
+    if (event.type === 'payment_intent.succeeded') {
+      const paymentIntent = event.data.object;
+      const metadata = paymentIntent.metadata || {};
+      console.log('💰 Merch sale:', paymentIntent.id);
+
+      const amount = paymentIntent.amount / 100;
+
+      // Email de confirmación al cliente
+      if (metadata.customerEmail) {
+        await resend.emails.send({
+          from: FROM_EMAIL,
+          to: metadata.customerEmail,
+          subject: `🏆 ¡Pedido Confirmado! - Golden Era Merch`,
+          html: `<div style="font-family: Arial; max-width: 600px;">
+            <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 30px; text-align: center;">
+              <h1 style="color: #000;">🏆 GOLDEN ERA 🏆</h1>
+            </div>
+            <div style="padding: 30px;">
+              <h2>¡Gracias por tu compra ${metadata.customerName || ''}!</h2>
+              <p>Tu pedido ha sido confirmado y está siendo procesado.</p>
+              <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <p><strong>Producto:</strong> ${metadata.productName || 'Golden Era Merch'}</p>
+                <p><strong>Talla:</strong> ${metadata.size || 'N/A'}</p>
+                <p><strong>Cantidad:</strong> ${metadata.quantity || 1}</p>
+                <p><strong>Total pagado:</strong> $${amount.toLocaleString('es-MX')} MXN</p>
+                <p><strong>ID de orden:</strong> ${paymentIntent.id}</p>
+              </div>
+              <h3>Dirección de envío:</h3>
+              <p>${metadata.address || ''}<br>
+              ${metadata.city || ''}, ${metadata.state || ''} ${metadata.zipCode || ''}</p>
+              <p>Te notificaremos cuando tu pedido sea enviado. Si tienes alguna duda:</p>
+              <div style="text-align: center; margin: 30px 0;">
+                <a href="https://wa.me/5217202533388"
+                   style="background: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold;">
+                  💬 CONTACTAR POR WHATSAPP
+                </a>
+              </div>
+            </div>
+          </div>`
+        });
+      }
+
+      // Notificación al admin
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: process.env.ADMIN_EMAIL,
+        subject: `🛍️ NUEVA VENTA MERCH: $${amount} MXN`,
+        html: `<div style="font-family: Arial;">
+          <h2 style="color: #28a745;">🛍️ VENTA DE MERCH CONFIRMADA</h2>
+          <div style="background: #f5f5f5; padding: 20px; border-radius: 10px;">
+            <p><strong>Cliente:</strong> ${metadata.customerName || 'N/A'}</p>
+            <p><strong>Email:</strong> ${metadata.customerEmail || 'N/A'}</p>
+            <p><strong>Teléfono:</strong> ${metadata.customerPhone || 'N/A'}</p>
+            <p><strong>Producto:</strong> ${metadata.productName || 'N/A'}</p>
+            <p><strong>Talla:</strong> ${metadata.size || 'N/A'}</p>
+            <p><strong>Cantidad:</strong> ${metadata.quantity || 1}</p>
+            <p><strong>Monto:</strong> $${amount.toLocaleString('es-MX')} MXN</p>
+            <hr>
+            <h3>Dirección de envío:</h3>
+            <p>${metadata.address || 'N/A'}<br>
+            ${metadata.city || ''}, ${metadata.state || ''} ${metadata.zipCode || ''}</p>
+            <hr>
+            <p><strong>ID Stripe:</strong> ${paymentIntent.id}</p>
+            <p><strong>Fecha:</strong> ${new Date().toLocaleString('es-MX')}</p>
+          </div>
+        </div>`
+      });
     }
 
     res.json({ received: true });
