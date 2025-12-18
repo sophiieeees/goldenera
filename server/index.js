@@ -13,7 +13,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Resend para emails
 const resend = new Resend(process.env.RESEND_API_KEY);
-const FROM_EMAIL = process.env.FROM_EMAIL || 'Golden Era <onboarding@resend.dev>';
+const FROM_EMAIL = 'Golden Era <noreply@karunaelectronics.com>';
 
 // Middlewares de seguridad
 app.use(helmet({
