@@ -4,12 +4,12 @@
   "description": "Golden Era Fitness Platform",
   "scripts": {
     "start": "cd server && npm start",
-    "dev": "cd client && npm start",
+    "dev:client": "cd client && npm start",
     "dev:server": "cd server && npm run dev",
     "build": "cd client && npm install && npm run build && cd ../server && npm install",
     "install:all": "cd client && npm install && cd ../server && npm install",
-    "deploy:netlify": "cd client && npm run build && netlify deploy",
-    "deploy:netlify:prod": "cd client && npm run build && netlify deploy --prod",
+    "netlify:dev": "netlify dev",
+    "netlify:deploy": "cd client && npm run build && netlify deploy --prod",
     "clean": "cd client && rm -rf build node_modules && cd ../server && rm -rf node_modules"
   },
   "engines": {
