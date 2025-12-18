@@ -43,58 +43,80 @@ const WhatsAppWidget: React.FC = () => {
     }
   }, [isVisible, shouldShow]);
 
-  const loadVoiceflowChatbot = useCallback((projectID: string) => {
-    setIsLoading(true);
-
-    // Remover script anterior si existe
+  const cleanupVoiceflow = useCallback(() => {
+    // Remover script anterior
     const existingScript = document.getElementById('voiceflow-script');
     if (existingScript) {
       existingScript.remove();
     }
 
-    // Destruir chatbot anterior si existe
-    if (window.voiceflow?.chat?.destroy) {
-      try {
-        window.voiceflow.chat.destroy();
-      } catch (e) {
-        console.log('No previous chatbot to destroy');
-      }
+    // Remover el widget del DOM
+    const widgetContainer = document.getElementById('voiceflow-chat');
+    if (widgetContainer) {
+      widgetContainer.remove();
     }
 
-    const script = document.createElement('script');
-    script.id = 'voiceflow-script';
-    script.type = 'text/javascript';
-    script.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
-    script.onload = () => {
-      if (window.voiceflow?.chat) {
-        window.voiceflow.chat.load({
-          verify: { projectID },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production',
-          voice: { url: 'https://runtime-api.voiceflow.com' }
-        });
-        setIsLoading(false);
-        setShowModal(false);
+    // Limpiar cualquier otro elemento de Voiceflow
+    document.querySelectorAll('[data-testid="widget-bubble"]').forEach(el => el.remove());
+    document.querySelectorAll('[class*="vfrc"]').forEach(el => el.remove());
 
-        // Abrir el chat automáticamente después de cargar
-        setTimeout(() => {
-          if (window.voiceflow?.chat?.open) {
-            window.voiceflow.chat.open();
-          }
-        }, 500);
-      }
-    };
-
-    document.body.appendChild(script);
-
-    // Tracking
-    if (window.gtag) {
-      window.gtag('event', 'chatbot_open', {
-        event_category: 'engagement',
-        event_label: projectID === CHATBOT_CUSTOMER_SERVICE ? 'customer_service' : 'training'
-      });
+    // Limpiar el objeto window.voiceflow
+    if (window.voiceflow) {
+      delete (window as any).voiceflow;
     }
   }, []);
+
+  const loadVoiceflowChatbot = useCallback((projectID: string) => {
+    setIsLoading(true);
+    setShowModal(false);
+
+    // Limpiar todo antes de cargar nuevo chatbot
+    cleanupVoiceflow();
+
+    // Pequeño delay para asegurar limpieza completa
+    setTimeout(() => {
+      const script = document.createElement('script');
+      script.id = 'voiceflow-script';
+      script.type = 'text/javascript';
+      script.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
+
+      script.onload = () => {
+        if (window.voiceflow?.chat) {
+          window.voiceflow.chat.load({
+            verify: { projectID },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            voice: { url: 'https://runtime-api.voiceflow.com' }
+          });
+
+          // Abrir el chat automáticamente después de cargar
+          setTimeout(() => {
+            setIsLoading(false);
+            if (window.voiceflow?.chat?.open) {
+              window.voiceflow.chat.open();
+            }
+          }, 1000);
+        } else {
+          setIsLoading(false);
+        }
+      };
+
+      script.onerror = () => {
+        setIsLoading(false);
+        console.error('Error loading Voiceflow script');
+      };
+
+      document.body.appendChild(script);
+
+      // Tracking
+      if (window.gtag) {
+        window.gtag('event', 'chatbot_open', {
+          event_category: 'engagement',
+          event_label: projectID === CHATBOT_CUSTOMER_SERVICE ? 'customer_service' : 'training'
+        });
+      }
+    }, 100);
+  }, [cleanupVoiceflow]);
 
   const handleWidgetClick = () => {
     setShowModal(true);
