@@ -5,10 +5,13 @@ import './WhatsAppWidget.scss';
 
 const CHATBOT_CUSTOMER_SERVICE = '694301ad2f5df596853d1c35';
 const CHATBOT_TRAINING = '69419ad75d0d22e16b26141c';
+const WHATSAPP_NUMBER = '5215576966262';
+const WHATSAPP_MESSAGE = '¡Hola! Me gustaría obtener más información sobre Golden Era';
 
 const WhatsAppWidget: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [showChatTooltip, setShowChatTooltip] = useState(false);
+  const [showWhatsAppTooltip, setShowWhatsAppTooltip] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
@@ -20,7 +23,7 @@ const WhatsAppWidget: React.FC = () => {
 
     const timer = setTimeout(() => {
       setIsVisible(true);
-      setTimeout(() => setShowTooltip(true), 3000);
+      setTimeout(() => setShowChatTooltip(true), 3000);
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -28,39 +31,32 @@ const WhatsAppWidget: React.FC = () => {
 
   useEffect(() => {
     if (isVisible && shouldShow) {
-      gsap.fromTo('.whatsapp-widget',
+      gsap.fromTo('.chatbot-widget',
         { scale: 0, opacity: 0, rotate: -180 },
         { scale: 1, opacity: 1, rotate: 0, duration: 0.6, ease: 'back.out(1.7)' }
       );
 
-      gsap.to('.whatsapp-widget__icon', {
-        scale: 1.1,
-        duration: 1,
-        repeat: -1,
-        yoyo: true,
-        ease: 'power1.inOut'
-      });
+      gsap.fromTo('.whatsapp-button',
+        { scale: 0, opacity: 0, rotate: 180 },
+        { scale: 1, opacity: 1, rotate: 0, duration: 0.6, ease: 'back.out(1.7)', delay: 0.2 }
+      );
     }
   }, [isVisible, shouldShow]);
 
   const cleanupVoiceflow = useCallback(() => {
-    // Remover script anterior
     const existingScript = document.getElementById('voiceflow-script');
     if (existingScript) {
       existingScript.remove();
     }
 
-    // Remover el widget del DOM
     const widgetContainer = document.getElementById('voiceflow-chat');
     if (widgetContainer) {
       widgetContainer.remove();
     }
 
-    // Limpiar cualquier otro elemento de Voiceflow
     document.querySelectorAll('[data-testid="widget-bubble"]').forEach(el => el.remove());
     document.querySelectorAll('[class*="vfrc"]').forEach(el => el.remove());
 
-    // Limpiar el objeto window.voiceflow
     if (window.voiceflow) {
       delete (window as any).voiceflow;
     }
@@ -70,10 +66,8 @@ const WhatsAppWidget: React.FC = () => {
     setIsLoading(true);
     setShowModal(false);
 
-    // Limpiar todo antes de cargar nuevo chatbot
     cleanupVoiceflow();
 
-    // Pequeño delay para asegurar limpieza completa
     setTimeout(() => {
       const script = document.createElement('script');
       script.id = 'voiceflow-script';
@@ -89,7 +83,6 @@ const WhatsAppWidget: React.FC = () => {
             voice: { url: 'https://runtime-api.voiceflow.com' }
           });
 
-          // Abrir el chat automáticamente después de cargar
           setTimeout(() => {
             setIsLoading(false);
             if (window.voiceflow?.chat?.open) {
@@ -108,7 +101,6 @@ const WhatsAppWidget: React.FC = () => {
 
       document.body.appendChild(script);
 
-      // Tracking
       if (window.gtag) {
         window.gtag('event', 'chatbot_open', {
           event_category: 'engagement',
@@ -118,9 +110,21 @@ const WhatsAppWidget: React.FC = () => {
     }, 100);
   }, [cleanupVoiceflow]);
 
-  const handleWidgetClick = () => {
+  const handleChatWidgetClick = () => {
     setShowModal(true);
-    setShowTooltip(false);
+    setShowChatTooltip(false);
+  };
+
+  const handleWhatsAppClick = () => {
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+    window.open(whatsappUrl, '_blank');
+
+    if (window.gtag) {
+      window.gtag('event', 'whatsapp_click', {
+        event_category: 'engagement',
+        event_label: 'widget'
+      });
+    }
   };
 
   const handleCloseModal = () => {
@@ -135,30 +139,56 @@ const WhatsAppWidget: React.FC = () => {
   if (!shouldShow || !isVisible) return null;
 
   return (
-    <div className="whatsapp-widget-container">
-      <div
-        className="whatsapp-widget"
-        onClick={handleWidgetClick}
-        onMouseEnter={() => !showModal && setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
-      >
-        <div className="whatsapp-widget__icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z" fill="white"/>
-            <path d="M7 9H17V11H7V9Z" fill="white"/>
-            <path d="M7 12H14V14H7V12Z" fill="white"/>
-            <path d="M7 6H17V8H7V6Z" fill="white"/>
-          </svg>
-        </div>
-
-        {showTooltip && !showModal && (
-          <div className="whatsapp-widget__tooltip">
-            <span>¡Chatea con nosotros!</span>
+    <>
+      {/* Botón de Chatbot (izquierda) */}
+      <div className="chatbot-widget-container">
+        <div
+          className="chatbot-widget"
+          onClick={handleChatWidgetClick}
+          onMouseEnter={() => !showModal && setShowChatTooltip(true)}
+          onMouseLeave={() => setShowChatTooltip(false)}
+        >
+          <div className="chatbot-widget__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z" fill="white"/>
+              <path d="M7 9H17V11H7V9Z" fill="white"/>
+              <path d="M7 12H14V14H7V12Z" fill="white"/>
+              <path d="M7 6H17V8H7V6Z" fill="white"/>
+            </svg>
           </div>
-        )}
+
+          {showChatTooltip && !showModal && (
+            <div className="chatbot-widget__tooltip">
+              <span>Asistente AI</span>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Modal de opciones */}
+      {/* Botón de WhatsApp (derecha) */}
+      <div className="whatsapp-widget-container">
+        <div
+          className="whatsapp-button"
+          onClick={handleWhatsAppClick}
+          onMouseEnter={() => setShowWhatsAppTooltip(true)}
+          onMouseLeave={() => setShowWhatsAppTooltip(false)}
+        >
+          <div className="whatsapp-button__icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 28.176 1.116 32.088 3.048 35.472L0 48L12.816 45.024C16.08 46.812 19.896 47.832 24 47.832V48Z" fill="#25D366"/>
+              <path d="M35.52 12.48C32.232 9.144 27.816 7.2 23.04 7.2C13.176 7.2 5.256 15.12 5.256 24.984C5.256 28.272 6.192 31.44 7.848 34.2L5.04 42.96L14.064 40.224C16.728 41.736 19.824 42.552 23.04 42.552C32.904 42.552 40.824 34.632 40.824 24.768C40.608 20.208 38.808 15.816 35.52 12.48ZM23.04 39.264C20.256 39.264 17.592 38.568 15.24 37.176L14.664 36.84L8.784 38.28L10.224 32.616L9.864 32.04C8.328 29.568 7.56 26.664 7.56 23.76C7.56 16.176 13.968 10.056 21.768 10.056C25.416 10.056 28.848 11.496 31.512 14.04C34.176 16.584 35.736 20.016 35.736 23.76C36.024 31.56 29.616 39.264 23.04 39.264ZM29.616 27.408C29.184 27.192 27.096 26.16 26.664 25.944C26.232 25.728 25.944 25.728 25.656 26.16C25.368 26.592 24.504 27.624 24.216 27.912C23.928 28.2 23.712 28.2 23.28 27.984C22.848 27.768 21.384 27.336 19.656 25.728C18.264 24.48 17.4 22.896 17.184 22.464C16.968 22.032 17.184 21.816 17.4 21.6C17.616 21.384 17.832 21.096 18.048 20.808C18.264 20.52 18.336 20.376 18.48 20.088C18.624 19.8 18.552 19.512 18.48 19.296C18.408 19.08 17.472 17.064 17.112 16.2C16.752 15.336 16.392 15.48 16.104 15.48C15.816 15.48 15.528 15.48 15.24 15.48C14.952 15.48 14.52 15.552 14.088 15.984C13.656 16.416 12.576 17.448 12.576 19.464C12.576 21.48 14.088 23.424 14.304 23.712C14.52 24 17.4 28.344 23.4 30.288C24.504 30.72 25.368 30.936 26.04 31.152C27.144 31.44 28.104 31.368 28.896 31.296C29.76 31.152 31.392 30.288 31.752 29.352C32.112 28.416 32.112 27.624 32.04 27.48C31.824 27.624 31.464 27.624 29.616 27.408Z" fill="white"/>
+            </svg>
+          </div>
+
+          {showWhatsAppTooltip && (
+            <div className="whatsapp-button__tooltip">
+              <span>WhatsApp</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Modal de opciones de chatbot */}
       {showModal && (
         <div className="chatbot-modal-overlay" onClick={handleCloseModal}>
           <div className="chatbot-modal" onClick={(e) => e.stopPropagation()}>
@@ -214,7 +244,7 @@ const WhatsAppWidget: React.FC = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
