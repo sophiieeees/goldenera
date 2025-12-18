@@ -66,21 +66,23 @@ const WhatsAppWidget: React.FC = () => {
     script.type = 'text/javascript';
     script.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
     script.onload = () => {
-      window.voiceflow.chat.load({
-        verify: { projectID },
-        url: 'https://general-runtime.voiceflow.com',
-        versionID: 'production',
-        voice: { url: 'https://runtime-api.voiceflow.com' }
-      });
-      setIsLoading(false);
-      setShowModal(false);
+      if (window.voiceflow?.chat) {
+        window.voiceflow.chat.load({
+          verify: { projectID },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: { url: 'https://runtime-api.voiceflow.com' }
+        });
+        setIsLoading(false);
+        setShowModal(false);
 
-      // Abrir el chat automáticamente después de cargar
-      setTimeout(() => {
-        if (window.voiceflow?.chat?.open) {
-          window.voiceflow.chat.open();
-        }
-      }, 500);
+        // Abrir el chat automáticamente después de cargar
+        setTimeout(() => {
+          if (window.voiceflow?.chat?.open) {
+            window.voiceflow.chat.open();
+          }
+        }, 500);
+      }
     };
 
     document.body.appendChild(script);
