@@ -3,7 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const path = require('path');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 require('dotenv').config();
 
 const app = express();
@@ -11,16 +11,9 @@ const app = express();
 // Stripe
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-// Email transporter
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.SMTP_USER || process.env.EMAIL_USER,
-    pass: process.env.SMTP_PASS || process.env.EMAIL_PASS,
-  }
-});
+// Resend para emails
+const resend = new Resend(process.env.RESEND_API_KEY);
+const FROM_EMAIL = process.env.FROM_EMAIL || 'Golden Era <onboarding@resend.dev>';
 
 // Middlewares de seguridad
 app.use(helmet({
@@ -94,8 +87,8 @@ app.post('/api/contact', async (req, res) => {
     };
 
     // Email al usuario
-    await transporter.sendMail({
-      from: `"Golden Era Team" <${process.env.SMTP_USER || process.env.EMAIL_USER}>`,
+    await resend.emails.send({
+      from: FROM_EMAIL,
       to: userData.email,
       subject: '🏆 Bienvenido a Golden Era',
       html: `<div style="font-family: Arial; max-width: 600px;">
@@ -116,9 +109,9 @@ app.post('/api/contact', async (req, res) => {
     });
 
     // Email al admin
-    await transporter.sendMail({
-      from: `"Golden Era System" <${process.env.SMTP_USER || process.env.EMAIL_USER}>`,
-      to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
+    await resend.emails.send({
+      from: FROM_EMAIL,
+      to: process.env.ADMIN_EMAIL,
       subject: `🚨 NUEVO LEAD: ${userData.name}`,
       html: `<h2>🚨 NUEVO LEAD - GOLDEN ERA</h2>
         <p><strong>Nombre:</strong> ${userData.name}</p>
@@ -193,8 +186,8 @@ app.post('/api/merch-payment', async (req, res) => {
     };
 
     // Email al cliente
-    await transporter.sendMail({
-      from: `"Golden Era Store" <${process.env.SMTP_USER || process.env.EMAIL_USER}>`,
+    await resend.emails.send({
+      from: FROM_EMAIL,
       to: orderData.customerEmail,
       subject: `🏆 Confirmación de Pedido #${orderData.orderId}`,
       html: `<div style="font-family: Arial; max-width: 600px;">
@@ -213,9 +206,9 @@ app.post('/api/merch-payment', async (req, res) => {
     });
 
     // Email al admin
-    await transporter.sendMail({
-      from: `"Golden Era System" <${process.env.SMTP_USER || process.env.EMAIL_USER}>`,
-      to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
+    await resend.emails.send({
+      from: FROM_EMAIL,
+      to: process.env.ADMIN_EMAIL,
       subject: `🚨 NUEVA ORDEN: ${orderData.customerName}`,
       html: `<h2>🚨 NUEVA ORDEN DE MERCH</h2>
         <p><strong>Cliente:</strong> ${orderData.customerName}</p>
