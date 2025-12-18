@@ -8,5 +8,17 @@ declare global {
       config?: any
     ) => void;
     dataLayer: any[];
+    voiceflow?: {
+      chat: {
+        load: (config: {
+          verify: { projectID: string };
+          url: string;
+          versionID: string;
+          voice: { url: string };
+        }) => void;
+        open: () => void;
+        destroy: () => void;
+      };
+    };
   }
 }
