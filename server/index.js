@@ -397,9 +397,13 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// ==================== STATIC FILES (PRODUCTION) ====================
-if (process.env.NODE_ENV === 'production') {
-  const clientBuildPath = path.join(__dirname, '../client/build');
+// ==================== STATIC FILES ====================
+const clientBuildPath = path.join(__dirname, '../client/build');
+const fs = require('fs');
+
+// Servir archivos estáticos si existe el build
+if (fs.existsSync(clientBuildPath)) {
+  console.log('📁 Sirviendo archivos estáticos desde:', clientBuildPath);
   app.use(express.static(clientBuildPath));
 
   app.get('*', (req, res) => {
@@ -407,6 +411,8 @@ if (process.env.NODE_ENV === 'production') {
       res.sendFile(path.join(clientBuildPath, 'index.html'));
     }
   });
+} else {
+  console.log('⚠️ No se encontró build del cliente en:', clientBuildPath);
 }
 
 // ==================== START SERVER ====================
