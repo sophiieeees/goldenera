@@ -42,10 +42,7 @@ const Layout: React.FC = () => {
         <Outlet />
       </main>
       <Footer />
-      <WhatsAppWidget 
-        phoneNumber="+525576966262"
-        message="¡Hola! Me gustaría obtener más información sobre Golden Era"
-      />
+      <WhatsAppWidget />
       <PromoWidget 
         isActive={showPromoWidget}
         onClose={handleClosePromoWidget}
