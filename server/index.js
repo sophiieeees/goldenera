@@ -392,6 +392,11 @@ app.post('/api/merch-webhook', async (req, res) => {
   }
 });
 
+// --- HEALTH CHECK ---
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 // ==================== STATIC FILES (PRODUCTION) ====================
 if (process.env.NODE_ENV === 'production') {
   const clientBuildPath = path.join(__dirname, '../client/build');
