@@ -75,31 +75,41 @@ const WhatsAppWidget: React.FC = () => {
       script.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
 
       script.onload = () => {
+        console.log('Voiceflow script loaded, initializing projectID:', projectID);
+
         if (window.voiceflow?.chat) {
           window.voiceflow.chat.load({
             verify: { projectID },
             url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production',
-            voice: { url: 'https://runtime-api.voiceflow.com' }
-          });
-
-          setTimeout(() => {
+            versionID: 'production'
+          }).then(() => {
+            console.log('Voiceflow chat loaded successfully');
             setIsLoading(false);
             if (window.voiceflow?.chat?.open) {
               window.voiceflow.chat.open();
             }
-          }, 1000);
+          }).catch((err: any) => {
+            console.error('Voiceflow chat load error:', err);
+            setIsLoading(false);
+          });
         } else {
+          console.error('Voiceflow chat object not available');
           setIsLoading(false);
         }
       };
 
-      script.onerror = () => {
+      script.onerror = (err) => {
         setIsLoading(false);
-        console.error('Error loading Voiceflow script');
+        console.error('Error loading Voiceflow script:', err);
       };
 
-      document.body.appendChild(script);
+      // Use insertBefore pattern like Voiceflow recommends
+      const firstScript = document.getElementsByTagName('script')[0];
+      if (firstScript && firstScript.parentNode) {
+        firstScript.parentNode.insertBefore(script, firstScript);
+      } else {
+        document.body.appendChild(script);
+      }
 
       if (window.gtag) {
         window.gtag('event', 'chatbot_open', {

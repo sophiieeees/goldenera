@@ -14,8 +14,8 @@ declare global {
           verify: { projectID: string };
           url: string;
           versionID: string;
-          voice: { url: string };
-        }) => void;
+          voice?: { url: string };
+        }) => Promise<void>;
         open: () => void;
         destroy: () => void;
       };
