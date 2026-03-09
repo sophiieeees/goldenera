@@ -34,7 +34,7 @@ const sendConfirmationEmails = async (paymentData) => {
           <p style="font-size: 1.1rem; line-height: 1.6;">¡Felicidades! Acabas de unirte a la élite. Tu pago ha sido procesado exitosamente y ahora eres oficialmente parte de Golden Era.</p>
           
           <div style="background: #111; padding: 30px; border-radius: 10px; border-left: 5px solid #EAC31B; margin: 30px 0;">
-            <h3 style="color: #EAC31B; margin-top: 0; font-size: 1.5rem;">📋 Detalles de tu Inversión</h3>
+            <h3 style="color: #EAC31B; margin-top: 0; font-size: 1.5rem;"> Detalles de tu Inversión</h3>
             <table style="width: 100%; color: #ccc; font-size: 1.1rem;">
               <tr><td style="padding: 8px 0;"><strong>Programa:</strong></td><td style="color: #EAC31B; font-weight: bold;">${programNames[paymentData.programType] || paymentData.programType}</td></tr>
               <tr><td style="padding: 8px 0;"><strong>Inversión:</strong></td><td style="color: #EAC31B; font-weight: bold;">$${(paymentData.amount / 100).toLocaleString()} MXN</td></tr>
@@ -44,7 +44,7 @@ const sendConfirmationEmails = async (paymentData) => {
           </div>
           
           <div style="background: linear-gradient(135deg, #222 0%, #111 100%); padding: 30px; border-radius: 10px; margin: 30px 0;">
-            <h3 style="color: #EAC31B; margin-top: 0; font-size: 1.5rem;">🚀 ¿Qué sigue ahora?</h3>
+            <h3 style="color: #EAC31B; margin-top: 0; font-size: 1.5rem;"> ¿Qué sigue ahora?</h3>
             <ul style="color: #ccc; font-size: 1.1rem; line-height: 1.8; padding-left: 20px;">
               <li><strong style="color: #EAC31B;">En las próximas 24 horas:</strong> Nuestro equipo se pondrá en contacto contigo</li>
               <li><strong style="color: #EAC31B;">Primera semana:</strong> Recibirás tu plan de entrenamiento personalizado</li>
@@ -74,7 +74,7 @@ const sendConfirmationEmails = async (paymentData) => {
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; background: #f8f9fa; padding: 0;">
         <div style="background: linear-gradient(135deg, #EAC31B 0%, #d4ac16 100%); padding: 20px; text-align: center;">
-          <h1 style="color: #000; margin: 0; font-size: 1.8rem;">💰 NUEVA VENTA GOLDEN ERA</h1>
+          <h1 style="color: #000; margin: 0; font-size: 1.8rem;"> NUEVA VENTA GOLDEN ERA</h1>
         </div>
         
         <div style="padding: 30px; background: white;">
@@ -85,29 +85,29 @@ const sendConfirmationEmails = async (paymentData) => {
           
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
             <tr style="background: #f8f9fa;">
-              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">📧 Email</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;"> Email</td>
               <td style="padding: 12px; border: 1px solid #dee2e6;">${paymentData.customerEmail}</td>
             </tr>
             <tr>
-              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">📱 Teléfono</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;"> Teléfono</td>
               <td style="padding: 12px; border: 1px solid #dee2e6;">${paymentData.customerPhone || 'No proporcionado'}</td>
             </tr>
             <tr style="background: #f8f9fa;">
-              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">💵 Monto</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;"> Monto</td>
               <td style="padding: 12px; border: 1px solid #dee2e6; color: #28a745; font-weight: bold; font-size: 1.2rem;">$${(paymentData.amount / 100).toLocaleString()} MXN</td>
             </tr>
             <tr>
-              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">🕐 Fecha</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;"> Fecha</td>
               <td style="padding: 12px; border: 1px solid #dee2e6;">${new Date().toLocaleString('es-MX')}</td>
             </tr>
             <tr style="background: #f8f9fa;">
-              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">🔍 ID Stripe</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;"> ID Stripe</td>
               <td style="padding: 12px; border: 1px solid #dee2e6; font-family: monospace; font-size: 0.9rem;">${paymentData.paymentIntentId}</td>
             </tr>
           </table>
           
           <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 5px; margin: 25px 0;">
-            <h3 style="color: #856404; margin: 0 0 10px 0;">⚡ ACCIÓN REQUERIDA</h3>
+            <h3 style="color: #856404; margin: 0 0 10px 0;"> ACCIÓN REQUERIDA</h3>
             <p style="color: #856404; margin: 0; font-weight: bold;">Contactar al cliente en las próximas 24 horas para iniciar su transformación.</p>
           </div>
           
@@ -124,9 +124,9 @@ const sendConfirmationEmails = async (paymentData) => {
       transporter.sendMail(customerEmail),
       transporter.sendMail(adminEmail)
     ]);
-    console.log('✅ Emails enviados exitosamente a:', paymentData.customerEmail);
+    console.log(' Emails enviados exitosamente a:', paymentData.customerEmail);
   } catch (error) {
-    console.error('❌ Error enviando emails:', error.message);
+    console.error(' Error enviando emails:', error.message);
     throw error;
   }
 };
@@ -152,7 +152,7 @@ exports.handler = async (event, context) => {
 
     if (stripeEvent.type === 'payment_intent.succeeded') {
       const paymentIntent = stripeEvent.data.object;
-      console.log('💰 Pago exitoso:', paymentIntent.id);
+      console.log(' Pago exitoso:', paymentIntent.id);
       
       const paymentData = {
         ...paymentIntent.metadata,
@@ -168,7 +168,7 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ received: true }) 
     };
   } catch (error) {
-    console.error('❌ Webhook error:', error);
+    console.error(' Webhook error:', error);
     return { 
       statusCode: 500, 
       body: JSON.stringify({ error: error.message }) 
