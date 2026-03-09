@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
         <div className="footer-content">
           {/* Instagram Link */}
           <a 
-            href="https://www.instagram.com/goldenera_oficial/" 
+            href="https://www.instagram.com/goldenera_wardrobe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
             target="_blank" 
             rel="noopener noreferrer"
             className="footer-link"
@@ -28,10 +28,15 @@ const Footer: React.FC = () => {
 
           {/* Phone Link */}
           <a 
-            href="tel:+52 55 7696 6262" 
-            className="footer-link footer-phone"
+            href="https://wa.me/525576966262"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-link"
+            aria-label="WhatsApp Golden Era"
           >
-            +52 55 7696 6262
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+              <path d="M16.04 2C8.29 2 2 8.29 2 16.04c0 2.83.83 5.54 2.41 7.85L2 30l6.3-2.35a14 14 0 007.74 2.28h.01c7.75 0 14.04-6.29 14.04-14.04S23.79 2 16.04 2zm0 25.56c-2.38 0-4.7-.63-6.72-1.82l-.48-.28-3.74 1.39 1.4-3.65-.31-.5a11.5 11.5 0 01-1.77-6.16c0-6.37 5.18-11.55 11.55-11.55 3.08 0 5.97 1.2 8.14 3.38a11.46 11.46 0 013.37 8.15c0 6.37-5.18 11.54-11.54 11.54zm6.33-8.64c-.35-.17-2.05-1.01-2.37-1.12-.32-.12-.55-.17-.78.17-.23.35-.89 1.12-1.09 1.35-.2.23-.4.26-.75.09-.35-.17-1.47-.54-2.8-1.73-1.03-.92-1.73-2.05-1.93-2.4-.2-.35-.02-.54.15-.71.15-.15.35-.4.52-.61.17-.2.23-.35.35-.58.12-.23.06-.43-.03-.61-.09-.17-.78-1.88-1.07-2.57-.28-.68-.57-.59-.78-.6h-.67c-.23 0-.61.09-.93.43-.32.35-1.23 1.2-1.23 2.92s1.26 3.38 1.43 3.61c.17.23 2.47 3.77 5.99 5.29.84.36 1.5.58 2.01.74.84.27 1.6.23 2.2.14.67-.1 2.05-.84 2.34-1.66.29-.81.29-1.5.2-1.66-.09-.15-.32-.23-.67-.4z"/>
+            </svg>
           </a>
         </div>
       </div>
