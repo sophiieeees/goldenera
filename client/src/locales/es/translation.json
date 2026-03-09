@@ -1,7 +1,6 @@
-
 {
   "landing": {
-    "subtitle": "Transforma Tu Cuerpo. Transforma Tu Vida",  
+    "subtitle": "Transforma Tu Cuerpo. Transforma Tu Vida",
     "enter": "ENTRA A LA ERA DORADA"
   },
   "nav": {
@@ -13,18 +12,18 @@
   "home": {
     "phrases": {
       "phrase1": {
-        "part1": "Construye un cuerpo que hable antes que tus palabras.", 
-        "part2": "Vuélvete imparable." 
+        "part1": "Construye un cuerpo que hable antes que tus palabras.",
+        "part2": "Vuélvete imparable."
       },
       "phrase2": "Transforma tu físico. Transforma tu vida.",
       "phrase3": {
-        "part1": "Un físico fuerte inspira respeto.", 
-        "part2": "Construye un cuerpo que imponga presencia." 
+        "part1": "Un físico fuerte inspira respeto.",
+        "part2": "Construye un cuerpo que imponga presencia."
       },
       "phrase4": "La disciplina construye músculo. El músculo construye confianza.",
       "phrase5": {
         "part1": "El oro se forja con fuego,",
-        "part2": "así como el músculo se forja con hierro." 
+        "part2": "así como el músculo se forja con hierro."
       },
       "phrase6": "Tu cuerpo es tu primera impresión. Haz que cuente."
     },
@@ -34,35 +33,36 @@
     },
     "philosophy": {
       "forgeYourLegacy": "FORJA TU LEGADO",
-      "legacy": "En un mundo lleno de debilidad, la fuerza domina. Transforma tu cuerpo con ciencia. Recupera tu respeto. Este programa de 12 semanas es solo para quienes están listos para formar parte de la élite.", 
+      "legacy": "En un mundo lleno de debilidad, la fuerza domina. Transforma tu cuerpo con ciencia. Recupera tu respeto. Este programa de 12 semanas es solo para quienes están listos para formar parte de la élite.",
       "philosophyTitle": "FILOSOFÍA",
-      "text": "La verdadera transformación no ocurre solo en el cuerpo. Ocurre en la mente, en la disciplina y en la forma en que enfrentas cada día. Nuestro sistema combina ciencia, entrenamiento estratégico y mentalidad de alto rendimiento para crear resultados reales. ", 
+      "text": "La verdadera transformación no ocurre solo en el cuerpo. Ocurre en la mente, en la disciplina y en la forma en que enfrentas cada día. Nuestro sistema combina ciencia, entrenamiento estratégico y mentalidad de alto rendimiento para crear resultados reales."
     },
     "results": {
       "title": "Resultados",
       "titleLine2": "garantizados",
-      "text": " Entrena con quienes entienden la ciencia detrás del rendimiento físico. Solo aceptamos 50 clientes por año. Este programa no es para todos; es para quienes están listos para comprometerse con su transformación. Construye el físico que siempre supiste que eras capaz de lograr." 
+      "text": "Entrena con quienes entienden la ciencia detrás del rendimiento físico. Solo aceptamos 50 clientes por año. Este programa no es para todos; es para quienes están listos para comprometerse con su transformación. Construye el físico que siempre supiste que eras capaz de lograr."
+    },
     "coach": {
       "title": "Tu Coach",
       "name": "Mateo Haces",
       "quote": "Los resultados hablan más que las palabras",
       "instagram": "@mateo.haces",
-      "description": "Atleta de alto rendimiento, luchador de MMA y especialista en fisiología del ejercicio. Mateo ha dedicado su vida a entender cómo transformar el cuerpo humano a través de ciencia, disciplina y entrenamiento estratégico." 
+      "description": "Atleta de alto rendimiento, luchador de MMA y especialista en fisiología del ejercicio. Mateo ha dedicado su vida a entender cómo transformar el cuerpo humano a través de ciencia, disciplina y entrenamiento estratégico."
     },
     "method": {
       "title": "MÉTODO GOLDEN ERA",
-      "description": "Nuestro sistema probado de tres pasos para transformar tu cuerpo y mente en una fuerza imparable.", 
+      "description": "Nuestro sistema probado de tres pasos para transformar tu cuerpo y mente en una fuerza imparable.",
       "steps": {
         "join": {
-          "title": "Únete al Programa Élite", 
+          "title": "Únete al Programa Élite",
           "description": "Obtén acceso instantáneo a tu plan de entrenamiento personalizado, guía nutricional y comunidad exclusiva Golden Era."
         },
         "material": {
-          "title": "Accede al Material Exclusivo", 
+          "title": "Accede al Material Exclusivo",
           "description": "Recibe tus rutinas de ejercicio personalizadas, planes de comidas, protocolos de suplementos y contenido exclusivo en video de nuestros coaches."
         },
         "work": {
-          "title": "Entrena y Transfórmate", 
+          "title": "Entrena y Transfórmate",
           "description": "Sigue el programa con disciplina, rastrea tu progreso y observa cómo tu cuerpo se transforma en su versión dorada."
         }
       }
@@ -92,7 +92,7 @@
       "features": {
         "coaching": "Coaching Personal 1 a 1",
         "apps": "Acceso a Apps Premium",
-        "recipes": "500+ Recetas Gourmet Saludables para Alto Rendimiento", 
+        "recipes": "500+ Recetas Gourmet Saludables para Alto Rendimiento",
         "merch": "Merchandise Exclusivo Golden Era",
         "support": "Soporte VIP 24/7",
         "tracking": "Seguimiento Avanzado de Progreso",
@@ -100,45 +100,6 @@
         "location": "Instalaciones Premium en CDMX"
       },
       "cta": "Comienza Tu Transformación"
-    },
-    "whyItWorks": {
-      "subtitle": "Nuestro método combina investigación científica en entrenamiento de fuerza, nutrición y fisiología del ejercicio para desbloquear el potencial atlético completo de cada persona.", 
-      "typewriter": {
-        "phrase1": "TRANSFORMA TU CUERPO",
-        "phrase2": "DESBLOQUEA TU POTENCIAL",
-        "phrase3": "VUÉLVETE IMPARABLE",
-        "phrase4": "LA ERA DORADA TE ESPERA"
-      },
-      "cards": {
-        "technique": {
-          "title": "Ejercicios de técnica perfecta",
-          "frontText": "Los ejercicios correctos con la técnica adecuada",
-          "backText": "Coaching personalizado en cada sesión de entrenamiento con corrección de técnica en tiempo real",
-          "citation": "*Basado en principios de NSCA y ACE Fitness"
-        },
-        "recipes": {
-          "title": "Libro de recetas exclusivo",
-          "frontText": "Libro de recetas exclusivo para atletas",
-          "backText": "Más de 150 recetas diseñadas por nutricionistas deportivos para maximizar tu rendimiento",
-          "citation": "*Desarrollado con nutricionistas certificados por ISSN"
-        },
-        "science": {
-          "title": "Base científica comprobada",
-          "frontText": "Metodología de entrenamiento basada en ciencia",
-          "backText": "Basado en estudios de NSCA, ACSM y las últimas investigaciones en ciencias del deporte",
-          "citation": "*Metodología respaldada por Journal of Strength Research"
-        }
-      },
-      "stats": {
-        "improvement": "mejora de fuerza en 12 semanas",
-        "effectiveness": "más efectivo que entrenar solo",
-        "adherence": "tasa de adherencia al programa"
-      },
-      "citations": {
-        "study": "Estudio interno con 150 participantes (2023-2024)",
-        "comparison": "Comparado con entrenamiento sin supervisión - JSCR 2023",
-        "retention": "Datos de retención de clientes Golden Era 2024"
-      }
     },
     "motivational": {
       "buildBody": "Construye un cuerpo que hable por ti.",
@@ -166,128 +127,6 @@
       "followUs": "Síguenos",
       "description": "Deja de esperar y comienza ahora. Contáctanos para que podamos ayudarte a conseguir el cuerpo de tus sueños.",
       "rights": "Todos los derechos reservados. Golden Era ®. Una empresa de Emiratos Árabes Unidos."
-    }
-  },
-  "joinElite": {
-    "title": "Únete a la Élite.",
-    "description": "Reclama tu respeto hoy. Únete a la élite.",
-    "form": {
-      "name": "Nombre Completo",
-      "phone": "Teléfono",
-      "email": "Correo Electrónico",
-      "submit": "COMIENZA TU ERA",
-      "processing": "Enviando...",
-      "successMessage": "¡Perfecto! Te hemos enviado un email de confirmación. Nuestro equipo se pondrá en contacto contigo pronto.",
-      "errorMessage": "Hubo un error al enviar el formulario. Por favor intenta de nuevo.",
-      "redirectMessage": "Redirigiendo a la página de programas...",
-      "errors": {
-        "nameRequired": "El nombre es requerido",
-        "nameTooShort": "El nombre debe tener al menos 2 caracteres",
-        "nameInvalid": "El nombre solo puede contener letras y espacios",
-        "phoneRequired": "El teléfono es requerido",
-        "phoneInvalid": "Formato de teléfono inválido",
-        "emailRequired": "El email es requerido",
-        "emailInvalid": "Formato de email inválido"
-      }
-    }
-  },
-  "about": {
-    "hero": {
-      "subtitle": "Los Débiles Hacen Excusas. Los Fuertes Hacen Historia."
-    },
-    "mission": {
-      "title": "Nuestra Misión",
-      "text": "En Golden Era, no aceptamos la mediocridad. Transformamos a los ambiciosos en imparables. Si buscas comodidad, busca en otro lado. Aquí forjamos guerreros que dominan en los negocios, en las relaciones y en la vida. Tu cuerpo débil es un reflejo de tu mente débil. Nosotros arreglamos ambos."
-    },
-    "vision": {
-      "title": "Nuestra Visión",
-      "text": "Visualizamos un mundo donde los hombres son hombres. Donde la fuerza no es opcional, es obligatoria. Donde cada hombre que camina por la calle irradia poder, respeto y dominio absoluto. Los débiles nos temen. Los fuertes nos respetan. Los sabios se unen a nosotros.",
-      "stats": {
-        "elite": "Élite Solamente",
-        "excuses": "Excusas Aceptadas",
-        "transformation": "Transformación Total"
-      }
-    },
-    "values": {
-      "title": "Nuestros Valores",
-      "discipline": {
-        "title": "Disciplina",
-        "text": "Sin disciplina eres un esclavo de tus impulsos. Con disciplina eres el arquitecto de tu destino."
-      },
-      "excellence": {
-        "title": "Excelencia",
-        "text": "La mediocridad es un cáncer. La excelencia es la única cura. Sé excepcional o sé olvidado."
-      },
-      "transformation": {
-        "title": "Transformación",
-        "text": "Destruimos tu versión débil para construir tu versión imparable. El dolor es temporal, la grandeza es eterna."
-      },
-      "leadership": {
-        "title": "Liderazgo",
-        "text": "Los líderes no nacen, se forjan en hierro y sudor. Sé el hombre que otros hombres quieren ser."
-      }
-    },
-    "power": {
-      "title": "Poder Absoluto",
-      "subtitle": "Tu físico débil grita tu falta de disciplina. Es hora de callar las bocas y abrir los ojos."
-    },
-    "cta": {
-      "title": "¿Seguirás Siendo Débil o Te Volverás Legendario?",
-      "text": "Solo 50 guerreros al año. Los débiles dudan. Los fuertes actúan. ¿Cuál eres tú?",
-      "button": "DESTRUYE TU DEBILIDAD"
-    }
-  },
-  "gallery": {
-    "title": "Galería",
-    "loadMore": "Cargar Más"
-  },
-  "common": {
-    "loading": "Cargando...",
-    "error": "Error",
-    "success": "Éxito",
-    "close": "Cerrar",
-    "back": "Atrás",
-    "next": "Siguiente",
-    "submit": "Enviar",
-    "cancel": "Cancelar"
-  },
-  "popup": {
-    "exclusiveOffer": "OFERTA EXCLUSIVA",
-    "goldenEra": "GOLDEN ERA",
-    "discount": "50% OFF",
-    "expiresIn": "Esta oferta expira en:",
-    "hours": "HORAS",
-    "minutes": "MIN",
-    "seconds": "SEG",
-    "onlyFirst": "Solo para los primeros 20 clientes",
-    "fullAccess": "Acceso completo al programa Golden Era",
-    "joinNow": "ÚNETE AHORA",
-    "urgency": "Solo quedan pocas plazas disponibles"
-  },
-  "join": {
-    "hero": {
-      "titlePre": "ÚNETE AL",
-      "titleMain": "CLUB ÉLITE", 
-      "titlePost": "Solo para los que se atreven a ser legendarios",
-      "subtitle": "Deja de ser invisible. Deja de ser promedio. Es hora de reclamar tu respeto y construir el cuerpo que refleje tu verdadero potencial. Solo 50 guerreros por año.",
-      "scrollIndicator": "Scroll para ver planes"
-    },
-    "stats": {
-      "spots": "Lugares Anuales",
-      "transformation": "Transformación", 
-      "excuses": "Excusas"
-    },
-    "testimonial": {
-      "quote": "Golden Era no es solo un programa de fitness. Es una transformación completa de quién eres. Me enseñaron que mi cuerpo es mi primera tarjeta de presentación, y ahora comando respeto en cada habitación a la que entro.",
-      "authorName": "Carlos Mendoza",
-      "authorTitle": "CEO, Tech Startup"
-    },
-    "finalCta": {
-      "title": {
-        "part1": "¿Seguirás siendo invisible",
-        "part2": "o te volverás imparable?"
-      },
-      "text": "Los débiles esperan. Los fuertes actúan. Los legendarios se unen a Golden Era."
     }
   }
 }
