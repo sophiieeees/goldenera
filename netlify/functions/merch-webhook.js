@@ -13,7 +13,7 @@ const sendMerchConfirmationEmails = async (paymentData) => {
   const customerEmail = {
     from: process.env.EMAIL_FROM,
     to: paymentData.customerEmail,
-    subject: '🏆 Golden Era - Confirmación de Compra de Merch',
+    subject: 'Golden Era - Confirmación de Compra de Merch',
     html: `
       <div style="font-family: 'Helvetica', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #000; color: #fff;">
         <div style="background: linear-gradient(135deg, #EAC31B 0%, #d4ac16 100%); padding: 40px 20px; text-align: center;">
@@ -61,7 +61,7 @@ const sendMerchConfirmationEmails = async (paymentData) => {
           </div>
           
           <div style="margin: 40px 0; padding: 20px; background: linear-gradient(135deg, rgba(234, 195, 27, 0.1), rgba(234, 195, 27, 0.05)); border-left: 4px solid #EAC31B;">
-            <h3 style="color: #EAC31B; margin-top: 0;">📦 Próximos Pasos:</h3>
+            <h3 style="color: #EAC31B; margin-top: 0;"> Próximos Pasos:</h3>
             <ul style="color: #ccc; line-height: 1.8;">
               <li>Tu pedido será procesado en las próximas 24-48 horas</li>
               <li>Recibirás un correo con el número de seguimiento</li>
@@ -94,7 +94,7 @@ const sendMerchConfirmationEmails = async (paymentData) => {
   const adminEmail = {
     from: process.env.EMAIL_FROM,
     to: process.env.ADMIN_EMAIL,
-    subject: `💰 Nueva Venta de Merch - ${paymentData.productName}`,
+    subject: ` Nueva Venta de Merch - ${paymentData.productName}`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2>Nueva Venta de Merchandise</h2>
@@ -129,9 +129,9 @@ const sendMerchConfirmationEmails = async (paymentData) => {
       transporter.sendMail(customerEmail),
       transporter.sendMail(adminEmail)
     ]);
-    console.log('✅ Merch emails sent successfully');
+    console.log(' Merch emails sent successfully');
   } catch (error) {
-    console.error('❌ Error sending merch emails:', error);
+    console.error(' Error sending merch emails:', error);
     throw error;
   }
 };
@@ -160,7 +160,7 @@ exports.handler = async (event, context) => {
       
       // Solo procesar si es una venta de merch
       if (paymentIntent.metadata.productId) {
-        console.log('💰 Merch sale successful:', paymentIntent.id);
+        console.log(' Merch sale successful:', paymentIntent.id);
         
         const paymentData = {
           ...paymentIntent.metadata,
@@ -177,7 +177,7 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ received: true }) 
     };
   } catch (error) {
-    console.error('❌ Merch webhook error:', error);
+    console.error(' Merch webhook error:', error);
     return { 
       statusCode: 500, 
       body: JSON.stringify({ error: error.message }) 
