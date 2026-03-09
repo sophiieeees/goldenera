@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event, context) => {
-  console.log('🚀 Merch order function started');
+  console.log('Merch order function started');
   
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -24,7 +24,7 @@ exports.handler = async (event, context) => {
 
   try {
     const data = JSON.parse(event.body);
-    console.log('📥 Order received:', { 
+    console.log('Order received:', { 
       name: data.customerName, 
       email: data.customerEmail,
       product: data.productName 
@@ -32,7 +32,7 @@ exports.handler = async (event, context) => {
 
     // Verificar configuración
     if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-      console.error('❌ Configuración SMTP faltante');
+      console.error('Configuración SMTP faltante');
       return {
         statusCode: 500,
         headers,
@@ -61,7 +61,7 @@ exports.handler = async (event, context) => {
       orderId: data.orderId || `ORDER_${Date.now()}`
     };
 
-    console.log('📧 Creating transporter...');
+    console.log('Creating transporter...');
     
     // Crear transporter - EXACTAMENTE como contact.js
    // Crear transporter
@@ -79,7 +79,7 @@ exports.handler = async (event, context) => {
     const customerEmail = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 30px; text-align: center;">
-          <h1 style="color: #000; margin: 0;">🏆 GOLDEN ERA 🏆</h1>
+          <h1 style="color: #000; margin: 0;"> GOLDEN ERA </h1>
           <p style="color: #000; margin: 10px 0;">OFFICIAL MERCHANDISE</p>
         </div>
         <div style="padding: 30px; background: white;">
@@ -89,7 +89,7 @@ exports.handler = async (event, context) => {
           </p>
           
           <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #FFD700;">
-            <h3 style="color: #333; margin-top: 0;">📦 Detalles del Pedido:</h3>
+            <h3 style="color: #333; margin-top: 0;"> Detalles del Pedido:</h3>
             <table style="width: 100%;">
               <tr>
                 <td style="padding: 5px 0;">Producto:</td>
@@ -123,7 +123,7 @@ exports.handler = async (event, context) => {
           </div>
           
           <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <p style="margin: 0 0 5px 0;"><strong>📍 Dirección de envío:</strong></p>
+            <p style="margin: 0 0 5px 0;"><strong> Dirección de envío:</strong></p>
             <p style="margin: 5px 0;">
               ${orderData.address}<br>
               ${orderData.city}, ${orderData.state} ${orderData.zipCode}
@@ -132,7 +132,7 @@ exports.handler = async (event, context) => {
           
           <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin: 25px 0; text-align: center;">
             <p style="margin: 0; color: #856404; font-weight: bold;">
-              📦 Tu pedido será enviado en 3-5 días hábiles
+              Tu pedido será enviado en 3-5 días hábiles
             </p>
           </div>
           
@@ -140,7 +140,7 @@ exports.handler = async (event, context) => {
             <p style="color: #666;">¿Tienes preguntas?</p>
             <a href="https://wa.me/5217202533388?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20mi%20pedido%20${orderData.orderId}"
                style="background: #25D366; color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
-              💬 Contáctanos por WhatsApp
+              Contáctanos por WhatsApp
             </a>
           </div>
           
@@ -151,7 +151,7 @@ exports.handler = async (event, context) => {
         <div style="background: #333; color: white; padding: 20px; text-align: center;">
           <p style="margin: 0;"><strong>GOLDEN ERA</strong> - Donde nacen los guerreros</p>
           <p style="margin: 5px 0 0 0;">
-            📱 WhatsApp: +52 55 7696 6262 | Instagram: @mateo.haces
+            WhatsApp: +52 55 7696 6262 | Instagram: @mateo.haces
           </p>
         </div>
       </div>
@@ -160,7 +160,7 @@ exports.handler = async (event, context) => {
     // Template para el admin
     const adminEmail = `
       <div style="font-family: Arial, sans-serif;">
-        <h2>🚨 NUEVA ORDEN DE MERCH - GOLDEN ERA</h2>
+        <h2> NUEVA ORDEN DE MERCH - GOLDEN ERA</h2>
         <div style="background: #f8f9fa; padding: 20px; margin: 20px 0;">
           <h3>Información del Cliente</h3>
           <p><strong>Nombre:</strong> ${orderData.customerName}</p>
@@ -190,13 +190,13 @@ exports.handler = async (event, context) => {
       </div>
     `;
 
-    console.log('📤 Sending emails...');
+    console.log(' Sending emails...');
 
     // Enviar email al cliente
     await transporter.sendMail({
       from: `"Golden Era Store" <${process.env.SMTP_USER}>`,
       to: orderData.customerEmail,
-      subject: `🏆 Confirmación de Pedido #${orderData.orderId}`,
+      subject: ` Confirmación de Pedido #${orderData.orderId}`,
       html: customerEmail,
     });
 
@@ -204,11 +204,11 @@ exports.handler = async (event, context) => {
     await transporter.sendMail({
       from: `"Golden Era System" <${process.env.SMTP_USER}>`,
       to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
-      subject: `🚨 NUEVA ORDEN: ${orderData.customerName} - $${orderData.finalAmount} MXN`,
+      subject: ` NUEVA ORDEN: ${orderData.customerName} - $${orderData.finalAmount} MXN`,
       html: adminEmail,
     });
 
-    console.log('✅ Emails sent successfully');
+    console.log(' Emails sent successfully');
 
     return {
       statusCode: 200,
@@ -220,7 +220,7 @@ exports.handler = async (event, context) => {
     };
 
   } catch (error) {
-    console.error('❌ Error:', error);
+    console.error(' Error:', error);
     
     return {
       statusCode: 500,
