@@ -1,7 +1,7 @@
 
 {
   "landing": {
-    "subtitle": "Transforma Tu Cuerpo. Transforma Tu Vida",  // CAMBIO: se agregó punto y ritmo más elegante
+    "subtitle": "Transforma Tu Cuerpo. Transforma Tu Vida",  
     "enter": "ENTRA A LA ERA DORADA"
   },
   "nav": {
@@ -13,18 +13,18 @@
   "home": {
     "phrases": {
       "phrase1": {
-        "part1": "Construye un cuerpo que hable antes que tus palabras.", // CAMBIO: frase más elegante (Construye un cuerpo que hable por ti.)
-        "part2": "Vuélvete imparable." // CAMBIO: Vuélvete intocable.
+        "part1": "Construye un cuerpo que hable antes que tus palabras.", 
+        "part2": "Vuélvete imparable." 
       },
       "phrase2": "Transforma tu físico. Transforma tu vida.",
       "phrase3": {
-        "part1": "Un físico fuerte inspira respeto.", //CAMBIO: Sin músculos no hay respeto
-        "part2": "Construye un cuerpo que imponga presencia." //CAMBIO: Construye un cuerpo que demande atención.
+        "part1": "Un físico fuerte inspira respeto.", 
+        "part2": "Construye un cuerpo que imponga presencia." 
       },
       "phrase4": "La disciplina construye músculo. El músculo construye confianza.",
       "phrase5": {
         "part1": "El oro se forja con fuego,",
-        "part2": "así como el músculo se forja con hierro." //CAMBIO: Se agregó se forja
+        "part2": "así como el músculo se forja con hierro." 
       },
       "phrase6": "Tu cuerpo es tu primera impresión. Haz que cuente."
     },
@@ -34,37 +34,35 @@
     },
     "philosophy": {
       "forgeYourLegacy": "FORJA TU LEGADO",
-      "legacy": "En un mundo lleno de debilidad, la fuerza domina. Transforma tu cuerpo con ciencia. Recupera tu respeto. Este programa de 12 semanas es solo para quienes están listos para formar parte de la élite.", // CAMBIO:  En un mundo lleno de individuos débiles, la fuerza es lo que domina. Transforma tu cuerpo con ciencia. Reclama tu respeto. Este programa de 12 semanas es solo para aquellos que están listos para formar parte de la Élite.
+      "legacy": "En un mundo lleno de debilidad, la fuerza domina. Transforma tu cuerpo con ciencia. Recupera tu respeto. Este programa de 12 semanas es solo para quienes están listos para formar parte de la élite.", 
       "philosophyTitle": "FILOSOFÍA",
-      "text": "La verdadera transformación no ocurre solo en el cuerpo. Ocurre en la mente, en la disciplina y en la forma en que enfrentas cada día. Nuestro sistema combina ciencia, entrenamiento estratégico y mentalidad de alto rendimiento para crear resultados reales. ", // CAMBIO: En un mundo lleno de mediocridad, la disciplina marca la diferencia. Transforma tu cuerpo con ciencia, estrategia y consistencia. Recupera el respeto que mereces. Este programa de 12 semanas está diseñado solo para quienes están listos para formar parte de la élite.
-      "cta": "COMIENZA TU ERA"
+      "text": "La verdadera transformación no ocurre solo en el cuerpo. Ocurre en la mente, en la disciplina y en la forma en que enfrentas cada día. Nuestro sistema combina ciencia, entrenamiento estratégico y mentalidad de alto rendimiento para crear resultados reales. ", 
     },
     "results": {
       "title": "Resultados",
       "titleLine2": "garantizados",
-      "text": " Entrena con quienes entienden la ciencia detrás del rendimiento físico. Solo aceptamos 50 clientes por año. Este programa no es para todos; es para quienes están listos para comprometerse con su transformación. Construye el físico que siempre supiste que eras capaz de lograr." // CAMBIO: Entrena con quienes lideran este mundo. Solo tomamos 50 clientes por año. Este programa no es para todos, es solo para los que se atreven a convertirse en élite. Experimenta tu cuerpo ideal en solo 60 días.
-    },
+      "text": " Entrena con quienes entienden la ciencia detrás del rendimiento físico. Solo aceptamos 50 clientes por año. Este programa no es para todos; es para quienes están listos para comprometerse con su transformación. Construye el físico que siempre supiste que eras capaz de lograr." 
     "coach": {
       "title": "Tu Coach",
       "name": "Mateo Haces",
       "quote": "Los resultados hablan más que las palabras",
       "instagram": "@mateo.haces",
-      "description": "Atleta de alto rendimiento, luchador de MMA y especialista en fisiología del ejercicio. Mateo ha dedicado su vida a entender cómo transformar el cuerpo humano a través de ciencia, disciplina y entrenamiento estratégico." // CAMBIO: Inició revoluciones, construyó imperios. Luchador de MMA, fisicoculturista, experto en fisiología del deporte… y, en general, un tipo realmente agradable
+      "description": "Atleta de alto rendimiento, luchador de MMA y especialista en fisiología del ejercicio. Mateo ha dedicado su vida a entender cómo transformar el cuerpo humano a través de ciencia, disciplina y entrenamiento estratégico." 
     },
     "method": {
       "title": "MÉTODO GOLDEN ERA",
-      "description": "Nuestro sistema probado de tres pasos para transformar tu cuerpo y mente en una fuerza imparable.", // CAMBIO: 3 -> tres
+      "description": "Nuestro sistema probado de tres pasos para transformar tu cuerpo y mente en una fuerza imparable.", 
       "steps": {
         "join": {
-          "title": "Únete al Programa Élite", //CAMBIO: É
+          "title": "Únete al Programa Élite", 
           "description": "Obtén acceso instantáneo a tu plan de entrenamiento personalizado, guía nutricional y comunidad exclusiva Golden Era."
         },
         "material": {
-          "title": "Accede al Material Exclusivo", // CAMBIO: Premium -> Exclusivo
+          "title": "Accede al Material Exclusivo", 
           "description": "Recibe tus rutinas de ejercicio personalizadas, planes de comidas, protocolos de suplementos y contenido exclusivo en video de nuestros coaches."
         },
         "work": {
-          "title": "Entrena y Transfórmate", //Cambio: Trabaja -> Entrena
+          "title": "Entrena y Transfórmate", 
           "description": "Sigue el programa con disciplina, rastrea tu progreso y observa cómo tu cuerpo se transforma en su versión dorada."
         }
       }
@@ -94,7 +92,7 @@
       "features": {
         "coaching": "Coaching Personal 1 a 1",
         "apps": "Acceso a Apps Premium",
-        "recipes": "500+ Recetas Gourmet Saludables para Alto Rendimiento", // CAMBIO: 500+ Recetas Gourmet Saludables
+        "recipes": "500+ Recetas Gourmet Saludables para Alto Rendimiento", 
         "merch": "Merchandise Exclusivo Golden Era",
         "support": "Soporte VIP 24/7",
         "tracking": "Seguimiento Avanzado de Progreso",
@@ -104,8 +102,7 @@
       "cta": "Comienza Tu Transformación"
     },
     "whyItWorks": {
-      "subtitle": "Nuestro método combina investigación científica en entrenamiento de fuerza, nutrición y fisiología del ejercicio para desbloquear el potencial atlético completo de cada persona.", // CAMBIO: Nuestro método es una compilación de estudios científicos de levantamiento que desbloquean el potencial atlético completo de una persona.
-      "clickCard": "Haz clic en cada tarjeta para conocer más detalles.",
+      "subtitle": "Nuestro método combina investigación científica en entrenamiento de fuerza, nutrición y fisiología del ejercicio para desbloquear el potencial atlético completo de cada persona.", 
       "typewriter": {
         "phrase1": "TRANSFORMA TU CUERPO",
         "phrase2": "DESBLOQUEA TU POTENCIAL",
