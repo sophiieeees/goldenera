@@ -90,10 +90,10 @@ app.post('/api/contact', async (req, res) => {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: userData.email,
-      subject: '🏆 Bienvenido a Golden Era',
+      subject: '¡Bienvenido a Golden Era!',
       html: `<div style="font-family: Arial; max-width: 600px;">
         <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 30px; text-align: center;">
-          <h1 style="color: #000;">🏆 GOLDEN ERA 🏆</h1>
+          <h1 style="color: #000;"> GOLDEN ERA </h1>
         </div>
         <div style="padding: 30px;">
           <h2>¡Hola ${userData.name}!</h2>
@@ -101,7 +101,7 @@ app.post('/api/contact', async (req, res) => {
           <div style="text-align: center; margin: 30px 0;">
             <a href="https://wa.me/5217202533388?text=Hola%20soy%20${encodeURIComponent(userData.name)}"
                style="background: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold;">
-              💬 HABLAR POR WHATSAPP
+                HABLAR POR WHATSAPP
             </a>
           </div>
         </div>
@@ -112,8 +112,8 @@ app.post('/api/contact', async (req, res) => {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: process.env.ADMIN_EMAIL,
-      subject: `🚨 NUEVO LEAD: ${userData.name}`,
-      html: `<h2>🚨 NUEVO LEAD - GOLDEN ERA</h2>
+      subject: ` NUEVO LEAD: ${userData.name}`,
+      html: `<h2> NUEVO LEAD - GOLDEN ERA</h2>
         <p><strong>Nombre:</strong> ${userData.name}</p>
         <p><strong>Email:</strong> ${userData.email}</p>
         <p><strong>Teléfono:</strong> ${userData.phone || 'No proporcionado'}</p>
@@ -189,10 +189,10 @@ app.post('/api/merch-payment', async (req, res) => {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: orderData.customerEmail,
-      subject: `🏆 Confirmación de Pedido #${orderData.orderId}`,
+      subject: `Confirmación de Pedido #${orderData.orderId}`,
       html: `<div style="font-family: Arial; max-width: 600px;">
         <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 30px; text-align: center;">
-          <h1 style="color: #000;">🏆 GOLDEN ERA 🏆</h1>
+          <h1 style="color: #000;"> GOLDEN ERA </h1>
         </div>
         <div style="padding: 30px;">
           <h2>¡Hola ${orderData.customerName}!</h2>
@@ -209,8 +209,8 @@ app.post('/api/merch-payment', async (req, res) => {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: process.env.ADMIN_EMAIL,
-      subject: `🚨 NUEVA ORDEN: ${orderData.customerName}`,
-      html: `<h2>🚨 NUEVA ORDEN DE MERCH</h2>
+      subject: `NUEVA ORDEN: ${orderData.customerName}`,
+      html: `<h2>NUEVA ORDEN DE MERCH</h2>
         <p><strong>Cliente:</strong> ${orderData.customerName}</p>
         <p><strong>Email:</strong> ${orderData.customerEmail}</p>
         <p><strong>Producto:</strong> ${orderData.productName}</p>
@@ -239,7 +239,7 @@ app.post('/api/webhook', async (req, res) => {
     if (event.type === 'payment_intent.succeeded') {
       const paymentIntent = event.data.object;
       const metadata = paymentIntent.metadata || {};
-      console.log('💰 Pago exitoso:', paymentIntent.id);
+      console.log('Pago exitoso:', paymentIntent.id);
 
       const programNames = {
         'standard': 'Golden Era Standard',
@@ -253,10 +253,10 @@ app.post('/api/webhook', async (req, res) => {
         await resend.emails.send({
           from: FROM_EMAIL,
           to: metadata.customerEmail,
-          subject: `🏆 ¡Pago Confirmado! - ${programName}`,
+          subject: ` ¡Pago Confirmado! - ${programName}`,
           html: `<div style="font-family: Arial; max-width: 600px;">
             <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 30px; text-align: center;">
-              <h1 style="color: #000;">🏆 GOLDEN ERA 🏆</h1>
+              <h1 style="color: #000;"> GOLDEN ERA </h1>
             </div>
             <div style="padding: 30px;">
               <h2>¡Felicidades ${metadata.customerName || ''}!</h2>
@@ -270,10 +270,10 @@ app.post('/api/webhook', async (req, res) => {
               <div style="text-align: center; margin: 30px 0;">
                 <a href="https://wa.me/5217202533388"
                    style="background: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold;">
-                  💬 CONTACTAR POR WHATSAPP
+                  CONTACTAR POR WHATSAPP
                 </a>
               </div>
-              <p style="color: #888; font-size: 12px;">¡Tu transformación comienza ahora! 💪</p>
+              <p style="color: #888; font-size: 12px;">¡Tu transformación comienza ahora! </p>
             </div>
           </div>`
         });
@@ -283,9 +283,9 @@ app.post('/api/webhook', async (req, res) => {
       await resend.emails.send({
         from: FROM_EMAIL,
         to: process.env.ADMIN_EMAIL,
-        subject: `💰 VENTA CONFIRMADA: ${programName} - $${amount} MXN`,
+        subject: ` VENTA CONFIRMADA: ${programName} - $${amount} MXN`,
         html: `<div style="font-family: Arial;">
-          <h2 style="color: #28a745;">💰 PAGO CONFIRMADO</h2>
+          <h2 style="color: #28a745;"> PAGO CONFIRMADO</h2>
           <div style="background: #f5f5f5; padding: 20px; border-radius: 10px;">
             <p><strong>Cliente:</strong> ${metadata.customerName || 'N/A'}</p>
             <p><strong>Email:</strong> ${metadata.customerEmail || 'N/A'}</p>
@@ -319,7 +319,7 @@ app.post('/api/merch-webhook', async (req, res) => {
     if (event.type === 'payment_intent.succeeded') {
       const paymentIntent = event.data.object;
       const metadata = paymentIntent.metadata || {};
-      console.log('💰 Merch sale:', paymentIntent.id);
+      console.log('Merch sale:', paymentIntent.id);
 
       const amount = paymentIntent.amount / 100;
 
@@ -328,10 +328,10 @@ app.post('/api/merch-webhook', async (req, res) => {
         await resend.emails.send({
           from: FROM_EMAIL,
           to: metadata.customerEmail,
-          subject: `🏆 ¡Pedido Confirmado! - Golden Era Merch`,
+          subject: `¡Pedido Confirmado! - Golden Era Merch`,
           html: `<div style="font-family: Arial; max-width: 600px;">
             <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 30px; text-align: center;">
-              <h1 style="color: #000;">🏆 GOLDEN ERA 🏆</h1>
+              <h1 style="color: #000;"> GOLDEN ERA </h1>
             </div>
             <div style="padding: 30px;">
               <h2>¡Gracias por tu compra ${metadata.customerName || ''}!</h2>
@@ -350,7 +350,7 @@ app.post('/api/merch-webhook', async (req, res) => {
               <div style="text-align: center; margin: 30px 0;">
                 <a href="https://wa.me/5217202533388"
                    style="background: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold;">
-                  💬 CONTACTAR POR WHATSAPP
+                   CONTACTAR POR WHATSAPP
                 </a>
               </div>
             </div>
@@ -362,9 +362,9 @@ app.post('/api/merch-webhook', async (req, res) => {
       await resend.emails.send({
         from: FROM_EMAIL,
         to: process.env.ADMIN_EMAIL,
-        subject: `🛍️ NUEVA VENTA MERCH: $${amount} MXN`,
+        subject: ` NUEVA VENTA MERCH: $${amount} MXN`,
         html: `<div style="font-family: Arial;">
-          <h2 style="color: #28a745;">🛍️ VENTA DE MERCH CONFIRMADA</h2>
+          <h2 style="color: #28a745;"> VENTA DE MERCH CONFIRMADA</h2>
           <div style="background: #f5f5f5; padding: 20px; border-radius: 10px;">
             <p><strong>Cliente:</strong> ${metadata.customerName || 'N/A'}</p>
             <p><strong>Email:</strong> ${metadata.customerEmail || 'N/A'}</p>
@@ -403,7 +403,7 @@ const fs = require('fs');
 
 // Servir archivos estáticos si existe el build
 if (fs.existsSync(clientBuildPath)) {
-  console.log('📁 Sirviendo archivos estáticos desde:', clientBuildPath);
+  console.log(' Sirviendo archivos estáticos desde:', clientBuildPath);
   app.use(express.static(clientBuildPath));
 
   app.get('*', (req, res) => {
@@ -412,11 +412,11 @@ if (fs.existsSync(clientBuildPath)) {
     }
   });
 } else {
-  console.log('⚠️ No se encontró build del cliente en:', clientBuildPath);
+  console.log('No se encontró build del cliente en:', clientBuildPath);
 }
 
 // ==================== START SERVER ====================
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
+  console.log(`Servidor corriendo en puerto ${PORT}`);
 });
