@@ -13,7 +13,7 @@ interface CardData {
   frontTextKey: string;
   backTextKey: string;
   citationKey: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 const WhyItWorks: React.FC = () => {
@@ -26,31 +26,31 @@ const WhyItWorks: React.FC = () => {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
   const cards: CardData[] = [
-    {
-      id: 'technique',
-      titleKey: 'home.whyItWorks.cards.technique.title',
-      frontTextKey: 'home.whyItWorks.cards.technique.frontText',
-      backTextKey: 'home.whyItWorks.cards.technique.backText',
-      citationKey: 'home.whyItWorks.cards.technique.citation',
-      icon: '💪'
-    },
-    {
-      id: 'recipes',
-      titleKey: 'home.whyItWorks.cards.recipes.title',
-      frontTextKey: 'home.whyItWorks.cards.recipes.frontText',
-      backTextKey: 'home.whyItWorks.cards.recipes.backText',
-      citationKey: 'home.whyItWorks.cards.recipes.citation',
-      icon: '📖'
-    },
-    {
-      id: 'science',
-      titleKey: 'home.whyItWorks.cards.science.title',
-      frontTextKey: 'home.whyItWorks.cards.science.frontText',
-      backTextKey: 'home.whyItWorks.cards.science.backText',
-      citationKey: 'home.whyItWorks.cards.science.citation',
-      icon: '🔬'
-    }
-  ];
+{
+ id: "technique",
+ titleKey: "home.whyItWorks.cards.technique.title",
+ frontTextKey: "home.whyItWorks.cards.technique.frontText",
+ backTextKey: "home.whyItWorks.cards.technique.backText",
+ citationKey: "home.whyItWorks.cards.technique.citation",
+ icon: <Dumbbell size={56}/>
+},
+{
+ id: "recipes",
+ titleKey: "home.whyItWorks.cards.recipes.title",
+ frontTextKey: "home.whyItWorks.cards.recipes.frontText",
+ backTextKey: "home.whyItWorks.cards.recipes.backText",
+ citationKey: "home.whyItWorks.cards.recipes.citation",
+ icon: <BookOpen size={56}/>
+},
+{
+ id: "science",
+ titleKey: "home.whyItWorks.cards.science.title",
+ frontTextKey: "home.whyItWorks.cards.science.frontText",
+ backTextKey: "home.whyItWorks.cards.science.backText",
+ citationKey: "home.whyItWorks.cards.science.citation",
+ icon: <Microscope size={56}/>
+}
+];
 
   const typewriterPhrases = [
     { text: 'TRANSFORM YOUR BODY', color: 'black' },
