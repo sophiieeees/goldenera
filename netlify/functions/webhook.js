@@ -70,7 +70,7 @@ const sendConfirmationEmails = async (paymentData) => {
   const adminEmail = {
     from: process.env.EMAIL_FROM,
     to: process.env.ADMIN_EMAIL,
-    subject: `🎯 NUEVA VENTA - ${programNames[paymentData.programType]} - $${(paymentData.amount / 100).toLocaleString()} MXN`,
+    subject: `NUEVA VENTA - ${programNames[paymentData.programType]} - $${(paymentData.amount / 100).toLocaleString()} MXN`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; background: #f8f9fa; padding: 0;">
         <div style="background: linear-gradient(135deg, #EAC31B 0%, #d4ac16 100%); padding: 20px; text-align: center;">
