@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import './WhyItWorks.scss';
-import { Dumbbell, BookOpen, Microscope } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
