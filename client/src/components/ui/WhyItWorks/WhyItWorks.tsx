@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Dumbbell, BookOpen, Microscope } from "lucide-react";
 import { TextPlugin } from 'gsap/TextPlugin';
 import './WhyItWorks.scss';
