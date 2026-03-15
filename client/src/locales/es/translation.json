@@ -22,7 +22,7 @@
         "part1": "La verdadera confianza viene de saber",
         "part2": "que estás trabajando en tu mejor versión."
       },
-      "phrase4": "LDisciplina física. Optimización estética. Dominio mental.",
+      "phrase4": "Disciplina física. Optimización estética. Dominio mental.",
       "phrase5": {
         "part1": "El oro se forja con fuego,",
         "part2": "la apariencia se perfecciona con estrategia"
@@ -88,7 +88,7 @@
       "savings": "Ahorras",
       "spots_left": "¡Solo quedan {{count}} lugares disponibles!",
       "standard": {
-        "name": "Golden Loksmax Standard",
+        "name": "Golden Looksmax Standard",
         "type": "Programa Online",
         "description": "Programa integral online de transformación física, optimización estética y rendimiento mental con coaching personalizado."
       },
