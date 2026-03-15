@@ -282,17 +282,30 @@
         padding: 30px;
       }
     }
-
+/////////////////
     &-icon {
-      font-size: 64px;
-      display: block;
-      margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+    color: #EAC31B;
+    transition: all .35s ease;
 
-      @include mobile {
-        font-size: 48px;
-        margin-bottom: 20px;
-      }
+    svg{
+    width: 80px;
+    height: 80px;
+    stroke-width: 2.5;
+    transition: all .35s ease;
+    filter: drop-shadow(0 0 4px rgba(234,195,27,0.4));
     }
+////////////
+  @include mobile{
+    svg{
+      width:60px;
+      height:60px;
+    }
+  }
+}
 
     &-title {
       font-family: 'Mohave', sans-serif;
