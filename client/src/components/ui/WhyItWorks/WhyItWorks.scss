@@ -239,6 +239,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      ////////////
+      &:hover &-icon svg{
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 12px rgba(234,195,27,0.8));
+      }
+      ///////////
     }
 
     &-gradient {
@@ -288,7 +295,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 24px;
-    color: #EAC31B;
+    color: #EAC31B, 0.2;
     transition: all .35s ease;
 
     svg{
@@ -298,7 +305,7 @@
     transition: all .35s ease;
     filter: drop-shadow(0 0 4px rgba(234,195,27,0.4));
     }
-////////////
+
   @include mobile{
     svg{
       width:60px;
@@ -306,7 +313,7 @@
     }
   }
 }
-
+//////////
     &-title {
       font-family: 'Mohave', sans-serif;
       font-size: 32px;
