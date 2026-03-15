@@ -128,5 +128,127 @@
       "description": "Deja de esperar y comienza ahora. Contáctanos para que podamos ayudarte a conseguir el cuerpo de tus sueños.",
       "rights": "Todos los derechos reservados. Golden Era ®. Una empresa de Emiratos Árabes Unidos."
     }
+  },
+  "joinElite": {
+    "title": "Únete a la Élite.",
+    "description": "Reclama tu respeto hoy. Únete a la élite.",
+    "form": {
+      "name": "Nombre Completo",
+      "phone": "Teléfono",
+      "email": "Correo Electrónico",
+      "submit": "COMIENZA TU ERA",
+      "processing": "Enviando...",
+      "successMessage": "¡Perfecto! Te hemos enviado un email de confirmación. Nuestro equipo se pondrá en contacto contigo pronto.",
+      "errorMessage": "Hubo un error al enviar el formulario. Por favor intenta de nuevo.",
+      "redirectMessage": "Redirigiendo a la página de programas...",
+      "errors": {
+        "nameRequired": "El nombre es requerido.",
+        "nameTooShort": "El nombre debe tener al menos 2 caracteres.",
+        "nameInvalid": "El nombre solo puede contener letras y espacios.",
+        "phoneRequired": "El teléfono es requerido.",
+        "phoneInvalid": "Formato de teléfono inválido.",
+        "emailRequired": "El email es requerido.",
+        "emailInvalid": "Formato de email inválido."
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "subtitle": "Los Débiles Hacen Excusas. Los Fuertes Hacen Historia."
+    },
+    "mission": {
+      "title": "Nuestra Misión",
+      "text": "En Golden Era, no aceptamos la mediocridad. Transformamos a los ambiciosos en imparables. Si buscas comodidad, busca en otro lado. Aquí forjamos guerreros que dominan en los negocios, en las relaciones y en la vida. Tu cuerpo débil es un reflejo de tu mente débil. Nosotros arreglamos ambos."
+    },
+    "vision": {
+      "title": "Nuestra Visión",
+      "text": "Visualizamos un mundo donde los hombres son hombres. Donde la fuerza no es opcional, es obligatoria. Donde cada hombre que camina por la calle irradia poder, respeto y dominio absoluto. Los débiles nos temen. Los fuertes nos respetan. Los sabios se unen a nosotros.",
+      "stats": {
+        "elite": "Élite Solamente",
+        "excuses": "Excusas Aceptadas",
+        "transformation": "Transformación Total"
+      }
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "discipline": {
+        "title": "Disciplina",
+        "text": "Sin disciplina eres un esclavo de tus impulsos. Con disciplina eres el arquitecto de tu destino."
+      },
+      "excellence": {
+        "title": "Excelencia",
+        "text": "La mediocridad es un cáncer. La excelencia es la única cura. Sé excepcional o sé olvidado."
+      },
+      "transformation": {
+        "title": "Transformación",
+        "text": "Destruimos tu versión débil para construir tu versión imparable. El dolor es temporal, la grandeza es eterna."
+      },
+      "leadership": {
+        "title": "Liderazgo",
+        "text": "Los líderes no nacen, se forjan en hierro y sudor. Sé el hombre que otros hombres quieren ser."
+      }
+    },
+    "power": {
+      "title": "Poder Absoluto",
+      "subtitle": "Tu físico débil grita tu falta de disciplina. Es hora de callar las bocas y abrir los ojos."
+    },
+    "cta": {
+      "title": "¿Seguirás Siendo Débil o Te Volverás Legendario?",
+      "text": "Solo 50 guerreros al año. Los débiles dudan. Los fuertes actúan. ¿Cuál eres tú?",
+      "button": "DESTRUYE TU DEBILIDAD"
+    }
+  },
+  "gallery": {
+    "title": "Galería",
+    "loadMore": "Cargar Más"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "submit": "Enviar",
+    "cancel": "Cancelar"
+  },
+  "popup": {
+    "exclusiveOffer": "OFERTA EXCLUSIVA",
+    "goldenEra": "GOLDEN ERA",
+    "discount": "50% OFF",
+    "expiresIn": "Esta oferta expira en:",
+    "hours": "HORAS",
+    "minutes": "MIN",
+    "seconds": "SEG",
+    "onlyFirst": "Solo para los primeros 20 clientes",
+    "fullAccess": "Acceso completo al programa Golden Era",
+    "joinNow": "¡ÚNETE AHORA!",
+    "urgency": "¡Solo quedan pocas plazas disponibles!"
+  },
+  "join": {
+    "hero": {
+      "titlePre": "ÚNETE AL",
+      "titleMain": "CLUB ÉLITE", 
+      "titlePost": "Solo para los que se atreven a ser legendarios",
+      "subtitle": "Deja de ser invisible. Deja de ser promedio. Es hora de reclamar tu respeto y construir el cuerpo que refleje tu verdadero potencial. Solo 50 guerreros por año.",
+      "scrollIndicator": "Scroll para ver planes"
+    },
+    "stats": {
+      "spots": "Lugares Anuales",
+      "transformation": "Transformación", 
+      "excuses": "Excusas"
+    },
+    "testimonial": {
+      "quote": "Golden Era no es solo un programa de fitness. Es una transformación completa de quién eres. Me enseñaron que mi cuerpo es mi primera tarjeta de presentación, y ahora comando respeto en cada habitación a la que entro.",
+      "authorName": "Carlos Mendoza",
+      "authorTitle": "CEO, Tech Startup"
+    },
+    "finalCta": {
+      "title": {
+        "part1": "¿Seguirás siendo invisible",
+        "part2": "o te volverás imparable?"
+      },
+      "text": "Los débiles esperan. Los fuertes actúan. Los legendarios se unen a Golden Era."
+    }
   }
 }
