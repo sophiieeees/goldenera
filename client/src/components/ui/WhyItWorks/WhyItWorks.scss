@@ -153,6 +153,13 @@
     cursor: pointer;
     perspective: 1000px;
 
+    /////// mantiene el efecto de tarjeta que se voltea
+    &--expanded {
+      .why-it-works__card-inner {
+        transform: rotateY(180deg);
+      }
+    }
+
     /////// efecto levantar tarjeta
     transition: transform .35s ease;
 
@@ -262,10 +269,5 @@
       letter-spacing: 0.02em;
       line-height: 1.2;
     }
-//////////////////////////////
-    &--expanded { 
-      .why-it-works__card-inner 
-      { transform: rotateY(180deg); 
-      }
   }
 }
