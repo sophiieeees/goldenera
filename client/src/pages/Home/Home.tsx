@@ -10,7 +10,6 @@ import MotivationalPhrase from '../../components/ui/MotivationalPhrase/Motivatio
 import WhyItWorks from '../../components/ui/WhyItWorks/WhyItWorks';
 import JoinForm from '../../components/ui/JoinForm/JoinForm';
 import './Home.scss';
-import MerchProducts from '../../components/Merch/MerchProducts';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,7 +30,6 @@ const Home: React.FC = () => {
       <Method />
       <MotivationalPhrase />
       <WhyItWorks />
-      <MerchProducts />
       <JoinForm />
     </div>
   );
