@@ -30,7 +30,6 @@
     z-index: 1;
   }
 
-  // Header con títulos superpuestos
   .method-header {
     margin-bottom: 64px;
     
@@ -43,13 +42,9 @@
       margin-bottom: 32px;
     }
     
-    // Texto árabe como fondo decorativo
     .arabic-background {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 100%;
+      inset: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -58,7 +53,7 @@
       z-index: 1;
       
       span {
-        color: #EAC31B;
+        color: $golden;
         font-size: 86px;
         font-family: 'Mohave', sans-serif;
         font-weight: 300;
@@ -85,20 +80,14 @@
     }
     
     .method-description {
-      width: 100%;
       color: $light-gray;
       font-size: 18px;
-      font-family: 'Helvetica', Arial, sans-serif;
-      font-weight: 400;
-      line-height: 20.16px;
-      word-wrap: break-word;
       text-align: center;
       max-width: 396px;
       margin: 0 auto;
     }
   }
 
-  // Steps container
   .method-steps {
     position: relative;
     display: flex;
@@ -111,31 +100,32 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: linear-gradient(180deg, 
+      background: linear-gradient(
+        180deg, 
         $gold-soft 0%, 
         $gold-dark 50%, 
-        $gold-soft 100%);
+        $gold-soft 100%
+      );
       transform-origin: top;
       transform: scaleY(0);
     }
   }
 
-  // Individual step
   .method-step {
     position: relative;
     width: 320px;
     display: flex;
     flex-direction: column;
-    background: $darck-gray;
+    background: $dark-gray; 
     border-radius: 16px;
     padding: 28px;
-    border: 1px solid rgba(212,175,55,0.2);
+    border: 1px solid rgba($gold-soft, 0.2);
     transition: all 0.3s ease;
 
     &:hover {
       transform: translateY(-6px);
       border-color: $gold-soft;
-      box-shadow: 0 20px 50px rgba(212,175,55,0.2);
+      box-shadow: 0 20px 50px rgba($gold-soft, 0.2);
     }
     
     .step-number {
@@ -157,14 +147,11 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      width: 100%;
-      margin-left: 0px;
     }
     
     .step-image {
       width: 100%;
       height: 200px;
-      position: relative;
       overflow: hidden;
       border-radius: 12px;
       
@@ -172,317 +159,36 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.2s ease;
       }
       
       .image-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, 
-          rgba(212,175,55,0.2) 0%, 
-          transparent 100%);
+        background: linear-gradient(
+          135deg, 
+          rgba($gold-soft, 0.2) 0%, 
+          transparent 100%
+        );
         opacity: 0;
         transition: opacity 0.2s ease;
       }
       
-      &:hover {
-        .image-overlay {
-          opacity: 1;
-        }
+      &:hover .image-overlay {
+        opacity: 1;
       }
     }
     
-    .step-info {
-      .step-title {
-        color: $white;
-        font-size: 56px;
-        font-family: 'Mohave', sans-serif;
-        font-weight: 600;
-        line-height: 56px;
-        word-wrap: break-word;
-        margin-bottom: 8px;
-      }
-      
-      .step-description {
-        color: $light-gray;
-        font-size: 18px;
-        font-family: 'Helvetica', Arial, sans-serif;
-        font-weight: 400;
-        line-height: 20.16px;
-        word-wrap: break-word;
-      }
+    .step-title {
+      color: $white;
+      font-size: 56px;
+      font-family: 'Mohave', sans-serif;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
     
-    .step-decoration {
-      position: absolute;
-      right: -10px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      
-      span {
-        width: 20px;
-        height: 2px;
-        background: var(--step-color, $gold-soft);
-        opacity: 0.3;
-        
-        &:nth-child(2) {
-          width: 15px;
-        }
-        
-        &:nth-child(3) {
-          width: 10px;
-        }
-      }
+    .step-description {
+      color: $light-gray;
+      font-size: 18px;
     }
-  }
-
-  // Responsive
-  @include tablet {
-    padding: 120px 0 60px;
-    
-    .container {
-      max-width: 700px;
-    }
-    
-    .method-header {
-      .title-wrapper {
-        height: 220px;
-      }
-      
-      .arabic-background span {
-        font-size: 100px;
-      }
-      
-      .section-title {
-        font-size: 80px;
-      }
-    }
-    
-    .method-steps {
-      gap: 64px;
-      position: relative;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: stretch;
-      flex-wrap: wrap;
-      
-      .connector-line {
-        left: 30px;
-        width: 3px;
-      }
-    }
-    
-    .method-step {
-      padding: 32px;
-      
-      .step-number {
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-      }
-      
-      .step-content {
-        margin-left: 50px;
-      }
-      
-      .step-image {
-        height: 250px;
-      }
-    }
-  }
-
-  @include desktop {
-    padding: 160px 0 80px;
-    
-    .container {
-      max-width: 1200px;
-    }
-    
-    .method-header {
-      .title-wrapper {
-        height: 250px;
-      }
-      
-      .arabic-background {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-        gap: 40px;
-        
-        span {
-          font-size: 110px;
-          width: auto;
-          text-align: center;
-        }
-      }
-      
-      .section-title {
-        font-size: 96px;
-        
-        br {
-          display: none;
-        }
-      }
-      
-      .method-description {
-        font-size: 20px;
-        line-height: 28px;
-        max-width: 600px;
-      }
-    }
-    
-    .method-steps {
-      gap: 80px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .method-step {
-      flex-direction: row;
-      
-      &.step-left {
-        .step-content {
-          flex-direction: row;
-        }
-      }
-      
-      &.step-right {
-        .step-content {
-          flex-direction: row-reverse;
-        }
-      }
-      
-      .step-content {
-        align-items: center;
-        gap: 40px;
-      }
-      
-      .step-image,
-      .step-info {
-        flex: 1;
-      }
-      
-      .step-image {
-        height: 300px;
-      }
-      
-      .step-info {
-        .step-title {
-          font-size: 64px;
-          line-height: 64px;
-        }
-        
-        .step-description {
-          font-size: 20px;
-          line-height: 28px;
-        }
-      }
-    }
-  }
-}
-
-// ICONOS
-
-.step-icon {
-  width: 100%;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(212,175,55,0.08);
-  border-radius: 12px;
-  color: #EAC31B;
-  transition: all 0.3s ease;
-  border: 2px solid rgba(212,175,55,0.2);
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(255,255,255,0.1), 
-      transparent);
-    transition: left 0.5s ease;
-  }
-
-  &:hover::before {
-    left: 100%;
-  }
-
-  svg {
-    width: 80px;
-    height: 80px;
-    filter: drop-shadow(0 4px 8px rgba(212,175,55,0.3));
-    transition: all 0.3s ease;
-  }
-
-  &:hover {
-    background: rgba(212,175,55,0.12);
-    border-color: #EAC31B;
-    
-    svg {
-      filter: drop-shadow(0 6px 12px rgba(212,175,55,0.4));
-    }
-  }
-}
-
-// Responsive iconos
-@include tablet {
-  .step-icon {
-    height: 250px;
-    
-    svg {
-      width: 100px;
-      height: 100px;
-    }
-  }
-}
-
-@include desktop {
-  .step-icon {
-    height: 300px;
-    flex: 1;
-    
-    svg {
-      width: 120px;
-      height: 120px;
-    }
-  }
-}
-
-.section-title-image {
-  position: relative;
-  z-index: 2;
-  width: auto;
-  max-width: 400px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  
-  @include mobile {
-    max-width: 320px;
-  }
-  
-  @include tablet {
-    max-width: 500px;
-  }
-  
-  @include desktop {
-    max-width: 600px;
-  }
-  
-  @media (min-width: 1440px) {
-    max-width: 700px;
   }
 }
