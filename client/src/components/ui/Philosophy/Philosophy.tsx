@@ -104,7 +104,7 @@ const Philosophy: React.FC = () => {
         </div>
         
         {/* CTA Button */}
-        <a href="#formulario" className="philosophy-cta-button" aria-label="Begin your fitness journey">
+        <a href="#JoinForm" className="philosophy-cta-button" aria-label="Begin your fitness journey">
           {t('home.philosophy.cta')}
         </a>
       </div>
