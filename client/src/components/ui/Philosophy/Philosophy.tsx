@@ -104,9 +104,14 @@ const Philosophy: React.FC = () => {
         </div>
         
         {/* CTA Button */}
-        <a href="#JoinForm" className="philosophy-cta-button" aria-label="Begin your fitness journey">
-          {t('home.philosophy.cta')}
-        </a>
+        <button
+        className="philosophy-cta-button"
+        onClick={() => {
+        document.getElementById("JoinForm")?.scrollIntoView({ behavior: "smooth" });
+        }}
+>
+  {t('home.philosophy.cta')}
+</button>
       </div>
     </section>
   );
