@@ -1,7 +1,8 @@
 // Colores principales
-$golden: #C6A75C;
-$gold-light: #E5C87B;
-$gold-dark: #9F7F2E;
+$golden: #EAC31B;        
+$gold-light: #F4D94A;    
+$gold-soft: #D4AF37;     
+$gold-dark: #9F7F2E;     
 
 $black: #000000;
 $white: #FFFFFF;
@@ -13,8 +14,8 @@ $gray: #8E8E8E;
 $golden-gradient: linear-gradient(
   135deg,
   #9F7F2E 0%,
-  #C6A75C 50%,
-  #E5C87B 100%
+  #EAC31B 50%,
+  #F4D94A 100%
 );
 
 $dark-gradient: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
