@@ -182,7 +182,7 @@ const JoinForm: React.FC = () => {
       }
       
     } catch (error: any) {
-      console.error('❌ Error:', error);
+      console.error('Error:', error);
       setIsError(true);
     } finally {
       setIsLoading(false);
@@ -298,13 +298,13 @@ const JoinForm: React.FC = () => {
             {/* Mensajes de estado */}
             {isSuccess && (
               <div className="join-form__message join-form__message--success">
-                ✅ ¡Perfecto! Te hemos enviado un email. Redirigiendo...
+                ¡Perfecto! Te hemos enviado un email. Redirigiendo...
               </div>
             )}
 
             {isError && (
               <div className="join-form__message join-form__message--error">
-                ❌ Error al enviar. Por favor intenta nuevamente.
+                Error al enviar. Por favor intenta nuevamente.
               </div>
             )}
 
