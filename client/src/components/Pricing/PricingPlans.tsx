@@ -57,10 +57,10 @@ const PricingPlans: React.FC = () => {
         t('home.packages.features.style'),
         t('home.packages.features.grooming'),
         t('home.packages.features.skincare'),
-      { icon: '✈️', text: t('home.packages.features.looksmax'),
-      { icon: '✈️', text: t('home.packages.features.supplements'),
-      { icon: '✈️', text: t('home.packages.features.biohacking'),
-      { icon: '✈️', text: t('home.packages.features.nootropics') 
+        t('home.packages.features.looksmax'),
+        t('home.packages.features.supplements'),
+        t('home.packages.features.biohacking'),
+        t('home.packages.features.nootropics') 
       ],
       badge: t('home.packages.most_exclusive'),
       popular: true
