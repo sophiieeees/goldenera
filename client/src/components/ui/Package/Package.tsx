@@ -318,7 +318,6 @@ const Package: React.FC = () => {
                   onClick={() => handlePurchase(pkg.id)}
                 >
                   <span className="button-text">{t('home.packages.cta')}</span>
-                  <span className="button-icon">→</span>
                 </button>
 
                 <p className="urgency-text">
