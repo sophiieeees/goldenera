@@ -4,7 +4,7 @@
 
 .method-section {
   padding: 80px 0 40px;
-  background: $color-black-luxury;
+  background: $black-luxury;
   position: relative;
   overflow: hidden;
   
@@ -17,8 +17,8 @@
     right: 0;
     bottom: 0;
     background-image: 
-      radial-gradient(circle at 20% 50%, rgba($color-primary, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba($color-primary, 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 20% 50%, rgba($gold-primary, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba($gold-primary, 0.05) 0%, transparent 50%);
     pointer-events: none;
   }
   
@@ -36,7 +36,7 @@
     
     .title-wrapper {
       position: relative;
-      height: 200px; // Altura fija para contener ambos textos
+      height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -64,19 +64,18 @@
         font-weight: 300;
         text-transform: uppercase;
         line-height: 0.86;
-        opacity: 0.6; // Semi-transparente para efecto de fondo
+        opacity: 0.6;
         text-align: right;
         width: 100%;
       }
     }
     
-    // Título en inglés como elemento principal
     .section-title {
       position: relative;
       z-index: 2;
       width: 100%;
       text-align: center;
-      color: white;
+      color: $white;
       font-size: 72px;
       font-family: 'Mohave', sans-serif;
       font-weight: 600;
@@ -87,7 +86,7 @@
     
     .method-description {
       width: 100%;
-      color: light-gray;
+      color: $light-gray;
       font-size: 18px;
       font-family: 'Helvetica', Arial, sans-serif;
       font-weight: 400;
@@ -106,7 +105,6 @@
     flex-direction: column;
     gap: 48px;
     
-    // Línea conectora
     .connector-line {
       position: absolute;
       left: 20px;
@@ -114,9 +112,9 @@
       bottom: 0;
       width: 2px;
       background: linear-gradient(180deg, 
-        $color-primary 0%, 
-        $color-gold-dark 50%, 
-        $color-primary 100%);
+        $gold-primary 0%, 
+        $gold-dark 50%, 
+        $gold-primary 100%);
       transform-origin: top;
       transform: scaleY(0);
     }
@@ -135,10 +133,10 @@
     transition: all 0.3s ease;
 
     &:hover {
-    transform: translateY(-6px);
-    border-color: $gold-primary;
-    box-shadow: 0 20px 50px rgba(212,175,55,0.2);
-          }
+      transform: translateY(-6px);
+      border-color: $gold-primary;
+      box-shadow: 0 20px 50px rgba(212,175,55,0.2);
+    }
     
     .step-number {
       position: absolute;
@@ -150,6 +148,9 @@
       color: $black-luxury;
       font-weight: 700;
       border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .step-content {
@@ -178,7 +179,7 @@
         position: absolute;
         inset: 0;
         background: linear-gradient(135deg, 
-          rgba($color-primary, 0.2) 0%, 
+          rgba(212,175,55,0.2) 0%, 
           transparent 100%);
         opacity: 0;
         transition: opacity 0.2s ease;
@@ -193,7 +194,7 @@
     
     .step-info {
       .step-title {
-        color: white;
+        color: $white;
         font-size: 56px;
         font-family: 'Mohave', sans-serif;
         font-weight: 600;
@@ -212,7 +213,6 @@
       }
     }
     
-    // Decoración
     .step-decoration {
       position: absolute;
       right: -10px;
@@ -225,7 +225,7 @@
       span {
         width: 20px;
         height: 2px;
-        background: var(--step-color, $color-primary);
+        background: var(--step-color, $gold-primary);
         opacity: 0.3;
         
         &:nth-child(2) {
@@ -386,7 +386,7 @@
   }
 }
 
-// Agregar al final del archivo Method.scss
+// ICONOS
 
 .step-icon {
   width: 100%;
@@ -394,13 +394,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, 
-    rgba(var(--step-color), 0.1) 0%, 
-    rgba(var(--step-color), 0.05) 100%);
+  background: rgba(212,175,55,0.08);
   border-radius: 12px;
-  color: var(--step-color, #EAC31B);
+  color: #EAC31B;
   transition: all 0.3s ease;
-  border: 2px solid rgba(var(--step-color), 0.2);
+  border: 2px solid rgba(212,175,55,0.2);
   position: relative;
   overflow: hidden;
 
@@ -413,7 +411,7 @@
     height: 100%;
     background: linear-gradient(90deg, 
       transparent, 
-      rgba(255, 255, 255, 0.1), 
+      rgba(255,255,255,0.1), 
       transparent);
     transition: left 0.5s ease;
   }
@@ -425,23 +423,21 @@
   svg {
     width: 80px;
     height: 80px;
-    filter: drop-shadow(0 4px 8px rgba(var(--step-color), 0.3));
+    filter: drop-shadow(0 4px 8px rgba(212,175,55,0.3));
     transition: all 0.3s ease;
   }
 
   &:hover {
-    background: linear-gradient(135deg, 
-      rgba(var(--step-color), 0.15) 0%, 
-      rgba(var(--step-color), 0.08) 100%);
-    border-color: var(--step-color);
+    background: rgba(212,175,55,0.12);
+    border-color: #EAC31B;
     
     svg {
-      filter: drop-shadow(0 6px 12px rgba(var(--step-color), 0.4));
+      filter: drop-shadow(0 6px 12px rgba(212,175,55,0.4));
     }
   }
 }
 
-// Responsive para iconos
+// Responsive iconos
 @include tablet {
   .step-icon {
     height: 250px;
@@ -466,7 +462,7 @@
 }
 
 .section-title-image {
-  position: center;
+  position: relative;
   z-index: 2;
   width: auto;
   max-width: 400px;
@@ -474,22 +470,18 @@
   display: block;
   margin: 0 auto;
   
-  // Mobile
   @include mobile {
     max-width: 320px;
   }
   
-  // Tablet
   @include tablet {
     max-width: 500px;
   }
   
-  // Desktop
   @include desktop {
     max-width: 600px;
   }
   
-  // Extra large screens
   @media (min-width: 1440px) {
     max-width: 700px;
   }
