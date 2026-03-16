@@ -326,7 +326,7 @@ const Package: React.FC = () => {
                 </button>
 
                 <p className="urgency-text">
-                  ⚡ {t('home.packages.spots_left', { count: pkg.spotsLeft })}
+                   {t('home.packages.spots_left', { count: pkg.spotsLeft })}
                 </p>
               </div>
 
