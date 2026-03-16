@@ -302,10 +302,6 @@ const Package: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="savings-badge">
-                  {t('home.packages.savings')} ${(pkg.originalPrice - pkg.price).toLocaleString()} MXN
-                </div>
-
                 <p className="package-description">{pkg.description}</p>
 
                 <div className="features-list">
