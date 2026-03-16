@@ -8,11 +8,9 @@ import Coach from '../../components/ui/Coach/Coach';
 import Method from '../../components/ui/Method/Method';
 import MotivationalPhrase from '../../components/ui/MotivationalPhrase/MotivationalPhrase';
 import WhyItWorks from '../../components/ui/WhyItWorks/WhyItWorks';
-import PricingPlansWithTimer from '../../components/Pricing/PricingPlansWithTimer';
 import JoinForm from '../../components/ui/JoinForm/JoinForm';
 import './Home.scss';
 import MerchProducts from '../../components/Merch/MerchProducts';
-import Package from '../../components/ui/Package/Package';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,8 +31,6 @@ const Home: React.FC = () => {
       <Method />
       <MotivationalPhrase />
       <WhyItWorks />
-      <Package /> 
-      <PricingPlansWithTimer />
       <MerchProducts />
       <JoinForm />
     </div>
