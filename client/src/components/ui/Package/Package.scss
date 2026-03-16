@@ -322,7 +322,9 @@ $red-discount: #ff3366;
 
     .package-content {
       padding: 40px;
-
+      display: flex;
+      flex-direction: column;
+      height: 100%;
       .package-name {
         font-size: 32px;
         font-weight: 700;
@@ -406,6 +408,7 @@ $red-discount: #ff3366;
         flex-direction: column;
         gap: 16px;
         margin-bottom: 40px;
+        flex-grow: 1;
 
         .feature-item {
           display: flex;
@@ -448,6 +451,7 @@ $red-discount: #ff3366;
         position: relative;
         overflow: hidden;
         margin-bottom: 16px;
+        margin-top: auto;
 
         &::before {
           content: '';
