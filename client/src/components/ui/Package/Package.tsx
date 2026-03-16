@@ -48,6 +48,32 @@ const Package: React.FC = () => {
 
  const packages: PackagePlan[] = [
   {
+    id: 'standard',
+    name: t('home.packages.standard.name'),
+    price: 3500,
+    originalPrice: 7000,
+    discount: 50,
+    currency: 'MXN',
+    type: t('home.packages.standard.type'),
+    description: t('home.packages.standard.description'),
+    features: [
+      { icon: '✔', text: t('home.packages.features.coaching') },
+      { icon: '✔', text: t('home.packages.features.apps') },
+      { icon: '✔', text: t('home.packages.features.recipes') },
+      { icon: '✔', text: t('home.packages.features.merch') },
+      { icon: '✔', text: t('home.packages.features.support') },
+      { icon: '✔', text: t('home.packages.features.tracking') },
+      { icon: '✔', text: t('home.packages.features.style') },
+      { icon: '✔', text: t('home.packages.features.grooming') },
+      { icon: '✔', text: t('home.packages.features.skincare') },
+      { icon: '✔', text: t('home.packages.features.looksmax') },
+      { icon: '✔', text: t('home.packages.features.biohacking') }
+    ],
+    image: 'https://placehold.co/600x400/1a1a1a/d4af37?text=Golden+Standard',
+    spotsLeft: 3
+  },    
+   
+  {
     id: 'ultra-deluxe',
     name: t('home.packages.deluxe.name'),
     price: 35000,
@@ -76,32 +102,6 @@ const Package: React.FC = () => {
     isPopular: true,
     image: 'https://placehold.co/600x400/000000/d4af37?text=Ultra+Deluxe',
     spotsLeft: 5
-  },
-  {
-    id: 'standard',
-    name: t('home.packages.standard.name'),
-    price: 3500,
-    originalPrice: 7000,
-    discount: 50,
-    currency: 'MXN',
-    type: t('home.packages.standard.type'),
-    description: t('home.packages.standard.description'),
-    features: [
-      { icon: '✔', text: t('home.packages.features.coaching') },
-      { icon: '✔', text: t('home.packages.features.apps') },
-      { icon: '✔', text: t('home.packages.features.recipes') },
-      { icon: '✔', text: t('home.packages.features.merch') },
-      { icon: '✔', text: t('home.packages.features.support') },
-      { icon: '✔', text: t('home.packages.features.tracking') },
-      { icon: '✔', text: t('home.packages.features.style') },
-      { icon: '✔', text: t('home.packages.features.grooming') },
-      { icon: '✔', text: t('home.packages.features.skincare') },
-      { icon: '✔', text: t('home.packages.features.looksmax') },
-      { icon: '✔', text: t('home.packages.features.supplements') },
-      { icon: '✔', text: t('home.packages.features.biohacking') }
-    ],
-    image: 'https://placehold.co/600x400/1a1a1a/d4af37?text=Golden+Standard',
-    spotsLeft: 3
   }
 ];
   // Countdown timer effect
