@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
-import PricingPlans from '../../components/Pricing/PricingPlans';
+import Package from '../../components/ui/Package/Package';
 import './JoinClub.scss';
 
 gsap.registerPlugin(ScrollTrigger);
