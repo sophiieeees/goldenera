@@ -88,7 +88,6 @@ const JoinForm: React.FC = () => {
     
     setFormData(prev => ({ ...prev, [name]: value }));
     
-    // Limpiar error cuando el usuario empiece a escribir
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -102,7 +101,6 @@ const JoinForm: React.FC = () => {
     const { name, value } = e.target;
     setFocusedField('');
     
-    // Validar cuando pierde el foco
     const error = validateField(name, value);
     if (error) {
       setErrors(prev => ({ ...prev, [name]: error }));
@@ -112,7 +110,6 @@ const JoinForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validar todos los campos
     const newErrors: FormErrors = {};
     Object.keys(formData).forEach(key => {
       const error = validateField(key, formData[key as keyof FormData]);
@@ -124,7 +121,6 @@ const JoinForm: React.FC = () => {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       
-      // Animación de shake simple
       if (formElementRef.current) {
         gsap.to(formElementRef.current, {
           x: 10,
@@ -162,7 +158,6 @@ const JoinForm: React.FC = () => {
       if (result.success) {
         setIsSuccess(true);
         
-        // Animación de éxito
         if (submitButtonRef.current) {
           gsap.to(submitButtonRef.current, {
             scale: 1.05,
@@ -172,7 +167,6 @@ const JoinForm: React.FC = () => {
           });
         }
         
-        // Redireccionar después de 2 segundos
         setTimeout(() => {
           navigate('/join');
         }, 2000);
@@ -190,11 +184,10 @@ const JoinForm: React.FC = () => {
   };
 
   return (
-    <section className="join-form" ref={formRef}>
+    <section id="JoinForm" className="join-form" ref={formRef}>
       <div className="join-form__container">
         <div className="join-form__content">
           
-          {/* Título simplificado */}
           <div className="join-form__header" ref={titleRef}>
             <h1 className="join-form__title">
               ÚNETE A LA <span className="join-form__title-highlight">GOLDEN ERA</span>
@@ -204,7 +197,6 @@ const JoinForm: React.FC = () => {
             </p>
           </div>
 
-          {/* Formulario */}
           <form 
             className="join-form__form" 
             ref={formElementRef} 
@@ -212,7 +204,6 @@ const JoinForm: React.FC = () => {
             noValidate
           >
             
-            {/* Campo Nombre */}
             <div className="join-form__field">
               <label className="join-form__label">
                 Nombre Completo *
@@ -234,7 +225,6 @@ const JoinForm: React.FC = () => {
               )}
             </div>
 
-            {/* Campo Teléfono */}
             <div className="join-form__field">
               <label className="join-form__label">
                 Teléfono *
@@ -256,7 +246,6 @@ const JoinForm: React.FC = () => {
               )}
             </div>
 
-            {/* Campo Email */}
             <div className="join-form__field">
               <label className="join-form__label">
                 Correo Electrónico *
@@ -278,7 +267,6 @@ const JoinForm: React.FC = () => {
               )}
             </div>
 
-            {/* Botón Submit */}
             <button
               type="submit"
               ref={submitButtonRef}
@@ -295,7 +283,6 @@ const JoinForm: React.FC = () => {
               )}
             </button>
 
-            {/* Mensajes de estado */}
             {isSuccess && (
               <div className="join-form__message join-form__message--success">
                 ¡Perfecto! Te hemos enviado un email. Redirigiendo...
