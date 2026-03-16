@@ -33,6 +33,7 @@ const Home: React.FC = () => {
       <Method />
       <MotivationalPhrase />
       <WhyItWorks />
+      <Package /> 
       <PricingPlansWithTimer />
       <MerchProducts />
       <JoinForm />
