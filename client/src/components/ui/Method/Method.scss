@@ -4,7 +4,7 @@
 
 .method-section {
   padding: 80px 0 40px;
-  background: $color-white;
+  background: $color-black-luxury;
   position: relative;
   overflow: hidden;
   
@@ -76,7 +76,7 @@
       z-index: 2;
       width: 100%;
       text-align: center;
-      color: black;
+      color: white;
       font-size: 72px;
       font-family: 'Mohave', sans-serif;
       font-weight: 600;
@@ -87,7 +87,7 @@
     
     .method-description {
       width: 100%;
-      color: black;
+      color: light-gray;
       font-size: 18px;
       font-family: 'Helvetica', Arial, sans-serif;
       font-weight: 400;
@@ -125,39 +125,39 @@
   // Individual step
   .method-step {
     position: relative;
+    width: 320px;
     display: flex;
-    align-items: center;
-    gap: 24px;
-    background: $color-white;
+    flex-direction: column;
+    background: $gray-luxury;
     border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transform-style: preserve-3d;
-    transition: all 0.2s ease;
+    padding: 28px;
+    border: 1px solid rgba(212,175,55,0.2);
+    transition: all 0.3s ease;
+
+    &:hover {
+    transform: translateY(-6px);
+    border-color: $gold-primary;
+    box-shadow: 0 20px 50px rgba(212,175,55,0.2);
+          }
     
     .step-number {
       position: absolute;
-      left: 0;
-      width: 40px;
-      height: 40px;
-      background: var(--step-color, $color-primary);
-      color: $color-white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      top: -18px;
+      left: 20px;
+      width: 42px;
+      height: 42px;
+      background: $golden-gradient;
+      color: $black-luxury;
       font-weight: 700;
-      font-size: 18px;
       border-radius: 50%;
-      z-index: 2;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
     
     .step-content {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
       width: 100%;
-      margin-left: 30px;
+      margin-left: 0px;
     }
     
     .step-image {
@@ -193,7 +193,7 @@
     
     .step-info {
       .step-title {
-        color: black;
+        color: white;
         font-size: 56px;
         font-family: 'Mohave', sans-serif;
         font-weight: 600;
@@ -203,7 +203,7 @@
       }
       
       .step-description {
-        color: black;
+        color: $light-gray;
         font-size: 18px;
         font-family: 'Helvetica', Arial, sans-serif;
         font-weight: 400;
@@ -263,6 +263,12 @@
     
     .method-steps {
       gap: 64px;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      flex-wrap: wrap;
       
       .connector-line {
         left: 30px;
