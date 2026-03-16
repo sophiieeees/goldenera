@@ -64,7 +64,14 @@ const Package: React.FC = () => {
       { icon: '📧', text: t('home.packages.features.support') },
       { icon: '📊', text: t('home.packages.features.tracking') },
       { icon: '🏆', text: t('home.packages.features.presential') },
-      { icon: '✈️', text: t('home.packages.features.location') }
+      { icon: '✈️', text: t('home.packages.features.location') },
+      { icon: '✈️', text: t('home.packages.features.style') },
+      { icon: '✈️', text: t('home.packages.features.grooming') },
+      { icon: '✈️', text: t('home.packages.features.skincare') },
+      { icon: '✈️', text: t('home.packages.features.looksmax') },
+      { icon: '✈️', text: t('home.packages.features.supplements') },
+      { icon: '✈️', text: t('home.packages.features.biohacking') },
+      { icon: '✈️', text: t('home.packages.features.nootropics') } 
     ],
     isPopular: true,
     image: 'https://placehold.co/600x400/000000/d4af37?text=Ultra+Deluxe',
