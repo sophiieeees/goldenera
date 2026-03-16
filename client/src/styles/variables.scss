@@ -1,16 +1,37 @@
-// Colores principales
+/* ======================================================
+   GOLDEN ERA DESIGN SYSTEM
+   Variables globales de estilo
+   ====================================================== */
+
+
+/* ======================================================
+   COLORES PRINCIPALES (PALETA LUXURY GOLD)
+   ====================================================== */
+
+/* Dorado principal de la marca */
 $gold-primary: #d4af37;
+
+/* Dorado claro para highlights o efectos */
 $gold-secondary: #f4e4bc;
+
+/* Dorado oscuro para bordes y sombras */
 $gold-dark: #b8941f;
 
+/* Negros premium para fondos */
 $black-luxury: #0a0a0a;
 $gray-luxury: #1a1a1a;
 
+/* Colores neutros */
 $white: #FFFFFF;
 $light-gray: #E8E8E8;
 $gray: #8E8E8E;
 
-// Gradientes
+
+/* ======================================================
+   GRADIENTES
+   ====================================================== */
+
+/* Gradiente dorado premium (efecto metal) */
 $golden-gradient: linear-gradient(
   135deg,
   $gold-dark 0%,
@@ -18,88 +39,206 @@ $golden-gradient: linear-gradient(
   $gold-secondary 100%
 );
 
-$dark-gradient: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+/* Gradiente oscuro elegante */
+$dark-gradient: linear-gradient(
+  135deg,
+  $gray-luxury 0%,
+  $black-luxury 100%
+);
 
-// Tipografía
+
+/* ======================================================
+   TIPOGRAFÍA
+   ====================================================== */
+
+/* Tipografía principal del branding */
 $font-primary: 'Mohave', sans-serif;
+
+/* Tipografía secundaria */
 $font-secondary: 'Helvetica', Arial, sans-serif;
+
+/* Tipografía árabe decorativa */
 $font-arabic: 'Noto Sans Arabic', sans-serif;
 
-// Pesos de fuente
+
+/* ======================================================
+   PESOS DE FUENTE
+   ====================================================== */
+
 $font-light: 300;
 $font-regular: 400;
 $font-semibold: 600;
 $font-bold: 700;
 
-// Breakpoints
+
+/* ======================================================
+   BREAKPOINTS RESPONSIVE
+   ====================================================== */
+
 $mobile: 428px;
 $tablet: 768px;
 $desktop: 1024px;
 $large: 1440px;
 
-// Mixins básicos
+
+/* ======================================================
+   MIXINS DE LAYOUT
+   ====================================================== */
+
+/* Centrar elementos con flex */
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+
+/* ======================================================
+   MIXIN DE BOTONES PREMIUM
+   ====================================================== */
+
 @mixin button-style {
+
   padding: 14px 34px;
+
   border-radius: 50px;
+
   font-weight: 600;
+
   text-transform: uppercase;
+
   cursor: pointer;
+
   transition: all 0.35s ease;
+
   border: 1px solid $gold-dark;
+
   background: $golden-gradient;
-  color: $black;
+
+  color: $black-luxury;
+
+  letter-spacing: 1px;
 
   &:hover {
+
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(159, 127, 46, 0.35);
+
+    box-shadow: 0 15px 35px rgba(212,175,55,0.35);
+
   }
+
 }
+
+
+/* ======================================================
+   MIXIN GLASSMORPHISM (efecto vidrio elegante)
+   ====================================================== */
 
 @mixin glassmorphism {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
 }
 
-// Mixins de tipografía
+
+/* ======================================================
+   MIXINS DE TIPOGRAFÍA
+   ====================================================== */
+
+/* Título principal */
 @mixin h1-mobile {
-  font-family: 'Mohave', sans-serif;
+
+  font-family: $font-primary;
+
   font-size: 72px;
-  font-weight: 600;
+
+  font-weight: $font-semibold;
+
   line-height: 1.04;
+
   text-transform: uppercase;
+
 }
 
+/* Título secundario */
 @mixin h2-mobile {
-  font-family: 'Mohave', sans-serif;
+
+  font-family: $font-primary;
+
   font-size: 56px;
-  font-weight: 600;
+
+  font-weight: $font-semibold;
+
   line-height: 1;
+
 }
 
+/* Subtítulos */
 @mixin h3-mobile {
-  font-family: 'Mohave', sans-serif;
+
+  font-family: $font-primary;
+
   font-size: 28px;
-  font-weight: 600;
+
+  font-weight: $font-semibold;
+
   line-height: 1.04;
+
 }
+
+
+/* Texto general del sitio */
 
 @mixin body-text {
-  font-family: 'Helvetica', Arial, sans-serif;
+
+  font-family: $font-secondary;
+
   font-size: 18px;
-  font-weight: 400;
+
+  font-weight: $font-regular;
+
   line-height: 1.12;
+
 }
 
+
+/* Texto de listas */
+
 @mixin list-text {
-  font-family: 'Helvetica', Arial, sans-serif;
+
+  font-family: $font-secondary;
+
   font-size: 16px;
-  font-weight: 400;
+
+  font-weight: $font-regular;
+
   line-height: 1;
+
+}
+
+
+/* ======================================================
+   EFECTOS VISUALES GOLD (OPCIONAL PERO RECOMENDADO)
+   ====================================================== */
+
+/* Texto dorado metálico */
+.gold-text {
+
+  background: $golden-gradient;
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+}
+
+/* Brillo dorado sutil */
+.gold-glow {
+
+  text-shadow: 0 0 12px rgba(212,175,55,0.35);
+
 }
