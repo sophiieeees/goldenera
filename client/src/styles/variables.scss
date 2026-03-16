@@ -1,9 +1,8 @@
 // Colores principales
-$golden: #EAC31B;        // logo (no lo cambiamos)
+$golden: #EAC31B;        
 $gold-light: #F4D94A;    // brillo
 $gold-soft: #D4AF37;     // dorado elegante
 $gold-dark: #9F7F2E;     // sombras
-
 $black: #000000;
 $white: #FFFFFF;
 $dark-gray: #1a1a1a;
@@ -13,12 +12,13 @@ $gray: #8E8E8E;
 // Gradientes
 $golden-gradient: linear-gradient(
   135deg,
-  $gold-dark 0%,
-  $gold-primary 50%,
-  $gold-secondary 100%
+  #9F7F2E 0%,
+  #EAC31B 50%,
+  #F4D94A 100%
 );
 
 $dark-gradient: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+
 
 // Tipografía
 $font-primary: 'Mohave', sans-serif;
