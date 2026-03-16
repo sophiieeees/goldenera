@@ -2,21 +2,20 @@
 $gold-primary: #d4af37;
 $gold-secondary: #f4e4bc;
 $gold-dark: #b8941f;
+
 $black-luxury: #0a0a0a;
 $gray-luxury: #1a1a1a;
 
-$black: #000000;
 $white: #FFFFFF;
-$dark-gray: #1a1a1a;
 $light-gray: #E8E8E8;
 $gray: #8E8E8E;
 
 // Gradientes
 $golden-gradient: linear-gradient(
   135deg,
-  #9F7F2E 0%,
-  #EAC31B 50%,
-  #F4D94A 100%
+  $gold-dark 0%,
+  $gold-primary 50%,
+  $gold-secondary 100%
 );
 
 $dark-gradient: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
