@@ -97,7 +97,8 @@ const Package: React.FC = () => {
       { icon: '✔', text: t('home.packages.features.grooming') },
       { icon: '✔', text: t('home.packages.features.skincare') },
       { icon: '✔', text: t('home.packages.features.looksmax') },
-      { icon: '✔', text: t('home.packages.features.supplements') }
+      { icon: '✔', text: t('home.packages.features.supplements') },
+      { icon: '✔', text: t('home.packages.features.biohacking') }
     ],
     image: 'https://placehold.co/600x400/1a1a1a/d4af37?text=Golden+Standard',
     spotsLeft: 3
