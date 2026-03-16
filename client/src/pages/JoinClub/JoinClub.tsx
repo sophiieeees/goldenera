@@ -139,7 +139,7 @@ const JoinClub: React.FC = () => {
 
       {/* Pricing Plans Section */}
       <div ref={pricingRef}>
-        <PricingPlans />
+        <Package />
       </div>
 
       {/* Testimonial Section */}
