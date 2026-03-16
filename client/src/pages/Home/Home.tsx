@@ -26,10 +26,10 @@ const Home: React.FC = () => {
     <div className="home-page">
       <Hero />
       <Philosophy />
-      <Coach />
       <Method />
-      <MotivationalPhrase />
       <WhyItWorks />
+      <MotivationalPhrase />
+      <Coach />
       <JoinForm />
     </div>
   );
