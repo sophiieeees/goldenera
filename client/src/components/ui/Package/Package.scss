@@ -413,8 +413,12 @@ $red-discount: #ff3366;
           gap: 12px;
 
           .feature-icon {
-            font-size: 20px;
-            filter: grayscale(0.5);
+          font-size: 18px;
+          color: $gold-primary;
+          text-shadow: 0 0 8px rgba($gold-primary, 0.6);
+          display: flex;
+          align-items: center;
+          justify-content: center;
           }
 
           .feature-text {
