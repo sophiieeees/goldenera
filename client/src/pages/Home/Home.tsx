@@ -12,6 +12,7 @@ import PricingPlansWithTimer from '../../components/Pricing/PricingPlansWithTime
 import JoinForm from '../../components/ui/JoinForm/JoinForm';
 import './Home.scss';
 import MerchProducts from '../../components/Merch/MerchProducts';
+import Package from '../../componenets/ui/Package/Package';
 
 gsap.registerPlugin(ScrollTrigger);
 
