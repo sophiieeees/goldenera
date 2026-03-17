@@ -46,23 +46,22 @@ const WhyItWorks: React.FC = () => {
 
   return (
     <section ref={sectionRef} className="why-it-works">
-      <div className="why-it-works__wrapper">
-        <div className="why-it-works__container">
-          <div className="why-it-works__arabic-text">لماذا يعمل</div>
-          <h2 className="why-it-works__title">WHY IT WORKS</h2>
-          <div className="why-it-works__subtitle">{t('home.whyItWorks.subtitle')}</div>
+      <div className="why-it-works__features">
+  <div className="why-it-works__feature">
+    <h3 className="why-it-works__feature-title">{t('home.whyItWorks.cards.technique.title')}</h3>
+    <p className="why-it-works__feature-description">{t('home.whyItWorks.cards.technique.backText')}</p>
+  </div>
 
-          <div className="why-it-works__features">
-            {features.map((feature, i) => (
-              <div
-                key={feature.id}
-                className="why-it-works__feature"
-                ref={(el) => { if (el) featureRefs.current[i] = el; }}
-              >
-                <div className="why-it-works__feature-number">{`0${i + 1}`}</div>
-                <h3 className="why-it-works__feature-title">{t(feature.titleKey)}</h3>
-                <p className="why-it-works__feature-description">{t(feature.descriptionKey)}</p>
-              </div>
+  <div className="why-it-works__feature">
+    <h3 className="why-it-works__feature-title">{t('home.whyItWorks.cards.recipes.title')}</h3>
+    <p className="why-it-works__feature-description">{t('home.whyItWorks.cards.recipes.backText')}</p>
+  </div>
+
+  <div className="why-it-works__feature">
+    <h3 className="why-it-works__feature-title">{t('home.whyItWorks.cards.science.title')}</h3>
+    <p className="why-it-works__feature-description">{t('home.whyItWorks.cards.science.backText')}</p>
+  </div>
+</div>
             ))}
           </div>
         </div>
