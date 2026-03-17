@@ -101,6 +101,34 @@ const WhyItWorks: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <div className="why-it-works__stats">
+          <div className="why-it-works__stat">
+            <span className="why-it-works__stat-number">87%</span>
+            <span className="why-it-works__stat-text">
+              {t('home.whyItWorks.stats.improvement')}
+            </span>
+          </div>
+          <div className="why-it-works__stat">
+            <span className="why-it-works__stat-number">3.2x</span>
+            <span className="why-it-works__stat-text">
+              {t('home.whyItWorks.stats.effectiveness')}
+            </span>
+          </div>
+          <div className="why-it-works__stat">
+            <span className="why-it-works__stat-number">95%</span>
+            <span className="why-it-works__stat-text">
+              {t('home.whyItWorks.stats.adherence')}
+            </span>
+          </div>
+        </div>
+        <div className="why-it-works__citations">
+          <p>{t('home.whyItWorks.citations.study')}</p>
+          <p>{t('home.whyItWorks.citations.comparison')}</p>
+          <p>{t('home.whyItWorks.citations.retention')}</p>
+        </div>
+      </div>
+      
     </section>
   );
 };
