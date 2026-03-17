@@ -36,7 +36,7 @@ const MotivationalPhrase: React.FC = () => {
         gsap.to(tickerRef.current, {
           xPercent: -50,
           ease: 'linear',
-          duration: 60, // más lento
+          duration: 120, // más lento
           repeat: -1
         });
 
@@ -46,7 +46,7 @@ const MotivationalPhrase: React.FC = () => {
             color: i % 2 === 0 ? '#EAC31B' : '#000000',
             repeat: -1,
             yoyo: true,
-            duration: 2 + Math.random() * 2, // ligera variación de tiempo
+            duration: 3 + Math.random() * 2, // ligera variación de tiempo
             ease: 'power1.inOut'
           });
         });
