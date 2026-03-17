@@ -19,21 +19,18 @@ const Method: React.FC = () => {
       number: '01',
       title: t('home.method.steps.join.title'),
       description: t('home.method.steps.join.description'),
-      image: images.pagos,
       color: '#FFD700'
     },
     {
       number: '02', 
       title: t('home.method.steps.material.title'),
       description: t('home.method.steps.material.description'),
-      image: images.whyitworks2,
       color: '#FFA500'
     },
     {
       number: '03',
       title: t('home.method.steps.work.title'),
       description: t('home.method.steps.work.description'),
-      image: images.whyitworks3,
       color: '#FF6B6B'
     }
   ];
@@ -45,7 +42,6 @@ const Method: React.FC = () => {
 
     if (!section || !steps || !title) return;
 
-    // Timeline principal
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
@@ -55,42 +51,22 @@ const Method: React.FC = () => {
       }
     });
 
-    // Animación del contenedor del título
     tl.fromTo('.title-wrapper',
-      {
-        opacity: 0,
-        y: 30
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out"
-      }
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
     );
 
-    // Animación de la descripción
     tl.fromTo('.method-description',
-      {
-        y: 20,
-        opacity: 0
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power3.out"
-      },
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
       "-=0.4"
     );
 
-    // Animación de los pasos con efecto 3D
     const stepElements = gsap.utils.toArray('.method-step');
     
     stepElements.forEach((step, index) => {
       const stepEl = step as HTMLElement;
       
-      // Timeline individual para cada paso
       const stepTl = gsap.timeline({
         scrollTrigger: {
           trigger: stepEl,
@@ -100,66 +76,26 @@ const Method: React.FC = () => {
         }
       });
 
-      // Entrada con rotación 3D
       stepTl.fromTo(stepEl,
-        {
-          rotationY: -45,
-          opacity: 0,
-          x: index % 2 === 0 ? -100 : 100,
-          scale: 0.8
-        },
-        {
-          rotationY: 0,
-          opacity: 1,
-          x: 0,
-          scale: 1,
-          duration: 0.6,
-          ease: "power3.out"
-        }
+        { rotationY: -45, opacity: 0, x: index % 2 === 0 ? -100 : 100, scale: 0.8 },
+        { rotationY: 0, opacity: 1, x: 0, scale: 1, duration: 0.6, ease: "power3.out" }
       );
 
-      // Animación del número
       stepTl.fromTo(stepEl.querySelector('.step-number'),
-        {
-          scale: 0,
-          rotation: -180
-        },
-        {
-          scale: 1,
-          rotation: 0,
-          duration: 0.4,
-          ease: "back.out(2)"
-        },
+        { scale: 0, rotation: -180 },
+        { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2)" },
         "-=0.4"
       );
 
-      // Efecto hover dinámico
       stepEl.addEventListener('mouseenter', () => {
-        gsap.to(stepEl, {
-          scale: 1.05,
-          boxShadow: "0 20px 60px rgba(234, 195, 27, 0.3)",
-          duration: 0.2
-        });
-        gsap.to(stepEl.querySelector('.step-image'), {
-          scale: 1.1,
-          duration: 0.2
-        });
+        gsap.to(stepEl, { scale: 1.05, boxShadow: "0 20px 60px rgba(234, 195, 27, 0.3)", duration: 0.2 });
       });
 
       stepEl.addEventListener('mouseleave', () => {
-        gsap.to(stepEl, {
-          scale: 1,
-          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
-          duration: 0.2
-        });
-        gsap.to(stepEl.querySelector('.step-image'), {
-          scale: 1,
-          duration: 0.2
-        });
+        gsap.to(stepEl, { scale: 1, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)", duration: 0.2 });
       });
     });
 
-    // Línea conectora animada
     gsap.to('.connector-line', {
       scaleY: 1,
       duration: 1.5,
@@ -208,19 +144,11 @@ const Method: React.FC = () => {
               <div className="step-number">{step.number}</div>
               
               <div className="step-content">
-                <div className="step-image">
-                  <img src={step.image} alt={step.title} />
-                  <div className="image-overlay"></div>
-                </div>
-                
                 <div className="step-info">
                   <h3 className="step-title">{step.title}</h3>
                   <p className="step-description">{step.description}</p>
                 </div>
               </div>
-
-              {/* Decoración adicional */}
-              
             </div>
           ))}
         </div>
