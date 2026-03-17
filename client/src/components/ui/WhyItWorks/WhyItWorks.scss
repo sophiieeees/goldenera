@@ -49,7 +49,7 @@
     &:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(234,195,27,0.25); }
 
     &-number { display:none }
-    &-title { font-family: 'Mohave', sans-serif; font-size: 24px; font-weight: 600; margin-bottom: 12px; color: $EAC31B; }
+    &-title { font-family: 'Mohave', sans-serif; font-size: 24px; font-weight: 600; margin-bottom: 12px; color: #EAC31B; }
     &-description { font-size: 16px; line-height: 1.5; opacity: 0.85; }
   }
 }
