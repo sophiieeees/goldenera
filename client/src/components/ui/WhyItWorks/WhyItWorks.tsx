@@ -1,253 +1,70 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Dumbbell, BookOpen, Microscope } from "lucide-react";
-import { TextPlugin } from 'gsap/TextPlugin';
 import './WhyItWorks.scss';
 
+gsap.registerPlugin(ScrollTrigger);
 
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
-
-interface CardData {
+interface Feature {
   id: string;
   titleKey: string;
-  frontTextKey: string;
-  backTextKey: string;
-  citationKey: string;
-  icon: React.ReactNode;
+  descriptionKey: string;
 }
 
-const WhyItWorks: React.FC = () => {
-  const { t, i18n } = useTranslation();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLDivElement>(null);
-  const typewriterRef = useRef<HTMLDivElement>(null);
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
-
-  const cards: CardData[] = [
-{
- id: "technique",
- titleKey: "home.whyItWorks.cards.technique.title",
- frontTextKey: "home.whyItWorks.cards.technique.frontText",
- backTextKey: "home.whyItWorks.cards.technique.backText",
- citationKey: "home.whyItWorks.cards.technique.citation",
- icon: <Dumbbell size={56}/>
-},
-{
- id: "recipes",
- titleKey: "home.whyItWorks.cards.recipes.title",
- frontTextKey: "home.whyItWorks.cards.recipes.frontText",
- backTextKey: "home.whyItWorks.cards.recipes.backText",
- citationKey: "home.whyItWorks.cards.recipes.citation",
- icon: <BookOpen size={56}/>
-},
-{
- id: "science",
- titleKey: "home.whyItWorks.cards.science.title",
- frontTextKey: "home.whyItWorks.cards.science.frontText",
- backTextKey: "home.whyItWorks.cards.science.backText",
- citationKey: "home.whyItWorks.cards.science.citation",
- icon: <Microscope size={56}/>
-}
+const features: Feature[] = [
+  { id: 'technique', titleKey: 'home.whyItWorks.cards.technique.title', descriptionKey: 'home.whyItWorks.cards.technique.backText' },
+  { id: 'recipes', titleKey: 'home.whyItWorks.cards.recipes.title', descriptionKey: 'home.whyItWorks.cards.recipes.backText' },
+  { id: 'science', titleKey: 'home.whyItWorks.cards.science.title', descriptionKey: 'home.whyItWorks.cards.science.backText' },
 ];
 
-  const typewriterPhrases = [
-    { text: 'TRANSFORM YOUR BODY', color: 'black' },
-    { text: 'UNLOCK YOUR POTENTIAL', color: 'primary' },
-    { text: 'BECOME UNSTOPPABLE', color: 'black' },
-    { text: 'GOLDEN ERA AWAITS', color: 'primary' }
-  ];
+const WhyItWorks: React.FC = () => {
+  const { t } = useTranslation();
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const featureRefs = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Animación simple de entrada para el título
+    featureRefs.current.forEach((feature, i) => {
       gsap.fromTo(
-        titleRef.current,
-        {
-          opacity: 0,
-          y: 30
-        },
+        feature,
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          ease: 'power2.out',
+          duration: 0.8,
+          delay: i * 0.2,
+          ease: 'power3.out',
           scrollTrigger: {
-            trigger: titleRef.current,
+            trigger: feature,
             start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          }
+            toggleActions: 'play none none reverse',
+          },
         }
       );
-
-      // Animación typewriter mejorada
-      if (typewriterRef.current) {
-        let tl = gsap.timeline({
-          repeat: -1,
-          scrollTrigger: {
-            trigger: typewriterRef.current,
-            start: 'top 80%',
-            toggleActions: 'play pause resume pause'
-          }
-        });
-
-        typewriterPhrases.forEach((phrase, index) => {
-          tl.set(typewriterRef.current, {
-            className: `why-it-works__typewriter why-it-works__typewriter--${phrase.color}`,
-            opacity: 0
-          })
-          .to(typewriterRef.current, {
-            opacity: 1,
-            duration: 0.5,
-            ease: 'power2.inOut'
-          })
-          .to(typewriterRef.current, {
-            text: {
-              value: phrase.text,
-              delimiter: ''
-            },
-            duration: phrase.text.length * 0.08,
-            ease: 'none'
-          })
-          .to(typewriterRef.current, {
-            opacity: 1,
-            duration: 2
-          })
-          .to(typewriterRef.current, {
-            opacity: 0,
-            duration: 0.5,
-            ease: 'power2.inOut'
-          });
-        });
-      }
-
-      // Animación simple para el subtítulo
-      gsap.fromTo(
-        subtitleRef.current,
-        {
-          opacity: 0
-        },
-        {
-          opacity: 1,
-          duration: 1,
-          delay: 0.5,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: subtitleRef.current,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
+    });
   }, []);
-
-  const handleCardClick = (cardId: string) => {
-    setExpandedCard(expandedCard === cardId ? null : cardId);
-  };
 
   return (
     <section ref={sectionRef} className="why-it-works">
       <div className="why-it-works__wrapper">
-        <div ref={containerRef} className="why-it-works__container">
-          {/* Texto decorativo en árabe */}
-          <div className="why-it-works__arabic-text">
-            لماذا يعمل
-          </div>
-          
-          <h2 ref={titleRef} className="why-it-works__title">
-            WHY IT WORKS
-          </h2>
+        <div className="why-it-works__container">
+          <div className="why-it-works__arabic-text">لماذا يعمل</div>
+          <h2 className="why-it-works__title">WHY IT WORKS</h2>
+          <div className="why-it-works__subtitle">{t('home.whyItWorks.subtitle')}</div>
 
-          {/* Typewriter effect */}
-          <div 
-            ref={typewriterRef} 
-            className="why-it-works__typewriter why-it-works__typewriter--primary"
-          >
-            GOLDEN ERA AWAITS
-          </div>
-          
-          <div ref={subtitleRef} className="why-it-works__text-content">
-            <span className="why-it-works__subtitle">
-              {t('home.whyItWorks.subtitle')}
-            </span>
-            <span className="why-it-works__hint">
-              <br/><br/>
-              {t('home.whyItWorks.clickCard')}
-            </span>
-          </div>
-        </div>
-
-        <div className="why-it-works__cards">
-          {cards.map((card) => (
-            <div
-              key={card.id}
-              className={`why-it-works__card ${
-                expandedCard === card.id ? 'why-it-works__card--expanded' : ''
-              }`}
-              onClick={() => handleCardClick(card.id)}
-              role="button"
-              tabIndex={0}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') handleCardClick(card.id);
-              }}
-            >
-              <div className="why-it-works__card-inner">
-                <div className="why-it-works__card-front">
-                  <div className="why-it-works__card-gradient" />
-                  <div className="why-it-works__card-content">
-                    <span className="why-it-works__card-icon">{card.icon}</span>
-                    <h3 className="why-it-works__card-title">
-                      {t(card.frontTextKey)}
-                    </h3>
-                  </div>
-                </div>
-                <div className="why-it-works__card-back">
-                  <h3 className="why-it-works__card-back-title">
-                    {t(card.titleKey)}
-                  </h3>
-                  <p className="why-it-works__card-description">
-                    {t(card.backTextKey)}
-                  </p>
-                  <div className="why-it-works__card-citation">
-                    {t(card.citationKey)}
-                  </div>
-                </div>
+          <div className="why-it-works__features">
+            {features.map((feature, i) => (
+              <div
+                key={feature.id}
+                className="why-it-works__feature"
+                ref={(el) => { if (el) featureRefs.current[i] = el; }}
+              >
+                <div className="why-it-works__feature-number">{`0${i + 1}`}</div>
+                <h3 className="why-it-works__feature-title">{t(feature.titleKey)}</h3>
+                <p className="why-it-works__feature-description">{t(feature.descriptionKey)}</p>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Sección de estadísticas */}
-        <div className="why-it-works__stats">
-          <div className="why-it-works__stat">
-            <span className="why-it-works__stat-number">87%</span>
-            <span className="why-it-works__stat-text">
-              {t('home.whyItWorks.stats.improvement')}
-            </span>
+            ))}
           </div>
-          <div className="why-it-works__stat">
-            <span className="why-it-works__stat-number">3.2x</span>
-            <span className="why-it-works__stat-text">
-              {t('home.whyItWorks.stats.effectiveness')}
-            </span>
-          </div>
-          <div className="why-it-works__stat">
-            <span className="why-it-works__stat-number">95%</span>
-            <span className="why-it-works__stat-text">
-              {t('home.whyItWorks.stats.adherence')}
-            </span>
-          </div>
-        </div>
-        <div className="why-it-works__citations">
-          <p>{t('home.whyItWorks.citations.study')}</p>
-          <p>{t('home.whyItWorks.citations.comparison')}</p>
-          <p>{t('home.whyItWorks.citations.retention')}</p>
         </div>
       </div>
     </section>
