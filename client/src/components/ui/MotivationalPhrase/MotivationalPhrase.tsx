@@ -8,31 +8,30 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface Quote {
   id: number;
-  textParts: {
-    text: string;
-    color: 'white' | 'black' | 'golden';
-  }[];
+  text: string;
+  color: 'white' | 'black' | 'golden';
 }
 
 const MotivationalPhrase: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoPlayRef = useRef<NodeJS.Timeout>();
 
+  // Frases ya traducidas
   const quotes: Quote[] = [
-    { id: 1, textParts: [{ text: t('home.phrases.phrase1'), color: 'golden' }] },
-    { id: 2, textParts: [{ text: t('home.phrases.phrase2'), color: 'black' }] },
-    { id: 3, textParts: [{ text: t('home.phrases.phrase3'), color: 'golden' }] },
-    { id: 4, textParts: [{ text: t('home.phrases.phrase4'), color: 'black' }] },
-    { id: 5, textParts: [{ text: t('home.phrases.phrase5'), color: 'golden' }] },
-    { id: 6, textParts: [{ text: t('home.phrases.phrase6'), color: 'black' }] },
+    { id: 1, text: t('home.phrases.phrase1'), color: 'golden' },
+    { id: 2, text: t('home.phrases.phrase2'), color: 'black' },
+    { id: 3, text: t('home.phrases.phrase3'), color: 'golden' },
+    { id: 4, text: t('home.phrases.phrase4'), color: 'black' },
+    { id: 5, text: t('home.phrases.phrase5'), color: 'golden' },
+    { id: 6, text: t('home.phrases.phrase6'), color: 'black' },
   ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(sectionRef.current,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
@@ -63,20 +62,16 @@ const MotivationalPhrase: React.FC = () => {
   return (
     <section ref={sectionRef} className="motivational-phrase-section">
       <div className="phrases-wrapper">
-        <div
-          className="phrases-track"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-          {quotes.map((quote) => (
-            <div key={quote.id} className="phrase">
-              {quote.textParts.map((part, idx) => (
-                <span key={idx} className={`text-${part.color}`}>
-                  {part.text}
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
+        {quotes.map((quote, idx) => (
+          <React.Fragment key={quote.id}>
+            <span className={`phrase text-${quote.color}`}>
+              {quote.text}
+            </span>
+            {idx < quotes.length - 1 && (
+              <span className="divider">•</span>
+            )}
+          </React.Fragment>
+        ))}
       </div>
     </section>
   );
