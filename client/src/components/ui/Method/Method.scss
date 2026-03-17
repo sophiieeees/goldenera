@@ -54,8 +54,8 @@
 
     .arabic-background {
       position: absolute; // ahora sí queda detrás del título
-      top: 30%;
-      left: 50%;
+      top: 10%;
+      left: 70%;
       transform: translate(-50%, -50%);
       font-size: 72px; // igual tamaño que el título, ajusta según gusto
       font-family: $font-arabic;
