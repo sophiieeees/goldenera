@@ -10,46 +10,68 @@
   @include mobile { padding: 60px 10px; }
 
   &__wrapper { max-width: 1440px; margin: 0 auto; text-align: center; position: relative; }
-  &__container { display: flex; flex-direction: column; align-items: center; gap: 32px; }
+
+  &__container { display: flex; flex-direction: column; align-items: center; gap: 24px; }
 
   &__arabic-text {
     position: absolute;
-    top: -10px; left: 50px;
+    top: -10px; left: 50%;
+    transform: translateX(-50%);
     font-family: 'Mohave', sans-serif;
     font-size: 80px; font-weight: 300; color: #EAC31B;
     pointer-events: none; z-index: 0;
     @include tablet { font-size: 60px; top: -5px; }
-    @include mobile { font-size: 40px; right: 20px; top: 0; }
+    @include mobile { font-size: 40px; top: 0; }
   }
 
   &__title { font-family: 'Mohave', sans-serif; font-size: 72px; font-weight: 600; margin-bottom: 16px; color: $black;
     @include tablet { font-size: 56px; } @include mobile { font-size: 42px; }
   }
 
-  &__subtitle { font-size: 20px; opacity: 0.8; margin-bottom: 60px; 
-    @include tablet { font-size: 18px; margin-bottom: 40px; } @include mobile { font-size: 16px; margin-bottom: 30px; }
+  &__subtitle { font-size: 20px; opacity: 0.8; margin-bottom: 40px; 
+    @include tablet { font-size: 18px; margin-bottom: 30px; } @include mobile { font-size: 16px; margin-bottom: 20px; }
   }
 
   &__features {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+    gap: 0;
+    border-top: 1px solid rgba(234,195,27,0.2);
+    border-bottom: 1px solid rgba(234,195,27,0.2);
+    overflow: hidden;
+    margin-top: 40px;
+
+    @include mobile { flex-direction: column; border-top: none; border-bottom: none; }
   }
 
   &__feature {
-    background: #111;
-    padding: 40px 30px;
-    flex: 1 1 280px;
-    max-width: 360px;
-    border-radius: 16px;
+    flex: 1;
+    padding: 40px 20px;
     text-align: center;
-    transition: all 0.3s ease;
+    position: relative;
 
-    &:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(234,195,27,0.25); }
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 25%;
+      right: 0;
+      width: 1px;
+      height: 50%;
+      background-color: rgba(234,195,27,0.3);
+    }
 
-    &-number { display:none }
-    &-title { font-family: 'Mohave', sans-serif; font-size: 24px; font-weight: 600; margin-bottom: 12px; color: #EAC31B; }
-    &-description { font-size: 16px; line-height: 1.5; opacity: 0.85; }
+    &-title { 
+      font-family: 'Mohave', sans-serif; 
+      font-size: 24px; 
+      font-weight: 600; 
+      margin-bottom: 12px; 
+      color: #EAC31B;
+    }
+
+    &-description { 
+      font-size: 16px; 
+      line-height: 1.5; 
+      color: #333;
+    }
   }
 }
