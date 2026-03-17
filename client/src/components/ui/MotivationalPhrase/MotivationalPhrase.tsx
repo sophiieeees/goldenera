@@ -1,3 +1,4 @@
+// client/src/components/ui/MotivationalPhrase/MotivationalPhrase.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -13,21 +14,22 @@ interface Quote {
 }
 
 const MotivationalPhrase: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoPlayRef = useRef<NodeJS.Timeout>();
 
-  // Frases ya traducidas
+  // Frases en strings
   const quotes: Quote[] = [
-    { id: 1, text: t('home.phrases.phrase1'), color: 'golden' },
+    { id: 1, text: `${t('home.phrases.phrase1.part1')} ${t('home.phrases.phrase1.part2')}`, color: 'golden' },
     { id: 2, text: t('home.phrases.phrase2'), color: 'black' },
-    { id: 3, text: t('home.phrases.phrase3'), color: 'golden' },
+    { id: 3, text: `${t('home.phrases.phrase3.part1')} ${t('home.phrases.phrase3.part2')}`, color: 'golden' },
     { id: 4, text: t('home.phrases.phrase4'), color: 'black' },
-    { id: 5, text: t('home.phrases.phrase5'), color: 'golden' },
+    { id: 5, text: `${t('home.phrases.phrase5.part1')} ${t('home.phrases.phrase5.part2')}`, color: 'golden' },
     { id: 6, text: t('home.phrases.phrase6'), color: 'black' },
   ];
 
+  // Fade-in al hacer scroll
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(sectionRef.current,
@@ -49,6 +51,7 @@ const MotivationalPhrase: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
+  // Cambio automático de frases
   useEffect(() => {
     autoPlayRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % quotes.length);
@@ -61,16 +64,14 @@ const MotivationalPhrase: React.FC = () => {
 
   return (
     <section ref={sectionRef} className="motivational-phrase-section">
-      <div className="phrases-wrapper">
-        {quotes.map((quote, idx) => (
-          <React.Fragment key={quote.id}>
-            <span className={`phrase text-${quote.color}`}>
-              {quote.text}
-            </span>
-            {idx < quotes.length - 1 && (
-              <span className="divider">•</span>
-            )}
-          </React.Fragment>
+      <div className="motivational-phrase-line">
+        {quotes.map((quote, index) => (
+          <span
+            key={quote.id}
+            className={`motivational-phrase-item ${quote.color} ${index === currentIndex ? 'active' : ''}`}
+          >
+            {quote.text}
+          </span>
         ))}
       </div>
     </section>
