@@ -53,11 +53,16 @@
     }
 
     .arabic-background {
-      position: absolute; 
-      opacity: 0.6;
-      font-size: 36px;
+      position: absolute; // ahora sí queda detrás del título
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 72px; // igual tamaño que el título, ajusta según gusto
       font-family: $font-arabic;
-      line-height: 1;
+      color: rgba(255, 215, 0, 0.15); // dorado muy tenue
+      z-index: 1; // debajo del título
+      white-space: nowrap;
+      pointer-events: none; // no interfiere con hover ni clics
     }
   }
 
