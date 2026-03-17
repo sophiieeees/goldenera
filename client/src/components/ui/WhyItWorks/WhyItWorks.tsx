@@ -57,20 +57,23 @@ const WhyItWorks: React.FC = () => {
     <section ref={sectionRef} className="why-it-works">
       <div className="why-it-works__wrapper">
         <div className="why-it-works__container">
+          
           {/* Texto decorativo en árabe */}
           <div className="why-it-works__arabic-text">
             لماذا يعمل
           </div>
 
+          {/* Título */}
           <h2 ref={titleRef} className="why-it-works__title">
             WHY IT WORKS
           </h2>
 
+          {/* Subtítulo */}
           <div ref={subtitleRef} className="why-it-works__subtitle">
             {t('home.whyItWorks.subtitle')}
           </div>
 
-          {/* Bloque de tres secciones continuas */}
+          {/* Features */}
           <div className="why-it-works__features">
             <div className="why-it-works__feature">
               <h3 className="why-it-works__feature-title">
@@ -99,36 +102,43 @@ const WhyItWorks: React.FC = () => {
               </p>
             </div>
           </div>
+
         </div>
       </div>
 
+      {/* ========================= */}
+      {/* SECCIÓN ESTÁTICA (STATS) */}
+      {/* ========================= */}
       <div className="why-it-works__stats">
-          <div className="why-it-works__stat">
-            <span className="why-it-works__stat-number">87%</span>
-            <span className="why-it-works__stat-text">
-              {t('home.whyItWorks.stats.improvement')}
-            </span>
-          </div>
-          <div className="why-it-works__stat">
-            <span className="why-it-works__stat-number">3.2x</span>
-            <span className="why-it-works__stat-text">
-              {t('home.whyItWorks.stats.effectiveness')}
-            </span>
-          </div>
-          <div className="why-it-works__stat">
-            <span className="why-it-works__stat-number">95%</span>
-            <span className="why-it-works__stat-text">
-              {t('home.whyItWorks.stats.adherence')}
-            </span>
-          </div>
+        <div className="why-it-works__stat">
+          <span className="why-it-works__stat-number">87%</span>
+          <span className="why-it-works__stat-text">
+            {t('home.whyItWorks.stats.improvement')}
+          </span>
         </div>
-        <div className="why-it-works__citations">
-          <p>{t('home.whyItWorks.citations.study')}</p>
-          <p>{t('home.whyItWorks.citations.comparison')}</p>
-          <p>{t('home.whyItWorks.citations.retention')}</p>
+
+        <div className="why-it-works__stat">
+          <span className="why-it-works__stat-number">3.2x</span>
+          <span className="why-it-works__stat-text">
+            {t('home.whyItWorks.stats.effectiveness')}
+          </span>
+        </div>
+
+        <div className="why-it-works__stat">
+          <span className="why-it-works__stat-number">95%</span>
+          <span className="why-it-works__stat-text">
+            {t('home.whyItWorks.stats.adherence')}
+          </span>
         </div>
       </div>
-      
+
+      {/* CITATIONS */}
+      <div className="why-it-works__citations">
+        <p>{t('home.whyItWorks.citations.study')}</p>
+        <p>{t('home.whyItWorks.citations.comparison')}</p>
+        <p>{t('home.whyItWorks.citations.retention')}</p>
+      </div>
+
     </section>
   );
 };
