@@ -3,22 +3,23 @@
 
 .motivational-phrase-section {
   width: 100%;
-  margin-top: 10px;
-  padding: 40px 0;
+  margin-top: -5px; // más cerca de WhyItWorks
+  padding: 10px 0;
   overflow: hidden;
   background: $color-white;
   display: flex;
   justify-content: center;
+  position: relative;
 
-    // líneas doradas arriba y abajo
   &::before,
   &::after {
     content: '';
     position: absolute;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background-color: $color-primary;
+    left: 0%;
+    right: 0%;
+    height: 2px;
+    background: linear-gradient(to right, $color-primary 25%, $color-black 25%, $color-black 50%, $color-primary 50%, $color-primary 75%, $color-black 75%, $color-black 100%);
+    background-size: 100% 1px;
   }
 
   &::before {
@@ -33,14 +34,21 @@
 .motivational-ticker {
   display: flex;
   white-space: nowrap;
-  gap: 60px; // separación entre frases
+  gap: 60px;
   font-family: 'Mohave', sans-serif;
-  font-size: 40px;
-  font-weight: 600;
-  color: $color-black;
+  font-size: 28px; // tamaño un poco más grande
+  font-weight: 700;
+  padding: 20px 0;
 }
 
 .motivational-phrase-item {
   display: inline-block;
-  transition: color 0.5s ease; // transición suave de color
+  
+  &.text-black {
+    color: $color-black;
+  }
+
+  &.text-golden {
+    color: $color-primary;
+  }
 }
