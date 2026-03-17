@@ -32,6 +32,13 @@ const MotivationalPhrase: React.FC = () => {
           const clone = item.cloneNode(true);
           tickerRef.current?.appendChild(clone);
         });
+       // animación continua más lenta
+        gsap.to(tickerRef.current, {
+          xPercent: -50,
+          ease: 'linear',
+          duration: 60, // más lento
+          repeat: -1
+        });
 
         // alternar colores entre negro y dorado
         Array.from(tickerItems).forEach((item, i) => {
