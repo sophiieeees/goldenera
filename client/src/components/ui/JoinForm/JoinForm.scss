@@ -6,8 +6,8 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: $color-black;
-  padding: 20px;
+  background: linear-gradient(135deg, rgba($color-black, 0.95), rgba($color-bg-dark, 0.98));
+  padding: 20px 15px;
   position: relative;
 
   &__container {
@@ -18,7 +18,7 @@
 
   &__header {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   &__title {
@@ -39,13 +39,13 @@
     font-size: 1rem;
     color: rgba($color-white, 0.8);
     line-height: 1.4;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   &__form {
     background: rgba($color-white, 0.05);
-    border-radius: 6px;
-    padding: 2rem 1.8rem;
+    border-radius: 8px; // menos redondez
+    padding: 1.8rem 1.5rem;
     border: 1px solid rgba($color-white, 0.15);
     position: relative;
   }
@@ -53,7 +53,7 @@
   &__field {
     margin-bottom: 1rem;
     position: relative;
-    padding-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid $color-gold; // línea dorada fina
   }
 
@@ -68,13 +68,18 @@
 
   &__input {
     width: 100%;
-    padding: 0.8rem 1rem;
+    padding: 0.7rem 1rem;
     font-size: 0.95rem;
-    border-radius: 4px; // menos redondez
+    border-radius: 4px; // esquinas menos redondas
     border: 1px solid rgba($color-white, 0.2);
     background: rgba($color-white, 0.05);
     color: $color-white;
     transition: all 0.3s ease;
+
+    &::placeholder {
+      color: rgba($color-white, 0.4);
+      font-style: italic;
+    }
 
     &:focus,
     &--focused {
@@ -86,6 +91,11 @@
       border-color: #ff4444;
       background: rgba(#ff4444, 0.1);
     }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
   }
 
   &__submit {
@@ -95,7 +105,7 @@
     font-weight: $font-bold;
     border-radius: 6px;
     text-transform: uppercase;
-    background: linear-gradient(135deg, $color-gold 0%, darken($color-gold, 15%) 100%);
+    background: $golden-gradient;
     color: $color-black;
     border: none;
     cursor: pointer;
@@ -129,6 +139,26 @@
 
     &--error {
       color: #ff4444;
+    }
+  }
+}
+
+// Responsive
+@include tablet {
+  .join-form {
+    padding: 15px;
+
+    &__form {
+      padding: 1.5rem 1.2rem;
+    }
+
+    &__input {
+      padding: 0.65rem 0.9rem;
+    }
+
+    &__submit {
+      padding: 0.9rem 1.2rem;
+      font-size: 0.95rem;
     }
   }
 }
