@@ -36,12 +36,10 @@
     display: flex;
     justify-content: center;
     gap: 0;
-    border-top: 1px solid rgba(234,195,27,0.2);
-    border-bottom: 1px solid rgba(234,195,27,0.2);
     overflow: hidden;
-    margin-top: 40px;
+    margin-top: 20px;
 
-    @include mobile { flex-direction: column; border-top: none; border-bottom: none; }
+    @include mobile { flex-direction: column; }
   }
 
   &__feature {
@@ -57,7 +55,7 @@
       right: 0;
       width: 1px;
       height: 50%;
-      background-color: rgba(234,195,27,0.3);
+      background-color: rgba(234,195,27,0.2);
     }
 
     &-title { 
