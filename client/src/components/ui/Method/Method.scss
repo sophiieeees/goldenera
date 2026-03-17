@@ -23,7 +23,7 @@
   }
   
   .container {
-    max-width: 428px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 16px;
     position: relative;
@@ -89,10 +89,12 @@
   }
 
   .method-steps {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
+    display: flex;          // <-- fila horizontal
+    flex-direction: row;    // <-- aseguramos horizontal
+    gap: 32px;              // espacio entre tarjetas
+    justify-content: center; // centra las tarjetas horizontalmente
+    flex-wrap: wrap;        // si no caben, que bajen a otra fila
+    padding-bottom: 40px;   // reduce espacio vertical
     
     .connector-line {
       position: absolute;
