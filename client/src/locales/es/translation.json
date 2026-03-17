@@ -146,14 +146,14 @@
         }
       },
       "stats": {
-        "improvement": "mejora de fuerza en 12 semanas*",
-        "effectiveness": "más efectivo que entrenar solo**",
-        "adherence": "tasa de adherencia al programa***"
+        "improvement": "Mejora de fuerza en 12 semanas",
+        "effectiveness": "Más efectivo que entrenar solo",
+        "adherence": "tasa de adherencia al programa"
       },
       "citations": {
         "study": "*Estudio interno con 150 participantes (2023-2024)",
-        "comparison": "**Comparado con entrenamiento sin supervisión - JSCR 2023",
-        "retention": "***Datos de retención de clientes Golden Era 2024"
+        "comparison": "Comparado con entrenamiento sin supervisión - JSCR 2023",
+        "retention": "Datos de retención de clientes Golden Era 2024"
       }
     },
     "motivational": {
