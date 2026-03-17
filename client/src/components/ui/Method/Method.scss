@@ -54,12 +54,12 @@
 
     .arabic-background {
       position: absolute; // ahora sí queda detrás del título
-      top: 40%;
+      top: 30%;
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 72px; // igual tamaño que el título, ajusta según gusto
       font-family: $font-arabic;
-      color: rgba(255, 215, 0, 0.50); // dorado muy tenue
+      color: rgba(255, 215, 0, 0.75); // dorado muy tenue
       z-index: 1; // debajo del título
       white-space: nowrap;
       pointer-events: none; // no interfiere con hover ni clics
