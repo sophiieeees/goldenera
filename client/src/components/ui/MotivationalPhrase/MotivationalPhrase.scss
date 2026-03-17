@@ -3,51 +3,52 @@
 
 .motivational-phrase-section {
   width: 100%;
-  padding: 20px 0;
+  padding: 40px 0;
   display: flex;
   justify-content: center;
   background: $color-white;
+  overflow: hidden;
 }
 
-.phrases-wrapper {
+.motivational-phrase-line {
   display: flex;
   align-items: center;
-  flex-wrap: wrap; // permite que frases largas bajen si hace falta
-  justify-content: center;
   gap: 12px;
-  max-width: 1200px;
-  text-align: center;
-}
-
-.phrase {
   font-family: 'Mohave', sans-serif;
+  font-size: 20px;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 1.3;
-
-  @include tablet {
-    font-size: 20px;
-  }
-
-  @include desktop {
-    font-size: 22px;
-  }
-
-  &.text-white { color: $color-white; }
-  &.text-black { color: $color-black; }
-  &.text-golden { color: $color-primary; }
+  text-align: center;
+  flex-wrap: nowrap;
 }
 
-.divider {
-  font-size: 18px;
+.motivational-phrase-item {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  position: absolute;
+}
+
+.motivational-phrase-item.active {
+  opacity: 1;
+  position: relative;
+}
+
+.motivational-phrase-item.white {
+  color: $color-white;
+}
+
+.motivational-phrase-item.black {
   color: $color-black;
-  margin: 0 6px;
+}
 
-  @include tablet {
-    font-size: 20px;
-  }
+.motivational-phrase-item.golden {
+  color: $color-primary;
+}
 
-  @include desktop {
-    font-size: 22px;
-  }
+// Puntos entre frases
+.motivational-phrase-line::before {
+  content: '•';
+  margin-right: 8px;
+  color: $color-black;
+  display: inline-block;
+  vertical-align: middle;
 }
