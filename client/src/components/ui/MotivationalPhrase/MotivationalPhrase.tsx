@@ -34,7 +34,7 @@ const MotivationalPhrase: React.FC = () => {
         gsap.to(tickerRef.current, {
           xPercent: -50,
           ease: 'linear',
-          duration: 120, // más lento
+          duration: 150, // más lento
           repeat: -1
         });
       }
