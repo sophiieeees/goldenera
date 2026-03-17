@@ -1,311 +1,113 @@
 @import '../../../styles/abstracts/variables';
 @import '../../../styles/abstracts/mixins';
 
-.why-it-works {
+.wise-works {
   position: relative;
   width: 100%;
-  overflow: visible;
-  background-color: $color-white;
-  padding: 80px 0;
+  background-color: $color-black; // fondo oscuro para elegancia
+  color: $white;
+  padding: 100px 15px;
 
   @include tablet {
-    padding: 60px 0;
+    padding: 80px 15px;
   }
 
   @include mobile {
-    padding: 40px 0;
-  }
-
-  &__wrapper {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    position: relative;
+    padding: 60px 10px;
   }
 
   &__container {
-    width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    margin-bottom: 60px;
+    max-width: 1440px;
+    margin: 0 auto;
     text-align: center;
-
-    @include tablet {
-      margin-bottom: 50px;
-    }
-
-    @include mobile {
-      margin-bottom: 40px;
-      gap: 24px;
-    }
-  }
-
-  &__arabic-text {
-    position: absolute;
-    width: 399px;
-    height: 70px;
-    left: 900px;
-    top: -10px;
-    transform: translateX(-100%);
-    text-align: right;
-    color: #EAC31B;
-    font-size: 86px;
-    font-family: 'Mohave', sans-serif;
-    font-weight: 300;
-    text-transform: uppercase;
-    line-height: 73.96px;
-    pointer-events: none;
-    z-index: 0;
-
-    @include tablet {
-      font-size: 60px;
-      line-height: 52px;
-      width: 280px;
-      left: 570px;
-      top: -15px;
-    }
-
-    @include mobile {
-      font-size: 40px;
-      line-height: 35px;
-      width: 190px;
-      left: calc(100% - 88px);
-      top: -1px;
-    }
   }
 
   &__title {
-    width: 100%;
-    color: black;
-    font-size: 72px;
     font-family: 'Mohave', sans-serif;
-    font-weight: 600;
+    font-size: 72px;
+    font-weight: 700;
+    color: $white;
     text-transform: uppercase;
-    line-height: 74.88px;
-    margin: 0;
-    position: relative;
-    z-index: 1;
+    margin-bottom: 16px;
 
     @include tablet {
       font-size: 56px;
-      line-height: 58px;
     }
 
     @include mobile {
       font-size: 42px;
-      line-height: 44px;
     }
-  }
-
-  &__typewriter {
-    width: 100%;
-    font-family: 'Mohave', sans-serif;
-    font-size: 48px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin: 20px 0;
-    min-height: 58px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    @include tablet {
-      font-size: 36px;
-      min-height: 44px;
-    }
-
-    @include mobile {
-      font-size: 28px;
-      min-height: 34px;
-      margin: 16px 0;
-    }
-
-    &--black {
-      color: black;
-    }
-
-    &--primary {
-      color: #EAC31B;
-    }
-  }
-
-  &__text-content {
-    max-width: 700px;
   }
 
   &__subtitle {
-    font-size: 18px;
-    color: #333;
+    font-size: 20px;
+    opacity: 0.8;
+    margin-bottom: 60px;
+
+    @include tablet {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    @include mobile {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
   }
 
-  &__hint {
-    font-size: 14px;
-    opacity: .7;
-  }
-
-  // --- Tarjetas premium ---
-  &__cards {
+  &__features {
     display: flex;
-    justify-content: center;
     gap: 40px;
+    justify-content: center;
     flex-wrap: wrap;
-    margin-top: 60px;
   }
 
-  &__card {
-    width: 360px;
-    height: 440px;
-    perspective: 1200px;
-    cursor: pointer;
-    position: relative;
+  &__feature {
+    background: rgba(255, 255, 255, 0.05); // semitransparente
+    border-radius: 20px;
+    padding: 40px 30px;
+    flex: 1 1 300px;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: default;
 
-    &-inner {
-      width: 100%;
-      height: 100%;
-      transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
-      transform-style: preserve-3d;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-
-      &:hover {
-        transform: rotateY(180deg) scale(1.05);
-      }
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(234, 195, 27, 0.3);
     }
 
-    &-front, &-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 30px;
-    }
+    &-icon {
+      margin-bottom: 24px;
 
-    &-front {
-      background: white;
-      border: 1px solid rgba($gold-soft,0.2);
-      box-shadow: 0 5px 20px rgba(234,195,27,0.05);
-
-      h3 {
-        color: $gold-dark;
-        font-size: 28px;
-        margin-bottom: 15px;
+      svg {
+        width: 64px;
+        height: 64px;
+        stroke: #EAC31B;
+        transition: all 0.3s ease;
       }
-      p {
-        font-size: 16px;
-        color: #333;
+
+      &:hover svg {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 10px rgba(234, 195, 27, 0.5));
       }
-    }
-
-    &-back {
-      transform: rotateY(180deg);
-      background: white;
-      border: 1px solid rgba($gold-soft,0.2);
-      box-shadow: 0 5px 20px rgba(234,195,27,0.05);
-      color: #555;
-
-      h3 {
-        color: $gold-dark;
-        font-size: 26px;
-        margin-bottom: 10px;
-      }
-      p {
-        font-size: 15px;
-        line-height: 1.5;
-      }
-    }
-
-    &-gradient {
-      position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(234,195,27,0.05) 0%, rgba(234,195,27,0.15) 50%, rgba(234,195,27,0.05) 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-
-      .why-it-works__card-inner:hover & {
-        opacity: 1;
-      }
-    }
-
-    &-content {
-      position: relative;
-      z-index: 2;
-      padding: 40px;
-      color: white;
-      text-align: center;
     }
 
     &-title {
       font-family: 'Mohave', sans-serif;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 600;
-      margin: 0;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-
-    &-back-title {
-      font-size: 26px;
-      margin-bottom: 15px;
-      color: $gold-dark;
+      margin-bottom: 12px;
     }
 
     &-description {
-      font-size: 15px;
-      margin-bottom: 15px;
-      opacity: .9;
+      font-size: 16px;
+      opacity: 0.85;
+      line-height: 1.5;
+      text-align: center;
     }
-
-    &-citation {
-      font-size: 12px;
-      opacity: .6;
-      font-style: italic;
-    }
-  }
-
-  &__stats {
-    display:flex;
-    justify-content:center;
-    gap:60px;
-    margin-bottom:50px;
-    flex-wrap:wrap;
-  }
-
-  &__stat {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
-
-  &__stat-number {
-    font-size:48px;
-    font-weight:700;
-    color:#EAC31B;
-  }
-
-  &__stat-text {
-    font-size:14px;
-    opacity:.8;
-    text-align:center;
-  }
-
-  &__citations {
-    max-width:800px;
-    margin:auto;
-    font-size:12px;
-    opacity:.6;
-    text-align:center;
-    line-height:1.6;
   }
 }
