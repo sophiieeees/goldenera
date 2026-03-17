@@ -8,7 +8,6 @@
   position: relative;
   overflow: hidden;
   
-  // Patrón de fondo sutil
   &::before {
     content: '';
     position: absolute;
@@ -53,16 +52,16 @@
     }
 
     .arabic-background {
-      position: absolute; // ahora sí queda detrás del título
+      position: absolute;
       top: -10%;
       left: 70%;
       transform: translate(-50%, -50%);
-      font-size: 72px; // igual tamaño que el título, ajusta según gusto
+      font-size: 72px; 
       font-family: $font-arabic;
-      color: rgba(255, 215, 0, 0.75); // dorado muy tenue
-      z-index: 1; // debajo del título
+      color: rgba(255, 215, 0, 0.75); 
+      z-index: 1; 
       white-space: nowrap;
-      pointer-events: none; // no interfiere con hover ni clics
+      pointer-events: none; 
     }
   }
 
@@ -71,8 +70,8 @@
     font-size: 18px;
     max-width: 600px;
     text-align: center;
-    margin-top: 8px; // menos espacio vertical
-    white-space: nowrap; // fuerza que quede en un renglón
+    margin-top: 8px; 
+    white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
   }
