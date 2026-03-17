@@ -220,11 +220,7 @@ const Method: React.FC = () => {
               </div>
 
               {/* Decoración adicional */}
-              <div className="step-decoration">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
+              
             </div>
           ))}
         </div>
