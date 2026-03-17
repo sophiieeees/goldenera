@@ -1,5 +1,5 @@
 // client/src/components/ui/MotivationalPhrase/MotivationalPhrase.tsx
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
@@ -7,70 +7,50 @@ import './MotivationalPhrase.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface Quote {
-  id: number;
-  text: string;
-  color: 'white' | 'black' | 'golden';
-}
-
 const MotivationalPhrase: React.FC = () => {
-  const { t, i18n } = useTranslation();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const autoPlayRef = useRef<NodeJS.Timeout>();
+  const { t } = useTranslation();
+  const tickerRef = useRef<HTMLDivElement>(null);
 
-  // Frases en strings
-  const quotes: Quote[] = [
-    { id: 1, text: `${t('home.phrases.phrase1.part1')} ${t('home.phrases.phrase1.part2')}`, color: 'golden' },
-    { id: 2, text: t('home.phrases.phrase2'), color: 'black' },
-    { id: 3, text: `${t('home.phrases.phrase3.part1')} ${t('home.phrases.phrase3.part2')}`, color: 'golden' },
-    { id: 4, text: t('home.phrases.phrase4'), color: 'black' },
-    { id: 5, text: `${t('home.phrases.phrase5.part1')} ${t('home.phrases.phrase5.part2')}`, color: 'golden' },
-    { id: 6, text: t('home.phrases.phrase6'), color: 'black' },
+  // Todas las frases en un solo array de strings
+  const quotes: string[] = [
+    `${t('home.phrases.phrase1.part1')} ${t('home.phrases.phrase1.part2')}`,
+    t('home.phrases.phrase2'),
+    `${t('home.phrases.phrase3.part1')} ${t('home.phrases.phrase3.part2')}`,
+    t('home.phrases.phrase4'),
+    `${t('home.phrases.phrase5.part1')} ${t('home.phrases.phrase5.part2')}`,
+    t('home.phrases.phrase6')
   ];
 
-  // Fade-in al hacer scroll
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(sectionRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            once: true
-          }
-        }
-      );
-    }, sectionRef);
+      if (tickerRef.current) {
+        const tickerItems = tickerRef.current.children;
+
+        // duplicamos las frases para efecto infinito
+        const totalItems = Array.from(tickerItems);
+        totalItems.forEach((item) => {
+          const clone = item.cloneNode(true);
+          tickerRef.current?.appendChild(clone);
+        });
+
+        gsap.to(tickerRef.current, {
+          xPercent: -50,
+          ease: 'linear',
+          duration: 25,
+          repeat: -1
+        });
+      }
+    }, tickerRef);
 
     return () => ctx.revert();
-  }, []);
-
-  // Cambio automático de frases
-  useEffect(() => {
-    autoPlayRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % quotes.length);
-    }, 4000);
-
-    return () => {
-      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-    };
-  }, [quotes.length]);
+  }, [quotes]);
 
   return (
-    <section ref={sectionRef} className="motivational-phrase-section">
-      <div className="motivational-phrase-line">
+    <section className="motivational-phrase-section">
+      <div className="motivational-ticker" ref={tickerRef}>
         {quotes.map((quote, index) => (
-          <span
-            key={quote.id}
-            className={`motivational-phrase-item ${quote.color} ${index === currentIndex ? 'active' : ''}`}
-          >
-            {quote.text}
+          <span key={index} className="motivational-phrase-item">
+            {quote}
           </span>
         ))}
       </div>
