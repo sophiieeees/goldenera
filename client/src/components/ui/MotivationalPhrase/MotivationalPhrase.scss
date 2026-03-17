@@ -18,7 +18,7 @@
     left: 0%;
     right: 0%;
     height: 2px;
-    background: linear-gradient(to right, $color-primary 25%, $color-black 25%, $color-black 50%, $color-primary 50%, $color-primary 75%, $color-black 75%, $color-black 100%);
+    background: linear-gradient(to right, $color-primary);
     background-size: 100% 1px;
   }
 
