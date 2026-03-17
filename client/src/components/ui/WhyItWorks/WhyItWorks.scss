@@ -14,7 +14,7 @@
 
   &__arabic-text {
     position: absolute;
-    top: -10px; right: 50px;
+    top: -10px; left: 50px;
     font-family: 'Mohave', sans-serif;
     font-size: 80px; font-weight: 300; color: #EAC31B;
     pointer-events: none; z-index: 0;
@@ -38,7 +38,7 @@
   }
 
   &__feature {
-    background: rgba(234,195,27,0.05);
+    background: #111;
     padding: 40px 30px;
     flex: 1 1 280px;
     max-width: 360px;
@@ -48,8 +48,8 @@
 
     &:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(234,195,27,0.25); }
 
-    &-number { font-size: 28px; font-weight: 700; color: #EAC31B; margin-bottom: 16px; }
-    &-title { font-family: 'Mohave', sans-serif; font-size: 24px; font-weight: 600; margin-bottom: 12px; color: $black; }
+    &-number { display:none }
+    &-title { font-family: 'Mohave', sans-serif; font-size: 24px; font-weight: 600; margin-bottom: 12px; color: $EAC31B; }
     &-description { font-size: 16px; line-height: 1.5; opacity: 0.85; }
   }
 }
