@@ -35,11 +35,12 @@
   white-space: nowrap;
   gap: 60px; // separación entre frases
   font-family: 'Mohave', sans-serif;
-  font-size: 20px;
+  font-size: 40px;
   font-weight: 600;
   color: $color-black;
 }
 
 .motivational-phrase-item {
   display: inline-block;
+  transition: color 0.5s ease; // transición suave de color
 }
