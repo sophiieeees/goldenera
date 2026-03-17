@@ -40,28 +40,18 @@ const MotivationalPhrase: React.FC = () => {
           repeat: -1
         });
 
-        // alternar colores entre negro y dorado
-        Array.from(tickerItems).forEach((item, i) => {
-          gsap.to(item, {
-            color: i % 2 === 0 ? '#EAC31B' : '#000000',
-            repeat: -1,
-            yoyo: true,
-            duration: 3 + Math.random() * 2, // ligera variación de tiempo
-            ease: 'power1.inOut'
-          });
-        });
-      }
-    }, tickerRef);
-
     return () => ctx.revert();
   }, [quotes]);
 
-  return (
+    return (
     <section className="motivational-phrase-section">
       <div className="motivational-ticker" ref={tickerRef}>
         {quotes.map((quote, index) => (
-          <span key={index} className="motivational-phrase-item">
-            {quote}
+          <span
+            key={index}
+            className={`motivational-phrase-item ${quote.color === 'golden' ? 'text-golden' : 'text-black'}`}
+          >
+            {quote.text}
           </span>
         ))}
       </div>
