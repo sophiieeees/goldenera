@@ -1,4 +1,3 @@
-// client/src/components/ui/MotivationalPhrase/MotivationalPhrase.tsx
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -11,14 +10,13 @@ const MotivationalPhrase: React.FC = () => {
   const { t } = useTranslation();
   const tickerRef = useRef<HTMLDivElement>(null);
 
-  // Todas las frases en un solo array de strings
-  const quotes: string[] = [
-    `${t('home.phrases.phrase1.part1')} ${t('home.phrases.phrase1.part2')}`,
-    t('home.phrases.phrase2'),
-    `${t('home.phrases.phrase3.part1')} ${t('home.phrases.phrase3.part2')}`,
-    t('home.phrases.phrase4'),
-    `${t('home.phrases.phrase5.part1')} ${t('home.phrases.phrase5.part2')}`,
-    t('home.phrases.phrase6')
+  const quotes = [
+    { text: `${t('home.phrases.phrase1.part1')} ${t('home.phrases.phrase1.part2')}`, color: 'black' },
+    { text: t('home.phrases.phrase2'), color: 'golden' },
+    { text: `${t('home.phrases.phrase3.part1')} ${t('home.phrases.phrase3.part2')}`, color: 'black' },
+    { text: t('home.phrases.phrase4'), color: 'golden' },
+    { text: `${t('home.phrases.phrase5.part1')} ${t('home.phrases.phrase5.part2')}`, color: 'black' },
+    { text: t('home.phrases.phrase6'), color: 'golden' }
   ];
 
   useEffect(() => {
@@ -27,23 +25,25 @@ const MotivationalPhrase: React.FC = () => {
         const tickerItems = tickerRef.current.children;
 
         // duplicamos las frases para efecto infinito
-        const totalItems = Array.from(tickerItems);
-        totalItems.forEach((item) => {
+        Array.from(tickerItems).forEach((item) => {
           const clone = item.cloneNode(true);
           tickerRef.current?.appendChild(clone);
         });
-       // animación continua más lenta
+
+        // animación continua, más lenta
         gsap.to(tickerRef.current, {
           xPercent: -50,
           ease: 'linear',
           duration: 120, // más lento
           repeat: -1
         });
+      }
+    }, tickerRef);
 
     return () => ctx.revert();
   }, [quotes]);
 
-    return (
+  return (
     <section className="motivational-phrase-section">
       <div className="motivational-ticker" ref={tickerRef}>
         {quotes.map((quote, index) => (
