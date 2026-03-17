@@ -33,11 +33,15 @@ const MotivationalPhrase: React.FC = () => {
           tickerRef.current?.appendChild(clone);
         });
 
-        gsap.to(tickerRef.current, {
-          xPercent: -50,
-          ease: 'linear',
-          duration: 25,
-          repeat: -1
+        // alternar colores entre negro y dorado
+        Array.from(tickerItems).forEach((item, i) => {
+          gsap.to(item, {
+            color: i % 2 === 0 ? '#EAC31B' : '#000000',
+            repeat: -1,
+            yoyo: true,
+            duration: 2 + Math.random() * 2, // ligera variación de tiempo
+            ease: 'power1.inOut'
+          });
         });
       }
     }, tickerRef);
