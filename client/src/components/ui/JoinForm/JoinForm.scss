@@ -71,6 +71,22 @@
     font-size: 12px;
     color: rgba($color-white, 0.4);
   }
+
+  /* ✨ GOLD LINE FIX */
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1.5px;
+    width: 0;
+    background: $color-primary;
+    transition: width 0.3s ease;
+  }
+
+  &:focus-within::after {
+    width: 100%;
+  }
 }
 
 /* INPUT BASE */
@@ -96,23 +112,6 @@
   &:focus {
     border-bottom-color: transparent;
   }
-}
-
-/* ✨ GOLD ANIMATED LINE */
-.form-group::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 1.5px;
-  width: 0;
-  background: $color-primary;
-  transition: width 0.3s ease;
-}
-
-.form-input:focus + small + &,
-.form-group:focus-within::after {
-  width: 100%;
 }
 
 /* GRID */
@@ -149,7 +148,6 @@
 
   transition: all 0.3s ease;
 
-  /* glow sutil */
   box-shadow: 0 0 0 rgba($color-primary, 0);
 
   &:hover {
@@ -157,7 +155,6 @@
     box-shadow: 0 10px 25px rgba($color-primary, 0.25);
   }
 
-  /* efecto luz que cruza */
   &::after {
     content: '';
     position: absolute;
