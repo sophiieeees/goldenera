@@ -130,4 +130,28 @@
   .footer-minimal {
     background: rgba($black, 0.98);
   }
+
+  .footer-description {
+  text-align: center;
+  color: rgba($white, 0.6);
+  font-size: 0.85rem;
+  max-width: 600px;
+  margin: 0 auto 10px;
+  line-height: 1.5;
+}
+
+.footer-follow {
+  text-align: center;
+  color: $golden;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.footer-rights {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.7rem;
+  color: rgba($white, 0.4);
+}
 }
