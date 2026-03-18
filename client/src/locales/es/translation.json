@@ -142,7 +142,7 @@
           "title": "Base científica comprobada",
           "frontText": "Metodología de entrenamiento basada en ciencia",
           "backText": "Basado en estudios de NSCA, ACSM y las últimas investigaciones en ciencias del deporte",
-          "citation": "*Metodología respaldada por Journal of Strength Research"
+          "citation": "Metodología respaldada por Journal of Strength Research"
         }
       },
       "stats": {
@@ -151,7 +151,7 @@
         "adherence": "Tasa de adherencia al programa"
       },
       "citations": {
-        "study": "*Estudio interno con 150 participantes (2023-2024)",
+        "study": "Estudio interno con 150 participantes (2023-2024)",
         "comparison": "Comparado con entrenamiento sin supervisión - JSCR 2023",
         "retention": "Datos de retención de clientes Golden Era 2024"
       }
