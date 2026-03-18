@@ -1,66 +1,26 @@
-.footer {
-  background: linear-gradient(to bottom, #1a1a1a, #111);
-  color: white;
-  padding: 3rem 0 1.5rem;
-  text-align: center;
+@import "./variables";
 
+.footer {
+  background: $dark-gradient;
+  padding: 3rem 0 1rem;
+  margin-top: auto;
+  
   .footer-container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
   }
-
-  /* MARCA */
-  .footer-brand {
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
     margin-bottom: 2rem;
-
-    h2 {
-      color: $color-gold;
-      letter-spacing: 3px;
-      font-size: 1.8rem;
-    }
-
-    .footer-quote {
-      margin-top: 0.5rem;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      color: rgba(255, 255, 255, 0.5);
-    }
   }
-
-  /* REDES */
-  .footer-socials {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 2rem;
-
-    a {
-      color: rgba(255, 255, 255, 0.7);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-
-      &:hover {
-        color: $color-gold;
-        transform: translateY(-2px);
-      }
-    }
-  }
-
-  /* APP */
-  .footer-app {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
-    margin-bottom: 2rem;
-    letter-spacing: 1px;
-  }
-
-  /* BOTTOM */
+  
   .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 1rem;
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba($white, 0.1);
   }
 }
