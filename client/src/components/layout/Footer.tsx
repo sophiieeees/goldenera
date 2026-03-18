@@ -14,16 +14,21 @@ const Footer: React.FC = () => {
           {t('footer.description')}
         </p>
 
-        {/* REDES */}
-        <p className="footer-follow">{t('footer.followUs')}</p>
+        {/* SÍGUENOS */}
+        <p className="footer-follow">
+          ✦ {t('footer.followUs')} ✦
+        </p>
 
+        {/* ICONOS (LOS TUYOS, NO LOS TOQUÉ) */}
         <div className="footer-content">
+          
           {/* Instagram */}
           <a 
-            href="https://www.instagram.com/goldenera_wardrobe"
+            href="https://www.instagram.com/goldenera_wardrobe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
             target="_blank" 
             rel="noopener noreferrer"
             className="footer-link"
+            aria-label="Instagram Golden Era"
           >
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2.163c3.204 0 3.584..."/>
@@ -32,20 +37,22 @@ const Footer: React.FC = () => {
 
           <span className="footer-divider"></span>
 
-          {/* Whats */}
+          {/* WhatsApp */}
           <a 
             href="https://wa.me/525576966262"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-link"
+            aria-label="WhatsApp Golden Era"
           >
             <svg viewBox="0 0 32 32" fill="currentColor">
               <path d="M16.04 2C8.29 2..."/>
             </svg>
           </a>
+
         </div>
 
-        {/* COPYRIGHT */}
+        {/* DERECHOS */}
         <p className="footer-rights">
           {t('footer.rights')}
         </p>
