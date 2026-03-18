@@ -79,7 +79,7 @@
     margin-top: -5px;
     margin: 0 auto;
     padding: 40px 15px 20px;
-    gap: 300px;
+    gap: 280px;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -116,6 +116,8 @@
       color: black;
       max-width: 180px;
       line-height: 1.4;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
 
       @include mobile {
         font-size: 14px;
