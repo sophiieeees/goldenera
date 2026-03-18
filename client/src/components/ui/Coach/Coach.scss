@@ -4,12 +4,11 @@
 
 .coach-section {
   background: $color-black;
-  padding: -20px 0;
+  padding: 10px 0;
   position: relative;
   overflow: hidden;
   margin-top: 0px;
   
-  // Efecto de fondo con gradiente
   &::before {
     content: '';
     position: absolute;
@@ -40,7 +39,6 @@
     position: relative;
     perspective: 1000px;
     
-    // Efecto de brillo en el texto
     &::after {
       content: attr(data-text);
       position: absolute;
@@ -73,7 +71,6 @@
     transform-style: preserve-3d;
     --glow: 0;
     
-    // Efecto de brillo/glow
     .image-glow {
       position: absolute;
       inset: -20px;
@@ -94,7 +91,6 @@
       position: relative;
       z-index: 1;
       
-      // Efecto de recorte hexagonal
       clip-path: polygon(
         30% 0%, 70% 0%, 
         100% 30%, 100% 70%, 
@@ -102,8 +98,7 @@
         0% 70%, 0% 30%
       );
     }
-    
-    // Líneas de poder animadas
+
     .power-lines {
       position: absolute;
       inset: 0;
@@ -154,7 +149,6 @@
       letter-spacing: 2px;
       position: relative;
       
-      // Efecto de subrayado animado
       &::after {
         content: '';
         position: absolute;
@@ -280,7 +274,6 @@
     }
   }
 
-  // Responsive
   @include tablet {
     padding: 80px 0;
     
@@ -378,7 +371,6 @@
   }
 }
 
-// Animaciones
 @keyframes shine {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
@@ -425,19 +417,16 @@
   position: relative;
   perspective: 1000px;
   
-  // Mobile
   @include mobile {
     max-width: 300px;
     margin-bottom: 40px;
   }
   
-  // Tablet  
   @include tablet {
     max-width: 450px;
     margin-bottom: 80px;
   }
   
-  // Desktop
   @include desktop {
     max-width: 600px;
     margin-bottom: 100px;
