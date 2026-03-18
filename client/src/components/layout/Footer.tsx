@@ -1,65 +1,38 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import './Footer.scss';
+<footer className="footer-minimal">
+  <div className="footer-container">
 
-const Footer: React.FC = () => {
-  const { t } = useTranslation();
+    {/* ROW PRINCIPAL */}
+    <div className="footer-row">
 
-  return (
-    <footer className="footer-minimal">
-      <div className="footer-container">
+      {/* IZQUIERDA */}
+      <p className="footer-description">
+        {t('footer.description')}
+      </p>
 
-        {/* DESCRIPCIÓN */}
-        <p className="footer-description">
-          {t('footer.description')}
-        </p>
+      {/* DERECHA */}
+      <div className="footer-content">
 
-        {/* SÍGUENOS */}
-        <p className="footer-follow">
-          ✦ {t('footer.followUs')} ✦
-        </p>
+        <a href="https://www.instagram.com/goldenera_wardrobe" target="_blank" rel="noopener noreferrer" className="footer-link">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584..."/>
+          </svg>
+        </a>
 
-        {/* ICONOS (LOS TUYOS, NO LOS TOQUÉ) */}
-        <div className="footer-content">
-          
-          {/* Instagram */}
-          <a 
-            href="https://www.instagram.com/goldenera_wardrobe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="footer-link"
-            aria-label="Instagram Golden Era"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584..."/>
-            </svg>
-          </a>
+        <span className="footer-divider"></span>
 
-          <span className="footer-divider"></span>
-
-          {/* WhatsApp */}
-          <a 
-            href="https://wa.me/525576966262"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-link"
-            aria-label="WhatsApp Golden Era"
-          >
-            <svg viewBox="0 0 32 32" fill="currentColor">
-              <path d="M16.04 2C8.29 2..."/>
-            </svg>
-          </a>
-
-        </div>
-
-        {/* DERECHOS */}
-        <p className="footer-rights">
-          {t('footer.rights')}
-        </p>
+        <a href="https://wa.me/525576966262" target="_blank" rel="noopener noreferrer" className="footer-link">
+          <svg viewBox="0 0 32 32" fill="currentColor">
+            <path d="M16.04 2C8.29 2..."/>
+          </svg>
+        </a>
 
       </div>
-    </footer>
-  );
-};
+    </div>
 
-export default Footer;
+    {/* DERECHOS */}
+    <p className="footer-rights">
+      {t('footer.rights')}
+    </p>
+
+  </div>
+</footer>
