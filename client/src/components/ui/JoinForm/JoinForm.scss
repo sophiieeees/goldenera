@@ -1,164 +1,180 @@
 @import '../../../styles/abstracts/variables';
 @import '../../../styles/abstracts/mixins';
 
-.join-form {
-  min-height: auto;
+.form-section {
+  background: $color-black;
+  padding: 70px 20px;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
-  background: linear-gradient(135deg, rgba($color-black, 0.95), rgba($color-bg-dark, 0.98));
-  padding: 20px 15px;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 720px;
+}
+
+/* STEP */
+.form-step {
+  color: rgba($color-white, 0.5);
+  font-size: 13px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+/* PROGRESS */
+.form-progress {
+  width: 100%;
+  height: 4px;
+  background: rgba($color-white, 0.1);
+  margin-bottom: 50px;
   position: relative;
+  overflow: hidden;
 
-  &__container {
-    width: 100%;
-    max-width: 450px;
-    margin: 0 auto;
-  }
-
-  &__header {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  &__title {
-    font-family: $font-primary;
-    font-size: 2.5rem;
-    font-weight: $font-bold;
-    text-transform: uppercase;
-    margin-bottom: 0.25rem;
-
-    &-highlight {
-      display: block;
-      margin-top: 0.1em;
-    }
-  }
-
-  &__subtitle {
-    font-family: $font-secondary;
-    font-size: 1rem;
-    color: rgba($color-white, 0.8);
-    line-height: 1.4;
-    margin-bottom: 1rem;
-  }
-
-  &__form {
-    background: rgba($color-white, 0.05);
-    border-radius: 8px; // menos redondez
-    padding: 1.8rem 1.5rem;
-    border: 1px solid rgba($color-white, 0.15);
+  &__bar {
+    width: 33%;
+    height: 100%;
+    background: $color-primary;
     position: relative;
-  }
 
-  &__field {
-    margin-bottom: 1rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid $color-gold; // línea dorada fina
-  }
-
-  &__label {
-    font-size: 0.85rem;
-    font-weight: $font-regular;
-    color: rgba($color-white, 0.85);
-    margin-bottom: 0.25rem;
-    display: block;
-    text-transform: uppercase;
-  }
-
-  &__input {
-    width: 100%;
-    padding: 0.7rem 1rem;
-    font-size: 0.95rem;
-    border-radius: 4px; // esquinas menos redondas
-    border: 1px solid rgba($color-white, 0.2);
-    background: rgba($color-white, 0.05);
-    color: $color-white;
-    transition: all 0.3s ease;
-
-    &::placeholder {
-      color: rgba($color-white, 0.4);
-      font-style: italic;
-    }
-
-    &:focus,
-    &--focused {
-      border-color: $color-gold;
-      box-shadow: 0 0 5px rgba($color-gold, 0.2);
-    }
-
-    &--error {
-      border-color: #ff4444;
-      background: rgba(#ff4444, 0.1);
-    }
-
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-  }
-
-  &__submit {
-    width: 100%;
-    padding: 1rem 1.2rem;
-    font-size: 1rem;
-    font-weight: $font-bold;
-    border-radius: 6px;
-    text-transform: uppercase;
-    background: $golden-gradient;
-    color: $color-black;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover:not(:disabled) {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba($color-gold, 0.4);
-    }
-
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-  }
-
-  &__error {
-    font-size: 0.8rem;
-    color: #ff4444;
-    margin-top: 0.25rem;
-  }
-
-  &__message {
-    margin-top: 0.75rem;
-    font-size: 0.9rem;
-    text-align: center;
-
-    &--success {
-      color: #4caf50;
-    }
-
-    &--error {
-      color: #ff4444;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -40px;
+      width: 40px;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba($color-primary, 0.6));
     }
   }
 }
 
-// Responsive
-@include tablet {
-  .join-form {
-    padding: 15px;
+/* GROUP */
+.form-group {
+  margin-bottom: 32px;
+  position: relative;
 
-    &__form {
-      padding: 1.5rem 1.2rem;
-    }
+  label {
+    display: block;
+    font-size: 14px;
+    color: rgba($color-white, 0.8);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
 
-    &__input {
-      padding: 0.65rem 0.9rem;
+    span {
+      color: #ff4d4d;
     }
+  }
 
-    &__submit {
-      padding: 0.9rem 1.2rem;
-      font-size: 0.95rem;
-    }
+  small {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: rgba($color-white, 0.4);
+  }
+}
+
+/* INPUT BASE */
+.form-input {
+  width: 100%;
+  height: 50px;
+  padding: 0 14px;
+
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba($color-white, 0.2);
+
+  color: $color-white;
+  font-size: 15px;
+
+  outline: none;
+  transition: all 0.25s ease;
+
+  &::placeholder {
+    color: rgba($color-white, 0.35);
+  }
+
+  &:focus {
+    border-bottom-color: transparent;
+  }
+}
+
+/* ✨ GOLD ANIMATED LINE */
+.form-group::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1.5px;
+  width: 0;
+  background: $color-primary;
+  transition: width 0.3s ease;
+}
+
+.form-input:focus + small + &,
+.form-group:focus-within::after {
+  width: 100%;
+}
+
+/* GRID */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* BUTTON PREMIUM */
+.form-button {
+  margin-top: 40px;
+  width: 100%;
+  height: 52px;
+
+  background: linear-gradient(
+    135deg,
+    $color-primary 0%,
+    darken($color-primary, 10%) 100%
+  );
+
+  color: black;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.3s ease;
+
+  /* glow sutil */
+  box-shadow: 0 0 0 rgba($color-primary, 0);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba($color-primary, 0.25);
+  }
+
+  /* efecto luz que cruza */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+
+  &:hover::after {
+    left: 100%;
   }
 }
