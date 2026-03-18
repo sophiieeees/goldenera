@@ -154,4 +154,36 @@
   font-size: 0.7rem;
   color: rgba($white, 0.4);
 }
+
+  .footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.footer-description {
+  max-width: 500px;
+  color: rgba($white, 0.6);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-rights {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.7rem;
+  color: rgba($white, 0.4);
+}
 }
