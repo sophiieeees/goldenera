@@ -15,8 +15,7 @@ const Footer: React.FC = () => {
           
           {/* LEFT */}
           <div className="footer-brand">
-            <h3>{t('footer.followUs')}</h3>
-            <p>{t('footer.description')}</p>
+            <h3>{t('¡Siguenos!')}</h3>
           </div>
 
           {/* RIGHT */}
@@ -50,7 +49,7 @@ const Footer: React.FC = () => {
 
         {/* BOTTOM */}
         <div className="footer-bottom">
-          <p>{t('footer.rights')}</p>
+          <p>{t('Golden Era ®. Una empresa de Emiratos Árabes Unidos.')}</p>
         </div>
 
       </div>
