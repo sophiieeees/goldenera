@@ -260,7 +260,7 @@ const JoinForm: React.FC = () => {
                 className={`join-form__input ${errors.email ? 'join-form__input--error' : ''} ${focusedField === 'email' ? 'join-form__input--focused' : ''}`}
                 disabled={isLoading}
                 autoComplete="email"
-                placeholder="tu@email.com"
+                placeholder="Ej: goldenera@gmail.com"
               />
               {errors.email && (
                 <span className="join-form__error">{errors.email}</span>
