@@ -82,7 +82,7 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
     animateOut();
 
     setTimeout(() => {
-      navigate('/join');
+      navigate('/package');
     }, 400);
   };
 
@@ -160,7 +160,7 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
         </button>
 
         <span className="promo-widget__spots">
-          Solo 7 lugares disponibles
+          ¡Quedan pocos lugares disponibles!
         </span>
       </div>
 
