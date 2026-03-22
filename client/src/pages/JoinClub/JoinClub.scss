@@ -144,36 +144,7 @@
     }
   }
 
-  &__scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: #666;
-    font-size: 0.9rem;
-
-    .scroll-arrow {
-      width: 2px;
-      height: 30px;
-      background: #EAC31B;
-      margin: 0 auto 1rem;
-      position: relative;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 0;
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-top: 8px solid #EAC31B;
-      }
-    }
-  }
+///////////////////
 }
 
 // Testimonial Section
