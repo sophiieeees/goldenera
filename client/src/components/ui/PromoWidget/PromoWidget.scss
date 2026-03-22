@@ -15,9 +15,9 @@
     background:
     radial-gradient(
     circle at center,
-    rgba(60, 60, 60, 0.15) 0%,   // centro más suave
-    rgba(20, 20, 20, 0.25) 45%,  // transición más suave
-    rgba(5, 5, 5, 0.45) 100%     // bordes menos intensos
+    rgba(60, 60, 60, 0.6) 0%,    // centro más visible
+    rgba(20, 20, 20, 0.85) 45%,  // transición más intensa
+    rgba(5, 5, 5, 1) 100%        // bordes totalmente oscuros
       );
 
     backdrop-filter: blur(18px);
