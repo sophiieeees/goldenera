@@ -127,11 +127,7 @@ const JoinClub: React.FC = () => {
             </div>
           </div>
         </div>
-
-        <div className="join-hero__scroll-indicator">
-          <div className="scroll-arrow"></div>
-          <span>{t('join.hero.scrollIndicator')}</span>
-        </div>
+        
       </section>
 
       {/* Pricing Plans Section */}
@@ -166,9 +162,6 @@ const JoinClub: React.FC = () => {
             <span>{t('join.finalCta.title.part1')}</span>
             <span className="golden-text">{t('join.finalCta.title.part2')}</span>
           </h2>
-          <p className="final-cta-text">
-            {t('join.finalCta.text')}
-          </p>
         </div>
       </section>
     </div>
