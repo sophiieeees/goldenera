@@ -8,96 +8,114 @@
   &__content {
     width: 290px;
     border-radius: 24px;
-    padding: 22px;
+    padding: 24px 20px;
 
+    /* 🔥 TU DEGRADADO ORIGINAL (mejorado) */
     background: linear-gradient(
       145deg,
-      rgba(20, 20, 20, 0.9),
+      rgba(30, 30, 30, 0.9),
       rgba(10, 10, 10, 0.95)
     );
 
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(20px);
 
-    border: 1px solid rgba(255, 215, 0, 0.15);
+    /* 🔥 BORDE DORADO */
+    border: 1px solid rgba(255, 215, 0, 0.25);
 
     box-shadow:
       0 25px 70px rgba(0,0,0,0.8),
-      inset 0 1px 0 rgba(255,255,255,0.05);
+      0 0 25px rgba(255,215,0,0.08);
 
     color: #fff;
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 🔥 TODO CENTRADO */
+    text-align: center;
   }
 
-  /* HEADER ICONOS PREMIUM */
+  /* ✨ glow borde */
+  &__content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,215,0,0.4), transparent);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+  }
+
+  /* 🔥 BOTONES (YA NO DESAPARECEN) */
   &__header {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 12px;
+    right: 12px;
     display: flex;
-    gap: 10px;
+    gap: 8px;
 
     button {
-      all: unset;
-      cursor: pointer;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: none;
 
-      width: 24px;
-      height: 24px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+
+      color: #fff;
+      cursor: pointer;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      color: rgba(255,255,255,0.6);
+      text-decoration: none !important;
 
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
 
       &:hover {
+        background: rgba(255,215,0,0.2);
         color: #FFD700;
-        transform: scale(1.2);
+        transform: scale(1.1);
       }
 
       svg {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
       }
     }
   }
 
+  /* CONTENIDO */
   &__body {
-    text-align: center;
-    margin-top: 10px;
+    width: 100%;
   }
 
-  /* BADGE ORO PREMIUM */
   &__badge {
-    display: inline-block;
-    padding: 6px 18px;
-    border-radius: 999px;
-
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 1px;
-
-    background: linear-gradient(135deg, #FFD700, #B8962E);
+    background: linear-gradient(135deg, #FFD700, #C9A227);
     color: #000;
-
-    box-shadow:
-      0 4px 15px rgba(255,215,0,0.25),
-      inset 0 1px 0 rgba(255,255,255,0.3);
-
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 999px;
+    display: inline-block;
     margin-bottom: 14px;
+    font-size: 13px;
   }
 
   &__title {
     font-size: 17px;
     font-weight: 600;
     margin-bottom: 6px;
+    color: #fff;
   }
 
   &__subtitle {
     font-size: 13px;
-    opacity: 0.7;
+    opacity: 0.8;
     margin-bottom: 14px;
+    color: #fff;
   }
 
   &__timer {
@@ -107,9 +125,8 @@
     margin-bottom: 16px;
   }
 
-  /* BOTÓN PREMIUM */
   &__cta {
-    width: 100%;
+    width: 90%;
     padding: 13px;
 
     border-radius: 999px;
@@ -118,40 +135,41 @@
     font-weight: 700;
     font-size: 14px;
 
-    background: linear-gradient(135deg, #FFD700, #B8962E);
+    background: linear-gradient(135deg, #FFD700, #C9A227);
     color: #000;
 
     cursor: pointer;
 
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
 
-    box-shadow:
-      0 10px 30px rgba(255,215,0,0.25);
+    box-shadow: 0 10px 25px rgba(212,175,55,0.3);
 
     &:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow:
-        0 15px 40px rgba(255,215,0,0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(212,175,55,0.45);
     }
   }
 
   &__urgency {
     margin-top: 12px;
     font-size: 12px;
-    opacity: 0.7;
+    color: #ddd;
   }
 
-  /* MINIMIZADO PRO */
+  /* 🔥 MINIMIZADO BONITO (ARREGLADO) */
   &__minimized {
-    width: 210px;
+    width: 200px;
     height: 46px;
 
     border-radius: 999px;
 
-    background: rgba(15,15,15,0.9);
-    backdrop-filter: blur(20px);
+    background: linear-gradient(
+      145deg,
+      rgba(30, 30, 30, 0.9),
+      rgba(10, 10, 10, 0.95)
+    );
 
-    border: 1px solid rgba(255,215,0,0.2);
+    border: 1px solid rgba(255,215,0,0.3);
 
     display: flex;
     align-items: center;
@@ -162,9 +180,10 @@
     cursor: pointer;
 
     box-shadow:
-      0 10px 35px rgba(0,0,0,0.7);
+      0 10px 30px rgba(0,0,0,0.7),
+      0 0 15px rgba(255,215,0,0.1);
 
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
 
     &:hover {
       transform: translateY(-2px);
@@ -173,25 +192,25 @@
     .min-left {
       display: flex;
       flex-direction: column;
+      font-size: 12px;
     }
 
     .min-discount {
-      font-size: 12px;
       font-weight: 700;
       color: #FFD700;
     }
 
     .min-timer {
-      font-size: 10px;
-      opacity: 0.6;
+      font-size: 11px;
+      opacity: 0.7;
       font-family: 'SF Mono', monospace;
     }
 
     .min-dot {
       width: 8px;
       height: 8px;
-      border-radius: 50%;
       background: #FFD700;
+      border-radius: 50%;
       animation: pulse 1.5s infinite;
     }
   }
