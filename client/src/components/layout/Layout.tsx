@@ -19,7 +19,7 @@ const Layout: React.FC = () => {
           const diff = Date.now() - parseInt(lastClosed);
 
           // ⏱️ TIEMPO PARA QUE VUELVA A APARECER (10 min)
-          if (diff < 10 * 60 * 1000) {
+          if (diff < 1 * 60 * 1000) {
             return;
           }
         }
