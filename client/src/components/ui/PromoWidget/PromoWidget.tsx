@@ -1,201 +1,184 @@
-.promo-widget {
-  position: fixed;
-  bottom: 140px;
-  right: 24px;
-  z-index: 9999;
-  font-family: 'Inter', sans-serif;
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { gsap } from 'gsap';
+import './PromoWidget.scss';
 
-  /* CONTENEDOR */
-  &__content {
-    width: 280px;
-    border-radius: 20px;
-    padding: 22px 18px 18px;
-
-    background: rgba(10, 10, 10, 0.75); // glass
-    backdrop-filter: blur(20px);
-
-    border: 1px solid rgba(212, 175, 55, 0.2);
-
-    box-shadow:
-      0 20px 60px rgba(0,0,0,0.6),
-      0 0 0 1px rgba(255,255,255,0.05),
-      inset 0 0 80px rgba(0,0,0,0.6); // 🔥 hace que SIEMPRE se vea bien
-
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  /* HEADER BOTONES */
-  &__header {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    display: flex;
-    gap: 6px;
-    z-index: 10;
-  }
-
-  &__btn {
-    width: 28px;
-    height: 28px;
-    border-radius: 10px;
-
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(10px);
-
-    border: 1px solid rgba(255,255,255,0.2);
-
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-    transition: all 0.25s ease;
-
-    &:hover {
-      background: rgba(212,175,55,0.2);
-      border-color: rgba(212,175,55,0.6);
-      color: #FFD700;
-    }
-  }
-
-  /* BADGE */
-  &__badge {
-    background: linear-gradient(135deg, #FFD700, #C9A227);
-    color: #000;
-    font-weight: 800;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    margin-bottom: 10px;
-  }
-
-  /* TEXTO */
-  &__title {
-    color: #fff;
-    font-size: 15px;
-    margin-bottom: 12px;
-    opacity: 0.95;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.8); // 🔥 legibilidad
-  }
-
-  /* TIMER */
-  &__timer {
-    color: #FFD700;
-    font-family: 'SF Mono', monospace;
-    font-size: 18px;
-    margin-bottom: 14px;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
-  }
-
-  /* BOTÓN */
-  &__cta {
-    width: 100%;
-    background: linear-gradient(135deg, #FFD700, #C9A227);
-    border: none;
-    color: #000;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.25s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(212,175,55,0.4);
-    }
-  }
-
-  /* TEXTO ABAJO */
-  &__urgency {
-    margin-top: 10px;
-    font-size: 12px;
-    color: #fff;
-    opacity: 0.7;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
-  }
-
-  /* MINIMIZED */
-  &__min {
-    background: rgba(10, 10, 10, 0.75);
-    backdrop-filter: blur(20px);
-
-    border: 1px solid rgba(212,175,55,0.3);
-
-    color: #fff;
-    padding: 10px 16px;
-    border-radius: 999px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    width: 180px;
-    cursor: pointer;
-    font-weight: 600;
-
-    box-shadow:
-      0 8px 25px rgba(0,0,0,0.6),
-      inset 0 0 30px rgba(0,0,0,0.5);
-
-    transition: all 0.25s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      border-color: rgba(212,175,55,0.6);
-    }
-  }
-
-  &__min-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-
-    span:first-child {
-      font-size: 11px;
-      opacity: 0.7;
-    }
-
-    span:last-child {
-      font-size: 13px;
-      font-weight: 700;
-      color: #FFD700;
-    }
-  }
-
-  &__dot {
-    width: 8px;
-    height: 8px;
-    background: #FFD700;
-    border-radius: 50%;
-    animation: pulse 1.8s infinite;
-  }
-
-  /* ANIMACIÓN */
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.4); opacity: 0.5; }
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    right: 16px;
-    bottom: 150px;
-
-    &__content {
-      width: 260px;
-    }
-
-    &__min {
-      width: 160px;
-    }
-  }
+interface PromoWidgetProps {
+  isActive: boolean;
+  onClose: () => void;
 }
+
+const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
+  const [timeLeft, setTimeLeft] = useState(2 * 60 * 60);
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const widgetRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const minimizedRef = useRef<HTMLDivElement>(null);
+
+  const shouldShow = !location.pathname.includes('/gallery') && isActive;
+
+  useEffect(() => {
+    if (shouldShow && !isVisible) {
+      setIsVisible(true);
+      setTimeout(() => animateIn(), 1200);
+    } else if (!shouldShow && isVisible) {
+      animateOut();
+    }
+  }, [shouldShow]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          onClose();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isVisible, onClose]);
+
+  const animateIn = () => {
+    if (!widgetRef.current) return;
+
+    gsap.fromTo(
+      widgetRef.current,
+      { x: 300, opacity: 0, scale: 0.85 },
+      { x: 0, opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' }
+    );
+  };
+
+  const animateOut = () => {
+    if (!widgetRef.current) return;
+
+    gsap.to(widgetRef.current, {
+      x: 300,
+      opacity: 0,
+      scale: 0.85,
+      duration: 0.4,
+      ease: 'power3.in',
+      onComplete: () => setIsVisible(false)
+    });
+  };
+
+  // ❌ cerrar correctamente + guardar en Layout
+  const handleClose = () => {
+    animateOut();
+
+    setTimeout(() => {
+      onClose();
+    }, 400);
+  };
+
+  // ✅ navegación ORIGINAL (no se rompe)
+  const handleJoinNow = () => {
+    animateOut();
+
+    setTimeout(() => {
+      navigate('/join');
+    }, 400);
+  };
+
+  const handleMinimize = () => {
+    if (!contentRef.current || !minimizedRef.current) return;
+
+    if (!isMinimized) {
+      gsap.to(contentRef.current, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.25
+      });
+
+      gsap.to(minimizedRef.current, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.25,
+        delay: 0.15
+      });
+    } else {
+      gsap.to(minimizedRef.current, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.25
+      });
+
+      gsap.to(contentRef.current, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.25,
+        delay: 0.15
+      });
+    }
+
+    setIsMinimized(!isMinimized);
+  };
+
+  const formatTime = (seconds: number) => {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+
+    return `${h.toString().padStart(2, '0')}:${m
+      .toString()
+      .padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="promo-widget" ref={widgetRef}>
+      
+      {/* HEADER */}
+      <div className="promo-widget__header">
+        <button onClick={handleMinimize}>—</button>
+        <button onClick={handleClose}>✕</button>
+      </div>
+
+      {/* CONTENT */}
+      <div
+        className="promo-widget__content"
+        ref={contentRef}
+        style={{ display: isMinimized ? 'none' : 'block' }}
+      >
+        <div className="promo-widget__badge">50% OFF</div>
+
+        <h3>Oferta exclusiva</h3>
+        <p>Comienza tu transformación hoy</p>
+
+        <div className="promo-widget__timer">
+          {formatTime(timeLeft)}
+        </div>
+
+        <button className="promo-widget__cta" onClick={handleJoinNow}>
+          Comenzar
+        </button>
+
+        <span className="promo-widget__spots">
+          ¡Quedan pocos lugares!
+        </span>
+      </div>
+
+      {/* MINIMIZED */}
+      <div
+        className="promo-widget__minimized"
+        ref={minimizedRef}
+        onClick={handleMinimize}
+        style={{ display: isMinimized ? 'flex' : 'none' }}
+      >
+        <span>50% OFF</span>
+        <span>{formatTime(timeLeft)}</span>
+      </div>
+    </div>
+  );
+};
+
+export default PromoWidget;
