@@ -66,14 +66,12 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
       scale: 0.85,
       duration: 0.4,
       ease: 'power3.in',
-      onComplete: () => setIsVisible(false)
+      onComplete: () => setIsVisible(false),
     });
   };
 
-
   const handleClose = () => {
     animateOut();
-
     setTimeout(() => {
       onClose();
     }, 400);
@@ -81,9 +79,8 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
 
   const handleJoinNow = () => {
     animateOut();
-
     setTimeout(() => {
-      navigate('/join');
+      navigate('/join'); // 🔥 cambia aquí si quieres /packages
     }, 400);
   };
 
@@ -94,27 +91,27 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
       gsap.to(contentRef.current, {
         scale: 0,
         opacity: 0,
-        duration: 0.25
+        duration: 0.25,
       });
 
       gsap.to(minimizedRef.current, {
         scale: 1,
         opacity: 1,
         duration: 0.25,
-        delay: 0.15
+        delay: 0.15,
       });
     } else {
       gsap.to(minimizedRef.current, {
         scale: 0,
         opacity: 0,
-        duration: 0.25
+        duration: 0.25,
       });
 
       gsap.to(contentRef.current, {
         scale: 1,
         opacity: 1,
         duration: 0.25,
-        delay: 0.15
+        delay: 0.15,
       });
     }
 
@@ -157,7 +154,10 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
           {formatTime(timeLeft)}
         </div>
 
-        <button className="promo-widget__cta" onClick={handleJoinNow}>
+        <button
+          className="promo-widget__cta"
+          onClick={handleJoinNow}
+        >
           Comenzar
         </button>
 
