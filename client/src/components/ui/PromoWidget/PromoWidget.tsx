@@ -21,9 +21,6 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
 
   // Mostrar widget
   useEffect(() => {
-    const closed = localStorage.getItem('promoClosed');
-    if (closed === 'true') return;
-
     if (shouldShow && !isVisible) {
       setIsVisible(true);
       setTimeout(() => animateIn(), 1200);
@@ -37,7 +34,7 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
-          handleClose();
+          animateOut();
           return 0;
         }
         return prev - 1;
@@ -60,7 +57,10 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
 
   // Animación salida + cierre real
   const animateOut = () => {
-    if (!widgetRef.current) return;
+    if (!widgetRef.current) {
+      onClose();
+      return;
+    }
 
     gsap.to(widgetRef.current, {
       y: 40,
@@ -70,15 +70,9 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
       ease: 'power3.in',
       onComplete: () => {
         setIsVisible(false);
-        handleClose();
+        onClose(); // 🔥 cierre REAL controlado por Layout
       }
     });
-  };
-
-  // Cierre global
-  const handleClose = () => {
-    localStorage.setItem('promoClosed', 'true'); // no vuelve a aparecer
-    onClose();
   };
 
   // Ir a paquetes
@@ -136,7 +130,10 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
       )}
 
       {isMinimized && (
-        <div className="promo-widget__min" onClick={() => setIsMinimized(false)}>
+        <div 
+          className="promo-widget__min" 
+          onClick={() => setIsMinimized(false)}
+        >
           <span>50% OFF</span>
           <span>{formatTime(timeLeft)}</span>
         </div>
