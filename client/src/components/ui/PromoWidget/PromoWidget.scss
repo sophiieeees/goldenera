@@ -4,28 +4,21 @@
   right: 24px;
   z-index: 999999;
 
-  width: auto;
   max-width: 300px;
-
   font-family: 'Inter', sans-serif;
 
   &__content {
     width: 290px;
-    max-width: 290px;
-
     border-radius: 24px;
     padding: 28px 20px 22px;
 
-  background: radial-gradient(
-  circle at center,
-  rgba(40, 40, 40, 0.85) 0%,
-  rgba(20, 20, 20, 0.75) 40%,
-  rgba(5, 5, 5, 0.95) 100%
-);
-      linear-gradient(
-        145deg,
-        rgba(40,40,40,0.9),
-        rgba(10,10,10,0.95)
+    /* 🔥 DEGRADADO PRO (centro más visible, bordes más oscuros) */
+    background:
+      radial-gradient(
+        circle at center,
+        rgba(60, 60, 60, 0.35) 0%,
+        rgba(20, 20, 20, 0.6) 45%,
+        rgba(5, 5, 5, 0.95) 100%
       );
 
     backdrop-filter: blur(18px);
@@ -47,6 +40,7 @@
     overflow: hidden;
   }
 
+  /* ✨ BORDE GLOW */
   &__content::before {
     content: '';
     position: absolute;
@@ -68,10 +62,11 @@
     pointer-events: none;
   }
 
+  /* 🔥 BOTONES */
   &__header {
     position: absolute;
-    top: 6px;
-    right: 12px;
+    top: 8px;
+    right: 10px;
     display: flex;
     gap: 6px;
     z-index: 10;
@@ -88,7 +83,7 @@
       backdrop-filter: blur(10px);
 
       color: #fff;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
 
       cursor: pointer;
@@ -109,6 +104,7 @@
     }
   }
 
+  /* TEXTO */
   h3 {
     color: #ffffff;
     font-size: 17px;
@@ -132,37 +128,46 @@
     font-size: 13px;
   }
 
+  /* 🔥 RELOJ MÁS PRO */
   &__timer {
-  font-size: 26px; 
-  font-weight: 700;
-  font-family: 'SF Mono', monospace;
-  color: #FFD700;
-  margin-bottom: 18px;
-  letter-spacing: 2px;
-  text-shadow: 0 0 10px rgba(255,215,0,0.4); /* glow sutil premium */
-}
+    font-size: 30px;
+    font-weight: 800;
+    font-family: 'SF Mono', monospace;
+    color: #FFD700;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+
+    text-shadow:
+      0 0 6px rgba(255,215,0,0.5),
+      0 0 12px rgba(255,215,0,0.25);
   }
 
+  /* 🔥 BOTÓN SIN BRILLO */
   &__cta {
     width: 100%;
     max-width: 240px;
     padding: 13px;
+
     border-radius: 999px;
     border: none;
+
     font-weight: 700;
     font-size: 14px;
+
     background: linear-gradient(135deg, #FFD700, #C9A227);
     color: #000;
+
     cursor: pointer;
+
     transition: all 0.25s ease;
-    box-shadow: none);
+
+    box-shadow: none;
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 15px 35px rgba(212,175,55,0.2);
+      box-shadow: 0 10px 20px rgba(212,175,55,0.2);
     }
   }
-
 
   &__spots {
     margin-top: 10px;
@@ -170,6 +175,7 @@
     color: rgba(255,255,255,0.65);
   }
 
+  /* 🔥 MINIMIZADO BONITO */
   &__minimized {
     width: 210px;
     height: 48px;
