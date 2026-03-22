@@ -6,6 +6,8 @@ import './Footer.scss';
 const Footer: React.FC = () => {
   const { t } = useTranslation();
 
+  const WHATSAPP_MESSAGE = '¡Hola! Vengo de la página web de Golden Era y me interesa comenzar mi transformación. ¿Podrían darme más información?';
+
   return (
     <footer className="footer-minimal">
       <div className="footer-container">
@@ -15,7 +17,7 @@ const Footer: React.FC = () => {
           
           {/* LEFT */}
           <div className="footer-brand">
-            <h3>{t('¡Siguenos!')}</h3>
+            <h3>{t('footer.followUs')}</h3>
           </div>
 
           {/* RIGHT */}
@@ -35,7 +37,7 @@ const Footer: React.FC = () => {
 
             {/* WhatsApp */}
             <a 
-              href="https://wa.me/525576966262"
+              href={`https://wa.me/525576966262?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -46,11 +48,11 @@ const Footer: React.FC = () => {
             </a>
 
           </div>
-        </div> 
-        
+        </div>
+
         {/* BOTTOM */}
         <div className="footer-bottom">
-          <p>{t('Golden Era ®. Una empresa de Emiratos Árabes Unidos.')}</p>
+          <p>{t('footer.rights')}</p>
         </div>
 
       </div>
