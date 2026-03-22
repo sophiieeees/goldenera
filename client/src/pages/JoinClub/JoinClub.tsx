@@ -16,13 +16,12 @@ const JoinClub: React.FC = () => {
   const pricingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Scroll to top first, then to pricing plans
     window.scrollTo(0, 0);
     
     const scrollToPricing = () => {
       setTimeout(() => {
         if (pricingRef.current) {
-          const offset = 100; // Ajusta este valor según necesites
+          const offset = 100; 
           const elementPosition = pricingRef.current.offsetTop - offset;
           
           window.scrollTo({
@@ -30,13 +29,12 @@ const JoinClub: React.FC = () => {
             behavior: 'smooth'
           });
         }
-      }, 300); // Aumenté el delay para asegurar que el DOM esté listo
+      }, 300); 
     };
 
-    // Initial scroll when component mounts
+
     scrollToPricing();
 
-    // Listen for language changes
     const handleLanguageChange = () => {
       setTimeout(() => {
         scrollToPricing();
@@ -45,7 +43,7 @@ const JoinClub: React.FC = () => {
 
     i18n.on('languageChanged', handleLanguageChange);
 
-    // Cleanup listener
+
     return () => {
       i18n.off('languageChanged', handleLanguageChange);
     };
@@ -53,7 +51,7 @@ const JoinClub: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero animations
+
       if (titleRef.current) {
         gsap.fromTo(titleRef.current,
           { opacity: 0, y: 100, scale: 0.8 },
@@ -68,7 +66,6 @@ const JoinClub: React.FC = () => {
         );
       }
 
-      // Background particles animation
       if (heroRef.current) {
         const particles = heroRef.current.querySelectorAll('.hero-particle');
         particles.forEach((particle, index) => {
