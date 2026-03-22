@@ -9,6 +9,7 @@ import Method from '../../components/ui/Method/Method';
 import MotivationalPhrase from '../../components/ui/MotivationalPhrase/MotivationalPhrase';
 import WhyItWorks from '../../components/ui/WhyItWorks/WhyItWorks';
 import JoinForm from '../../components/ui/JoinForm/JoinForm';
+import JoinForm from '../../components/ui/ChatbotWidget.tsx';
 import './Home.scss';
 
 gsap.registerPlugin(ScrollTrigger);
