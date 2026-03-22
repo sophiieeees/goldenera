@@ -12,6 +12,7 @@ import Gallery from './pages/Gallery/Gallery';
 import './styles/global.scss';
 import MerchPage from './pages/Merch/MerchPage';
 
+
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY!);
 
 function App() {
