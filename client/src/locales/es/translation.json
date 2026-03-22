@@ -75,7 +75,8 @@
         }
       }
     },
- "packages": {
+
+    "packages": {
       "title": "Elige Tu Era Dorada",
       "subtitle": "Transforma tu vida, tu apariencia y tu rendimiento con 12 semanas de nuestros programas de optimización integral.",
       "offer_title": "¡OFERTA POR TIEMPO LIMITADO!",
@@ -114,8 +115,9 @@
         "biohacking": "Protocolos de Biohacking para Energía y Recuperación",
         "nootropics": "Nootrópicos para Claridad Mental y Productividad"
       },
-     "cta": "Comienza Tu Transformación"
- },
+      "cta": "Comienza Tu Transformación"
+    },
+
     "whyItWorks": {
       "subtitle": "Nuestro método es una compilación de estudios científicos de levantamiento que desbloquean el potencial atlético completo de una persona.",
       "clickCard": "Haz clic en cada tarjeta para conocer más detalles.",
@@ -156,6 +158,7 @@
         "retention": "Datos de retención de clientes Golden Era 2024"
       }
     },
+
     "motivational": {
       "buildBody": "Construye un cuerpo que hable por ti.",
       "becomeUntouchable": "Vuélvete intocable."
@@ -227,10 +230,12 @@
       "button": "DESTRUYE TU DEBILIDAD"
     }
   },
+
   "gallery": {
     "title": "Resultados",
     "loadMore": "Cargar Más"
   },
+
   "common": {
     "loading": "Cargando...",
     "error": "Error",
@@ -241,6 +246,7 @@
     "submit": "Enviar",
     "cancel": "Cancelar"
   },
+
   "popup": {
     "exclusiveOffer": "OFERTA EXCLUSIVA",
     "goldenEra": "GOLDEN ERA",
@@ -254,6 +260,7 @@
     "joinNow": "ÚNETE AHORA",
     "urgency": "¡Solo quedan pocas plazas disponibles!"
   },
+
   "join": {
     "hero": {
       "titlePre": "ÚNETE AL",
@@ -276,6 +283,8 @@
       "title": {
         "part1": "¿Seguirás siendo invisible",
         "part2": "o te volverás imparable?"
+      },
+      "text": "Los débiles esperan. Los fuertes actúan. Los legendarios se unen a Golden Era."
     }
   }
 }
