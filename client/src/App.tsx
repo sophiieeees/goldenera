@@ -43,7 +43,6 @@ function App() {
             {/* Redirect any unknown routes to home */}
             <Route path="*" element={<Navigate to="/home" />} />
           </Routes>
-          <ChatbotWidget />
         </Router>
       </Elements>
     </LanguageProvider>
