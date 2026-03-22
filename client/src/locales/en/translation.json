@@ -1,249 +1,241 @@
-
 {
   "landing": {
-    "subtitle": "Transform Your Body, Transform Your Life",
+    "subtitle": "The difference between who you are and who you want to be.",
     "enter": "ENTER THE GOLDEN ERA"
   },
+
   "nav": {
     "home": "Home",
     "about": "About Us",
     "join": "Join the Club",
-    "gallery": "Gallery"
+    "gallery": "Results"
   },
+
   "home": {
     "phrases": {
       "phrase1": {
-        "part1": "Build a body that speaks for you.",
-        "part2": "Become untouchable."
+        "part1": "The difference between who you are and who you want to be,",
+        "part2": "is what you do today."
       },
-      "phrase2": "Transform your physique. Transform your life.",
+      "phrase2": "Transform your body. Transform your life.",
       "phrase3": {
-        "part1": "With no muscles comes no respect.",
-        "part2": "Build a body that commands attention."
+        "part1": "True confidence comes from knowing",
+        "part2": "that you are working on your best version."
       },
-      "phrase4": "Discipline builds muscle. Muscle builds confidence.",
+      "phrase4": "Physical discipline. Aesthetic optimization. Mental mastery.",
       "phrase5": {
         "part1": "Gold is forged with fire,",
-        "part2": "just as muscle with iron."
+        "part2": "appearance is perfected with strategy"
       },
-      "phrase6": "Your body is your first impression. Make it count."
+      "phrase6": "Your appearance is your first competitive advantage."
     },
+
     "hero": {
       "goldenBody": "GOLDEN BODY",
       "goldenMind": "GOLDEN MIND"
     },
+
     "philosophy": {
       "forgeYourLegacy": "FORGE YOUR LEGACY",
-      "legacy": "In a world full of weakness, strength prevails. Transform your body through science. Reclaim your respect. This 12 weeks program is for those ready to join the Elite.",
+      "legacy": "In a hyper-competitive and looks-focused world, your face and physique determine how people treat you, the opportunities you receive, and the standard of living you experience. This 12-week program is only for those ready to be part of the elite.",
       "philosophyTitle": "PHILOSOPHY",
-      "text": "In a world full of weak individuals, strength is what dominates. Transform your body with science. Reclaim your respect. This program is only for those who are ready to become part of the Elite.",
-      "cta": "BEGIN YOUR ERA"
+      "text": "True transformation doesn’t just happen in the body. It happens in the mind, in discipline, and in how you approach each day. Our system combines physical training, aesthetic optimization, advanced nutrition, and biohacking protocols to maximize your physique, presence, and mental performance.",
+      "cta": "START YOUR ERA"
     },
+
     "results": {
-      "title": "Guaranteed",
-      "titleLine2": "results",
-      "text": "Train with those who lead this world. We only take 50 clients per year. This program is not for everyone, it's only for the ones who dare to become elite. Experience your ideal body in just 60 days."
+      "title": "Results",
+      "titleLine2": "guaranteed",
+      "text": "Maximize your inner and outer self. We understand the science behind optimizing your physique, appearance, and performance. We reduce your body fat percentage, improve your physical presence, and apply modern performance protocols so you project confidence, energy, and mastery. We only accept 50 clients per year. This program isn’t for everyone; it’s for those ready to commit to their transformation. Build your best version."
     },
+
     "coach": {
       "title": "Your Coach",
       "name": "Mateo Haces",
       "quote": "Results speak louder than words",
       "instagram": "@mateo.haces",
-      "description": "Revolutions started, empires built. MMA fighter, bodybuilder, sports physiology expert — and, overall, a nice guy."
+      "description": "High-performance athlete, MMA fighter, and exercise physiology specialist. Mateo has dedicated his life to understanding how to transform the human body through science, discipline, physical training, aesthetic optimization, and modern biohacking protocols."
     },
+
     "method": {
-      "title": "GOLDEN ERA METHOD",
-      "description": "Our proven 3-step system to transform your body and mind into an unstoppable force.",
+      "title": "GOLDEN ERA LOOKSMAX METHOD",
+      "description": "Our proven three-step system to transform your life.",
       "steps": {
         "join": {
           "title": "Join the Elite Program",
-          "description": "Get instant access to your personalized training plan, nutrition guide, and exclusive Golden Era community."
+          "description": "Get instant access to your personalized training plan, habits, wardrobe, nutrition guide, and exclusive Golden Era community."
         },
         "material": {
-          "title": "Access Premium Material",
-          "description": "Receive your custom workout routines, meal plans, supplement protocols, and exclusive video content from our coaches."
+          "title": "Access Exclusive Material",
+          "description": "Receive strategic training, advanced nutrition, aesthetic optimization, supplement protocols, and exclusive video content from our coaches."
         },
         "work": {
-          "title": "Work & Transform",
-          "description": "Follow the program with discipline, track your progress, and watch your body transform into its golden version."
+          "title": "Train and Transform",
+          "description": "Weekly adjustments to improve your physique, presence, and mental performance. Watch yourself transform into your golden version."
         }
       }
     },
+
     "packages": {
-      "title": "Choose Your Golden Path",
-      "subtitle": "Transform your life with our 12 weeks exclusive training programs",
-      "offer_title": "LIMITED TIME OFFER",
+      "title": "Choose Your Golden Era",
+      "subtitle": "Transform your life, appearance, and performance with 12 weeks of our comprehensive optimization programs.",
+      "offer_title": "LIMITED TIME OFFER!",
       "membership_badge": "EXCLUSIVE MEMBERSHIP",
-      "most_exclusive": "MOST EXCLUSIVE",
+      "most_exclusive": "PREMIUM",
       "days": "DAYS",
       "hours": "HOURS",
       "minutes": "MIN",
       "seconds": "SEC",
-      "savings": "You save",
-      "spots_left": "Only {{count}} spots left",
+      "savings": "You Save",
+      "spots_left": "Only {{count}} spots left!",
       "standard": {
-        "name": "Golden Standard",
+        "name": "Golden Looksmax Standard",
         "type": "Online Program",
-        "description": "Complete online transformation program with personalized coaching and continuous support"
+        "description": "Comprehensive online program for physical transformation, aesthetic optimization, and mental performance with personalized coaching."
       },
       "deluxe": {
-        "name": "Ultra Deluxe",
-        "type": "In-Person - Mexico City",
-        "description": "The ultimate luxury fitness experience with in-person training in Mexico City"
+        "name": "Golden Looksmax Ultra Deluxe",
+        "type": "In-person - Mexico City",
+        "description": "Complete experience of physical, aesthetic, and biohacking optimization with in-person training in Mexico City and advanced protocols."
       },
       "features": {
-        "coaching": "Personal 1-on-1 Coaching",
-        "apps": "Premium Mobile Apps Access",
-        "recipes": "500+ Gourmet Healthy Recipes",
+        "coaching": "1-on-1 Personal Coaching",
+        "apps": "Access to Premium Tracking Apps",
+        "recipes": "500+ Healthy Gourmet Recipes",
         "merch": "Exclusive Golden Era Merchandise",
-        "support": "24/7 VIP Support",
+        "support": "VIP 24/7 Support",
         "tracking": "Advanced Progress Tracking",
-        "presential": "In-Person Training Sessions",
-        "location": "Mexico City Premium Facilities"
+        "presential": "In-person Training Sessions",
+        "location": "Premium Facilities in CDMX",
+        "style": "Men’s Wardrobe and Style Guide",
+        "grooming": "Grooming and Personal Care Protocols",
+        "skincare": "Skincare Routine for Facial Optimization",
+        "looksmax": "Aesthetic and Facial Optimization (Looksmaxing)",
+        "supplements": "Supplement Stacks for Performance and Aesthetics",
+        "biohacking": "Biohacking Protocols for Energy and Recovery",
+        "nootropics": "Nootropics for Mental Clarity and Productivity"
       },
       "cta": "Start Your Transformation"
     },
+
     "whyItWorks": {
-      "subtitle": "Our method is a compilation of science based lifting studies which unlock a persons full athletic potential.",
-      "clickCard": "Click on each card to learn more details.",
+      "subtitle": "Our method is a compilation of scientific lifting studies that unlock a person’s full athletic potential.",
+      "clickCard": "Click on each card to learn more.",
       "typewriter": {
         "phrase1": "TRANSFORM YOUR BODY",
         "phrase2": "UNLOCK YOUR POTENTIAL",
         "phrase3": "BECOME UNSTOPPABLE",
-        "phrase4": "GOLDEN ERA AWAITS"
+        "phrase4": "THE GOLDEN ERA AWAITS"
       },
       "cards": {
         "technique": {
-          "title": "Perfect technique exercises",
-          "frontText": "The right exercises with the correct technique",
+          "title": "Perfect Technique Exercises",
+          "frontText": "The correct exercises with proper technique",
           "backText": "Personalized coaching in every training session with real-time technique correction",
           "citation": "*Based on NSCA and ACE Fitness principles"
         },
         "recipes": {
-          "title": "Exclusive recipe book",
+          "title": "Exclusive Recipe Book",
           "frontText": "Exclusive recipe book for athletes",
           "backText": "Over 150 recipes designed by sports nutritionists to maximize your performance",
-          "citation": "*Developed with ISSN certified nutritionists"
+          "citation": "*Developed with ISSN-certified nutritionists"
         },
         "science": {
-          "title": "Proven scientific foundation",
-          "frontText": "Science-based training methodology",
-          "backText": "Based on NSCA, ACSM studies and the latest research in sports science",
-          "citation": "*Methodology backed by Journal of Strength Research"
+          "title": "Proven Scientific Basis",
+          "frontText": "Training methodology based on science",
+          "backText": "Based on studies from NSCA, ACSM, and the latest sports science research",
+          "citation": "Methodology supported by Journal of Strength Research"
         }
       },
       "stats": {
-        "improvement": "strength improvement in 12 weeks*",
-        "effectiveness": "more effective than training alone**",
-        "adherence": "program adherence rate***"
+        "improvement": "Strength improvement in 12 weeks",
+        "effectiveness": "More effective than training alone",
+        "adherence": "Program adherence rate"
       },
       "citations": {
-        "study": "*Internal study with 150 participants (2023-2024)",
-        "comparison": "**Compared to unsupervised training - JSCR 2023",
-        "retention": "***Golden Era client retention data 2024"
+        "study": "Internal study with 150 participants (2023-2024)",
+        "comparison": "Compared to unsupervised training - JSCR 2023",
+        "retention": "Golden Era client retention data 2024"
       }
     },
+
     "motivational": {
       "buildBody": "Build a body that speaks for you.",
       "becomeUntouchable": "Become untouchable."
     },
-    "testimonies": {
-      "title": "Testimonies",
-      "testimonial1": {
-        "text": "Greatness isn't born; it is achieved through relentless discipline.",
-        "author": "Andrew Tate"
-      },
-      "testimonial2": {
-        "text": "Your body is your empire. Build it with sweat, not excuses.",
-        "author": "Amades Llanos"
-      },
-      "testimonial3": {
-        "text": "The only way you gain mental toughness is to do things you're not happy doing. If you're comfortable, you're not growing.",
-        "author": "David Goggins"
-      }
-    },
+
     "partners": {
       "title": "Our Partners"
     },
+
     "footer": {
-      "followUs": "Follow us",
-      "description": "Stop waiting and start now. Contact us so we can help you get your dream body.",
-      "rights": "All rights reserved. Golden Era ®. A United Arab Emirates company."
+      "followUs": "Follow Us",
+      "description": "Stop waiting and start now. Contact us so we can help you achieve the body of your dreams.",
+      "rights": "All rights reserved. Golden Era ®. A company from the United Arab Emirates."
     }
   },
-  "joinElite": {
-    "title": "Join the Elite.",
-    "description": "Claim your respect today. Join the elite.",
-    "form": {
-      "name": "Full Name",
-      "phone": "Phone",
-      "email": "Email",
-      "submit": "BEGIN YOUR ERA",
-      "processing": "Sending...",
-      "successMessage": "Perfect! We've sent you a confirmation email. Our team will contact you soon.",
-      "errorMessage": "There was an error submitting the form. Please try again.",
-      "redirectMessage": "Redirecting to programs page...",
-      "errors": {
-        "nameRequired": "Name is required",
-        "nameTooShort": "Name must be at least 2 characters",
-        "nameInvalid": "Name can only contain letters and spaces",
-        "phoneRequired": "Phone is required",
-        "phoneInvalid": "Invalid phone format",
-        "emailRequired": "Email is required",
-        "emailInvalid": "Invalid email format"
-      }
-    }
-  },
+
   "about": {
     "hero": {
       "subtitle": "The Weak Make Excuses. The Strong Make History."
     },
+
     "mission": {
       "title": "Our Mission",
-      "text": "At Golden Era, we don't accept mediocrity. We transform the ambitious into the unstoppable. If you seek comfort, look elsewhere. Here we forge warriors who dominate in business, relationships, and life. Your weak body is a reflection of your weak mind. We fix both."
+      "text": "At Golden Era, we do not accept mediocrity. We transform ambitious people into unstoppable individuals. If you seek comfort, look elsewhere. Here we forge disciplined individuals who dominate in business, relationships, and life. The body reflects the mindset, and we work to strengthen both."
     },
+
     "vision": {
       "title": "Our Vision",
-      "text": "We envision a world where men are men. Where strength isn't optional, it's mandatory. Where every man walking the street radiates power, respect, and absolute dominance. The weak fear us. The strong respect us. The wise join us.",
+      "text": "We envision a world where people develop discipline, strength, and confidence. Where physical training becomes a tool to build character, leadership, and self-respect.",
       "stats": {
         "elite": "Elite Only",
         "excuses": "Excuses Accepted",
         "transformation": "Total Transformation"
       }
     },
+
     "values": {
       "title": "Our Values",
+
       "discipline": {
         "title": "Discipline",
-        "text": "Without discipline you're a slave to your impulses. With discipline you're the architect of your destiny."
+        "text": "Discipline is the foundation of all transformation. It turns goals into results."
       },
+
       "excellence": {
         "title": "Excellence",
-        "text": "Mediocrity is cancer. Excellence is the only cure. Be exceptional or be forgotten."
+        "text": "We seek constant improvement in every training, decision, and step of the process."
       },
+
       "transformation": {
         "title": "Transformation",
-        "text": "We destroy your weak version to build your unstoppable version. Pain is temporary, greatness is eternal."
+        "text": "The goal is not just to change the body, but to develop a strong and resilient mindset."
       },
+
       "leadership": {
         "title": "Leadership",
-        "text": "Leaders aren't born, they're forged in iron and sweat. Be the man other men want to be."
+        "text": "True leadership begins with personal mastery and the ability to inspire others."
       }
     },
+
     "power": {
       "title": "Absolute Power",
-      "subtitle": "Your weak physique screams your lack of discipline. Time to shut mouths and open eyes."
+      "subtitle": "Your physique reflects your discipline. It’s time to build the best version of yourself."
     },
+
     "cta": {
-      "title": "Will You Stay Weak or Become Legendary?",
-      "text": "Only 50 warriors per year. The weak hesitate. The strong act. Which are you?",
+      "title": "Will you stay the same or build your best version?",
+      "text": "Only 50 people per year are part of the program. Results depend on those who choose to commit.",
       "button": "DESTROY YOUR WEAKNESS"
     }
   },
+
   "gallery": {
-    "title": "Gallery",
+    "title": "Results",
     "loadMore": "Load More"
   },
+
   "common": {
     "loading": "Loading...",
     "error": "Error",
@@ -254,13 +246,27 @@
     "submit": "Submit",
     "cancel": "Cancel"
   },
+
+  "popup": {
+    "exclusiveOffer": "EXCLUSIVE OFFER",
+    "goldenEra": "GOLDEN ERA",
+    "discount": "50% OFF",
+    "expiresIn": "This offer expires in:",
+    "hours": "HOURS",
+    "minutes": "MIN",
+    "seconds": "SEC",
+    "onlyFirst": "Only for the first 20 clients",
+    "fullAccess": "Full access to the Golden Era program",
+    "joinNow": "JOIN NOW",
+    "urgency": "Only a few spots left!"
+  },
+
   "join": {
     "hero": {
       "titlePre": "JOIN THE",
       "titleMain": "ELITE CLUB",
-      "titlePost": "Only for those who dare to be legendary", 
-      "subtitle": "Stop being invisible. Stop being average. It's time to reclaim your respect and build the body that reflects your true potential. Only 50 warriors per year.",
-      "scrollIndicator": "Scroll to see plans"
+      "titlePost": "Only for those who dare to be their best version",
+      "subtitle": "Stop being invisible. Stop being average. It’s time to claim your respect. Only 50 warriors per year."
     },
     "stats": {
       "spots": "Annual Spots",
@@ -268,16 +274,15 @@
       "excuses": "Excuses"
     },
     "testimonial": {
-      "quote": "Golden Era is not just a fitness program. It's a complete transformation of who you are. They taught me that my body is my first business card, and now I command respect in every room I enter.",
-      "authorName": "Carlos Mendoza", 
+      "quote": "Golden Era is not just a fitness program. It’s a complete transformation of who you are. They taught me that my body is my first business card, and now I command respect in every room I enter.",
+      "authorName": "Carlos Mendoza",
       "authorTitle": "CEO, Tech Startup"
     },
     "finalCta": {
       "title": {
-        "part1": "Will you keep being invisible",
-        "part2": "or will you become unstoppable?"
-      },
-      "text": "The weak wait. The strong act. The legendary join Golden Era."
+        "part1": "Will you remain invisible",
+        "part2": "or become unstoppable?"
+      }
     }
   }
 }
