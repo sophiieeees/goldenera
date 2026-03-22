@@ -10,17 +10,23 @@ const Layout: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Mostrar widget después de navegar, pero no inmediatamente
     if (!location.pathname.includes('/gallery')) {
       const timer = setTimeout(() => {
-        // Verificar si ya se cerró hoy
+
         const lastClosed = localStorage.getItem('promoWidgetClosed');
-        const today = new Date().toDateString();
-        
-        if (lastClosed !== today) {
-          setShowPromoWidget(true);
+
+        if (lastClosed) {
+          const diff = Date.now() - parseInt(lastClosed);
+
+          // ⏱️ TIEMPO PARA QUE VUELVA A APARECER (10 min)
+          if (diff < 10 * 60 * 1000) {
+            return;
+          }
         }
-      }, 5000); // Aparece después de 5 segundos
+
+        setShowPromoWidget(true);
+
+      }, 5000); // aparece después de 5s
 
       return () => clearTimeout(timer);
     } else {
@@ -30,8 +36,9 @@ const Layout: React.FC = () => {
 
   const handleClosePromoWidget = () => {
     setShowPromoWidget(false);
-    // Recordar que se cerró hoy
-    localStorage.setItem('promoWidgetClosed', new Date().toDateString());
+
+    // 🔥 guardamos timestamp (NO fecha)
+    localStorage.setItem('promoWidgetClosed', Date.now().toString());
   };
 
   return (
@@ -41,6 +48,7 @@ const Layout: React.FC = () => {
         <Outlet />
       </main>
       <Footer />
+
       <PromoWidget 
         isActive={showPromoWidget}
         onClose={handleClosePromoWidget}
