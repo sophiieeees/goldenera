@@ -70,7 +70,7 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
     });
   };
 
-  // ❌ cerrar correctamente + guardar en Layout
+
   const handleClose = () => {
     animateOut();
 
@@ -79,7 +79,6 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
     }, 400);
   };
 
-  // ✅ navegación ORIGINAL (no se rompe)
   const handleJoinNow = () => {
     animateOut();
 
