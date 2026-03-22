@@ -266,8 +266,7 @@
       "titlePre": "ÚNETE AL",
       "titleMain": "CLUB ÉLITE", 
       "titlePost": "Solo para los que se atreven a ser su mejor versión",
-      "subtitle": "Deja de ser invisible. Deja de ser promedio. Es hora de reclamar tu respeto y construir el cuerpo que refleje tu verdadero potencial. Solo 50 guerreros por año.",
-      "scrollIndicator": "Scroll para ver planes"
+      "subtitle": "Deja de ser invisible. Deja de ser promedio. Es hora de reclamar tu respeto. Solo 50 guerreros por año.",
     },
     "stats": {
       "spots": "Lugares Anuales",
@@ -283,8 +282,7 @@
       "title": {
         "part1": "¿Seguirás siendo invisible",
         "part2": "o te volverás imparable?"
-      },
-      "text": "Los débiles esperan. Los fuertes actúan. Los legendarios se unen a Golden Era."
+      }
     }
   }
 }
