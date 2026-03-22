@@ -218,22 +218,18 @@ const About: React.FC = () => {
             />
             <div className="values-grid">
               <div className="value-card">
-                <div className="value-icon">⚔️</div>
                 <h3>{t('about.values.discipline.title')}</h3>
                 <p>{t('about.values.discipline.text')}</p>
               </div>
               <div className="value-card">
-                <div className="value-icon">👑</div>
                 <h3>{t('about.values.excellence.title')}</h3>
                 <p>{t('about.values.excellence.text')}</p>
               </div>
               <div className="value-card">
-                <div className="value-icon">🔥</div>
                 <h3>{t('about.values.transformation.title')}</h3>
                 <p>{t('about.values.transformation.text')}</p>
               </div>
               <div className="value-card">
-                <div className="value-icon">💪</div>
                 <h3>{t('about.values.leadership.title')}</h3>
                 <p>{t('about.values.leadership.text')}</p>
               </div>
