@@ -41,7 +41,6 @@ const Layout: React.FC = () => {
         <Outlet />
       </main>
       <Footer />
-      <WhatsAppWidget />
       <PromoWidget 
         isActive={showPromoWidget}
         onClose={handleClosePromoWidget}
