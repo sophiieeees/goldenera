@@ -15,25 +15,29 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
 
   const navigate = useNavigate();
   const location = useLocation();
-
   const widgetRef = useRef<HTMLDivElement>(null);
 
   const shouldShow = !location.pathname.includes('/gallery') && isActive;
 
+  // Mostrar widget
   useEffect(() => {
+    const closed = localStorage.getItem('promoClosed');
+    if (closed === 'true') return;
+
     if (shouldShow && !isVisible) {
       setIsVisible(true);
       setTimeout(() => animateIn(), 1200);
     }
   }, [shouldShow]);
 
+  // Timer
   useEffect(() => {
     if (!isVisible) return;
 
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
-          onClose();
+          handleClose();
           return 0;
         }
         return prev - 1;
@@ -43,6 +47,7 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
     return () => clearInterval(timer);
   }, [isVisible]);
 
+  // Animación entrada
   const animateIn = () => {
     if (!widgetRef.current) return;
 
@@ -53,6 +58,7 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
     );
   };
 
+  // Animación salida + cierre real
   const animateOut = () => {
     if (!widgetRef.current) return;
 
@@ -62,13 +68,25 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
       scale: 0.95,
       duration: 0.4,
       ease: 'power3.in',
-      onComplete: () => setIsVisible(false)
+      onComplete: () => {
+        setIsVisible(false);
+        handleClose();
+      }
     });
   };
 
+  // Cierre global
+  const handleClose = () => {
+    localStorage.setItem('promoClosed', 'true'); // no vuelve a aparecer
+    onClose();
+  };
+
+  // Ir a paquetes
   const handleJoin = () => {
     animateOut();
-    setTimeout(() => navigate('/join'), 400);
+    setTimeout(() => {
+      navigate('/join#packages');
+    }, 400);
   };
 
   const formatTime = (s: number) => {
@@ -106,7 +124,7 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
             </div>
 
             <button className="promo-widget__cta" onClick={handleJoin}>
-              Comenzar ahora
+              Ver paquetes
             </button>
 
             <div className="promo-widget__urgency">
