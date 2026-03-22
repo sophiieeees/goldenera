@@ -11,6 +11,7 @@ import JoinClub from './pages/JoinClub/JoinClub';
 import Gallery from './pages/Gallery/Gallery';
 import './styles/global.scss';
 import MerchPage from './pages/Merch/MerchPage';
+import ChatbotWidget from './components/ChatbotWidget';
 
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY!);
@@ -42,6 +43,7 @@ function App() {
             {/* Redirect any unknown routes to home */}
             <Route path="*" element={<Navigate to="/home" />} />
           </Routes>
+          <ChatbotWidget />
         </Router>
       </Elements>
     </LanguageProvider>
