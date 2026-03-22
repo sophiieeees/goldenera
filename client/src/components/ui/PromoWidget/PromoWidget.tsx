@@ -15,26 +15,29 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
 
   const navigate = useNavigate();
   const location = useLocation();
+
   const widgetRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const minimizedRef = useRef<HTMLDivElement>(null);
 
   const shouldShow = !location.pathname.includes('/gallery') && isActive;
 
-  // Mostrar widget
   useEffect(() => {
     if (shouldShow && !isVisible) {
       setIsVisible(true);
       setTimeout(() => animateIn(), 1200);
+    } else if (!shouldShow && isVisible) {
+      animateOut();
     }
   }, [shouldShow]);
 
-  // Timer
   useEffect(() => {
     if (!isVisible) return;
 
     const timer = setInterval(() => {
-      setTimeLeft(prev => {
+      setTimeLeft((prev) => {
         if (prev <= 1) {
-          animateOut();
+          onClose();
           return 0;
         }
         return prev - 1;
@@ -42,103 +45,135 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isVisible]);
+  }, [isVisible, onClose]);
 
-  // Animación entrada
   const animateIn = () => {
     if (!widgetRef.current) return;
 
     gsap.fromTo(
       widgetRef.current,
-      { y: 40, opacity: 0, scale: 0.95 },
-      { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' }
+      { x: 300, opacity: 0, scale: 0.85 },
+      { x: 0, opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' }
     );
   };
 
-  // Animación salida + cierre real
   const animateOut = () => {
-    if (!widgetRef.current) {
-      onClose();
-      return;
-    }
+    if (!widgetRef.current) return;
 
     gsap.to(widgetRef.current, {
-      y: 40,
+      x: 300,
       opacity: 0,
-      scale: 0.95,
+      scale: 0.85,
       duration: 0.4,
       ease: 'power3.in',
-      onComplete: () => {
-        setIsVisible(false);
-        onClose(); // 🔥 cierre REAL controlado por Layout
-      }
+      onComplete: () => setIsVisible(false)
     });
   };
 
-  // Ir a paquetes
-  const handleJoin = () => {
+  const handleClose = () => {
     animateOut();
+
     setTimeout(() => {
-      navigate('/join#packages');
+      onClose();
     }, 400);
   };
 
-  const formatTime = (s: number) => {
-    const h = Math.floor(s / 3600);
-    const m = Math.floor((s % 3600) / 60);
-    const sec = s % 60;
-    return `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+  const handleJoinNow = () => {
+    animateOut();
+
+    setTimeout(() => {
+      navigate('/join');
+    }, 400);
+  };
+
+  const handleMinimize = () => {
+    if (!contentRef.current || !minimizedRef.current) return;
+
+    if (!isMinimized) {
+      gsap.to(contentRef.current, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.25
+      });
+
+      gsap.to(minimizedRef.current, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.25,
+        delay: 0.15
+      });
+    } else {
+      gsap.to(minimizedRef.current, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.25
+      });
+
+      gsap.to(contentRef.current, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.25,
+        delay: 0.15
+      });
+    }
+
+    setIsMinimized(!isMinimized);
+  };
+
+  const formatTime = (seconds: number) => {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+
+    return `${h.toString().padStart(2, '0')}:${m
+      .toString()
+      .padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
   if (!isVisible) return null;
 
   return (
     <div className="promo-widget" ref={widgetRef}>
-      
-      {!isMinimized && (
-        <div className="promo-widget__content">
+      {/* HEADER */}
+      <div className="promo-widget__header">
+        <button onClick={handleMinimize}>—</button>
+        <button onClick={handleClose}>✕</button>
+      </div>
 
-          <div className="promo-widget__header">
-            <button onClick={() => setIsMinimized(true)}>—</button>
-            <button onClick={animateOut}>×</button>
-          </div>
+      {/* CONTENT */}
+      <div
+        className="promo-widget__content"
+        ref={contentRef}
+        style={{ display: isMinimized ? 'none' : 'block' }}
+      >
+        <div className="promo-widget__badge">50% OFF</div>
 
-          <div className="promo-widget__body">
+        <h3>Oferta exclusiva</h3>
+        <p>Comienza tu transformación hoy</p>
 
-            <div className="promo-widget__badge">
-              <span>50% OFF</span>
-            </div>
-
-            <div className="promo-widget__title">
-              Acceso exclusivo
-            </div>
-
-            <div className="promo-widget__timer">
-              {formatTime(timeLeft)}
-            </div>
-
-            <button className="promo-widget__cta" onClick={handleJoin}>
-              Ver paquetes
-            </button>
-
-            <div className="promo-widget__urgency">
-              ● 7 lugares disponibles
-            </div>
-
-          </div>
+        <div className="promo-widget__timer">
+          {formatTime(timeLeft)}
         </div>
-      )}
 
-      {isMinimized && (
-        <div 
-          className="promo-widget__min" 
-          onClick={() => setIsMinimized(false)}
-        >
-          <span>50% OFF</span>
-          <span>{formatTime(timeLeft)}</span>
-        </div>
-      )}
+        <button className="promo-widget__cta" onClick={handleJoinNow}>
+          Comenzar
+        </button>
 
+        <span className="promo-widget__spots">
+          Solo 7 lugares disponibles
+        </span>
+      </div>
+
+      {/* MINIMIZED */}
+      <div
+        className="promo-widget__minimized"
+        ref={minimizedRef}
+        onClick={handleMinimize}
+        style={{ display: isMinimized ? 'flex' : 'none' }}
+      >
+        <span>50% OFF</span>
+        <span>{formatTime(timeLeft)}</span>
+      </div>
     </div>
   );
 };
