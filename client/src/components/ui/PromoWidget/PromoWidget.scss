@@ -14,13 +14,13 @@
     background: linear-gradient(
       145deg,
       rgba(30, 30, 30, 0.9),
-      rgba(10, 10, 10, 0.95)
+      rgba(10, 10, 10, 0.6)
     );
 
     backdrop-filter: blur(20px);
 
     /* 🔥 BORDE DORADO */
-    border: 1px solid rgba(255, 215, 0, 0.25);
+    border: 1px solid rgba(255, 215, 0, 0.30);
 
     box-shadow:
       0 25px 70px rgba(0,0,0,0.8),
@@ -70,8 +70,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
-      text-decoration: none !important;
 
       transition: all 0.2s ease;
 
