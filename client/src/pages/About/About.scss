@@ -221,11 +221,6 @@
     transition: transform 0.5s ease;
     border-radius: 15px; 
   }
-
-  &:hover .section-image {
-    transform: scale(1);
-     transition: none;
-  }
 }
 
 // Stats Grid
@@ -290,7 +285,7 @@
 
     .value-card {
       padding: 40px;
-      border: 2px solid rgba($golden, 0.3);
+      border: 3px solid rgba($golden, 0.3);
       text-align: center;
 
       display: flex;        
@@ -371,6 +366,7 @@
 
     &:hover .gallery-image {
       transform: scale(1.05); 
+      border-color: $golden;
     }
   }
 
