@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import { ourMission, ourVision, ourValues, absolutePower } from '../../assets/images';
-import {heroImg} from '../assets/images/imagen9.jpeg';
+import heroImg from '../assets/images/imagen9.jpeg'; // ✅ CORRECTO
 import './About.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -99,18 +99,15 @@ const About: React.FC = () => {
           <div className="section-content" ref={addToRefs}>
             <div className="content-wrapper">
               <div className="text-content">
-
                 <h2 className="section-title center">
                   {t('about.mission.title')}
                   <span className="arabic-overlay">مهمتنا</span>
                 </h2>
-
                 <p className="section-text">
                   {t('about.mission.text')}
                 </p>
                 <div className="golden-line"></div>
               </div>
-
               <div className="image-content">
                 <img 
                   src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=800&q=80"
@@ -129,16 +126,13 @@ const About: React.FC = () => {
           <div className="section-content" ref={addToRefs}>
             <div className="content-wrapper reverse">
               <div className="text-content">
-
                 <h2 className="section-title center">
                   {t('about.vision.title')}
                   <span className="arabic-overlay">رؤيتنا</span>
                 </h2>
-
                 <p className="section-text">
                   {t('about.vision.text')}
                 </p>
-
                 <div className="stats-grid">
                   <div className="stat-item">
                     <span className="stat-number">50</span>
@@ -154,7 +148,6 @@ const About: React.FC = () => {
                   </div>
                 </div>
               </div>
-
               <div className="image-content">
                 <img 
                   src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800&q=80" 
@@ -171,14 +164,11 @@ const About: React.FC = () => {
       <section className="about-section values-section">
         <div className="container">
           <div className="section-content" ref={addToRefs}>
-
             <h2 className="section-title center">
               {t('about.values.title')}
               <span className="arabic-overlay">قيقيمنا</span>
             </h2>
-
             <div className="values-grid">
-              {/* LEFT */}
               <div className="column">
                 <div className="value-card">
                   <h3>{t('about.values.discipline.title')}</h3>
@@ -189,8 +179,6 @@ const About: React.FC = () => {
                   <p>{t('about.values.excellence.text')}</p>
                 </div>
               </div>
-
-              {/* RIGHT */}
               <div className="column">
                 <div className="value-card">
                   <h3>{t('about.values.transformation.title')}</h3>
@@ -202,7 +190,6 @@ const About: React.FC = () => {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -212,17 +199,14 @@ const About: React.FC = () => {
         <div className="container">
           <div className="section-content" ref={addToRefs}>
             <div className="power-header">
-
               <h2 className="section-title center">
                 {t('about.power.title')}
                 <span className="arabic-overlay">قوالسلطة المطلقة</span>
               </h2>
-
               <p className="section-subtitle">
                 {t('about.power.subtitle')}
               </p>
             </div>
-
             <div className="power-gallery">
               <div className="gallery-item">
                 <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" className="gallery-image"/>
@@ -234,7 +218,6 @@ const About: React.FC = () => {
                 <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80" className="gallery-image"/>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -243,15 +226,12 @@ const About: React.FC = () => {
       <section className="about-section cta-section">
         <div className="container">
           <div className="cta-content" ref={addToRefs}>
-            
             <h2 className="cta-title">
               {t('about.cta.title')}
             </h2>
-
             <p className="cta-text">
               {t('about.cta.text')}
             </p>
-
             <button className="cta-button" onClick={handleCTAClick}>
               {t('about.cta.button')}
             </button>
