@@ -244,7 +244,7 @@ const About: React.FC = () => {
           <div className="cta-content" ref={addToRefs}>
             
             <h2 className="cta-title">
-              Seguirás siendo igual o <span>tu mejor versión</span>
+              ¿Seguirás siendo igual o <span> tu mejor versión?</span>
             </h2>
 
             <p className="cta-text">
