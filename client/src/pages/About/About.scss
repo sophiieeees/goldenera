@@ -254,8 +254,8 @@
   .section-title {
     text-align: center;
     position: relative;
-    font-size: clamp(60px, 7vw, 90px);
-    margin-bottom: 120px;
+    font-size: clamp(60px, 7vw, 56px);
+    margin-bottom: 80px;
 
     .arabic-overlay {
       position: absolute;
@@ -312,7 +312,7 @@
 
     .section-title {
     color: $white;
-    font-size: clamp(60px, 7vw, 90px);
+    font-size: clamp(60px, 7vw, 80px);
     margin-bottom: 40px;
     position: relative;
     z-index: 2;
@@ -321,7 +321,7 @@
           position: absolute;
           left: 50%;
           top: -50px;
-          transform: translateX(-50%);
+          transform: translateX(-10%);
           font-size: 120px;
           color: rgba($golden, 0.12);
           z-index: 0;
@@ -332,7 +332,7 @@
     .section-subtitle {
       font-size: 26px;
       color: $white;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
   }
 
