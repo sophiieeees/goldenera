@@ -117,7 +117,7 @@ const About: React.FC = () => {
                 <img 
                   src={misionImg}
                   alt="Training" 
-                  className="static-image"
+                  className="section-image"
                 />
               </div>
             </div>
