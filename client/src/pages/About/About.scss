@@ -81,7 +81,7 @@
   }
 }
 
-// Sections base (SIN CAMBIOS)
+// Sections base
 .about-section {
   padding: 100px 0;
   position: relative;
@@ -171,7 +171,7 @@
 
     &.center {
       text-align: center;
-      
+
       .arabic-overlay {
         right: 50%;
         transform: translateX(50%);
@@ -249,9 +249,8 @@
   }
 }
 
-// VALUES (AQUÍ SÍ CAMBIAMOS)
+// VALUES
 .values-section {
-
   .section-title {
     text-align: center;
     position: relative;
@@ -302,7 +301,7 @@
   }
 }
 
-// POWER (REGRESADO A ORIGINAL)
+// POWER (FIX AQUÍ)
 .power-section {
   background: #0a0a0a;
 
@@ -313,7 +312,7 @@
       color: $white;
       position: relative;
 
-.arabic-decoration {
+      .arabic-decoration {
         position: absolute;
         left: 50%;
         top: -50px;
@@ -339,7 +338,6 @@
         }
       }
     }
-    }
   }
 
   .power-gallery {
@@ -359,7 +357,7 @@
   }
 }
 
-// CTA (REGRESADO + botón nuevo)
+// CTA
 .cta-section {
   background: $black;
   text-align: center;
