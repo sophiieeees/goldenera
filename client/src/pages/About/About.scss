@@ -285,13 +285,19 @@
       border: 2px solid rgba($golden, 0.3);
       text-align: center;
 
-      h2¿3 {
+      display: flex;        
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 200px;        
+
+      h3 {                        
         color: $golden;
         margin-bottom: 10px;
       }
 
       p {
         color: $black;
+        flex-grow: 1;           
       }
 
       &:hover {
