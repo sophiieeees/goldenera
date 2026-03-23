@@ -167,7 +167,7 @@ const About: React.FC = () => {
               <div className="text-content">
                 
               <h2 className="section-title center">
-              <span className="gold-text">{t('about.vission.title')}</span>
+              <span className="gold-text">{t('about.vision.title')}</span>
               </h2>
                 
                 <p className="section-text">
