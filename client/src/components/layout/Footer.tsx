@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
   const currentUrl = window.location.href;
   const pageTitle = document.title;
 
-  const WHATSAPP_MESSAGE = `${t('footer.whatsapp')}
+  const WHATSAPP_MESSAGE = `${t('home.footer.whatsapp')}
 
 Página: ${pageTitle}
  ${currentUrl}`;
@@ -23,7 +23,7 @@ Página: ${pageTitle}
           
           {/* LEFT */}
           <div className="footer-brand">
-            <h3>{t('footer.followUs')}</h3>
+            <h3>{t('home.footer.followUs')}</h3>
           </div>
       
           {/* RIGHT */}
@@ -58,7 +58,7 @@ Página: ${pageTitle}
 
         {/* BOTTOM */}
         <div className="footer-bottom">
-          <p>{t('footer.rights')}</p>
+          <p>{t('home.footer.rights')}</p>
         </div>
 
       </div>
