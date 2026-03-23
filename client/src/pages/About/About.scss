@@ -100,6 +100,7 @@
 
     .section-text {
       color: rgba($white, 0.9);
+      text-align: center;
     }
 
     .arabic-overlay {
@@ -154,6 +155,7 @@
     margin-bottom: 30px;
     text-transform: uppercase;
     position: relative;
+    text-align: center;
 
     .arabic-overlay {
       position: absolute;
@@ -185,7 +187,7 @@
     font-size: 18px;
     line-height: 1.8;
     margin-bottom: 30px;
-    color: $gray;
+    color: $black;
     font-weight: 400;
   }
 
