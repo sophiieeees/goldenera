@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import { ourMission, ourVision, ourValues, absolutePower } from '../../assets/images';
-import visionImg from '../../assets/images/imagen11.jpeg'; 
+import visionImg from '../../assets/images/imagen7.jpeg'; 
 import misionImg from '../../assets/images/imagen12.jpeg'; 
 import powerImg1 from '../../assets/images/imagen1.jpeg'; 
 import powerImg2 from '../../assets/images/imagen5.jpeg'; 
