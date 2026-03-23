@@ -253,116 +253,46 @@
 .values-section {
   .section-title {
     text-align: center;
-    display: block;
     margin-bottom: 80px;
-    position: relative;
     font-size: clamp(48px, 6vw, 72px);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: $black;
-
-    // Efecto de texto con gradiente dorado
-    background: linear-gradient(135deg, $black 0%, $golden 50%, $black 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: goldShift 4s ease infinite;
-
-    .arabic-decoration {
-      position: absolute;
-      left: 50%;
-      top: -60px;
-      transform: translateX(-50%);
-      font-size: clamp(70px, 10vw, 90px);
-      color: rgba($golden, 0.08);
-      font-weight: 700;
-      font-family: $font-arabic;
-      white-space: nowrap;
-      pointer-events: none;
-      line-height: 1;
-      width: 100%;
-      text-align: center;
-      -webkit-text-fill-color: rgba($golden, 0.08);
-      background: none;
-      animation: none;
-
-      @media (max-width: $tablet) {
-        font-size: 60px;
-        top: -45px;
-      }
-
-      @media (max-width: $mobile) {
-        font-size: 50px;
-        top: -40px;
-      }
-    }
+    color: $golden; // dorado limpio
   }
 
   .values-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 900px;
+    margin: 0 auto;
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
 
     .value-card {
-      text-align: center;
-      padding: 40px 30px;
+      padding: 30px;
+      border: 1px solid rgba($golden, 0.3);
       background: $white;
-      border: 2px solid rgba($golden, 0.3);
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: $golden;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.3s ease;
-      }
+      transition: 0.3s;
 
       &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba($black, 0.2);
         border-color: $golden;
-
-        &::before {
-          transform: scaleX(1);
-        }
-
-        .value-icon {
-          transform: scale(1.2);
-        }
-      }
-
-      .value-icon {
-        font-size: 56px;
-        margin-bottom: 20px;
-        transition: transform 0.3s ease;
+        transform: translateY(-5px);
       }
 
       h3 {
-        font-family: $font-primary;
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        color: $black;
+        font-size: 22px;
+        color: $golden;
+        margin-bottom: 10px;
       }
 
       p {
-        font-family: $font-secondary;
-        font-size: 16px;
-        line-height: 1.6;
         color: $gray;
-        font-weight: 500;
       }
     }
   }
