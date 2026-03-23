@@ -107,6 +107,28 @@
       color: rgba($golden, 0.3) !important;
     }
   }
+
+.image-content {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;      // bordes redondeados
+  box-shadow: 0 20px 60px rgba($black, 0.3); // sombra
+
+  .section-image {
+    width: auto; 
+    max-width: 90%; 
+    max-height: 500px; 
+    object-fit: cover; // si quieres que ocupe bien el espacio
+    display: block;
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+    border-radius: 15px; // aplica a la imagen también
+  }
+}
+  
 }
 
 .container {
@@ -198,27 +220,6 @@
     background: $golden;
     margin-top: 30px;
     box-shadow: 0 0 10px rgba($golden, 0.5);
-  }
-}
-
-.image-content {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;      // bordes redondeados
-  box-shadow: 0 20px 60px rgba($black, 0.3); // sombra
-
-  .section-image {
-    width: auto; 
-    max-width: 90%; 
-    max-height: 500px; 
-    object-fit: cover; // si quieres que ocupe bien el espacio
-    display: block;
-    transform: scale(1.05);
-    transition: transform 0.5s ease;
-    border-radius: 15px; // aplica a la imagen también
   }
 }
 
