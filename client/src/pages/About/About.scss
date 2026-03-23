@@ -1,4 +1,3 @@
-// client/src/pages/About/About.scss
 @import '../../styles/variables';
 
 .about-page {
@@ -201,120 +200,29 @@
   }
 }
 
-.image-content {
+// IMAGENES DE MISION Y VISION
+.mission-section .image-content,
+.vision-section .image-content {
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 0 20px 60px rgba($black, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
 
   .section-image {
-    width: auto; 
-    max-width: 90%; 
-    max-height: 500px; 
-    object-fit: contain; 
+    width: auto;
+    max-width: 90%;
+    max-height: 500px; // altura uniforme
+    object-fit: contain; // mantiene proporción
     display: block;
-    transform: scale(1.05);
-    transition: transform 0.5s ease;
-    border-radius: 15px; 
-  }
-
-  &:hover .section-image {
     transform: scale(1);
-     transition: none;
+    transition: none; // sin animación hover
+    border-radius: 15px;
   }
 }
 
-// Stats Grid
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 40px;
-
-  .stat-item {
-    text-align: center;
-
-    .stat-number {
-      display: block;
-      font-family: $font-primary;
-      font-size: clamp(40px, 6vw, 56px);
-      font-weight: 700;
-      color: $golden;
-      margin-bottom: 10px;
-    }
-
-    .stat-label {
-      font-family: $font-secondary;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-  }
-}
-
-// VALUES
-.values-section {
-  .section-title {
-    text-align: center;
-    position: relative;
-    font-size: clamp(36px, 5vw, 56px);
-    margin-bottom: 20px;
-
-    .arabic-overlay {
-      position: absolute;
-      top: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 100px;
-      color: rgba($golden, 0.6);
-      z-index: -5;
-    }
-  }
-
-  .values-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    max-width: 900px;
-    margin: 0 auto;
-
-    .column {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    .value-card {
-      padding: 40px;
-      border: 2px solid rgba($golden, 0.3);
-      text-align: center;
-
-      display: flex;        
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 200px;        
-
-      h3 {                        
-        color: $golden;
-        margin-bottom: 10px;
-      }
-
-      p {
-        color: $black;
-        flex-grow: 1;           
-      }
-
-      &:hover {
-        border-color: $golden;
-        transform: translateY(-5px);
-      }
-    }
-  }
-}
 // POWER
 .power-section {
   background: #0a0a0a;
@@ -336,7 +244,7 @@
         font-size: 60px;
         color: rgba($golden, 0.5); 
         z-index: 0;
-    }
+      }
     }
 
     .section-subtitle {
@@ -346,45 +254,68 @@
     }
   }
 
-.power-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 30px;
+  .power-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
 
-  .gallery-item {
-    width: 100%;
-    height: 450px; 
-    background: #f0f0f0; 
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .gallery-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    &:hover .gallery-image {
-      transform: scale(1.05); 
-    }
-  }
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr); 
-  }
-
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr; 
     .gallery-item {
-      height: 200px; 
+      width: 100%;
+      height: 450px; 
+      background: #f0f0f0; 
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      .gallery-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: all 0.3s ease;
+      }
+
+      &:hover .gallery-image {
+        transform: scale(1.05); 
+      }
+
+      // Destello dorado al hover
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba($golden, 0.4),
+          transparent
+        );
+        transition: all 0.6s ease;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        left: 100%;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr; 
+      .gallery-item {
+        height: 200px; 
+      }
     }
   }
-}
 }
 
 // CTA
@@ -406,56 +337,56 @@
     color: $white;
   }
 
-.cta-button {
-  padding: 18px 50px;
-  background: transparent;
-  border: 1px solid rgba($golden, 0.6);
-  color: $white;
-  margin-top: 10px;
-  border-radius: 40px;
+  .cta-button {
+    padding: 18px 50px;
+    background: transparent;
+    border: 1px solid rgba($golden, 0.6);
+    color: $white;
+    margin-top: 10px;
+    border-radius: 40px;
 
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 
-  box-shadow: 0 0 10px rgba($golden, 0.2);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      120deg,
-      transparent,
-      rgba($golden, 0.4),
-      transparent
-    );
-    transition: all 0.6s ease;
-  }
-
-  &:hover {
-    background: $golden;
-    color: $black;
-    border-color: $golden;
-
-    transform: translateY(-2px);
-
-    box-shadow: 
-      0 0 20px rgba($golden, 0.5),
-      0 10px 30px rgba($golden, 0.2);
+    box-shadow: 0 0 10px rgba($golden, 0.2);
 
     &::before {
-      left: 100%;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba($golden, 0.4),
+        transparent
+      );
+      transition: all 0.6s ease;
+    }
+
+    &:hover {
+      background: $golden;
+      color: $black;
+      border-color: $golden;
+
+      transform: translateY(-2px);
+
+      box-shadow: 
+        0 0 20px rgba($golden, 0.5),
+        0 10px 30px rgba($golden, 0.2);
+
+      &::before {
+        left: 100%;
+      }
     }
   }
-}
 }
 
 // MOBILE
