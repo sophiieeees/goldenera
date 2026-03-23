@@ -243,11 +243,11 @@ const About: React.FC = () => {
         <div className="container">
           <div className="section-content" ref={addToRefs}>
             <div className="power-header">
-              <img 
-                src={absolutePower} 
-                alt="Absolute Power"
-                className="section-title-image center"
-              />
+              
+              <h2 className="section-title center">
+              <span className="gold-text">{t('about.power.title')}</span>
+              </h2>
+              
               <p className="section-subtitle">
                 {t('about.power.subtitle')}
               </p>
