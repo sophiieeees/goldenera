@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
   const WHATSAPP_MESSAGE = `${t('footer.whatsapp')}
 
 Página: ${pageTitle}
-🔗 ${currentUrl}`;
+ ${currentUrl}`;
 
   return (
     <footer className="footer-minimal">
