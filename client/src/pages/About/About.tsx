@@ -233,7 +233,7 @@ const About: React.FC = () => {
           <div className="cta-content" ref={addToRefs}>
             <h2 className="cta-title">
               {t('about.cta.title.part1')} 
-              {t('about.cta.title.part2')}
+             <span {t('about.cta.title.part2')}></span>
             </h2>
             <p className="cta-text">
               {t('about.cta.text')}
