@@ -182,12 +182,12 @@
     },
 
     "mission": {
-      "title": "Nuestra Misión",
+      "title": "NUESTRA MISIÓN",
       "text": "En Golden Era, no aceptamos la mediocridad. Transformamos a los ambiciosos en personas imparables. Si buscas comodidad, busca en otro lado. Aquí forjamos individuos disciplinados que dominan en los negocios, en las relaciones y en la vida. El cuerpo refleja la mentalidad, y nosotros trabajamos para fortalecer ambos."
     },
 
     "vision": {
-      "title": "Nuestra Visión",
+      "title": "NUESTRA VISIÓN",
       "text": "Visualizamos un mundo donde las personas desarrollan disciplina, fuerza y confianza. Donde cada individuo optimiza su cuerpo, su mente y su apariencia como herramientas estratégicas para dominar su entorno.",
       "stats": {
         "elite": "GUERREROS",
@@ -197,31 +197,31 @@
     },
 
     "values": {
-      "title": "Nuestros Valores",
+      "title": "NUESTROS VALORES",
 
       "discipline": {
-        "title": "Disciplina",
+        "title": "DISCIPLINA",
         "text": "La disciplina es la base de toda transformación. Es lo que convierte los objetivos en resultados."
       },
 
       "excellence": {
-        "title": "Excelencia",
+        "title": "EXCELENCIA",
         "text": "Buscamos la mejora constante en cada entrenamiento, en cada decisión y en cada paso del proceso."
       },
 
       "transformation": {
-        "title": "Transformación",
+        "title": "TRANSFORMACIÓN",
         "text": "El objetivo no es solo cambiar el cuerpo, sino desarrollar una mentalidad fuerte y resiliente."
       },
 
       "leadership": {
-        "title": "Liderazgo",
+        "title": "LLIDERAZGO",
         "text": "El verdadero liderazgo comienza con el dominio personal y la capacidad de inspirar a otros."
       }
     },
 
     "power": {
-      "title": "Poder Absoluto",
+      "title": "PODER ABSOLUTO",
       "subtitle": "Tu físico refleja tu disciplina. Es momento de construir la mejor versión de ti mismo."
     },
 
