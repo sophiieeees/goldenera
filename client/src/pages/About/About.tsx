@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import { ourMission, ourVision, ourValues, absolutePower } from '../../assets/images';
-import heroImg from '../assets/imagenes/imagen9.jpeg';
+import heroImg from '../assets/images/imagen9.jpeg';
 import './About.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -245,7 +245,7 @@ const About: React.FC = () => {
           <div className="cta-content" ref={addToRefs}>
             
             <h2 className="cta-title">
-              ¿SEGUIRÁS SIENDO IGUAL O <span> TU MEJOR VERSIÓN?</span>
+              {t('about.cta.title')}
             </h2>
 
             <p className="cta-text">
