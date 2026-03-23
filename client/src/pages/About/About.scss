@@ -81,14 +81,14 @@
     }
 
     .arabic-overlay {
-      color: rgba($golden, 0.5) !important;
+      color: rgba($golden, 0.5) !important; // ✅ transparencia igualada
     }
   }
 }
 
 .container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 20px;
 
   @media (min-width: $tablet) {
@@ -119,14 +119,12 @@
   }
 }
 
+// TEXT
 .text-content {
   .section-title {
     font-family: $font-primary;
-    font-size: clamp(36px, 5vw, 56px);
+    font-size: clamp(36px, 5vw, 56px); // ✅ tamaño base (MISIÓN)
     font-weight: 600;
-    line-height: 1.1;
-    margin-bottom: 30px;
-    text-transform: uppercase;
     position: relative;
 
     .arabic-overlay {
@@ -134,8 +132,7 @@
       top: -10px;
       right: 20px;
       font-size: clamp(40px, 8vw, 80px);
-      color: rgba($golden, 0.5);
-      font-weight: 700;
+      color: rgba($golden, 0.5); // ✅ transparencia igualada
       z-index: -1;
       font-family: $font-arabic;
     }
@@ -149,28 +146,25 @@
       }
     }
   }
-
-  .section-text {
-    font-size: 18px;
-    color: $gray;
-  }
-
-  .golden-line {
-    width: 60px;
-    height: 4px;
-    background: $golden;
-  }
 }
 
 // VALUES
 .values-section {
   .section-title {
-    font-size: clamp(36px, 5vw, 56px);
+    font-size: clamp(36px, 5vw, 56px); // ✅ igualado
     margin-bottom: 80px;
 
     .arabic-overlay {
-      color: rgba($golden, 0.5);
+      color: rgba($golden, 0.5); // ✅ igualado
     }
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 900px;
+    margin: 0 auto;
   }
 }
 
@@ -182,11 +176,19 @@
     text-align: center;
 
     .section-title {
-      font-size: clamp(36px, 5vw, 56px);
+      font-size: clamp(36px, 5vw, 56px); // ✅ igualado
       color: $white;
+      position: relative;
+      z-index: 2;
 
       .arabic-decoration {
-        color: rgba($golden, 0.5);
+        position: absolute;
+        left: 50%;
+        top: -50px;
+        transform: translateX(-50%);
+        font-size: 120px;
+        color: rgba($golden, 0.5); // ✅ igualado
+        z-index: 0;
       }
     }
 
@@ -194,6 +196,12 @@
       font-size: 26px;
       color: $white;
     }
+  }
+
+  .power-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
   }
 }
 
@@ -203,7 +211,7 @@
   text-align: center;
 
   .cta-title {
-    font-size: clamp(36px, 5vw, 56px);
+    font-size: clamp(36px, 5vw, 56px); // ✅ igualado
     color: $white;
 
     span {
@@ -214,18 +222,6 @@
   .cta-text {
     font-size: 22px;
     color: $white;
-  }
-
-  .cta-button {
-    padding: 18px 50px;
-    background: transparent;
-    border: 1px solid $golden;
-    color: $white;
-
-    &:hover {
-      background: $golden;
-      color: $black;
-    }
   }
 }
 
