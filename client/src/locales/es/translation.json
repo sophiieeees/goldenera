@@ -226,7 +226,7 @@
     },
 
     "cta": {
-      "title": "¿SEGUIRÁS IGUAL O CONSTRUIRÁS TU MEJOR VERSIÓN?",
+      "title": "¿SEGUIRÁS IGUAL O <span class='golden-text'>CONSTRUIRÁS TU MEJOR VERSIÓN?</span>",
       "text": "Solo 50 personas al año forman parte del programa. Los resultados dependen de quienes deciden comprometerse.",
       "button": "DESTRUYE TU DEBILIDAD"
     }
