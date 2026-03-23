@@ -250,7 +250,7 @@
   .section-title {
     text-align: center;
     position: relative;
-    font-size: clamp(60px, 7vw, 90px);
+    font-size: clamp(36px, 5vw, 56px);
     margin-bottom: 120px;
 
     .arabic-overlay {
@@ -279,7 +279,7 @@
 
     .value-card {
       padding: 40px;
-      border: 1px solid rgba($golden, 0.3);
+      border: 2px solid rgba($golden, 0.3);
       text-align: center;
 
       h3 {
@@ -312,14 +312,18 @@
       position: relative;
 
       .arabic-decoration {
-        position: absolute;
-        left: 50%;
-        top: -50px;
-        transform: translateX(-50%);
-        font-size: 120px;
-        color: rgba($golden, 0.5);
-        z-index: -1;
-      }
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      font-size: clamp(40px, 8vw, 80px);
+      color: rgba($golden, 0.5);
+      font-weight: 700;
+      z-index: -1;
+      line-height: 1;
+      text-shadow: 0 0 20px rgba($golden, 0.3);
+      font-family: $font-arabic;
+      opacity: 1;
+    }
     }
 
     .section-subtitle {
