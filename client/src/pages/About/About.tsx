@@ -5,8 +5,12 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import { ourMission, ourVision, ourValues, absolutePower } from '../../assets/images';
-import visionImg from '../../assets/images/imagen9.jpeg'; 
+import visionImg from '../../assets/images/imagen11.jpeg'; 
 import misionImg from '../../assets/images/imagen12.jpeg'; 
+import powerImg1 from '../../assets/images/imagen1.jpeg'; 
+import powerImg2 from '../../assets/images/imagen5.jpeg'; 
+import powerImg3 from '../../assets/images/imagen4.jpeg'; 
+
 import './About.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -210,13 +214,13 @@ const About: React.FC = () => {
             </div>
             <div className="power-gallery">
               <div className="gallery-item">
-                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" className="gallery-image"/>
+                <img src={powerImg1}/>
               </div>
               <div className="gallery-item">
-                <img src="https://images.unsplash.com/photo-1530822847156-5df684ec5ee1?w=600&q=80" className="gallery-image"/>
+                <img src={powerImg2}/>
               </div>
               <div className="gallery-item">
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80" className="gallery-image"/>
+                <img src={powerImg3}/>
               </div>
             </div>
           </div>
