@@ -301,72 +301,37 @@
   }
 
   .values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-    .value-card {
-      text-align: center;
-      padding: 40px 30px;
-      background: $white;
-      border: 2px solid rgba($golden, 0.3);
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+.value-card {
+  border: none;
+  border-left: 2px solid rgba($golden, 0.3);
+  padding: 20px 0 20px 30px;
+  background: transparent;
+  text-align: left;
 
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: $golden;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.3s ease;
-      }
+  h3 {
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: $golden;
+  }
 
-      &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba($black, 0.2);
-        border-color: $golden;
+  p {
+    opacity: 0.7;
+    font-size: 16px;
+  }
 
-        &::before {
-          transform: scaleX(1);
-        }
-
-        .value-icon {
-          transform: scale(1.2);
-        }
-      }
-
-      .value-icon {
-        font-size: 56px;
-        margin-bottom: 20px;
-        transition: transform 0.3s ease;
-      }
-
-      h3 {
-        font-family: $font-primary;
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        color: $black;
-      }
-
-      p {
-        font-family: $font-secondary;
-        font-size: 16px;
-        line-height: 1.6;
-        color: $gray;
-        font-weight: 500;
-      }
-    }
+  &:hover {
+    border-left: 2px solid $golden;
+    transform: translateX(10px);
   }
 }
+
 
 // Animación de gradiente dorado
 @keyframes goldShift {
