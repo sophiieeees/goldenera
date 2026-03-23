@@ -101,7 +101,7 @@ const About: React.FC = () => {
 
                 <h2 className="section-title center">
                   {t('about.mission.title')}
-                  <span className="arabic-overlay">القوة</span>
+                  <span className="arabic-overlay">مهمتنا/span>
                 </h2>
 
                 <p className="section-text">
@@ -131,7 +131,7 @@ const About: React.FC = () => {
 
                 <h2 className="section-title center">
                   {t('about.vision.title')}
-                  <span className="arabic-overlay">رؤية</span>
+                  <span className="arabic-overlay">رؤيتنا/span>
                 </h2>
 
                 <p className="section-text">
@@ -173,7 +173,7 @@ const About: React.FC = () => {
 
             <h2 className="section-title center">
               {t('about.values.title')}
-              <span className="arabic-overlay">قيم</span>
+              <span className="arabic-overlay">قيقيمنا</span>
             </h2>
 
             <div className="values-grid">
@@ -214,7 +214,7 @@ const About: React.FC = () => {
 
               <h2 className="section-title center">
                 {t('about.power.title')}
-                <span className="arabic-overlay">قوة</span>
+                <span className="arabic-overlay">قوالسلطة المطلقة</span>
               </h2>
 
               <p className="section-subtitle">
