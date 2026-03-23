@@ -17,25 +17,17 @@
 
   .hero-background {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+    inset: 0;
 
     .hero-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background: linear-gradient(
         135deg,
         rgba($black, 0.9) 0%,
         rgba($black, 0.5) 50%,
         rgba($black, 0.9) 100%
       );
-      z-index: 1;
     }
 
     .hero-image {
@@ -49,218 +41,89 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 0 20px;
 
     .hero-title {
-      font-family: $font-primary;
       font-size: clamp(48px, 10vw, 120px);
-      font-weight: 700;
-      line-height: 1;
       color: $white;
-      margin-bottom: 20px;
       text-transform: uppercase;
-      letter-spacing: 2px;
 
       .golden-text {
         color: $golden;
-        text-shadow: 0 0 30px rgba($golden, 0.8),
-                     0 0 60px rgba($golden, 0.6),
-                     0 0 90px rgba($golden, 0.4);
       }
     }
 
     .hero-subtitle {
-      font-family: $font-secondary;
-      font-size: clamp(20px, 3vw, 32px);
       color: $white;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-shadow: 0 2px 10px rgba($black, 0.5);
     }
   }
 }
 
-// Common Section Styles
+// Sections
 .about-section {
   padding: 100px 0;
-  position: relative;
-
-  @media (max-width: $tablet) {
-    padding: 60px 0;
-  }
 
   &.dark-section {
     background: $black;
     color: $white;
-
-    .section-title {
-      color: $white;
-    }
-
-    .section-text {
-      color: rgba($white, 0.9);
-    }
-
-    .arabic-overlay {
-      color: rgba($golden, 0.3) !important;
-    }
   }
 }
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   padding: 0 20px;
+}
 
-  @media (min-width: $tablet) {
-    padding: 0 40px;
+// Titles
+.section-title {
+  position: relative;
+  text-align: center;
+  font-size: clamp(36px, 5vw, 56px);
+  text-transform: uppercase;
+
+  .arabic-overlay {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(70px, 10vw, 100px);
+    color: rgba($golden, 0.15);
+    font-family: $font-arabic;
+    z-index: -1;
   }
 }
 
-.section-content {
-  position: relative;
-}
-
+// Content
 .content-wrapper {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 60px;
-  align-items: center;
-
-  @media (min-width: $desktop) {
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-  }
-
-  &.reverse {
-    @media (min-width: $desktop) {
-      .text-content {
-        order: 2;
-      }
-      .image-content {
-        order: 1;
-      }
-    }
-  }
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
 }
 
 .text-content {
-  .section-title {
-    font-family: $font-primary;
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 600;
-    line-height: 1.1;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    position: relative;
-
-    .arabic-overlay {
-      position: absolute;
-      top: -30px;
-      right: 0;
-      font-size: clamp(70px, 10vw, 100px);
-      color: rgba($golden, 0.25);
-      font-weight: 700;
-      z-index: -1;
-      line-height: 1;
-      text-shadow: 0 0 20px rgba($golden, 0.3);
-      font-family: $font-arabic;
-      opacity: 1;
-    }
-
-    &.center {
-      text-align: center;
-      
-      .arabic-overlay {
-        right: 50%;
-        transform: translateX(50%);
-        top: -40px;
-      }
-    }
-  }
-
   .section-text {
-    font-family: $font-secondary;
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 30px;
     color: $gray;
-    font-weight: 400;
-  }
-
-  .golden-line {
-    width: 60px;
-    height: 4px;
-    background: $golden;
-    margin-top: 30px;
-    box-shadow: 0 0 10px rgba($golden, 0.5);
   }
 }
 
+// Images
 .image-content {
-  position: relative;
-  overflow: hidden;
   border-radius: 5px;
-  box-shadow: 0 20px 60px rgba($black, 0.3);
+  overflow: hidden;
 
   .section-image {
     width: 100%;
-    height: auto;
-    display: block;
   }
 }
 
-// Stats Grid
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 40px;
-
-  .stat-item {
-    text-align: center;
-
-    .stat-number {
-      display: block;
-      font-family: $font-primary;
-      font-size: clamp(40px, 6vw, 56px);
-      font-weight: 700;
-      color: $golden;
-      line-height: 1;
-      margin-bottom: 10px;
-      text-shadow: 0 0 20px rgba($golden, 0.5);
-    }
-
-    .stat-label {
-      font-family: $font-secondary;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.9;
-      font-weight: 600;
-    }
-  }
-}
-
-// Values Section
+// ================= VALUES =================
 .values-section {
-  .section-title {
-    text-align: center;
-    margin-bottom: 80px;
-    font-size: clamp(48px, 6vw, 72px);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: $black; 
-  }
-
   .values-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     max-width: 900px;
-    margin: 0 auto;
+    margin: auto;
 
     .column {
       display: flex;
@@ -269,11 +132,11 @@
     }
 
     .value-card {
-      padding: 40px 30px; // 👈 más alto (antes 30px)
+      padding: 40px 30px;
       border: 1px solid rgba($golden, 0.3);
       background: $white;
+      text-align: center;
       transition: 0.3s;
-      text-align: center; // 👈 CENTRADO
 
       &:hover {
         border-color: $golden;
@@ -281,30 +144,68 @@
       }
 
       h3 {
-        font-size: 22px;
         color: $golden;
         margin-bottom: 15px;
       }
 
       p {
         color: $gray;
-        text-align: center; // 👈 CENTRADO
         max-width: 90%;
-        margin: 0 auto; // 👈 centra el bloque de texto
-        line-height: 1.7;
+        margin: auto;
       }
     }
   }
 }
 
-// Power Section
+// ================= POWER =================
 .power-section {
   background: #0a0a0a;
+
+  .power-header {
+    text-align: center;
+    margin-bottom: 60px;
+
+    .section-title {
+      color: $white;
+
+      .arabic-overlay {
+        color: rgba($golden, 0.15);
+      }
+    }
+
+    .section-subtitle {
+      color: rgba($white, 0.8);
+    }
+  }
+
+  .power-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+
+    .gallery-item {
+      height: 400px;
+      overflow: hidden;
+      border-radius: 10px;
+
+      .gallery-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(50%);
+        transition: 0.5s;
+      }
+
+      &:hover .gallery-image {
+        filter: grayscale(0%) contrast(1.2);
+      }
+    }
+  }
 }
 
-// CTA Section
+// ================= CTA =================
 .cta-section {
-  background: linear-gradient(135deg, $black 0%, #1a1a1a 100%);
+  background: $black;
   padding: 120px 0;
 
   .cta-content {
@@ -312,20 +213,27 @@
 
     .cta-title {
       color: $white;
+      position: relative;
 
       span {
         color: $golden;
+      }
+
+      .arabic-overlay {
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba($golden, 0.15);
+        font-family: $font-arabic;
       }
     }
 
     .cta-button {
       padding: 18px 50px;
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: 2px;
       background: transparent;
-      color: $white;
       border: 1px solid $golden;
+      color: $white;
 
       &:hover {
         background: $golden;
@@ -337,7 +245,15 @@
 
 // Mobile
 @media (max-width: $mobile) {
+  .content-wrapper {
+    grid-template-columns: 1fr;
+  }
+
   .values-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .power-gallery {
     grid-template-columns: 1fr !important;
   }
 }
