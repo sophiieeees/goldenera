@@ -21,21 +21,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
 
     .hero-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       background: linear-gradient(
         135deg,
-        rgba($black, 0.9) 0%,
-        rgba($black, 0.5) 50%,
-        rgba($black, 0.9) 100%
+        rgba($black, 0.9),
+        rgba($black, 0.5),
+        rgba($black, 0.9)
       );
-      z-index: 1;
     }
 
     .hero-image {
@@ -47,36 +43,19 @@
 
   .hero-content {
     position: relative;
-    z-index: 2;
     text-align: center;
-    padding: 0 20px;
 
     .hero-title {
-      font-family: $font-primary;
       font-size: clamp(48px, 10vw, 120px);
-      font-weight: 700;
-      line-height: 1;
       color: $white;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
 
       .golden-text {
         color: $golden;
-        text-shadow: 0 0 30px rgba($golden, 0.8),
-                     0 0 60px rgba($golden, 0.6),
-                     0 0 90px rgba($golden, 0.4);
       }
     }
 
     .hero-subtitle {
-      font-family: $font-secondary;
-      font-size: clamp(20px, 3vw, 32px);
       color: $white;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-shadow: 0 2px 10px rgba($black, 0.5);
     }
   }
 }
@@ -84,7 +63,6 @@
 // Sections base
 .about-section {
   padding: 100px 0;
-  position: relative;
 
   @media (max-width: $tablet) {
     padding: 60px 0;
@@ -103,14 +81,14 @@
     }
 
     .arabic-overlay {
-      color: rgba($golden, 0.3) !important;
+      color: rgba($golden, 0.5) !important;
     }
   }
 }
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   padding: 0 20px;
 
   @media (min-width: $tablet) {
@@ -135,12 +113,8 @@
 
   &.reverse {
     @media (min-width: $desktop) {
-      .text-content {
-        order: 2;
-      }
-      .image-content {
-        order: 1;
-      }
+      .text-content { order: 2; }
+      .image-content { order: 1; }
     }
   }
 }
@@ -158,15 +132,12 @@
     .arabic-overlay {
       position: absolute;
       top: -10px;
-      right: 20;
-      font-size: clamp(70px, 10vw, 100px);
-      color: rgba($golden, 1);
+      right: 20px;
+      font-size: clamp(40px, 8vw, 80px);
+      color: rgba($golden, 0.5);
       font-weight: 700;
       z-index: -1;
-      line-height: 1;
-      text-shadow: 0 0 20px rgba($golden, 0.3);
       font-family: $font-arabic;
-      opacity: 1;
     }
 
     &.center {
@@ -175,135 +146,35 @@
       .arabic-overlay {
         right: 50%;
         transform: translateX(50%);
-        top: -40px;
       }
     }
   }
 
   .section-text {
-    font-family: $font-secondary;
     font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 30px;
     color: $gray;
-    font-weight: 400;
   }
 
   .golden-line {
     width: 60px;
     height: 4px;
     background: $golden;
-    margin-top: 30px;
-    box-shadow: 0 0 10px rgba($golden, 0.5);
   }
 }
 
-.image-content {
-  position: relative;
-  overflow: hidden;
-  border-radius: 5px;
-  box-shadow: 0 20px 60px rgba($black, 0.3);
-
-  .section-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    transform: scale(1.1);
-    transition: transform 0.5s ease;
-  }
-
-  &:hover .section-image {
-    transform: scale(1);
-  }
-}
-
-// Stats Grid
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 40px;
-
-  .stat-item {
-    text-align: center;
-
-    .stat-number {
-      display: block;
-      font-family: $font-primary;
-      font-size: clamp(40px, 6vw, 56px);
-      font-weight: 700;
-      color: $golden;
-      line-height: 1;
-      margin-bottom: 10px;
-      text-shadow: 0 0 20px rgba($golden, 0.5);
-    }
-
-    .stat-label {
-      font-family: $font-secondary;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.9;
-      font-weight: 600;
-    }
-  }
-}
-
-// VALUES (solo tamaño + espacio)
+// VALUES
 .values-section {
   .section-title {
-    text-align: center;
-    position: relative;
-    font-size: clamp(60px, 7vw, 56px);
+    font-size: clamp(36px, 5vw, 56px);
     margin-bottom: 80px;
 
     .arabic-overlay {
-      position: absolute;
-      top: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 120px;
-      color: rgba($golden, 0.1);
-      z-index: -5;
-    }
-  }
-
-  .values-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    max-width: 900px;
-    margin: 0 auto;
-
-    .column {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    .value-card {
-      padding: 40px;
-      border: 1px solid rgba($golden, 0.3);
-      text-align: center;
-
-      h3 {
-        color: $golden;
-        margin-bottom: 10px;
-      }
-
-      p {
-        color: $gray;
-      }
-
-      &:hover {
-        border-color: $golden;
-        transform: translateY(-5px);
-      }
+      color: rgba($golden, 0.5);
     }
   }
 }
 
-// POWER (solo tamaños + blanco)
+// POWER
 .power-section {
   background: #0a0a0a;
 
@@ -311,57 +182,29 @@
     text-align: center;
 
     .section-title {
-    color: $white;
-    font-size: clamp(60px, 7vw, 80px);
-    margin-bottom: 40px;
-    position: relative;
-    z-index: 2;
+      font-size: clamp(36px, 5vw, 56px);
+      color: $white;
 
       .arabic-decoration {
-          position: absolute;
-          left: 50%;
-          top: -50px;
-          transform: translateX(-10%);
-          font-size: 120px;
-          color: rgba($golden, 0.12);
-          z-index: 0;
-          pointer-events: none;
+        color: rgba($golden, 0.5);
       }
     }
 
     .section-subtitle {
       font-size: 26px;
       color: $white;
-      margin-bottom: 50px;
-    }
-  }
-
-  .power-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-
-    .gallery-item {
-      height: 400px;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
     }
   }
 }
 
-// CTA (solo tamaños + espacio)
+// CTA
 .cta-section {
   background: $black;
   text-align: center;
 
   .cta-title {
-    font-size: clamp(50px, 6vw, 80px);
+    font-size: clamp(36px, 5vw, 56px);
     color: $white;
-    margin-bottom: 30px;
 
     span {
       color: $golden;
@@ -371,7 +214,6 @@
   .cta-text {
     font-size: 22px;
     color: $white;
-    margin-bottom: 60px;
   }
 
   .cta-button {
@@ -379,7 +221,6 @@
     background: transparent;
     border: 1px solid $golden;
     color: $white;
-    letter-spacing: 2px;
 
     &:hover {
       background: $golden;
