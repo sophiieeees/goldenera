@@ -6,7 +6,13 @@ import './Footer.scss';
 const Footer: React.FC = () => {
   const { t } = useTranslation();
 
-  const WHATSAPP_MESSAGE = '¡Hola! Vengo de la página web de Golden Era y me interesa comenzar mi transformación. ¿Podrían darme más información?';
+  const currentUrl = window.location.href;
+  const pageTitle = document.title;
+
+  const WHATSAPP_MESSAGE = `${t('footer.whatsapp')}
+
+Página: ${pageTitle}
+🔗 ${currentUrl}`;
 
   return (
     <footer className="footer-minimal">
@@ -52,7 +58,7 @@ const Footer: React.FC = () => {
 
         {/* BOTTOM */}
         <div className="footer-bottom">
-          <p>{t('Golden Era ®. Una empresa de Emiratos Árabes Unidos.')}</p>
+          <p>{t('footer.rights')}</p>
         </div>
 
       </div>
