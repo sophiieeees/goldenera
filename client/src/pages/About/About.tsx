@@ -137,11 +137,9 @@ const About: React.FC = () => {
           <div className="section-content" ref={addToRefs}>
             <div className="content-wrapper">
               <div className="text-content">
-                <img 
-                  src={ourMission} 
-                  alt="Our Mission"
-                  className="section-title-image"
-                />
+              <h2 className="section-title center">
+              <span className="gold-text">{t('about.values.title')}</span>
+              </h2>
                 <p className="section-text">
                   {t('about.mission.text')}
                 </p>
