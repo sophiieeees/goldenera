@@ -157,10 +157,10 @@
 
     .arabic-overlay {
       position: absolute;
-      top: -30px;
-      right: 0;
+      top: -10px;
+      right: 20;
       font-size: clamp(70px, 10vw, 100px);
-      color: rgba($golden, 0.25);
+      color: rgba($golden, 1);
       font-weight: 700;
       z-index: -1;
       line-height: 1;
@@ -311,19 +311,21 @@
     text-align: center;
 
     .section-title {
-      color: $white;
-      font-size: clamp(60px, 7vw, 90px);
-      margin-bottom: 40px;
-      position: relative;
+    color: $white;
+    font-size: clamp(60px, 7vw, 90px);
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
 
       .arabic-decoration {
-        position: absolute;
-        left: 50%;
-        top: -50px;
-        transform: translateX(-50%);
-        font-size: 100px;
-        color: rgba($golden, 0.1);
-        z-index: -1;
+          position: absolute;
+          left: 50%;
+          top: -50px;
+          transform: translateX(-50%);
+          font-size: 120px;
+          color: rgba($golden, 0.12);
+          z-index: 0;
+          pointer-events: none;
       }
     }
 
