@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import { ourMission, ourVision, ourValues, absolutePower } from '../../assets/images';
-import heroImg from '../assets/images/imagen9.jpeg';
+import {heroImg} from '../assets/images/imagen9.jpeg';
 import './About.scss';
 
 gsap.registerPlugin(ScrollTrigger);
