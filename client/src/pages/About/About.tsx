@@ -5,7 +5,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import { ourMission, ourVision, ourValues, absolutePower } from '../../assets/images';
-import heroImg from '../../assets/images/imagen9.jpeg'; 
+import visionImg from '../../assets/images/imagen9.jpeg'; 
+import misionImg from '../../assets/images/imagen12.jpeg'; 
 import './About.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -110,7 +111,7 @@ const About: React.FC = () => {
               </div>
               <div className="image-content">
                 <img 
-                  src={heroImg}
+                  src={misionImg}
                   alt="Training" 
                   className="static-image"
                 />
@@ -150,7 +151,7 @@ const About: React.FC = () => {
               </div>
               <div className="image-content">
                 <img 
-                  src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800&q=80" 
+                  src={visionImg}
                   alt="Power" 
                   className="section-image"
                 />
