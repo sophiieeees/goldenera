@@ -137,11 +137,11 @@ const About: React.FC = () => {
           <div className="section-content" ref={addToRefs}>
             <div className="content-wrapper">
               <div className="text-content">
-                <img 
-                  src={ourMission} 
-                  alt="Our Mission"
-                  className="section-title-image"
-                />
+                
+              <h2 className="section-title center">
+              <span className="gold-text">{t('about.mission.title')}</span>
+              </h2>
+                
                 <p className="section-text">
                   {t('about.mission.text')}
                 </p>
@@ -165,11 +165,11 @@ const About: React.FC = () => {
           <div className="section-content" ref={addToRefs}>
             <div className="content-wrapper reverse">
               <div className="text-content">
-                <img 
-                  src={ourVision} 
-                  alt="Our Vision"
-                  className="section-title-image"
-                />
+                
+              <h2 className="section-title center">
+              <span className="gold-text">{t('about.vision.title')}</span>
+              </h2>
+                
                 <p className="section-text">
                   {t('about.vision.text')}
                 </p>
@@ -211,29 +211,25 @@ const About: React.FC = () => {
       <section className="about-section values-section">
         <div className="container">
           <div className="section-content" ref={addToRefs}>
-            <img 
-              src={ourValues} 
-              alt="Our Values"
-              className="section-title-image center"
-            />
+            
+              <h2 className="section-title center">
+              <span className="gold-text">{t('about.values.title')}</span>
+              </h2>
+            
             <div className="values-grid">
               <div className="value-card">
-                <div className="value-icon">⚔️</div>
                 <h3>{t('about.values.discipline.title')}</h3>
                 <p>{t('about.values.discipline.text')}</p>
               </div>
               <div className="value-card">
-                <div className="value-icon">👑</div>
                 <h3>{t('about.values.excellence.title')}</h3>
                 <p>{t('about.values.excellence.text')}</p>
               </div>
               <div className="value-card">
-                <div className="value-icon">🔥</div>
                 <h3>{t('about.values.transformation.title')}</h3>
                 <p>{t('about.values.transformation.text')}</p>
               </div>
               <div className="value-card">
-                <div className="value-icon">💪</div>
                 <h3>{t('about.values.leadership.title')}</h3>
                 <p>{t('about.values.leadership.text')}</p>
               </div>
@@ -247,11 +243,11 @@ const About: React.FC = () => {
         <div className="container">
           <div className="section-content" ref={addToRefs}>
             <div className="power-header">
-              <img 
-                src={absolutePower} 
-                alt="Absolute Power"
-                className="section-title-image center"
-              />
+              
+              <h2 className="section-title center">
+              <span className="gold-text">{t('about.power.title')}</span>
+              </h2>
+              
               <p className="section-subtitle">
                 {t('about.power.subtitle')}
               </p>
