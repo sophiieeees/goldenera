@@ -338,30 +338,46 @@
     }
   }
 
-  .power-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    
-    .gallery-item {
+.power-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // 3 columnas en desktop
+  gap: 30px;
+
+  .gallery-item {
     width: 100%;
-    height: 500px;
+    height: 250px; // altura uniforme
+    background: #f0f0f0; // color de fondo para imágenes pequeñas
+    border-radius: 12px;
     overflow: hidden;
-    border-radius: 12px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .gallery-image {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; // cubre el contenedor sin deformarse
       display: block;
-      transition: transform 0.3s ease; 
+      transition: transform 0.3s ease;
     }
 
     &:hover .gallery-image {
-      transform: scale(1.05); 
+      transform: scale(1.05); // efecto hover
     }
   }
+
+  // Responsive
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr); // 2 columnas en tablet
   }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr; // 1 columna en móvil
+    .gallery-item {
+      height: 200px; // ajustar altura en móvil
+    }
+  }
+}
 }
 
 // CTA
