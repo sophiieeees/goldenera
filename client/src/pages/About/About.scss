@@ -317,9 +317,9 @@
       .arabic-overlay {
         position: absolute;
         left: 50%;
-        top: -30px;
+        top: -50px;
         transform: translateX(-50%);
-        font-size: 80px;
+        font-size: 60px;
         color: rgba($golden, 0.5); 
         z-index: 0;
     }
