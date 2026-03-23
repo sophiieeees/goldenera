@@ -4,36 +4,89 @@ import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
+import { ourMission, ourVision, ourValues, absolutePower } from '../../assets/images';
 import './About.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const sectionRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
   const contentRefs = useRef<HTMLDivElement[]>([]);
+  const imageRefs = useRef<HTMLImageElement[]>([]);
 
   useEffect(() => {
+    // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      contentRefs.current.forEach((ref) => {
-        gsap.fromTo(ref,
-          { y: 80, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: ref,
-              start: "top 85%",
-            }
+      // Hero animation
+      if (heroRef.current) {
+        gsap.fromTo(heroRef.current.querySelector('.hero-title'),
+          { y: 100, opacity: 0 },
+          { 
+            y: 0, 
+            opacity: 1, 
+            duration: 1.2,
+            ease: "power3.out"
           }
         );
+
+        gsap.fromTo(heroRef.current.querySelector('.hero-subtitle'),
+          { y: 50, opacity: 0 },
+          { 
+            y: 0, 
+            opacity: 1, 
+            duration: 1,
+            delay: 0.3,
+            ease: "power3.out"
+          }
+        );
+      }
+
+      // Content sections animation
+      contentRefs.current.forEach((ref, index) => {
+        if (ref) {
+          gsap.fromTo(ref,
+            { y: 80, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: ref,
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+              }
+            }
+          );
+        }
+      });
+
+      // Images parallax effect
+      imageRefs.current.forEach((img, index) => {
+        if (img) {
+          gsap.fromTo(img,
+            { y: 100, scale: 1.1 },
+            {
+              y: -50,
+              scale: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: img,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
+              }
+            }
+          );
+        }
       });
     }, sectionRef);
 
@@ -46,166 +99,209 @@ const About: React.FC = () => {
     }
   };
 
+  const addToImageRefs = (el: HTMLImageElement) => {
+    if (el && !imageRefs.current.includes(el)) {
+      imageRefs.current.push(el);
+    }
+  };
+
   const handleCTAClick = () => {
     navigate('/join');
   };
 
   return (
-    <div className="about-page v2" ref={sectionRef}>
-
-      {/* HERO */}
-      <section className="hero-v2">
-        <div className="overlay" />
-        <img
-          src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=1920"
-          alt="Elite Physique"
-        />
-
+    <div className="about-page" ref={sectionRef}>
+      {/* Hero Section */}
+      <section className="about-hero" ref={heroRef}>
+        <div className="hero-background">
+          <div className="hero-overlay"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80" 
+            alt="Dubai Skyline" 
+            className="hero-image"
+          />
+        </div>
         <div className="hero-content">
-          <h1>
-            GOLDEN ERA
-            <span> LOOKSMAX</span>
+          <h1 className="hero-title">
+            <span className="golden-text">GOLDEN</span> ERA
           </h1>
-
-          <p>
-            No es fitness. Es dominación estética, mental y biológica.
+          <p className="hero-subtitle">
+            {t('about.hero.subtitle')}
           </p>
         </div>
       </section>
 
-      {/* MISSION */}
-      <section className="section mission" ref={addToRefs}>
+      {/* Mission Section */}
+      <section className="about-section mission-section">
         <div className="container">
-          <h2>NUESTRA MISIÓN</h2>
-
-          <p>
-            En Golden Era no aceptamos la mediocridad. Transformamos individuos
-            en máquinas de alto rendimiento físico, mental y estético.
-            Aquí no vienes a "mejorar un poco", vienes a construir una versión
-            que domina en todas las áreas.
-          </p>
-        </div>
-      </section>
-
-      {/* SYSTEM */}
-      <section className="section system dark" ref={addToRefs}>
-        <div className="container">
-
-          <h2>THE SYSTEM</h2>
-
-          <div className="system-grid">
-
-            <div className="system-card">
-              <span>01</span>
-              <h3>Diagnose</h3>
-              <p>
-                Análisis completo de físico, cara, hábitos y biología.
-              </p>
+          <div className="section-content" ref={addToRefs}>
+            <div className="content-wrapper">
+              <div className="text-content">
+                <img 
+                  src={ourMission} 
+                  alt="Our Mission"
+                  className="section-title-image"
+                />
+                <p className="section-text">
+                  {t('about.mission.text')}
+                </p>
+                <div className="golden-line"></div>
+              </div>
+              <div className="image-content">
+                <img 
+                  src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=800&q=80"
+                  alt="Disciplined Training" 
+                  className="static-image"
+                />
+              </div>
             </div>
-
-            <div className="system-card">
-              <span>02</span>
-              <h3>Execute</h3>
-              <p>
-                Protocolos diarios: entrenamiento, nutrición y biohacking.
-              </p>
-            </div>
-
-            <div className="system-card">
-              <span>03</span>
-              <h3>Compound</h3>
-              <p>
-                Ajustes estratégicos para maximizar resultados exponenciales.
-              </p>
-            </div>
-
           </div>
         </div>
       </section>
 
-      {/* VISION */}
-      <section className="section vision" ref={addToRefs}>
+      {/* Vision Section */}
+      <section className="about-section vision-section dark-section">
         <div className="container">
-
-          <h2>NUESTRA VISIÓN</h2>
-
-          <p>
-            Crear individuos que proyecten poder, disciplina y estatus
-            en cualquier entorno.
-          </p>
-
-          <div className="stats">
-            <div>
-              <h3>50</h3>
-              <span>Elite anual</span>
+          <div className="section-content" ref={addToRefs}>
+            <div className="content-wrapper reverse">
+              <div className="text-content">
+                <img 
+                  src={ourVision} 
+                  alt="Our Vision"
+                  className="section-title-image"
+                />
+                <p className="section-text">
+                  {t('about.vision.text')}
+                </p>
+                <div className="stats-grid">
+                  <div className="stat-item">
+                    <span className="stat-number">50</span>
+                    <span className="stat-label">
+                      {t('about.vision.stats.elite')}
+                    </span>
+                  </div>
+                  <div className="stat-item">
+                    <span className="stat-number">0%</span>
+                    <span className="stat-label">
+                      {t('about.vision.stats.excuses')}
+                    </span>
+                  </div>
+                  <div className="stat-item">
+                    <span className="stat-number">100%</span>
+                    <span className="stat-label">
+                      {t('about.vision.stats.transformation')}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="image-content">
+                <img 
+                  ref={addToImageRefs}
+                  src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800&q=80" 
+                  alt="Power Training" 
+                  className="section-image"
+                />
+              </div>
             </div>
-
-            <div>
-              <h3>0%</h3>
-              <span>Mediocridad</span>
-            </div>
-
-            <div>
-              <h3>100%</h3>
-              <span>Transformación</span>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* VALUES */}
-      <section className="section values" ref={addToRefs}>
-        <div className="container">
-
-          <h2>NUESTROS VALORES</h2>
-
-          <div className="values-grid">
-
-            <div className="value">
-              <h3>Disciplina</h3>
-              <p>Sin disciplina no existe transformación real.</p>
-            </div>
-
-            <div className="value">
-              <h3>Excelencia</h3>
-              <p>Optimización constante en cada aspecto.</p>
-            </div>
-
-            <div className="value">
-              <h3>Transformación</h3>
-              <p>Cambio físico, mental y estético total.</p>
-            </div>
-
-            <div className="value">
-              <h3>Liderazgo</h3>
-              <p>Dominio personal antes que externo.</p>
-            </div>
-
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section cta dark" ref={addToRefs}>
+      {/* Values Section */}
+      <section className="about-section values-section">
         <div className="container">
-
-          <h2>
-            Acceso limitado.
-          </h2>
-
-          <p>
-            Solo un número reducido entra cada año.
-            Si estás listo para dejar de ser promedio, este es tu momento.
-          </p>
-
-          <button onClick={handleCTAClick}>
-            Aplicar ahora
-          </button>
-
+          <div className="section-content" ref={addToRefs}>
+            <img 
+              src={ourValues} 
+              alt="Our Values"
+              className="section-title-image center"
+            />
+            <div className="values-grid">
+              <div className="value-card">
+                <div className="value-icon">⚔️</div>
+                <h3>{t('about.values.discipline.title')}</h3>
+                <p>{t('about.values.discipline.text')}</p>
+              </div>
+              <div className="value-card">
+                <div className="value-icon">👑</div>
+                <h3>{t('about.values.excellence.title')}</h3>
+                <p>{t('about.values.excellence.text')}</p>
+              </div>
+              <div className="value-card">
+                <div className="value-icon">🔥</div>
+                <h3>{t('about.values.transformation.title')}</h3>
+                <p>{t('about.values.transformation.text')}</p>
+              </div>
+              <div className="value-card">
+                <div className="value-icon">💪</div>
+                <h3>{t('about.values.leadership.title')}</h3>
+                <p>{t('about.values.leadership.text')}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* Power Section */}
+      <section className="about-section power-section">
+        <div className="container">
+          <div className="section-content" ref={addToRefs}>
+            <div className="power-header">
+              <img 
+                src={absolutePower} 
+                alt="Absolute Power"
+                className="section-title-image center"
+              />
+              <p className="section-subtitle">
+                {t('about.power.subtitle')}
+              </p>
+            </div>
+            <div className="power-gallery">
+              <div className="gallery-item">
+                <img 
+                  ref={addToImageRefs}
+                  src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" 
+                  alt="Intense Training" 
+                  className="gallery-image"
+                />
+              </div>
+              <div className="gallery-item">
+                <img 
+                  ref={addToImageRefs}
+                  src="https://images.unsplash.com/photo-1530822847156-5df684ec5ee1?w=600&q=80" 
+                  alt="Champion Mindset" 
+                  className="gallery-image"
+                />
+              </div>
+              <div className="gallery-item">
+                <img 
+                  ref={addToImageRefs}
+                  src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80" 
+                  alt="Elite Performance" 
+                  className="gallery-image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="about-section cta-section">
+        <div className="container">
+          <div className="cta-content" ref={addToRefs}>
+            <h2 className="cta-title">
+              {t('about.cta.title')}
+            </h2>
+            <p className="cta-text">
+              {t('about.cta.text')}
+            </p>
+            <button className="cta-button" onClick={handleCTAClick}>
+              {t('about.cta.button')}
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
