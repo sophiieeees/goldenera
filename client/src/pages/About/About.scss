@@ -250,8 +250,8 @@
   .section-title {
     text-align: center;
     position: relative;
-    font-size: clamp(36px, 5vw, 56px);
-    margin-bottom: 80px;
+    font-size: clamp(60px, 7vw, 90px);
+    margin-bottom: 120px;
 
     .arabic-overlay {
       position: absolute;
@@ -259,7 +259,7 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: 120px;
-      color: rgba($golden, 0.5);
+      color: rgba($golden, 0.1);
       z-index: -5;
     }
   }
@@ -270,9 +270,34 @@
     gap: 80px;
     max-width: 900px;
     margin: 0 auto;
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .value-card {
+      padding: 40px;
+      border: 1px solid rgba($golden, 0.3);
+      text-align: center;
+
+      h3 {
+        color: $golden;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: $gray;
+      }
+
+      &:hover {
+        border-color: $golden;
+        transform: translateY(-5px);
+      }
+    }
   }
 }
-
 // POWER
 .power-section {
   background: #0a0a0a;
@@ -319,13 +344,27 @@
   .cta-title {
     font-size: clamp(36px, 5vw, 56px);
     color: $white;
-    margin-bottom: 30px;
+
+    span {
+      color: $golden;
+    }
   }
 
   .cta-text {
     font-size: 22px;
     color: $white;
-    margin-bottom: 60px;
+  }
+
+  .cta-button {
+    padding: 18px 50px;
+    background: transparent;
+    border: 1px solid $golden;
+    color: $white;
+
+    &:hover {
+      background: $golden;
+      color: $black;
+    }
   }
 }
 
