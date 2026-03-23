@@ -285,25 +285,34 @@
       padding: 40px;
       border: 1px solid rgba($golden, 0.3);
       text-align: center;
-
       display: flex;        
       flex-direction: column;
       justify-content: space-between;
-      min-height: 200px;        
+      min-height: 200px; 
+      background: rgba($golden, 0.05);
+      box-shadow: 0 10px 30px rgba($black, 0.1);
+      transition: all 0.4s ease;
 
       h3 {                        
         color: $golden;
         margin-bottom: 10px;
+        font-size: clamp(20px, 2.5vw, 28px);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 20px;
       }
 
       p {
         color: $black;
-        flex-grow: 1;           
+        flex-grow: 1;  
+        font-size: 16px;
+        line-height: 1.6;
       }
 
       &:hover {
         border-color: $golden;
         transform: translateY(-5px);
+        background: rgba($golden, 0.1);
       }
     }
   }
