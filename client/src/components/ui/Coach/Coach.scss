@@ -216,6 +216,7 @@
     
     .coach-description {
       @include body-text;
+      text-align: justify;
       color: $color-white;
       max-width: 298px;
       margin: 0 auto 24px;
