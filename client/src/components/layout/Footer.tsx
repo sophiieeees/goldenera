@@ -17,9 +17,9 @@ const Footer: React.FC = () => {
           
           {/* LEFT */}
           <div className="footer-brand">
-            <h3>{t('¡SÍGUENOS!')}</h3>
+            <h3>{t('footer.followUs')}</h3>
           </div>
-
+      
           {/* RIGHT */}
           <div className="footer-socials">
 
