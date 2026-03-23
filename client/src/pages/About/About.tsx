@@ -101,7 +101,7 @@ const About: React.FC = () => {
 
                 <h2 className="section-title center">
                   {t('about.mission.title')}
-                  <span className="arabic-overlay">مهمتنا/span>
+                  <span className="arabic-overlay">مهمتنا</span>
                 </h2>
 
                 <p className="section-text">
@@ -131,7 +131,7 @@ const About: React.FC = () => {
 
                 <h2 className="section-title center">
                   {t('about.vision.title')}
-                  <span className="arabic-overlay">رؤيتنا/span>
+                  <span className="arabic-overlay">رؤيتنا</span>
                 </h2>
 
                 <p className="section-text">
