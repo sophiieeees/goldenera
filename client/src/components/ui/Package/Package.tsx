@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
+import CheckoutModal from '../components/CheckoutModal'; 
 import './Package.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -38,14 +39,15 @@ const Package: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const packagesRef = useRef<HTMLDivElement[]>([]);
   
-  // Estado para el contador
+
   const [timeLeft, setTimeLeft] = useState<CountdownTime>({
     days: 2,
     hours: 23,
     minutes: 59,
     seconds: 59
   });
-
+const [selectedProgram, setSelectedProgram] = useState<any>(null);
+const [isModalOpen, setIsModalOpen] = useState(false);
  const packages: PackagePlan[] = [
   {
     id: 'standard',
@@ -104,7 +106,7 @@ const Package: React.FC = () => {
     spotsLeft: 5
   }
 ];
-  // Countdown timer effect
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prevTime => {
@@ -125,7 +127,7 @@ const Package: React.FC = () => {
           newTime.minutes = 59;
           newTime.seconds = 59;
         } else {
-          // Reset to 3 days when it reaches 0
+       
           return { days: 2, hours: 23, minutes: 59, seconds: 59 };
         }
         
@@ -138,7 +140,7 @@ const Package: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animación del título
+ 
       gsap.from('.package-header', {
         y: 100,
         opacity: 0,
@@ -150,7 +152,7 @@ const Package: React.FC = () => {
         }
       });
 
-      // Animación del countdown
+
       gsap.from('.countdown-container', {
         scale: 0.8,
         opacity: 0,
@@ -163,7 +165,6 @@ const Package: React.FC = () => {
         }
       });
 
-      // Animación de las tarjetas
       packagesRef.current.forEach((card, index) => {
         gsap.from(card, {
           y: 150,
@@ -177,7 +178,7 @@ const Package: React.FC = () => {
           }
         });
 
-        // Efecto hover luxury
+
         card.addEventListener('mouseenter', () => {
           gsap.to(card, {
             scale: 1.05,
@@ -195,7 +196,7 @@ const Package: React.FC = () => {
         });
       });
 
-      // Animación de partículas doradas
+
       const createGoldParticle = () => {
         const particle = document.createElement('div');
         particle.className = 'gold-particle';
@@ -218,11 +219,19 @@ const Package: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
-  const handlePurchase = (packageId: string) => {
-    // Aquí conectarás con Stripe
-    console.log(`Purchasing package: ${packageId}`);
-    // TODO: Implementar lógica de Stripe
-  };
+const handlePurchase = (packageId: string) => {
+  const selected = packages.find(p => p.id === packageId);
+
+  if (!selected) return;
+
+  setSelectedProgram({
+    id: selected.id,
+    name: selected.name,
+    price: selected.price,
+  });
+
+  setIsModalOpen(true);
+};
 
   const formatNumber = (num: number) => num.toString().padStart(2, '0');
 
@@ -330,6 +339,12 @@ const Package: React.FC = () => {
           ))}
         </div>
       </div>
+  <CheckoutModal
+  isOpen={isModalOpen}
+  onClose={() => setIsModalOpen(false)}
+  program={selectedProgram}
+/>
+      
     </section>
   );
 };
