@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
-import './WhatsAppWidget.scss';
+import '../ui/ChatbotWidget.scss';
 
 const CHATBOT_CUSTOMER_SERVICE = '694301ad2f5df596853d1c35';
 const CHATBOT_TRAINING = '69419ad75d0d22e16b26141c';
