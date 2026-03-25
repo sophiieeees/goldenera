@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import PromoWidget from "../ui/PromoWidget/PromoWidget";
+import PromoWidget from "../ui/ChatbotWidget";
 import "../../styles/layout.scss";
 
 const Layout: React.FC = () => {
@@ -18,7 +19,6 @@ const Layout: React.FC = () => {
         if (lastClosed) {
           const diff = Date.now() - parseInt(lastClosed);
 
-          // ⏱️ TIEMPO PARA QUE VUELVA A APARECER (10 min)
           if (diff < 1 * 60 * 1000) {
             return;
           }
@@ -26,7 +26,7 @@ const Layout: React.FC = () => {
 
         setShowPromoWidget(true);
 
-      }, 5000); // aparece después de 5s
+      }, 5000); 
 
       return () => clearTimeout(timer);
     } else {
@@ -37,7 +37,6 @@ const Layout: React.FC = () => {
   const handleClosePromoWidget = () => {
     setShowPromoWidget(false);
 
-    // 🔥 guardamos timestamp (NO fecha)
     localStorage.setItem('promoWidgetClosed', Date.now().toString());
   };
 
@@ -48,7 +47,7 @@ const Layout: React.FC = () => {
         <Outlet />
       </main>
       <Footer />
-
+      <ChatbotWidget />
       <PromoWidget 
         isActive={showPromoWidget}
         onClose={handleClosePromoWidget}
