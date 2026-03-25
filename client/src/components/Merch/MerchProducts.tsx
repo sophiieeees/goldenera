@@ -248,8 +248,10 @@ const MerchProducts: React.FC = () => {
               </div>
             </div>
           ))}
+          
         </div>
-
+      </div>
+      
       <MerchCheckoutModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
