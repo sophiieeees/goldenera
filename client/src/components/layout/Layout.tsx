@@ -3,7 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import PromoWidget from "../ui/PromoWidget/PromoWidget";
-import PromoWidget from "../ui/ChatbotWidget";
+import ChatbotWidget from "../ui/ChatbotWidget";
 import "../../styles/layout.scss";
 
 const Layout: React.FC = () => {
