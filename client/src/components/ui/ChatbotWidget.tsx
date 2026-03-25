@@ -8,7 +8,7 @@ const CHATBOT_TRAINING = '69419ad75d0d22e16b26141c';
 const WHATSAPP_NUMBER = '5215576966262';
 const WHATSAPP_MESSAGE = '¡Hola! Me gustaría obtener más información sobre Golden Era';
 
-const WhatsAppWidget: React.FC = () => {
+const ChatbotWidget: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showChatTooltip, setShowChatTooltip] = useState(false);
   const [showWhatsAppTooltip, setShowWhatsAppTooltip] = useState(false);
@@ -235,4 +235,4 @@ const WhatsAppWidget: React.FC = () => {
     </>
   );
 };
-
+export default ChatbotWidget;
