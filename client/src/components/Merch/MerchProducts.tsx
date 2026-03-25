@@ -250,18 +250,6 @@ const MerchProducts: React.FC = () => {
           ))}
         </div>
 
-        <div className="merch-footer">
-          <p className="shipping-info">
-            <span className="icon">📦</span>
-            Envío gratis en pedidos superiores a $1,500 MXN
-          </p>
-          <p className="quality-guarantee">
-            <span className="icon">✓</span>
-            100% Algodón Premium | Garantía de Calidad
-          </p>
-        </div>
-      </div>
-
       <MerchCheckoutModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
