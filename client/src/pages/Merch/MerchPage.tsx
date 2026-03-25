@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 import MerchProducts from '../../components/Merch/MerchProducts';
 import useMetaPixel from '../../hooks/useMetaPixel';
 import './MerchPage.scss';
@@ -9,46 +10,23 @@ gsap.registerPlugin(ScrollTrigger);
 
 const MerchPage: React.FC = () => {
   const { trackPageView } = useMetaPixel();
+  const { t } = useTranslation();
 
   useEffect(() => {
-    // Scroll to top
     window.scrollTo(0, 0);
-
-    // Track page view con Meta Pixel
     trackPageView();
 
-    // Animación de entrada de la página
     const ctx = gsap.context(() => {
-      // Fade in de toda la página
       gsap.fromTo('.merch-page',
-        { 
-          opacity: 0,
-          y: 20 
-        },
-        { 
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          ease: 'power3.out' 
-        }
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }
       );
 
-      // Animación del hero si existe
       gsap.fromTo('.merch-hero',
-        {
-          opacity: 0,
-          scale: 0.95
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1.5,
-          delay: 0.3,
-          ease: 'power2.out'
-        }
+        { opacity: 0, scale: 0.95 },
+        { opacity: 1, scale: 1, duration: 1.5, delay: 0.3, ease: 'power2.out' }
       );
 
-      // Parallax effect en el background
       gsap.to('.merch-bg-pattern', {
         yPercent: -30,
         ease: 'none',
@@ -66,61 +44,59 @@ const MerchPage: React.FC = () => {
 
   return (
     <div className="merch-page">
-      {/* Background decorativo */}
       <div className="merch-bg-pattern" />
       
-      {/* Hero Section Opcional */}
       <section className="merch-hero">
         <div className="hero-content">
           <h1 className="hero-title">
-            <span className="title-line">OFFICIAL</span>
-            <span className="title-line golden">GOLDEN ERA</span>
-            <span className="title-line">MERCHANDISE</span>
+            <span className="title-line">{t('merchPage.hero.title.line1')}</span>
+            <span className="title-line golden">{t('merchPage.hero.title.line2')}</span>
+            <span className="title-line">{t('merchPage.hero.title.line3')}</span>
           </h1>
+
           <p className="hero-subtitle">
-            Wear Your Ambition. Represent Excellence.
+            {t('merchPage.hero.subtitle')}
           </p>
+
           <div className="hero-badges">
-            <span className="badge">LIMITED EDITION</span>
-            <span className="badge">PREMIUM QUALITY</span>
-            <span className="badge">EXCLUSIVE DESIGNS</span>
+            <span className="badge">{t('merchPage.hero.badges.limited')}</span>
+            <span className="badge">{t('merchPage.hero.badges.premium')}</span>
+            <span className="badge">{t('merchPage.hero.badges.exclusive')}</span>
           </div>
         </div>
-        
-        {/* Scroll indicator */}
+
         <div className="scroll-indicator">
-          <span className="scroll-text">EXPLORE</span>
+          <span className="scroll-text">{t('merchPage.hero.scroll.text')}</span>
           <div className="scroll-arrow">↓</div>
         </div>
       </section>
 
-      {/* Productos de Merch */}
       <MerchProducts />
 
-      {/* Footer Section */}
       <section className="merch-footer-section">
         <div className="footer-content">
           <div className="footer-column">
-            <h3>CALIDAD PREMIUM</h3>
-            <p>100% algodón orgánico de alta calidad</p>
-            <p>Diseños exclusivos de edición limitada</p>
+            <h3>{t('merchPage.footer.columns.quality.title')}</h3>
+            <p>{t('merchPage.footer.columns.quality.line1')}</p>
+            <p>{t('merchPage.footer.columns.quality.line2')}</p>
           </div>
+
           <div className="footer-column">
-            <h3>ENVÍO RÁPIDO</h3>
-            <p>Envío gratis en pedidos superiores a $1,500</p>
-            <p>Entrega en 5-7 días hábiles</p>
+            <h3>{t('merchPage.footer.columns.shipping.title')}</h3>
+            <p>{t('merchPage.footer.columns.shipping.line1')}</p>
+            <p>{t('merchPage.footer.columns.shipping.line2')}</p>
           </div>
+
           <div className="footer-column">
-            <h3>GARANTÍA</h3>
-            <p>Satisfacción garantizada</p>
-            <p>Cambios y devoluciones sin complicaciones</p>
+            <h3>{t('merchPage.footer.columns.guarantee.title')}</h3>
+            <p>{t('merchPage.footer.columns.guarantee.line1')}</p>
+            <p>{t('merchPage.footer.columns.guarantee.line2')}</p>
           </div>
         </div>
-        
-        {/* Call to Action Final */}
+
         <div className="final-cta">
-          <h2>JOIN THE ELITE</h2>
-          <p>Únete a miles de guerreros que ya visten Golden Era</p>
+          <h2>{t('merchPage.footer.cta.title')}</h2>
+          <p>{t('merchPage.footer.cta.subtitle')}</p>
         </div>
       </section>
     </div>
