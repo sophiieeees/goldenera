@@ -235,5 +235,5 @@ const WhatsAppWidget: React.FC = () => {
     </>
   );
 };
-
+export default ChatbotWidget;
 
