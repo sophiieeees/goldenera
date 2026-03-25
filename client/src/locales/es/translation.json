@@ -288,5 +288,50 @@
         "part2": "o te volverás imparable?"
       }
     }
+  },
+
+  {
+  "merchPage": {
+    "hero": {
+      "title": {
+        "line1": "OFICIAL",
+        "line2": "GOLDEN ERA",
+        "line3": "MERCHANDISE"
+      },
+      "subtitle": "Viste tu ambición. Representa la excelencia.",
+      "badges": {
+        "limited": "EDICIÓN LIMITADA",
+        "premium": "CALIDAD PREMIUM",
+        "exclusive": "DISEÑOS EXCLUSIVOS"
+      },
+      "scroll": {
+        "text": "EXPLORAR"
+      }
+    },
+    "footer": {
+      "columns": {
+        "quality": {
+          "title": "CALIDAD PREMIUM",
+          "line1": "100% algodón orgánico de alta calidad",
+          "line2": "Diseños exclusivos de edición limitada"
+        },
+        "shipping": {
+          "title": "ENVÍO RÁPIDO",
+          "line1": "Envío gratis en pedidos superiores a $1,500",
+          "line2": "Entrega en 5-7 días hábiles"
+        },
+        "guarantee": {
+          "title": "GARANTÍA",
+          "line1": "Satisfacción garantizada",
+          "line2": "Cambios y devoluciones sin complicaciones"
+        }
+      },
+      "cta": {
+        "title": "ÚNETE A LA ÉLITE",
+        "subtitle": "Únete a miles de guerreros que ya visten Golden Era"
+      }
+    }
   }
+}
+
 }
