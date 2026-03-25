@@ -6,7 +6,7 @@
 
   "nav": {
     "home": "Home",
-    "about": "About Us",
+    "about": "About",
     "join": "Join the Club",
     "gallery": "Results"
   },
@@ -17,12 +17,12 @@
         "part1": "The difference between who you are and who you want to be,",
         "part2": "is what you do today."
       },
-      "phrase2": "Transform your body. Transform your life.",
+      "phrase2": "Transform your physique. Transform your life.",
       "phrase3": {
         "part1": "True confidence comes from knowing",
-        "part2": "that you are working on your best version."
+        "part2": "that you're working on your best version."
       },
-      "phrase4": "Physical discipline. Aesthetic optimization. Mental mastery.",
+      "phrase4": "Physical discipline. Aesthetic optimization. Mental dominance.",
       "phrase5": {
         "part1": "Gold is forged with fire,",
         "part2": "appearance is perfected with strategy"
@@ -37,16 +37,16 @@
 
     "philosophy": {
       "forgeYourLegacy": "FORGE YOUR LEGACY",
-      "legacy": "In a hyper-competitive and looks-focused world, your face and physique determine how people treat you, the opportunities you receive, and the standard of living you experience. This 12-week program is only for those ready to be part of the elite.",
+      "legacy": "In a hyper-competitive and appearance-driven world, your face and physique determine how people treat you, the opportunities you receive, and the level of life you live. This 12-week program is only for those ready to join the elite.",
       "philosophyTitle": "PHILOSOPHY",
-      "text": "True transformation doesn’t just happen in the body. It happens in the mind, in discipline, and in how you approach each day. Our system combines physical training, aesthetic optimization, advanced nutrition, and biohacking protocols to maximize your physique, presence, and mental performance.",
+      "text": "True transformation doesn't happen only in the body. It happens in the mind, in discipline, and in how you face each day. Our system combines physical training, aesthetic optimization, advanced nutrition, and biohacking protocols to maximize your physique, presence, and mental performance.",
       "cta": "START YOUR ERA"
     },
 
     "results": {
       "title": "Results",
       "titleLine2": "guaranteed",
-      "text": "Maximize your inner and outer self. We understand the science behind optimizing your physique, appearance, and performance. We reduce your body fat percentage, improve your physical presence, and apply modern performance protocols so you project confidence, energy, and mastery. We only accept 50 clients per year. This program isn’t for everyone; it’s for those ready to commit to their transformation. Build your best version."
+      "text": "Maximize your inner and outer self. We understand the science behind optimizing your physique, appearance, and performance. We reduce your body fat percentage, improve your physical presence, and apply modern performance protocols so you project confidence, energy, and dominance. We only accept 50 clients per year. This program is not for everyone; it's for those ready to commit to their transformation. Build your best version."
     },
 
     "coach": {
@@ -54,7 +54,7 @@
       "name": "Mateo Haces",
       "quote": "Results speak louder than words",
       "instagram": "@mateo.haces",
-      "description": "High-performance athlete, MMA fighter, and exercise physiology specialist. Mateo has dedicated his life to understanding how to transform the human body through science, discipline, physical training, aesthetic optimization, and modern biohacking protocols."
+      "description": "High-performance athlete, MMA fighter, and expert in peptides and nootropics for total ascension. Mateo has dedicated his life to understanding how to transform the human body through science, discipline, physical training, aesthetic optimization, and modern biohacking protocols."
     },
 
     "method": {
@@ -63,7 +63,7 @@
       "steps": {
         "join": {
           "title": "Join the Elite Program",
-          "description": "Get instant access to your personalized training plan, habits, wardrobe, nutrition guide, and exclusive Golden Era community."
+          "description": "Get instant access to your personalized training plan, habits, style, nutrition guide, and exclusive Golden Era community."
         },
         "material": {
           "title": "Access Exclusive Material",
@@ -71,14 +71,14 @@
         },
         "work": {
           "title": "Train and Transform",
-          "description": "Weekly adjustments to improve your physique, presence, and mental performance. Watch yourself transform into your golden version."
+          "description": "Weekly adjustments to improve your physique, presence, and mental performance. Watch yourself become your golden version."
         }
       }
     },
 
     "packages": {
       "title": "Choose Your Golden Era",
-      "subtitle": "Transform your life, appearance, and performance with 12 weeks of our comprehensive optimization programs.",
+      "subtitle": "Transform your life, appearance, and performance with 12 weeks of our full optimization programs.",
       "offer_title": "LIMITED TIME OFFER!",
       "membership_badge": "EXCLUSIVE MEMBERSHIP",
       "most_exclusive": "PREMIUM",
@@ -86,41 +86,41 @@
       "hours": "HOURS",
       "minutes": "MIN",
       "seconds": "SEC",
-      "savings": "You Save",
+      "savings": "You save",
       "spots_left": "Only {{count}} spots left!",
       "standard": {
         "name": "Golden Looksmax Standard",
         "type": "Online Program",
-        "description": "Comprehensive online program for physical transformation, aesthetic optimization, and mental performance with personalized coaching."
+        "description": "Complete online transformation program for physique, aesthetics, and mental performance with personalized coaching."
       },
       "deluxe": {
         "name": "Golden Looksmax Ultra Deluxe",
-        "type": "In-person - Mexico City",
-        "description": "Complete experience of physical, aesthetic, and biohacking optimization with in-person training in Mexico City and advanced protocols."
+        "type": "In-Person - Mexico City",
+        "description": "Full optimization experience with in-person training in Mexico City and advanced biohacking protocols."
       },
       "features": {
         "coaching": "1-on-1 Personal Coaching",
         "apps": "Access to Premium Tracking Apps",
         "recipes": "500+ Healthy Gourmet Recipes",
         "merch": "Exclusive Golden Era Merchandise",
-        "support": "VIP 24/7 Support",
+        "support": "24/7 VIP Support",
         "tracking": "Advanced Progress Tracking",
-        "presential": "In-person Training Sessions",
+        "presential": "In-Person Training Sessions",
         "location": "Premium Facilities in CDMX",
-        "style": "Men’s Wardrobe and Style Guide",
-        "grooming": "Grooming and Personal Care Protocols",
-        "skincare": "Skincare Routine for Facial Optimization",
-        "looksmax": "Aesthetic and Facial Optimization (Looksmaxing)",
-        "supplements": "Supplement Stacks for Performance and Aesthetics",
-        "biohacking": "Biohacking Protocols for Energy and Recovery",
-        "nootropics": "Nootropics for Mental Clarity and Productivity"
+        "style": "Men’s Style & Clothing Guide",
+        "grooming": "Grooming & Personal Care Protocols",
+        "skincare": "Facial Optimization Skincare Routine",
+        "looksmax": "Aesthetic & Facial Optimization (Looksmaxing)",
+        "supplements": "Supplement Stacks for Performance & Aesthetics",
+        "biohacking": "Biohacking Protocols for Energy & Recovery",
+        "nootropics": "Nootropics for Mental Clarity & Productivity"
       },
       "cta": "Start Your Transformation"
     },
 
     "whyItWorks": {
-      "subtitle": "Our method is a compilation of scientific lifting studies that unlock a person’s full athletic potential.",
-      "clickCard": "Click on each card to learn more.",
+      "subtitle": "Our method is a compilation of scientific strength-training studies that unlock a person's full athletic potential.",
+      "clickCard": "Click each card to learn more.",
       "typewriter": {
         "phrase1": "TRANSFORM YOUR BODY",
         "phrase2": "UNLOCK YOUR POTENTIAL",
@@ -130,8 +130,8 @@
       "cards": {
         "technique": {
           "title": "Perfect Technique Exercises",
-          "frontText": "The correct exercises with proper technique",
-          "backText": "Personalized coaching in every training session with real-time technique correction",
+          "frontText": "The right exercises with the right technique",
+          "backText": "Personalized coaching in every session with real-time technique correction",
           "citation": "*Based on NSCA and ACE Fitness principles"
         },
         "recipes": {
@@ -141,10 +141,10 @@
           "citation": "*Developed with ISSN-certified nutritionists"
         },
         "science": {
-          "title": "Proven Scientific Basis",
-          "frontText": "Training methodology based on science",
+          "title": "Proven Scientific Base",
+          "frontText": "Science-based training methodology",
           "backText": "Based on studies from NSCA, ACSM, and the latest sports science research",
-          "citation": "Methodology supported by Journal of Strength Research"
+          "citation": "Methodology backed by Journal of Strength Research"
         }
       },
       "stats": {
@@ -169,10 +169,10 @@
     },
 
     "footer": {
-    "followUs": "FOLLOW US",
-    "description": "Stop waiting and start now. Contact us so we can help you achieve the life of your dreams.",
-    "rights": "All rights reserved. Golden Era ®. A company based in the United Arab Emirates.",
-    "whatsapp": "Hello! I came from the Golden Era website and I'm interested in starting my transformation. Could you give me more information?"
+      "followUs": "FOLLOW US!",
+      "description": "Stop waiting and start now. Contact us so we can help you achieve the life of your dreams.",
+      "rights": "All rights reserved. Golden Era ®. A company based in the United Arab Emirates.",
+      "whatsapp": "Hello! I came from the Golden Era website and I'm interested in starting my transformation. Could you give me more information?"
     }
   },
 
@@ -182,52 +182,55 @@
     },
 
     "mission": {
-      "title": "Our Mission",
-      "text": "At Golden Era, we do not accept mediocrity. We transform ambitious people into unstoppable individuals. If you seek comfort, look elsewhere. Here we forge disciplined individuals who dominate in business, relationships, and life. The body reflects the mindset, and we work to strengthen both."
+      "title": "OUR MISSION",
+      "text": "At Golden Era, we do not accept mediocrity. We transform the ambitious into unstoppable individuals. If you're looking for comfort, look elsewhere. Here, we forge disciplined individuals who dominate in business, relationships, and life. The body reflects the mind, and we work to strengthen both."
     },
 
     "vision": {
-      "title": "Our Vision",
-      "text": "We envision a world where people develop discipline, strength, and confidence. Where physical training becomes a tool to build character, leadership, and self-respect.",
+      "title": "OUR VISION",
+      "text": "We envision a world where people develop discipline, strength, and confidence. Where every individual optimizes their body, mind, and appearance as strategic tools to dominate their environment.",
       "stats": {
-        "elite": "Elite Only",
-        "excuses": "Excuses Accepted",
-        "transformation": "Total Transformation"
+        "elite": "WARRIORS",
+        "excuses": "TOLERANCE FOR MEDIOCRITY",
+        "transformation": "TOTAL TRANSFORMATION"
       }
     },
 
     "values": {
-      "title": "Our Values",
+      "title": "OUR VALUES",
 
       "discipline": {
-        "title": "Discipline",
+        "title": "DISCIPLINE",
         "text": "Discipline is the foundation of all transformation. It turns goals into results."
       },
 
       "excellence": {
-        "title": "Excellence",
-        "text": "We seek constant improvement in every training, decision, and step of the process."
+        "title": "EXCELLENCE",
+        "text": "We pursue constant improvement in every workout, every decision, and every step of the process."
       },
 
       "transformation": {
-        "title": "Transformation",
-        "text": "The goal is not just to change the body, but to develop a strong and resilient mindset."
+        "title": "TRANSFORMATION",
+        "text": "The goal is not just to change the body, but to build a strong and resilient mindset."
       },
 
       "leadership": {
-        "title": "Leadership",
-        "text": "True leadership begins with personal mastery and the ability to inspire others."
+        "title": "LEADERSHIP",
+        "text": "True leadership begins with self-mastery and the ability to inspire others."
       }
     },
 
     "power": {
-      "title": "Absolute Power",
-      "subtitle": "Your physique reflects your discipline. It’s time to build the best version of yourself."
+      "title": "ABSOLUTE POWER",
+      "subtitle": "It's time to build the best version of yourself."
     },
 
     "cta": {
-      "title": "Will you stay the same or build your best version?",
-      "text": "Only 50 people per year are part of the program. Results depend on those who choose to commit.",
+      "title": {
+        "part1": "WILL YOU STAY THE SAME OR ",
+        "part2": "BUILD YOUR BEST VERSION?"
+      },
+      "text": "Only 50 people per year join the program. Results depend on those who commit.",
       "button": "DESTROY YOUR WEAKNESS"
     }
   },
@@ -266,8 +269,8 @@
     "hero": {
       "titlePre": "JOIN THE",
       "titleMain": "ELITE CLUB",
-      "titlePost": "Only for those who dare to be their best version",
-      "subtitle": "Stop being invisible. Stop being average. It’s time to claim your respect. Only 50 warriors per year."
+      "titlePost": "Only for those who dare to become their best version",
+      "subtitle": "Stop being invisible. Stop being average. It's time to claim your respect. Only 50 warriors per year."
     },
     "stats": {
       "spots": "Annual Spots",
@@ -275,14 +278,56 @@
       "excuses": "Excuses"
     },
     "testimonial": {
-      "quote": "Golden Era is not just a fitness program. It’s a complete transformation of who you are. They taught me that my body is my first business card, and now I command respect in every room I enter.",
+      "quote": "Golden Era is not just a fitness program. It is a complete transformation of who you are. They taught me that my body is my first business card, and now I command respect in every room I enter.",
       "authorName": "Carlos Mendoza",
       "authorTitle": "CEO, Tech Startup"
     },
     "finalCta": {
       "title": {
-        "part1": "Will you remain invisible",
+        "part1": "Will you stay invisible",
         "part2": "or become unstoppable?"
+      }
+    }
+  },
+
+  "merchPage": {
+    "hero": {
+      "title": {
+        "line1": "OFFICIAL",
+        "line2": "GOLDEN ERA",
+        "line3": "MERCHANDISE"
+      },
+      "subtitle": "Wear your ambition. Represent excellence.",
+      "badges": {
+        "limited": "LIMITED EDITION",
+        "premium": "PREMIUM QUALITY",
+        "exclusive": "EXCLUSIVE DESIGNS"
+      },
+      "scroll": {
+        "text": "EXPLORE"
+      }
+    },
+    "footer": {
+      "columns": {
+        "quality": {
+          "title": "PREMIUM QUALITY",
+          "line1": "100% high-quality organic cotton",
+          "line2": "Exclusive limited-edition designs"
+        },
+        "shipping": {
+          "title": "FAST SHIPPING",
+          "line1": "Free shipping on orders over $1,500",
+          "line2": "Delivery in 5–7 business days"
+        },
+        "guarantee": {
+          "title": "GUARANTEE",
+          "line1": "Satisfaction guaranteed",
+          "line2": "Easy exchanges and returns"
+        }
+      },
+      "cta": {
+        "title": "JOIN THE ELITE",
+        "subtitle": "Join thousands of warriors already wearing Golden Era"
       }
     }
   }
