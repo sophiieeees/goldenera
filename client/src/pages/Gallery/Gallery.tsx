@@ -18,6 +18,7 @@ interface Slide {
   background?: string;
   color?: string;
   colorPart2?: string;
+  originalIndex: number;
 }
 
 interface MusicTrack {
@@ -45,32 +46,8 @@ const Gallery: React.FC = () => {
     { id: 'skyfall', name: 'Skyfall', artist: 'Golden Era', url: audio.skyfall }
   ];
 
-  const playNextTrack = useCallback(() => {
-    if (!audioRef.current) return;
-    const nextTrack = currentTrack === 0 ? 1 : 0;
-
-    gsap.to(audioRef.current, {
-      volume: 0,
-      duration: 0.2,
-      onComplete: () => {
-        if (audioRef.current) {
-          audioRef.current.src = musicTracks[nextTrack].url;
-          setCurrentTrack(nextTrack);
-          audioRef.current.play();
-          gsap.to(audioRef.current, { volume: 0.3, duration: 0.2 });
-        }
-      }
-    });
-  }, [currentTrack, musicTracks]);
-
-  useEffect(() => {
-    audioRef.current = new Audio();
-    audioRef.current.volume = 0.3;
-    audioRef.current.loop = true;
-
-    audioRef.current.src = musicTracks[currentTrack].url;
-    audioRef.current.play().catch(() => {});
-  }, []);
+  // 🔥 quitar duplicados
+  const galleryImages = Array.from(new Set(Object.values(images.gallery)));
 
   // 💬 Quotes
   const quotes = [
@@ -79,14 +56,6 @@ const Gallery: React.FC = () => {
     { content: 'Discipline builds muscle.', contentPart2: 'Muscle builds confidence.', background: 'black', color: '#EAC31B', colorPart2: 'white' }
   ];
 
-  // 🔥 SHUFFLE + REMOVE DUPLICATES
-  const shuffleArray = (array: any[]) => [...array].sort(() => Math.random() - 0.5);
-
-  const galleryImages = shuffleArray(
-    Array.from(new Set(Object.values(images.gallery)))
-  );
-
-  // 🧠 Crear slides
   const createSlides = useCallback((): Slide[] => {
     const slides: Slide[] = [];
     let imageIndex = 0;
@@ -99,8 +68,10 @@ const Gallery: React.FC = () => {
           slides.push({
             id: id++,
             type: 'image',
-            image: galleryImages[imageIndex++]
+            image: galleryImages[imageIndex],
+            originalIndex: imageIndex
           });
+          imageIndex++;
         }
       }
 
@@ -108,8 +79,10 @@ const Gallery: React.FC = () => {
         slides.push({
           id: id++,
           type: 'quote',
-          ...quotes[quoteIndex++]
+          ...quotes[quoteIndex],
+          originalIndex: quoteIndex
         });
+        quoteIndex++;
       }
     }
 
@@ -122,13 +95,13 @@ const Gallery: React.FC = () => {
     setSlides(createSlides());
   }, [createSlides]);
 
-  // 🎯 Scroll animation
+  // 🎯 ScrollTrigger (igual que el tuyo)
   useEffect(() => {
-    slidesRefs.current.forEach((ref, index) => {
-      if (!ref) return;
+    slidesRefs.current.forEach((slideRef, index) => {
+      if (!slideRef) return;
 
       ScrollTrigger.create({
-        trigger: ref,
+        trigger: slideRef,
         start: "top center",
         end: "bottom center",
         onEnter: () => setCurrentIndex(index),
@@ -139,12 +112,11 @@ const Gallery: React.FC = () => {
     return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, [slides]);
 
-  // ❤️ Like + música
+  // ❤️ Like
   const handleDoubleTap = (id: number) => {
     setIsLiked(prev => ({ ...prev, [id]: !prev[id] }));
     setShowHeart(id);
     setTimeout(() => setShowHeart(null), 800);
-    playNextTrack();
   };
 
   const lastTap = useRef(0);
@@ -154,18 +126,12 @@ const Gallery: React.FC = () => {
     lastTap.current = now;
   };
 
-  const getImageStyle = () => ({
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover' as const
-  });
-
   return (
     <div className="gallery-container" ref={containerRef}>
       
       <div className="track-info">
-        <span>{musicTracks[currentTrack].name}</span>
-        <span>{musicTracks[currentTrack].artist}</span>
+        <span className="track-name">{musicTracks[currentTrack].name}</span>
+        <span className="track-artist">{musicTracks[currentTrack].artist}</span>
       </div>
 
       <div className="slides-wrapper">
@@ -173,24 +139,23 @@ const Gallery: React.FC = () => {
           <div
             key={slide.id}
             ref={el => slidesRefs.current[index] = el}
-            className={`gallery-slide ${slide.type}`}
+            className={`gallery-slide ${slide.type} ${index === currentIndex ? 'active' : ''}`}
             onClick={() => handleTap(slide.id)}
-            style={slide.type === 'quote' ? { background: slide.background } : {}}
+            style={slide.type === 'quote' ? { backgroundColor: slide.background } : {}}
           >
             <div className="slide-content">
 
               {slide.type === 'image' ? (
                 <>
                   <div className="image-wrapper">
-                    <img src={slide.image} style={getImageStyle()} />
+                    <img src={slide.image} alt="" draggable={false} />
                   </div>
 
                   {showHeart === slide.id && (
                     <div className="heart-animation-overlay">
-                      ❤️
+                      <div className="heart-icon">❤️</div>
                     </div>
                   )}
-
                 </>
               ) : (
                 <div className="quote-content">
