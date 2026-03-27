@@ -123,18 +123,6 @@ const ChatbotWidget: React.FC = () => {
     setShowChatTooltip(false);
   };
 
-  const handleWhatsAppClick = () => {
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-    window.open(whatsappUrl, '_blank');
-
-    if (window.gtag) {
-      window.gtag('event', 'whatsapp_click', {
-        event_category: 'engagement',
-        event_label: 'widget'
-      });
-    }
-  };
-
   const handleCloseModal = () => {
     setShowModal(false);
   };
