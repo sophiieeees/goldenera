@@ -5,10 +5,12 @@ import '../ui/ChatbotWidget.scss';
 
 const CHATBOT_CUSTOMER_SERVICE = '694301ad2f5df596853d1c35';
 const CHATBOT_TRAINING = '69419ad75d0d22e16b26141c';
+const WHATSAPP_NUMBER = '5215576966262';
 
 const ChatbotWidget: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showChatTooltip, setShowChatTooltip] = useState(false);
+  const [showWhatsAppTooltip, setShowWhatsAppTooltip] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
@@ -33,15 +35,26 @@ const ChatbotWidget: React.FC = () => {
         { scale: 0, opacity: 0, rotate: -180 },
         { scale: 1, opacity: 1, rotate: 0, duration: 0.6, ease: 'back.out(1.7)' }
       );
+
+      gsap.fromTo(
+        '.whatsapp-button',
+        { scale: 0, opacity: 0, rotate: 180 },
+        { scale: 1, opacity: 1, rotate: 0, duration: 0.6, ease: 'back.out(1.7)', delay: 0.2 }
+      );
     }
   }, [isVisible, shouldShow]);
 
-  // ✅ CLEANUP SEGURO (sin romper Voiceflow)
   const cleanupVoiceflow = useCallback(() => {
     const existingScript = document.getElementById('voiceflow-script');
     if (existingScript) existingScript.remove();
 
-    if (window.voiceflow) {
+    const widgetContainer = document.getElementById('voiceflow-chat');
+    if (widgetContainer) widgetContainer.remove();
+
+    document.querySelectorAll('[data-testid="widget-bubble"]').forEach(el => el.remove());
+    document.querySelectorAll('[class*="vfrc"]').forEach(el => el.remove());
+
+    if ((window as any).voiceflow) {
       delete (window as any).voiceflow;
     }
   }, []);
@@ -62,19 +75,35 @@ const ChatbotWidget: React.FC = () => {
         script.onload = () => {
           console.log('Voiceflow script loaded:', projectID);
 
-          if (window.voiceflow?.chat) {
-            window.voiceflow.chat
+          if ((window as any).voiceflow?.chat) {
+            (window as any).voiceflow.chat
               .load({
                 verify: { projectID },
                 url: 'https://general-runtime.voiceflow.com',
-                versionID: 'production',
+                versionID: 'production'
               })
               .then(() => {
                 console.log('Chat cargado');
                 setIsLoading(false);
 
-                // ✅ FIX TypeScript
-                window.voiceflow?.chat?.open();
+                (window as any).voiceflow.chat.open();
+
+                // 🔥 LISTENER PARA REDIRECCIÓN A WHATSAPP
+                (window as any).voiceflow.chat.on('message', (event: any) => {
+                  const text = event?.payload?.message?.toLowerCase();
+
+                  if (
+                    text?.includes('redirigir') ||
+                    text?.includes('perfecto') ||
+                    text?.includes('atención personalizada')
+                  ) {
+                    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                      'Hola, vengo del chatbot y quiero información sobre Golden Era'
+                    )}`;
+
+                    window.open(whatsappUrl, '_blank');
+                  }
+                });
               })
               .catch((err: any) => {
                 console.error('Error cargando chat:', err);
@@ -92,7 +121,7 @@ const ChatbotWidget: React.FC = () => {
         };
 
         const firstScript = document.getElementsByTagName('script')[0];
-        if (firstScript?.parentNode) {
+        if (firstScript && firstScript.parentNode) {
           firstScript.parentNode.insertBefore(script, firstScript);
         } else {
           document.body.appendChild(script);
@@ -124,7 +153,7 @@ const ChatbotWidget: React.FC = () => {
 
   return (
     <>
-      {/* Botón */}
+      {/* Botón de Chatbot */}
       <div className="chatbot-widget-container">
         <div
           className="chatbot-widget"
@@ -135,9 +164,6 @@ const ChatbotWidget: React.FC = () => {
           <div className="chatbot-widget__icon">
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white"/>
-              <path d="M7 9H17V11H7V9Z" fill="white"/>
-              <path d="M7 12H14V14H7V12Z" fill="white"/>
-              <path d="M7 6H17V8H7V6Z" fill="white"/>
             </svg>
           </div>
 
@@ -154,13 +180,13 @@ const ChatbotWidget: React.FC = () => {
         <div className="chatbot-modal-overlay" onClick={handleCloseModal}>
           <div className="chatbot-modal" onClick={(e) => e.stopPropagation()}>
             <button className="chatbot-modal__close" onClick={handleCloseModal}>
-              ✕
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2"/>
+              </svg>
             </button>
 
             <h3 className="chatbot-modal__title">¿En qué podemos ayudarte?</h3>
-            <p className="chatbot-modal__subtitle">
-              Selecciona el tipo de asistencia que necesitas
-            </p>
+            <p className="chatbot-modal__subtitle">Selecciona el tipo de asistencia que necesitas</p>
 
             <div className="chatbot-modal__options">
               <button
@@ -168,7 +194,7 @@ const ChatbotWidget: React.FC = () => {
                 onClick={() => handleOptionClick('customer_service')}
                 disabled={isLoading}
               >
-                <span className="chatbot-option__title">Dudas y Soporte</span>
+                <span>Dudas y Soporte</span>
               </button>
 
               <button
@@ -176,9 +202,7 @@ const ChatbotWidget: React.FC = () => {
                 onClick={() => handleOptionClick('training')}
                 disabled={isLoading}
               >
-                <span className="chatbot-option__title">
-                  Metas y Entrenamiento
-                </span>
+                <span>Metas y Entrenamiento</span>
               </button>
             </div>
 
