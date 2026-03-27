@@ -1,15 +1,16 @@
 // client/src/pages/Gallery/Gallery.scss
 .gallery-container {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   background: #000;
+  -webkit-overflow-scrolling: touch;
   overscroll-behavior: none;
   touch-action: pan-y;
 
-  // 🔥 Barra superior invisible fix
   &::before {
     content: '';
     position: fixed;
@@ -21,197 +22,219 @@
     z-index: 100;
   }
 
-  // 🎵 Música UI (más premium)
   .track-info {
     position: fixed;
     bottom: 100px;
     left: 20px;
     z-index: 100;
-
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-
-    padding: 10px 16px;
-    border-radius: 16px;
-
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     gap: 2px;
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-width: 200px;
 
     .track-name {
       color: #fff;
       font-size: 12px;
       font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .track-artist {
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.7);
       font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
-  // 📱 Scroll tipo reels
   .slides-wrapper {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
-
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    -ms-overflow-style: none;
 
     &::-webkit-scrollbar {
       display: none;
     }
   }
 
-  // 🎯 Slide
   .gallery-slide {
+    position: relative;
     width: 100vw;
     height: 100vh;
     scroll-snap-align: start;
-
+    scroll-snap-stop: always;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    position: relative;
-
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
     will-change: transform;
     transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 
-    &.active .slide-content {
-      animation: slideIn 0.35s ease-out;
+    &.active {
+      .slide-content {
+        animation: slideIn 0.4s ease-out;
+      }
     }
 
     .slide-content {
       width: 100%;
       height: 100%;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateZ(0);
     }
 
-    // 🖼️ IMAGEN (FIX DEFINITIVO)
     &.image {
       background: #000;
 
       .image-wrapper {
         width: 100%;
         height: 100%;
-        overflow: hidden;
-
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
+        transform: translateZ(0);
 
         img {
-          width: 100%;
-          height: 100%;
-
-          object-fit: cover; // 🔥 CLAVE
-          object-position: center;
-
+          display: block;
+          object-fit: cover;
           user-select: none;
+          -webkit-user-drag: none;
           pointer-events: none;
-
+          max-width: 100%;
+          max-height: 100%;
           opacity: 0;
-          animation: fadeIn 0.4s ease-out forwards;
-
-          transform: scale(1.02); // leve zoom premium
+          animation: fadeIn 0.3s ease-out forwards;
+          transform: translateZ(0);
         }
       }
 
-      // ❤️ corazón más pro
       .heart-animation-overlay {
         position: absolute;
         inset: 0;
         display: flex;
         align-items: center;
         justify-content: center;
+        pointer-events: none;
         z-index: 50;
 
         .heart-icon {
           font-size: 120px;
           animation: heartPulse 0.8s ease-out;
+          filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.6));
         }
       }
 
-      // 🎯 botones laterales
       .actions-sidebar {
         position: absolute;
         right: 16px;
-        bottom: 90px;
-
+        bottom: 80px;
         display: flex;
         flex-direction: column;
         gap: 20px;
+        z-index: 40;
 
         .action-button {
           background: none;
           border: none;
           cursor: pointer;
-
           display: flex;
           flex-direction: column;
           align-items: center;
           gap: 4px;
+          padding: 8px;
+          transition: transform 0.15s ease;
+
+          &:active {
+            transform: scale(0.95);
+          }
 
           .icon {
             font-size: 36px;
-            transition: 0.3s;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
+            transition: all 0.3s ease;
           }
 
           .count {
             color: #fff;
             font-size: 13px;
             font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
           }
 
-          &.liked .icon {
-            transform: scale(1.15);
-            filter: drop-shadow(0 0 10px red);
+          &.like-button {
+            &.liked {
+              .icon {
+                animation: likeAnimation 0.4s ease;
+                filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.6));
+                transform: scale(1.1);
+              }
+            }
           }
         }
       }
 
-      // 👆 hint
       .navigation-hint {
         position: absolute;
         bottom: 120px;
         left: 50%;
         transform: translateX(-50%);
         text-align: center;
-
         color: rgba(255, 255, 255, 0.8);
+        animation: pulse 2s ease-in-out infinite;
+        z-index: 30;
 
         .swipe-icon {
-          font-size: 28px;
-          animation: swipeUp 1.5s infinite;
+          font-size: 32px;
+          margin-bottom: 8px;
+          animation: swipeUp 1.5s ease-in-out infinite;
         }
 
         p {
-          font-size: 13px;
+          font-size: 14px;
+          font-weight: 500;
+          margin: 0;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
         }
       }
     }
 
-    // 💬 QUOTES
     &.quote {
-      background: #000;
-
       .quote-content {
         padding: 40px;
         text-align: center;
+        max-width: 90%;
 
         h2 {
           font-size: clamp(32px, 7vw, 52px);
           font-weight: 800;
+          line-height: 1.2;
+          margin: 0 0 20px 0;
           text-transform: uppercase;
-
+          letter-spacing: -0.02em;
           opacity: 0;
           animation: fadeInUp 0.6s ease-out forwards;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+          transform: translateZ(0);
 
           &:nth-child(2) {
             animation-delay: 0.2s;
@@ -221,33 +244,36 @@
     }
   }
 
-  // 📊 progreso
   .progress-indicator {
     position: fixed;
-    right: 6px;
+    right: 4px;
     top: 50%;
     transform: translateY(-50%);
     width: 3px;
     height: 40%;
-
     background: rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    overflow: hidden;
+    z-index: 90;
 
     .progress-bar {
       width: 100%;
       background: #EAC31B;
-      transition: height 0.3s ease;
+      border-radius: 100px;
+      transition: height 0.3s ease-out;
+      box-shadow: 0 0 10px rgba(234, 195, 27, 0.5);
     }
   }
 }
 
-// ✨ Animaciones PRO
+// Animaciones
 @keyframes slideIn {
   from {
-    transform: scale(0.98);
-    opacity: 0.85;
+    transform: scale(0.98) translateZ(0);
+    opacity: 0.9;
   }
   to {
-    transform: scale(1);
+    transform: scale(1) translateZ(0);
     opacity: 1;
   }
 }
@@ -259,35 +285,88 @@
 }
 
 @keyframes heartPulse {
-  0% { transform: scale(0); opacity: 0; }
-  30% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); opacity: 0; }
+  0% {
+    transform: scale(0) translateZ(0);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1.2) translateZ(0);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1) translateZ(0);
+  }
+  100% {
+    transform: scale(1) translateZ(0);
+    opacity: 0;
+  }
+}
+
+@keyframes likeAnimation {
+  0%, 100% {
+    transform: scale(1) translateZ(0);
+  }
+  50% {
+    transform: scale(1.15) translateZ(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes swipeUp {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px) translateZ(0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 }
 
-@keyframes swipeUp {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-// 📱 responsive
+// Media queries
 @media (max-width: 768px) {
-  .track-info {
-    bottom: 80px;
-    left: 16px;
-  }
+  .gallery-container {
+    .track-info {
+      bottom: 80px;
+      left: 16px;
+      max-width: 150px;
+    }
 
-  .quote-content h2 {
-    font-size: clamp(24px, 6vw, 36px);
+    .gallery-slide {
+      &.quote {
+        .quote-content {
+          padding: 20px;
+
+          h2 {
+            font-size: clamp(26px, 6vw, 40px);
+          }
+        }
+      }
+
+      &.image {
+        .heart-animation-overlay {
+          .heart-icon {
+            font-size: 100px;
+          }
+        }
+      }
+    }
   }
 }
