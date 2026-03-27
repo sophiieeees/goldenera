@@ -74,9 +74,7 @@ export const images = {
     imggal6, imggal7, imggal8, imggal9, imggal10,
     imggal11, imggal12, imggal13, imggal14, imggal15,
     imggal16, imggal17, imggal18, imggal19, imggal20,
-    imggal21, imggal22, imggal23, imggal24, imggal25,
-    imggal26, imggal27, imggal28, imggal29, imggal30,
-    imggal31, imggal32, imggal33, imggal34, imggal35,
+    imggal25, imggal29, imggal30, imggal31, imggal32, imggal35,
   ]
 };
 
