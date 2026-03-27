@@ -10,7 +10,7 @@ const WHATSAPP_NUMBER = '5215576966262';
 const ChatbotWidget: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showChatTooltip, setShowChatTooltip] = useState(false);
-  const [showWhatsAppTooltip, setShowWhatsAppTooltip] = useState(false);
+  const [showWhatsAppTooltip] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
@@ -73,7 +73,7 @@ const ChatbotWidget: React.FC = () => {
         script.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
 
         script.onload = () => {
-          console.log('Voiceflow script loaded:', projectID);
+          console.log('Voiceflow loaded:', projectID);
 
           if ((window as any).voiceflow?.chat) {
             (window as any).voiceflow.chat
@@ -83,22 +83,25 @@ const ChatbotWidget: React.FC = () => {
                 versionID: 'production'
               })
               .then(() => {
-                console.log('Chat cargado');
+                console.log('Chat listo');
                 setIsLoading(false);
 
                 (window as any).voiceflow.chat.open();
 
-                // 🔥 LISTENER PARA REDIRECCIÓN A WHATSAPP
+                // 🔥 LISTENER LOOKSMAXING + WHATS
                 (window as any).voiceflow.chat.on('message', (event: any) => {
                   const text = event?.payload?.message?.toLowerCase();
 
+                  console.log('BOT:', text);
+
                   if (
+                    text?.includes('whatsapp') ||
                     text?.includes('redirigir') ||
-                    text?.includes('perfecto') ||
-                    text?.includes('atención personalizada')
+                    text?.includes('coach') ||
+                    text?.includes('contacto')
                   ) {
                     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                      'Hola, vengo del chatbot y quiero información sobre Golden Era'
+                      'Hola, vengo del chatbot de Golden Era y quiero mejorar mi físico y estética'
                     )}`;
 
                     window.open(whatsappUrl, '_blank');
@@ -106,7 +109,7 @@ const ChatbotWidget: React.FC = () => {
                 });
               })
               .catch((err: any) => {
-                console.error('Error cargando chat:', err);
+                console.error('Error chat:', err);
                 setIsLoading(false);
               });
           } else {
@@ -116,7 +119,7 @@ const ChatbotWidget: React.FC = () => {
         };
 
         script.onerror = (err) => {
-          console.error('Error cargando script:', err);
+          console.error('Error script:', err);
           setIsLoading(false);
         };
 
@@ -153,7 +156,7 @@ const ChatbotWidget: React.FC = () => {
 
   return (
     <>
-      {/* Botón de Chatbot */}
+      {/* Botón */}
       <div className="chatbot-widget-container">
         <div
           className="chatbot-widget"
@@ -169,7 +172,7 @@ const ChatbotWidget: React.FC = () => {
 
           {showChatTooltip && !showModal && (
             <div className="chatbot-widget__tooltip">
-              <span>Asistente AI</span>
+              <span>Mejora tu físico ⚡</span>
             </div>
           )}
         </div>
@@ -185,8 +188,8 @@ const ChatbotWidget: React.FC = () => {
               </svg>
             </button>
 
-            <h3 className="chatbot-modal__title">¿En qué podemos ayudarte?</h3>
-            <p className="chatbot-modal__subtitle">Selecciona el tipo de asistencia que necesitas</p>
+            <h3 className="chatbot-modal__title">¿Qué quieres mejorar?</h3>
+            <p className="chatbot-modal__subtitle">Elige una opción</p>
 
             <div className="chatbot-modal__options">
               <button
@@ -194,7 +197,7 @@ const ChatbotWidget: React.FC = () => {
                 onClick={() => handleOptionClick('customer_service')}
                 disabled={isLoading}
               >
-                <span>Dudas y Soporte</span>
+                <span>Información y acceso</span>
               </button>
 
               <button
@@ -202,14 +205,14 @@ const ChatbotWidget: React.FC = () => {
                 onClick={() => handleOptionClick('training')}
                 disabled={isLoading}
               >
-                <span>Metas y Entrenamiento</span>
+                <span>Físico y transformación</span>
               </button>
             </div>
 
             {isLoading && (
               <div className="chatbot-modal__loading">
                 <div className="spinner"></div>
-                <span>Cargando asistente...</span>
+                <span>Preparando tu asistente...</span>
               </div>
             )}
           </div>
