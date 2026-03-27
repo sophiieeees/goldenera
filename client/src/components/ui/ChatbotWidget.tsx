@@ -5,8 +5,6 @@ import '../ui/ChatbotWidget.scss';
 
 const CHATBOT_CUSTOMER_SERVICE = '694301ad2f5df596853d1c35';
 const CHATBOT_TRAINING = '69419ad75d0d22e16b26141c';
-const WHATSAPP_NUMBER = '5215576966262';
-const WHATSAPP_MESSAGE = '¡Hola! Me gustaría obtener más información sobre Golden Era';
 
 const ChatbotWidget: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -103,7 +101,7 @@ const ChatbotWidget: React.FC = () => {
         console.error('Error loading Voiceflow script:', err);
       };
 
-      // Use insertBefore pattern like Voiceflow recommends
+
       const firstScript = document.getElementsByTagName('script')[0];
       if (firstScript && firstScript.parentNode) {
         firstScript.parentNode.insertBefore(script, firstScript);
