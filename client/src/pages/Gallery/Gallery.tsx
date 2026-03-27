@@ -3,9 +3,74 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
-import { images } from '../../assets/images';
+import imagen1 from './imagenes/imagen1.jpeg';
+import imagen2 from './imagenes/imagen2.jpeg';
+import imagen3 from './imagenes/imagen3.jpeg';
+import imagen4 from './imagenes/imagen4.jpeg';
+import imagen5 from './imagenes/imagen5.jpeg';
+import imagen6 from './imagenes/imagen6.jpeg';
+import imagen7 from './imagenes/imagen7.jpeg';
+import imagen8 from './imagenes/imagen8.jpeg';
+import imagen9 from './imagenes/imagen9.jpeg';
+import imagen10 from './imagenes/imagen10.jpeg';
+import imagen11 from './imagenes/imagen11.jpeg';
+import imagen12 from './imagenes/imagen12.jpeg';
+
+import imggal1 from './imagenes/imggal1.jpeg';
+import imggal2 from './imagenes/imggal2.jpeg';
+import imggal3 from './imagenes/imggal3.jpeg';
+import imggal4 from './imagenes/imggal4.jpeg';
+import imggal5 from './imagenes/imggal5.jpeg';
+import imggal6 from './imagenes/imggal6.jpeg';
+import imggal7 from './imagenes/imggal7.jpeg';
+import imggal8 from './imagenes/imggal8.jpeg';
+import imggal9 from './imagenes/imggal9.jpeg';
+import imggal10 from './imagenes/imggal10.jpeg';
+import imggal11 from './imagenes/imggal11.jpeg';
+import imggal12 from './imagenes/imggal12.jpeg';
+import imggal13 from './imagenes/imggal13.jpeg';
+import imggal14 from './imagenes/imggal14.jpeg';
+import imggal15 from './imagenes/imggal15.jpeg';
+import imggal16 from './imagenes/imggal16.jpeg';
+import imggal17 from './imagenes/imggal17.jpeg';
+import imggal18 from './imagenes/imggal18.jpeg';
+import imggal19 from './imagenes/imggal19.jpeg';
+import imggal20 from './imagenes/imggal20.jpeg';
+import imggal21 from './imagenes/imggal21.jpeg';
+import imggal22 from './imagenes/imggal22.jpeg';
+import imggal23 from './imagenes/imggal23.jpeg';
+import imggal24 from './imagenes/imggal24.jpeg';
+import imggal25 from './imagenes/imggal25.jpeg';
+import imggal26 from './imagenes/imggal26.jpeg';
+import imggal27 from './imagenes/imggal27.jpeg';
+import imggal28 from './imagenes/imggal28.jpeg';
+import imggal29 from './imagenes/imggal29.jpeg';
+import imggal30 from './imagenes/imggal30.jpeg';
+import imggal31 from './imagenes/imggal31.jpeg';
+import imggal32 from './imagenes/imggal32.jpeg';
+import imggal33 from './imagenes/imggal33.jpeg';
+import imggal34 from './imagenes/imggal34.jpeg';
+import imggal35 from './imagenes/imggal35.jpeg';
+
 import { audio } from '../../assets/audio';
 import './Gallery.scss';
+
+
+export const images = {
+  gallery: [
+    imagen1, imagen2, imagen3, imagen4, imagen5, imagen6,
+    imagen7, imagen8, imagen9, imagen10, imagen11, imagen12,
+
+    imggal1, imggal2, imggal3, imggal4, imggal5,
+    imggal6, imggal7, imggal8, imggal9, imggal10,
+    imggal11, imggal12, imggal13, imggal14, imggal15,
+    imggal16, imggal17, imggal18, imggal19, imggal20,
+    imggal21, imggal22, imggal23, imggal24, imggal25,
+    imggal26, imggal27, imggal28, imggal29, imggal30,
+    imggal31, imggal32, imggal33, imggal34, imggal35,
+  ]
+};
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -196,7 +261,7 @@ const Gallery: React.FC = () => {
     }
   ];
 
-  const galleryImages = Object.values(images.gallery);
+const galleryImages = Array.from(new Set(images.gallery));
 
   const createSlides = useCallback((): Slide[] => {
     const slides: Slide[] = [];
