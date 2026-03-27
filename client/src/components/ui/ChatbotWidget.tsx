@@ -5,11 +5,17 @@ import '../ui/ChatbotWidget.scss';
 
 const WHATSAPP_NUMBER = '5215576966262';
 
+type Message = {
+  from: 'bot' | 'user';
+  text: string;
+};
+
 const ChatbotWidget: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showChatTooltip, setShowChatTooltip] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [step, setStep] = useState<'main' | 'support' | 'training'>('main');
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [options, setOptions] = useState<string[]>([]);
 
   const location = useLocation();
   const shouldShow = !location.pathname.includes('/gallery');
@@ -29,7 +35,7 @@ const ChatbotWidget: React.FC = () => {
     if (isVisible && shouldShow) {
       gsap.fromTo('.chatbot-widget',
         { scale: 0, opacity: 0, rotate: -180 },
-        { scale: 1, opacity: 1, rotate: 0, duration: 0.6, ease: 'back.out(1.7)' }
+        { scale: 1, opacity: 1, rotate: 0, duration: 0.6 }
       );
     }
   }, [isVisible, shouldShow]);
@@ -39,13 +45,96 @@ const ChatbotWidget: React.FC = () => {
     window.open(url, '_blank');
   };
 
-  const handleChatWidgetClick = () => {
-    setShowModal(true);
-    setStep('main');
-    setShowChatTooltip(false);
+  const startChat = () => {
+    setMessages([
+      {
+        from: 'bot',
+        text: 'Hola, soy el asistente de GoldenEra 👋 ¿En qué te puedo ayudar?',
+      },
+    ]);
+
+    setOptions([
+      '💬 Servicio al cliente',
+      '🔥 Metas y entrenamiento',
+    ]);
   };
 
-  const handleCloseModal = () => {
+  const handleOptionClick = (option: string) => {
+    setMessages((prev) => [...prev, { from: 'user', text: option }]);
+
+    if (option.includes('Servicio')) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          { from: 'bot', text: 'Claro 😊 ¿Qué te gustaría saber?' },
+        ]);
+        setOptions(['💰 Precios', '📍 Ubicación', '🧾 Soporte']);
+      }, 500);
+    }
+
+    else if (option.includes('Metas')) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          { from: 'bot', text: 'Perfecto 🔥 ¿Qué buscas mejorar?' },
+        ]);
+        setOptions(['💪 Recomiéndame un plan', '📦 Ver paquetes']);
+      }, 500);
+    }
+
+    else if (option.includes('Precios')) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            from: 'bot',
+            text:
+              'Manejamos dos paquetes:\n\n💎 Premium: $35,000\n⚡ Básico: $3,500\n\n¿Te gustaría más información?',
+          },
+        ]);
+        setOptions(['📲 Ir a WhatsApp']);
+      }, 500);
+    }
+
+    else if (option.includes('Ubicación')) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            from: 'bot',
+            text: 'Nos ubicamos en CDMX 📍 ¿Quieres que te mandemos la ubicación por WhatsApp?',
+          },
+        ]);
+        setOptions(['📲 Ir a WhatsApp']);
+      }, 500);
+    }
+
+    else if (option.includes('plan')) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            from: 'bot',
+            text:
+              'Te recomiendo un plan personalizado según tu objetivo 💪\n\n¿Te gustaría que te asesoremos directamente?',
+          },
+        ]);
+        setOptions(['📲 Ir a WhatsApp']);
+      }, 500);
+    }
+
+    else if (option.includes('WhatsApp')) {
+      openWhatsApp('Hola, quiero más información sobre GoldenEra');
+    }
+  };
+
+  const handleOpen = () => {
+    setShowModal(true);
+    setShowChatTooltip(false);
+    startChat();
+  };
+
+  const handleClose = () => {
     setShowModal(false);
   };
 
@@ -57,17 +146,13 @@ const ChatbotWidget: React.FC = () => {
       <div className="chatbot-widget-container">
         <div
           className="chatbot-widget"
-          onClick={handleChatWidgetClick}
-          onMouseEnter={() => !showModal && setShowChatTooltip(true)}
+          onClick={handleOpen}
+          onMouseEnter={() => setShowChatTooltip(true)}
           onMouseLeave={() => setShowChatTooltip(false)}
         >
-          <div className="chatbot-widget__icon">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white"/>
-            </svg>
-          </div>
+          <div className="chatbot-widget__icon">💬</div>
 
-          {showChatTooltip && !showModal && (
+          {showChatTooltip && (
             <div className="chatbot-widget__tooltip">
               <span>Asistente AI</span>
             </div>
@@ -77,102 +162,30 @@ const ChatbotWidget: React.FC = () => {
 
       {/* MODAL */}
       {showModal && (
-        <div className="chatbot-modal-overlay" onClick={handleCloseModal}>
+        <div className="chatbot-modal-overlay" onClick={handleClose}>
           <div className="chatbot-modal" onClick={(e) => e.stopPropagation()}>
 
-            <button className="chatbot-modal__close" onClick={handleCloseModal}>
+            <button className="chatbot-modal__close" onClick={handleClose}>
               ✕
             </button>
 
-            {/* STEP 1 */}
-            {step === 'main' && (
-              <>
-                <h3 className="chatbot-modal__title">GoldenEra Assistant</h3>
-                <p className="chatbot-modal__subtitle">
-                  ¿En qué te gustaría mejorar hoy?
-                </p>
-
-                <div className="chatbot-modal__options">
-                  <button
-                    className="chatbot-option"
-                    onClick={() => setStep('support')}
-                  >
-                     Servicio al cliente
-                  </button>
-
-                  <button
-                    className="chatbot-option"
-                    onClick={() => setStep('training')}
-                  >
-                     Metas y entrenamiento
-                  </button>
+            {/* MENSAJES */}
+            <div className="chatbot-messages">
+              {messages.map((msg, i) => (
+                <div key={i} className={`chatbot-msg ${msg.from}`}>
+                  {msg.text}
                 </div>
-              </>
-            )}
+              ))}
+            </div>
 
-            {/* SOPORTE */}
-            {step === 'support' && (
-              <>
-                <h3>Soporte</h3>
-                <p>Selecciona una opción:</p>
-
-                <div className="chatbot-modal__options">
-                  <button onClick={() =>
-                    openWhatsApp('Hola, quiero información sobre PRECIOS en GoldenEra')
-                  }>
-                    Precios
-                  </button>
-
-                  <button onClick={() =>
-                    openWhatsApp('Hola, ¿dónde se ubican?')
-                  }>
-                     Ubicación
-                  </button>
-
-                  <button onClick={() =>
-                    openWhatsApp('Hola, necesito ayuda con mi compra')
-                  }>
-                     Soporte de compra
-                  </button>
-                </div>
-
-                <button onClick={() => setStep('main')}>
-                  ← Volver
+            {/* OPCIONES */}
+            <div className="chatbot-options">
+              {options.map((opt, i) => (
+                <button key={i} onClick={() => handleOptionClick(opt)}>
+                  {opt}
                 </button>
-              </>
-            )}
-
-            {/* ENTRENAMIENTO */}
-            {step === 'training' && (
-              <>
-                <h3>Metas y entrenamiento</h3>
-                <p>Elige lo que buscas:</p>
-
-                <div className="chatbot-modal__options">
-                  <button onClick={() =>
-                    openWhatsApp('Quiero mejorar mi físico, recomiéndame un plan')
-                  }>
-                     Recomiéndame un plan
-                  </button>
-
-                  <button onClick={() =>
-                    openWhatsApp('Quiero información sobre los paquetes de entrenamiento')
-                  }>
-                     Ver paquetes
-                  </button>
-
-                  <button onClick={() =>
-                    openWhatsApp('Quiero empezar mi transformación física')
-                  }>
-                     Empezar transformación
-                  </button>
-                </div>
-
-                <button onClick={() => setStep('main')}>
-                  ← Volver
-                </button>
-              </>
-            )}
+              ))}
+            </div>
 
           </div>
         </div>
