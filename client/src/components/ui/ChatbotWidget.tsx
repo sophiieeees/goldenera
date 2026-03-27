@@ -36,7 +36,7 @@ const ChatbotWidget: React.FC = () => {
     }
   }, [isVisible, shouldShow]);
 
-  // ✅ CLEANUP SEGURO
+  // ✅ CLEANUP SEGURO (sin romper Voiceflow)
   const cleanupVoiceflow = useCallback(() => {
     const existingScript = document.getElementById('voiceflow-script');
     if (existingScript) existingScript.remove();
@@ -73,7 +73,7 @@ const ChatbotWidget: React.FC = () => {
                 console.log('Chat cargado');
                 setIsLoading(false);
 
-                // ✅ FIX AQUÍ (TypeScript safe)
+                // ✅ FIX TypeScript
                 window.voiceflow?.chat?.open();
               })
               .catch((err: any) => {
@@ -91,7 +91,12 @@ const ChatbotWidget: React.FC = () => {
           setIsLoading(false);
         };
 
-        document.body.appendChild(script);
+        const firstScript = document.getElementsByTagName('script')[0];
+        if (firstScript?.parentNode) {
+          firstScript.parentNode.insertBefore(script, firstScript);
+        } else {
+          document.body.appendChild(script);
+        }
       }, 100);
     },
     [cleanupVoiceflow]
@@ -119,6 +124,7 @@ const ChatbotWidget: React.FC = () => {
 
   return (
     <>
+      {/* Botón */}
       <div className="chatbot-widget-container">
         <div
           className="chatbot-widget"
@@ -129,6 +135,9 @@ const ChatbotWidget: React.FC = () => {
           <div className="chatbot-widget__icon">
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white"/>
+              <path d="M7 9H17V11H7V9Z" fill="white"/>
+              <path d="M7 12H14V14H7V12Z" fill="white"/>
+              <path d="M7 6H17V8H7V6Z" fill="white"/>
             </svg>
           </div>
 
@@ -140,6 +149,7 @@ const ChatbotWidget: React.FC = () => {
         </div>
       </div>
 
+      {/* Modal */}
       {showModal && (
         <div className="chatbot-modal-overlay" onClick={handleCloseModal}>
           <div className="chatbot-modal" onClick={(e) => e.stopPropagation()}>
@@ -147,24 +157,37 @@ const ChatbotWidget: React.FC = () => {
               ✕
             </button>
 
-            <h3>¿En qué podemos ayudarte?</h3>
-            <p>Selecciona el tipo de asistencia</p>
+            <h3 className="chatbot-modal__title">¿En qué podemos ayudarte?</h3>
+            <p className="chatbot-modal__subtitle">
+              Selecciona el tipo de asistencia que necesitas
+            </p>
 
-            <button
-              onClick={() => handleOptionClick('customer_service')}
-              disabled={isLoading}
-            >
-              Dudas y Soporte
-            </button>
+            <div className="chatbot-modal__options">
+              <button
+                className="chatbot-option chatbot-option--support"
+                onClick={() => handleOptionClick('customer_service')}
+                disabled={isLoading}
+              >
+                <span className="chatbot-option__title">Dudas y Soporte</span>
+              </button>
 
-            <button
-              onClick={() => handleOptionClick('training')}
-              disabled={isLoading}
-            >
-              Metas y Entrenamiento
-            </button>
+              <button
+                className="chatbot-option chatbot-option--training"
+                onClick={() => handleOptionClick('training')}
+                disabled={isLoading}
+              >
+                <span className="chatbot-option__title">
+                  Metas y Entrenamiento
+                </span>
+              </button>
+            </div>
 
-            {isLoading && <p>Cargando asistente...</p>}
+            {isLoading && (
+              <div className="chatbot-modal__loading">
+                <div className="spinner"></div>
+                <span>Cargando asistente...</span>
+              </div>
+            )}
           </div>
         </div>
       )}
