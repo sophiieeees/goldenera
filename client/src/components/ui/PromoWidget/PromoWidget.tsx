@@ -80,7 +80,7 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
   const handleJoinNow = () => {
     animateOut();
     setTimeout(() => {
-      navigate('/join'); // 🔥 cambia aquí si quieres /packages
+      navigate('/join'); 
     }, 400);
   };
 
