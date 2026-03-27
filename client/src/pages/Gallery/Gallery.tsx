@@ -55,7 +55,6 @@ import imggal20 from '../../assets/images/imggal20.jpeg';
 import imggal25 from '../../assets/images/imggal25.jpeg';
 import imggal29 from '../../assets/images/imggal29.jpeg';
 import imggal30 from '../../assets/images/imggal30.jpeg';
-import imggal31 from '../../assets/images/imggal31.jpeg';
 import imggal32 from '../../assets/images/imggal32.jpeg';
 
 import { audio } from '../../assets/audio';
@@ -74,7 +73,7 @@ export const images = {
     imggal6, imggal7, imggal8, imggal9, imggal10,
     imggal11, imggal12, imggal13, imggal14, imggal15,
     imggal16, imggal17, imggal18, imggal19, imggal20,
-    imggal25, imggal29, imggal30, imggal31, imggal32,
+    imggal25, imggal29, imggal30, imggal32,
   ]
 };
 
