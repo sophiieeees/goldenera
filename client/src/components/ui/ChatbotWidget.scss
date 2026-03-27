@@ -62,8 +62,6 @@
       left: -8px;
       top: 50%;
       transform: translateY(-50%);
-      width: 0;
-      height: 0;
       border-right: 8px solid rgba(0, 0, 0, 0.9);
       border-top: 8px solid transparent;
       border-bottom: 8px solid transparent;
@@ -97,35 +95,29 @@
 }
 
 
-
-// Modal overlay
+// Modal
 .chatbot-modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 99999;
-  animation: fadeInOverlay 0.3s ease;
   padding: 20px;
 }
 
 .chatbot-modal {
   background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
   border-radius: 20px;
-  padding: 30px;
+  padding: 25px;
   max-width: 400px;
   width: 100%;
-  position: relative;
-  z-index: 100000;
   border: 1px solid rgba(255, 215, 0, 0.3);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.1);
   animation: slideUp 0.4s ease;
+  display: flex;
+  flex-direction: column;
 
   &__close {
     position: absolute;
@@ -133,198 +125,106 @@
     right: 15px;
     background: none;
     border: none;
-    cursor: pointer;
-    padding: 5px;
     color: #888;
-    transition: color 0.3s ease;
+    cursor: pointer;
 
     &:hover {
       color: #FFD700;
     }
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
   }
 
   &__title {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
-    color: #fff;
-    margin-bottom: 8px;
     text-align: center;
     background: linear-gradient(135deg, #FFD700, #FFA500);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
   &__subtitle {
-    font-size: 14px;
-    color: #888;
     text-align: center;
-    margin-bottom: 25px;
-  }
-
-  &__options {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  &__loading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-    color: #FFD700;
-    font-size: 14px;
-  }
-}
-
-.chatbot-option {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 18px 20px;
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: left;
-
-  &:hover:not(:disabled) {
-    transform: translateX(5px);
-    border-color: rgba(255, 215, 0, 0.5);
-    background: rgba(255, 215, 0, 0.1);
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  &__icon {
-    width: 45px;
-    height: 45px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  &__title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-  }
-
-  &__desc {
-    font-size: 12px;
     color: #888;
-  }
-
-  &--support {
-    .chatbot-option__icon {
-      background: linear-gradient(135deg, #4A90D9, #357ABD);
-      color: #fff;
-    }
-
-    &:hover:not(:disabled) {
-      border-color: rgba(74, 144, 217, 0.5);
-      background: rgba(74, 144, 217, 0.1);
-    }
-  }
-
-  &--training {
-    .chatbot-option__icon {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
-      color: #000;
-    }
+    margin-bottom: 15px;
   }
 }
 
-// Spinner
-.spinner {
-  width: 30px;
-  height: 30px;
-  border: 3px solid rgba(255, 215, 0, 0.2);
-  border-top-color: #FFD700;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+
+// =============================
+// CHAT (NUEVO)
+// =============================
+
+.chatbot-messages {
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-// Animations
+.chatbot-msg {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 15px;
+  font-size: 14px;
+  animation: fadeInUp 0.3s ease;
+
+  &.bot {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    align-self: flex-start;
+  }
+
+  &.user {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    align-self: flex-end;
+    font-weight: 500;
+  }
+}
+
+
+// OPCIONES
+.chatbot-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chatbot-options button {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #FFD700;
+  padding: 10px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+
+  &:hover {
+    background: #FFD700;
+    color: #000;
+  }
+}
+
+
+// Animaciones
 @keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateY(-50%) translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateY(-50%) translateX(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
-  }
-}
-
-@keyframes fadeInOverlay {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes wave {
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
