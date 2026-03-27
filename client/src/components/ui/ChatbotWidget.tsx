@@ -72,7 +72,9 @@ const ChatbotWidget: React.FC = () => {
               .then(() => {
                 console.log('Chat cargado');
                 setIsLoading(false);
-                window.voiceflow.chat.open();
+
+                // ✅ FIX AQUÍ (TypeScript safe)
+                window.voiceflow?.chat?.open();
               })
               .catch((err: any) => {
                 console.error('Error cargando chat:', err);
