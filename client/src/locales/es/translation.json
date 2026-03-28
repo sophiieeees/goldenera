@@ -332,16 +332,26 @@
     }
   },
 
-  "chatbot": {
-    "welcome": "¡Bienvenido a Golden Era!\n\n¿En qué te ayudo?\n\nPuedes preguntar por:\n• Precios\n• Paquetes\n• Cómo unirte\n• Merch\n• Coach",
-    "join": "Para unirte:\n1. Ve a 'Únete al club'\n2. Elige tu paquete\n3. Completa tu registro\n\n¿Quieres ayuda personalizada?",
-    "plans": "Tenemos 2 paquetes:\n\n🥇 Estándar – $3,500\n✔ Acceso completo\n✔ Rutinas\n✔ Comunidad\n\n👑 Ultra Deluxe – $35,000\n🔥 Seguimiento personalizado\n🔥 Acceso premium\n\n¿Buscas transformación real? 😏",
-    "merch": "Camisetas oficiales Golden Era\n💰 Precio: $888\n\nDisponible en sección Merch 🔥",
-    "coach": "Nuestro coach es Mateo Haces\n🔥 Experto en rendimiento\n🔥 Especialista en péptidos y nootrópicos\n🔥 Atleta de alto nivel",
-    "content": "El contenido exclusivo se desbloquea al entrar al programa",
-    "unknown": "No tengo esa info exacta...\n\nPero nuestro equipo te ayuda aquí 👇",
-    "inputPlaceholder": "Escribe tu mensaje...",
+"chatbot": {
+    "welcome": "¡Bienvenido a Golden Era!\n\n¿En qué puedo ayudarte?\n\n• Paquetes\n• Unirme al club\n• Merch\n• Coach",
+    "reset": "Nuevo inicio\n\n¿En qué puedo ayudarte?\n\n• Paquetes\n• Unirme\n• Merch\n• Coach",
+    "tooltip": "Asistente de IA",
+    "open": "Abrir chat",
+    "online": "En línea",
+    "whatsapp": "Hablar por WhatsApp",
+    "placeholder": "Escribe tu mensaje...",
     "send": "Enviar",
-    "whatsapp": "Hablar por WhatsApp"
+
+    "packages": "Tenemos 2 opciones:\n\n1. Estándar – $3,500\nIncluye acceso básico.\n\n2. Ultra Deluxe – $35,000\nIncluye acceso exclusivo y seguimiento personalizado 🔥\n\n¿Quieres ayuda para elegir?",
+
+    "join": "Para unirte:\n\n1. Ve a 'Únete al club'\n2. Elige tu paquete\n3. Completa tu registro\n\n¿Quieres que te guiemos?",
+
+    "merch": "Merch disponible:\n\n• Camisetas Golden Era\n💰 Precio: $888\n\nDisponible en la sección Merch 🔥",
+
+    "coach": "Nuestro coach:\n\n• Experto en péptidos\n• Alto rendimiento\n• Estrategias reales 🔥",
+
+    "cta": "¡Perfecto!\n\nTe conecto con el equipo 👇",
+
+    "fallback": "Para más info personalizada, contáctanos aquí 👇"
   }
 }
