@@ -9,6 +9,7 @@ type Message = {
   text: string;
 };
 
+const [isMinimized, setIsMinimized] = useState(false);
 const WHATSAPP = 'https://wa.me/521XXXXXXXXXX?text=Hola%20quiero%20información';
 
 const ChatbotWidget: React.FC = () => {
