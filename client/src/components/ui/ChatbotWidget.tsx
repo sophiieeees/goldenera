@@ -49,14 +49,20 @@ const ChatbotWidget: React.FC = () => {
     <>
       {/* BOTÓN */}
       {!open && !minimized && (
-        <div className="chatbot-widget-container">
-          <div className="chatbot-widget" onClick={() => setOpen(true)}>
-            💬
-            <div className="chatbot-widget__tooltip">
-              {t('chatbot.tooltip')}
-            </div>
-          </div>
-        </div>
+        <div className="chatbot-widget" onClick={() => setOpen(true)}>
+  <div className="chatbot-widget__icon">
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z"
+        fill="white"
+      />
+    </svg>
+  </div>
+
+  <div className="chatbot-widget__tooltip">
+    {t('chatbot.tooltip')}
+  </div>
+</div>
       )}
 
       {/* MINIMIZADO */}
@@ -90,7 +96,7 @@ const ChatbotWidget: React.FC = () => {
 
                 <div className="actions">
                   <button onClick={resetChat}>↻</button>
-                  <button onClick={() => setMinimized(true)}>➖</button>
+                  <button onClick={() => setMinimized(true)}>—</button>
                   <button onClick={() => setOpen(false)}>✖</button>
                 </div>
               </div>
