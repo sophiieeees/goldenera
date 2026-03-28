@@ -1,167 +1,116 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
+import { useTranslation } from 'react-i18next';
 import '../ui/ChatbotWidget.scss';
-
-const USE_AI = false; // 🔥 cambia a true si usas backend con OpenAI
 
 type Message = {
   from: 'user' | 'bot';
   text: string;
 };
 
-const ChatbotWidget: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [showChatTooltip, setShowChatTooltip] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+const WHATSAPP = 'https://wa.me/521XXXXXXXXXX?text=Hola%20quiero%20información';
 
-  // CHAT
+const ChatbotWidget: React.FC = () => {
+  const { t } = useTranslation();
+  const location = useLocation();
+
+  const [isVisible, setIsVisible] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [isChatActive, setIsChatActive] = useState(false);
+
   const [chatMessages, setChatMessages] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState('');
+  const [context, setContext] = useState<string | null>(null);
 
-  const location = useLocation();
   const shouldShow = !location.pathname.includes('/gallery');
 
   useEffect(() => {
     if (!shouldShow) return;
 
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-      setTimeout(() => setShowChatTooltip(true), 3000);
-    }, 1000);
-
-    return () => clearTimeout(timer);
+    setTimeout(() => setIsVisible(true), 1000);
   }, [shouldShow]);
 
   useEffect(() => {
-    if (isVisible && shouldShow) {
-      gsap.fromTo(
-        '.chatbot-widget',
-        { scale: 0, opacity: 0, rotate: -180 },
-        { scale: 1, opacity: 1, rotate: 0, duration: 0.6, ease: 'back.out(1.7)' }
+    if (isVisible) {
+      gsap.fromTo('.chatbot-widget',
+        { scale: 0 },
+        { scale: 1, duration: 0.5 }
       );
     }
-  }, [isVisible, shouldShow]);
+  }, [isVisible]);
 
-  // 🧠 RESPUESTAS LOCALES
-  const getLocalResponse = (input: string): string => {
+  const getResponse = (input: string): string => {
     const text = input.toLowerCase();
 
-    if (text.includes('precio') || text.includes('costo')) {
-      return 'Nuestros paquetes empiezan desde $499 💪';
-    }
-    if (text.includes('horario')) {
-      return 'Abrimos de lunes a sábado de 6am a 10pm 🕒';
-    }
-    if (text.includes('ubicacion')) {
-      return 'Estamos en el centro 📍';
-    }
-    if (text.includes('plan')) {
-      return 'Tenemos planes personalizados según tu objetivo 🔥';
+    if (text.includes('unir') || text.includes('join')) {
+      setContext('join');
+      return t('chatbot.join');
     }
 
-    return 'No entendí bien 🤔, intenta preguntar por precios, horarios o planes.';
+    if (text.includes('precio') || text.includes('plan')) {
+      setContext('plans');
+      return t('chatbot.plans');
+    }
+
+    if (text.includes('merch') || text.includes('camiseta')) {
+      setContext('merch');
+      return t('chatbot.merch');
+    }
+
+    if (text.includes('coach')) {
+      return t('chatbot.coach');
+    }
+
+    if (text.includes('contenido')) {
+      return t('chatbot.content');
+    }
+
+    return t('chatbot.unknown');
   };
 
-  // 🤖 AI RESPONSE
-  const getAIResponse = async (input: string): Promise<string> => {
-    const res = await fetch('http://localhost:3001/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: input }),
-    });
-
-    const data = await res.json();
-    return data.reply;
-  };
-
-  // 🚀 ENVIAR MENSAJE
-  const handleSendMessage = async () => {
+  const handleSendMessage = () => {
     if (!userInput.trim()) return;
 
     const userMsg: Message = { from: 'user', text: userInput };
-    setChatMessages(prev => [...prev, userMsg]);
-
-    const input = userInput;
-    setUserInput('');
-
-    let reply = '';
-
-    if (USE_AI) {
-      reply = await getAIResponse(input);
-    } else {
-      reply = getLocalResponse(input);
-    }
+    const reply = getResponse(userInput);
 
     const botMsg: Message = { from: 'bot', text: reply };
-    setChatMessages(prev => [...prev, botMsg]);
+
+    setChatMessages(prev => [...prev, userMsg, botMsg]);
+    setUserInput('');
   };
 
-  const handleChatWidgetClick = () => {
-    setShowModal(true);
-    setShowChatTooltip(false);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setIsChatActive(false);
-    setChatMessages([]);
-  };
-
-  const handleOptionClick = () => {
+  const startChat = () => {
     setIsChatActive(true);
+    setChatMessages([
+      { from: 'bot', text: t('chatbot.welcome') }
+    ]);
   };
 
   if (!shouldShow || !isVisible) return null;
 
   return (
     <>
-      {/* BOTÓN */}
       <div className="chatbot-widget-container">
-        <div
-          className="chatbot-widget"
-          onClick={handleChatWidgetClick}
-          onMouseEnter={() => !showModal && setShowChatTooltip(true)}
-          onMouseLeave={() => setShowChatTooltip(false)}
-        >
-          <div className="chatbot-widget__icon">💬</div>
-
-          {showChatTooltip && !showModal && (
-            <div className="chatbot-widget__tooltip">
-              <span>Asistente AI</span>
-            </div>
-          )}
+        <div className="chatbot-widget" onClick={() => setShowModal(true)}>
+          
         </div>
       </div>
 
-      {/* MODAL */}
       {showModal && (
-        <div className="chatbot-modal-overlay" onClick={handleCloseModal}>
+        <div className="chatbot-modal-overlay" onClick={() => setShowModal(false)}>
           <div className="chatbot-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="chatbot-modal__close" onClick={handleCloseModal}>
-              ✕
-            </button>
 
             {!isChatActive && (
-              <>
-                <h3 className="chatbot-modal__title">¿En qué podemos ayudarte?</h3>
-
-                <div className="chatbot-modal__options">
-                  <button className="chatbot-option" onClick={handleOptionClick}>
-                    💬 Dudas y Soporte
-                  </button>
-
-                  <button className="chatbot-option" onClick={handleOptionClick}>
-                    🔥 Entrenamiento
-                  </button>
-                </div>
-              </>
+              <button className="chatbot-option" onClick={startChat}>
+                 Iniciar chat
+              </button>
             )}
 
-            {/* CHAT */}
             {isChatActive && (
               <div className="chatbot-chat">
+
                 <div className="chatbot-chat__messages">
                   {chatMessages.map((msg, i) => (
                     <div key={i} className={`msg msg--${msg.from}`}>
@@ -170,16 +119,25 @@ const ChatbotWidget: React.FC = () => {
                   ))}
                 </div>
 
+                {/* BOTÓN WHATSAPP */}
+                <a href={WHATSAPP} target="_blank" rel="noreferrer" className="whatsapp-btn">
+                  {t('chatbot.whatsapp')}
+                </a>
+
                 <div className="chatbot-chat__input">
                   <input
                     value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
-                    placeholder="Escribe tu mensaje..."
+                    placeholder={t('chatbot.inputPlaceholder')}
                   />
-                  <button onClick={handleSendMessage}>Enviar</button>
+                  <button onClick={handleSendMessage}>
+                    {t('chatbot.send')}
+                  </button>
                 </div>
+
               </div>
             )}
+
           </div>
         </div>
       )}
