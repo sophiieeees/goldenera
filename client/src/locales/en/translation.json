@@ -330,5 +330,18 @@
         "subtitle": "Join thousands of warriors already wearing Golden Era"
       }
     }
+  },
+
+  "chatbot": {
+    "welcome": "Welcome to Golden Era!\n\nHow can I help you?\n\nYou can ask about:\n• Prices\n• Plans\n• How to join\n• Merch\n• Coach 💪",
+    "join": "To join:\n1. Go to 'Join the club'\n2. Choose your plan\n3. Complete registration\n\nNeed help?",
+    "plans": "We offer 2 plans:\n\n🥇 Standard – $3,500\n✔ Full access\n✔ Workouts\n✔ Community\n\n👑 Ultra Deluxe – $35,000\n🔥 Personal coaching\n🔥 Premium content",
+    "merch": "Official Golden Era shirts\n💰 Price: $888\n\nAvailable in Merch section 🔥",
+    "coach": "Our coach is Matemaxes\n🔥 Performance expert\n🔥 Peptides specialist\n🔥 Elite athlete",
+    "content": "Exclusive content unlocks after joining",
+    "unknown": "I don't have that info...\n\nOur team can help you 👇",
+    "inputPlaceholder": "Type your message...",
+    "send": "Send",
+    "whatsapp": "Chat on WhatsApp"
   }
 }
