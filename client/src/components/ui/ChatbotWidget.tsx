@@ -10,10 +10,12 @@ type Message = {
 
 const ChatbotWidget: React.FC = () => {
   const { t } = useTranslation();
+  const currentUrl = window.location.href;
+  const pageTitle = document.title;
+  const WHATSAPP_MESSAGE = `${t('home.footer.whatsapp')}
 
-  
-  const WHATSAPP_MESSAGE = t('home.footer.whatsapp');
-
+Página: ${pageTitle}
+${currentUrl}`;
 
   const WHATSAPP_LINK = `https://wa.me/525576966262?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
@@ -23,7 +25,6 @@ const ChatbotWidget: React.FC = () => {
     { from: 'bot', text: t('chatbot.welcome') }
   ]);
   const [input, setInput] = useState('');
-
 
   const getBotResponse = (msg: string): string => {
     const text = msg.toLowerCase();
@@ -55,12 +56,7 @@ const ChatbotWidget: React.FC = () => {
     if (!input.trim()) return;
 
     const userMsg: Message = { from: 'user', text: input };
-    const botResponse = getBotResponse(input);
-
-    const botMsg: Message = {
-      from: 'bot',
-      text: botResponse
-    };
+    const botMsg: Message = { from: 'bot', text: getBotResponse(input) };
 
     setMessages(prev => [...prev, userMsg, botMsg]);
     setInput('');
@@ -75,10 +71,7 @@ const ChatbotWidget: React.FC = () => {
       {/* BOTÓN */}
       {!isOpen && !isMinimized && (
         <div className="chatbot-widget-container">
-          <div
-            className="chatbot-widget"
-            onClick={() => setIsOpen(true)}
-          >
+          <div className="chatbot-widget" onClick={() => setIsOpen(true)}>
             <div className="chatbot-widget__icon">
               <svg viewBox="0 0 24 24">
                 <path
