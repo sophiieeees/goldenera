@@ -9,7 +9,6 @@ type Message = {
   text: string;
 };
 
-const [isMinimized, setIsMinimized] = useState(false);
 const WHATSAPP = 'https://wa.me/525576966262?text=Hola%20quiero%20información';
 
 const ChatbotWidget: React.FC = () => {
@@ -19,43 +18,37 @@ const ChatbotWidget: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isChatActive, setIsChatActive] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
 
   const [chatMessages, setChatMessages] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState('');
-  const [context, setContext] = useState<string | null>(null);
 
   const shouldShow = !location.pathname.includes('/gallery');
 
   useEffect(() => {
     if (!shouldShow) return;
-
     setTimeout(() => setIsVisible(true), 1000);
   }, [shouldShow]);
 
   useEffect(() => {
     if (isVisible) {
-      gsap.fromTo('.chatbot-widget',
-        { scale: 0 },
-        { scale: 1, duration: 0.5 }
-      );
+      gsap.fromTo('.chatbot-widget', { scale: 0 }, { scale: 1, duration: 0.5 });
     }
   }, [isVisible]);
+
 
   const getResponse = (input: string): string => {
     const text = input.toLowerCase();
 
     if (text.includes('unir') || text.includes('join')) {
-      setContext('join');
       return t('chatbot.join');
     }
 
     if (text.includes('precio') || text.includes('plan')) {
-      setContext('plans');
       return t('chatbot.plans');
     }
 
     if (text.includes('merch') || text.includes('camiseta')) {
-      setContext('merch');
       return t('chatbot.merch');
     }
 
@@ -75,7 +68,6 @@ const ChatbotWidget: React.FC = () => {
 
     const userMsg: Message = { from: 'user', text: userInput };
     const reply = getResponse(userInput);
-
     const botMsg: Message = { from: 'bot', text: reply };
 
     setChatMessages(prev => [...prev, userMsg, botMsg]);
@@ -84,21 +76,34 @@ const ChatbotWidget: React.FC = () => {
 
   const startChat = () => {
     setIsChatActive(true);
-    setChatMessages([
-      { from: 'bot', text: t('chatbot.welcome') }
-    ]);
+    setIsMinimized(false);
+    setChatMessages([{ from: 'bot', text: t('chatbot.welcome') }]);
+  };
+
+  const resetChat = () => {
+    setChatMessages([{ from: 'bot', text: t('chatbot.welcome') }]);
+  };
+
+  const minimizeChat = () => {
+    setIsMinimized(true);
+  };
+
+  const reopenChat = () => {
+    setIsMinimized(false);
   };
 
   if (!shouldShow || !isVisible) return null;
 
   return (
     <>
+      {/* BOTÓN PRINCIPAL */}
       <div className="chatbot-widget-container">
         <div className="chatbot-widget" onClick={() => setShowModal(true)}>
           
         </div>
       </div>
 
+      {/* MODAL */}
       {showModal && (
         <div className="chatbot-modal-overlay" onClick={() => setShowModal(false)}>
           <div className="chatbot-modal" onClick={(e) => e.stopPropagation()}>
@@ -109,9 +114,28 @@ const ChatbotWidget: React.FC = () => {
               </button>
             )}
 
-            {isChatActive && (
+            {/* CHAT */}
+            {isChatActive && !isMinimized && (
               <div className="chatbot-chat">
 
+                {/* HEADER */}
+                <div className="chatbot-chat__header">
+                  <div className="chatbot-chat__info">
+                    <div className="avatar">GE</div>
+                    <div>
+                      <div className="name">Golden Era</div>
+                      <div className="status">● Online</div>
+                    </div>
+                  </div>
+
+                  <div className="actions">
+                    <button onClick={resetChat}>↻</button>
+                    <button onClick={minimizeChat}>—</button>
+                    <button onClick={() => setShowModal(false)}>✕</button>
+                  </div>
+                </div>
+
+                {/* MENSAJES */}
                 <div className="chatbot-chat__messages">
                   {chatMessages.map((msg, i) => (
                     <div key={i} className={`msg msg--${msg.from}`}>
@@ -120,11 +144,17 @@ const ChatbotWidget: React.FC = () => {
                   ))}
                 </div>
 
-                {/* BOTÓN WHATSAPP */}
-                <a href={WHATSAPP} target="_blank" rel="noreferrer" className="whatsapp-btn">
+                {/* WHATSAPP */}
+                <a
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="whatsapp-btn"
+                >
                   {t('chatbot.whatsapp')}
                 </a>
 
+                {/* INPUT */}
                 <div className="chatbot-chat__input">
                   <input
                     value={userInput}
@@ -136,6 +166,13 @@ const ChatbotWidget: React.FC = () => {
                   </button>
                 </div>
 
+              </div>
+            )}
+
+            {/* MINIMIZADO */}
+            {isChatActive && isMinimized && (
+              <div className="chatbot-minimized" onClick={reopenChat}>
+                 {t('chatbot.whatsapp')}
               </div>
             )}
 
