@@ -328,3 +328,61 @@
     transform: rotate(360deg);
   }
 }
+
+////
+.chatbot-chat {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+
+  &__messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .msg {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+
+    &--user {
+      background: #FFD700;
+      color: black;
+      align-self: flex-end;
+    }
+
+    &--bot {
+      background: #333;
+      color: white;
+      align-self: flex-start;
+    }
+  }
+
+  &__input {
+    display: flex;
+    gap: 5px;
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      border: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  }
+}
