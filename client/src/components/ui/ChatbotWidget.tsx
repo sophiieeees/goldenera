@@ -1,19 +1,23 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import '../ui/ChatbotWidget.scss';
 
-const USE_AI = false; // 🔥 cambia a true si usas OpenAI
+const USE_AI = false; // 🔥 cambia a true si usas backend con OpenAI
+
+type Message = {
+  from: 'user' | 'bot';
+  text: string;
+};
 
 const ChatbotWidget: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showChatTooltip, setShowChatTooltip] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
-  // 🔥 NUEVO CHAT
+  // CHAT
   const [isChatActive, setIsChatActive] = useState(false);
-  const [chatMessages, setChatMessages] = useState<{from:'user'|'bot', text:string}[]>([]);
+  const [chatMessages, setChatMessages] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState('');
 
   const location = useLocation();
@@ -32,15 +36,16 @@ const ChatbotWidget: React.FC = () => {
 
   useEffect(() => {
     if (isVisible && shouldShow) {
-      gsap.fromTo('.chatbot-widget',
+      gsap.fromTo(
+        '.chatbot-widget',
         { scale: 0, opacity: 0, rotate: -180 },
         { scale: 1, opacity: 1, rotate: 0, duration: 0.6, ease: 'back.out(1.7)' }
       );
     }
   }, [isVisible, shouldShow]);
 
-  // 🧠 RESPUESTAS PREDETERMINADAS
-  const getLocalResponse = (input: string) => {
+  // 🧠 RESPUESTAS LOCALES
+  const getLocalResponse = (input: string): string => {
     const text = input.toLowerCase();
 
     if (text.includes('precio') || text.includes('costo')) {
@@ -60,22 +65,22 @@ const ChatbotWidget: React.FC = () => {
   };
 
   // 🤖 AI RESPONSE
-  const getAIResponse = async (input: string) => {
+  const getAIResponse = async (input: string): Promise<string> => {
     const res = await fetch('http://localhost:3001/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: input })
+      body: JSON.stringify({ message: input }),
     });
 
     const data = await res.json();
     return data.reply;
   };
 
-  // 🔥 ENVÍO DE MENSAJE
+  // 🚀 ENVIAR MENSAJE
   const handleSendMessage = async () => {
     if (!userInput.trim()) return;
 
-    const userMsg = { from: 'user', text: userInput };
+    const userMsg: Message = { from: 'user', text: userInput };
     setChatMessages(prev => [...prev, userMsg]);
 
     const input = userInput;
@@ -89,7 +94,7 @@ const ChatbotWidget: React.FC = () => {
       reply = getLocalResponse(input);
     }
 
-    const botMsg = { from: 'bot', text: reply };
+    const botMsg: Message = { from: 'bot', text: reply };
     setChatMessages(prev => [...prev, botMsg]);
   };
 
@@ -120,9 +125,7 @@ const ChatbotWidget: React.FC = () => {
           onMouseEnter={() => !showModal && setShowChatTooltip(true)}
           onMouseLeave={() => setShowChatTooltip(false)}
         >
-          <div className="chatbot-widget__icon">
-            💬
-          </div>
+          <div className="chatbot-widget__icon">💬</div>
 
           {showChatTooltip && !showModal && (
             <div className="chatbot-widget__tooltip">
@@ -136,7 +139,6 @@ const ChatbotWidget: React.FC = () => {
       {showModal && (
         <div className="chatbot-modal-overlay" onClick={handleCloseModal}>
           <div className="chatbot-modal" onClick={(e) => e.stopPropagation()}>
-
             <button className="chatbot-modal__close" onClick={handleCloseModal}>
               ✕
             </button>
@@ -178,7 +180,6 @@ const ChatbotWidget: React.FC = () => {
                 </div>
               </div>
             )}
-
           </div>
         </div>
       )}
