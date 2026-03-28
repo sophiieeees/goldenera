@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import './PromoWidget.scss';
 
@@ -9,6 +10,8 @@ interface PromoWidgetProps {
 }
 
 const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
+  const { t } = useTranslation();
+
   const [timeLeft, setTimeLeft] = useState(2 * 60 * 60);
   const [isMinimized, setIsMinimized] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -80,7 +83,7 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
   const handleJoinNow = () => {
     animateOut();
     setTimeout(() => {
-      navigate('/join'); 
+      navigate('/join');
     }, 400);
   };
 
@@ -145,10 +148,12 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
         ref={contentRef}
         style={{ display: isMinimized ? 'none' : 'block' }}
       >
-        <div className="promo-widget__badge">50% OFF</div>
+        <div className="promo-widget__badge">
+          {t('promo.badge')}
+        </div>
 
-        <h3>Oferta exclusiva</h3>
-        <p>Comienza tu transformación hoy</p>
+        <h3>{t('promo.title')}</h3>
+        <p>{t('promo.subtitle')}</p>
 
         <div className="promo-widget__timer">
           {formatTime(timeLeft)}
@@ -158,11 +163,11 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
           className="promo-widget__cta"
           onClick={handleJoinNow}
         >
-          Comenzar
+          {t('promo.cta')}
         </button>
 
         <span className="promo-widget__spots">
-          ¡Quedan pocos lugares!
+          {t('promo.spots')}
         </span>
       </div>
 
@@ -173,7 +178,7 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
         onClick={handleMinimize}
         style={{ display: isMinimized ? 'flex' : 'none' }}
       >
-        <span>50% OFF</span>
+        <span>{t('promo.badge')}</span>
         <span>{formatTime(timeLeft)}</span>
       </div>
     </div>
