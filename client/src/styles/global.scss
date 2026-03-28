@@ -146,8 +146,21 @@ img {
   border-width: 0;
 }
 
-// Focus visible para accesibilidad
+
 :focus-visible {
   outline: 2px solid $golden;
   outline-offset: 2px;
+}
+
+{
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
 }
