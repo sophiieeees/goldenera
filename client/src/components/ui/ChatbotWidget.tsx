@@ -1,185 +1,129 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { gsap } from 'gsap';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import '../ui/ChatbotWidget.scss';
 
-type Message = {
-  from: 'user' | 'bot';
-  text: string;
-};
+type Msg = { from: 'user' | 'bot'; text: string };
 
-const WHATSAPP = 'https://wa.me/525576966262?text=¡Hola!%20Vengo%20de%20la%20página%20web%20de%20Golden%20Era%20y%20me%20interesa%20mi%20transformación.%20¿Podrían%20darme%20más%20información?';
+const WHATSAPP = "https://wa.me/525576966262?text=¡Hola!%20Vengo%20de%20la%20página%20web%20de%20Golden%20Era%20y%20me%20interesa%20mi%20transformación.%20¿Podrían%20darme%20más%20información?";
 
 const ChatbotWidget: React.FC = () => {
   const { t } = useTranslation();
-  const location = useLocation();
 
-  const [isVisible, setIsVisible] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [isChatActive, setIsChatActive] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [minimized, setMinimized] = useState(false);
+  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState<Msg[]>([
+    { from: 'bot', text: t('chatbot.welcome') }
+  ]);
 
-  const [chatMessages, setChatMessages] = useState<Message[]>([]);
-  const [userInput, setUserInput] = useState('');
+  const getResponse = (msg: string): string => {
+    const text = msg.toLowerCase();
 
-  const shouldShow = !location.pathname.includes('/gallery');
+    if (text.includes('paquete')) return t('chatbot.packages');
+    if (text.includes('unirme') || text.includes('club')) return t('chatbot.join');
+    if (text.includes('merch') || text.includes('camiseta')) return t('chatbot.merch');
+    if (text.includes('coach')) return t('chatbot.coach');
 
-  useEffect(() => {
-    if (!shouldShow) return;
-    setTimeout(() => setIsVisible(true), 1000);
-  }, [shouldShow]);
-
-  useEffect(() => {
-    if (isVisible) {
-      gsap.fromTo('.chatbot-widget', { scale: 0 }, { scale: 1, duration: 0.5 });
-    }
-  }, [isVisible]);
-
-  // RESPUESTAS
-  const getResponse = (input: string): string => {
-    const text = input.toLowerCase();
-
-    if (text.includes('unir') || text.includes('join')) {
-      return t('chatbot.join');
+    if (text.includes('si') || text.includes('ok') || text.includes('yes')) {
+      return t('chatbot.cta');
     }
 
-    if (text.includes('precio') || text.includes('plan')) {
-      return t('chatbot.plans');
-    }
-
-    if (text.includes('merch') || text.includes('camiseta')) {
-      return t('chatbot.merch');
-    }
-
-    if (text.includes('coach')) {
-      return t('chatbot.coach');
-    }
-
-    if (text.includes('contenido')) {
-      return t('chatbot.content');
-    }
-
-    return t('chatbot.unknown');
+    return t('chatbot.fallback');
   };
 
-  const handleSendMessage = () => {
-    if (!userInput.trim()) return;
+  const sendMessage = () => {
+    if (!input.trim()) return;
 
-    const userMsg: Message = { from: 'user', text: userInput };
-    const reply = getResponse(userInput);
-    const botMsg: Message = { from: 'bot', text: reply };
+    const userMsg: Msg = { from: 'user', text: input };
+    const botReply: Msg = { from: 'bot', text: getResponse(input) };
 
-    setChatMessages(prev => [...prev, userMsg, botMsg]);
-    setUserInput('');
-  };
-
-  const startChat = () => {
-    setIsChatActive(true);
-    setIsMinimized(false);
-    setChatMessages([{ from: 'bot', text: t('chatbot.welcome') }]);
+    setMessages(prev => [...prev, userMsg, botReply]);
+    setInput('');
   };
 
   const resetChat = () => {
-    setChatMessages([{ from: 'bot', text: t('chatbot.welcome') }]);
+    setMessages([{ from: 'bot', text: t('chatbot.reset') }]);
   };
-
-  const minimizeChat = () => setIsMinimized(true);
-  const reopenChat = () => setIsMinimized(false);
-
-  if (!shouldShow || !isVisible) return null;
 
   return (
     <>
       {/* BOTÓN */}
-      <div className="chatbot-widget-container">
-        <div className="chatbot-widget" onClick={() => setShowModal(true)}>
-          
-          <div className="chatbot-widget__icon">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z"
-                fill="white"
-              />
-            </svg>
-          </div>
-
-          <div className="chatbot-widget__tooltip">
-            Asistente de IA
+      {!open && !minimized && (
+        <div className="chatbot-widget-container">
+          <div className="chatbot-widget" onClick={() => setOpen(true)}>
+            💬
+            <div className="chatbot-widget__tooltip">
+              {t('chatbot.tooltip')}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* MODAL */}
-      {showModal && (
-        <div className="chatbot-modal-overlay" onClick={() => setShowModal(false)}>
-          <div className="chatbot-modal" onClick={(e) => e.stopPropagation()}>
+      {/* MINIMIZADO */}
+      {minimized && (
+        <div
+          className="chatbot-minimized"
+          onClick={() => {
+            setMinimized(false);
+            setOpen(true);
+          }}
+        >
+          💬 {t('chatbot.open')}
+        </div>
+      )}
 
-            {!isChatActive && (
-              <button className="chatbot-option" onClick={startChat}>
-                💬 {t('chatbot.start')}
-              </button>
-            )}
+      {/* CHAT */}
+      {open && !minimized && (
+        <div className="chatbot-modal-overlay">
+          <div className="chatbot-modal">
+            <div className="chatbot-chat">
 
-            {/* CHAT */}
-            {isChatActive && !isMinimized && (
-              <div className="chatbot-chat">
-
-                {/* HEADER */}
-                <div className="chatbot-chat__header">
-                  <div className="chatbot-chat__info">
-                    <div className="avatar">GE</div>
-                    <div>
-                      <div className="name">Golden Era</div>
-                      <div className="status">● Online</div>
-                    </div>
-                  </div>
-
-                  <div className="actions">
-                    <button onClick={resetChat}>↻</button>
-                    <button onClick={minimizeChat}>—</button>
-                    <button onClick={() => setShowModal(false)}>✕</button>
+              {/* HEADER */}
+              <div className="chatbot-chat__header">
+                <div className="chatbot-chat__info">
+                  <div className="avatar">GE</div>
+                  <div>
+                    <div className="name">Golden Era</div>
+                    <div className="status">{t('chatbot.online')}</div>
                   </div>
                 </div>
 
-                {/* MENSAJES */}
-                <div className="chatbot-chat__messages">
-                  {chatMessages.map((msg, i) => (
-                    <div key={i} className={`msg msg--${msg.from}`}>
-                      {msg.text.split('\n').map((line, idx) => (
-                        <div key={idx}>{line}</div>
-                      ))}
-                    </div>
-                  ))}
+                <div className="actions">
+                  <button onClick={resetChat}>🔄</button>
+                  <button onClick={() => setMinimized(true)}>➖</button>
+                  <button onClick={() => setOpen(false)}>✖</button>
                 </div>
-
-                {/* WHATSAPP */}
-                <a href={WHATSAPP} target="_blank" rel="noreferrer" className="whatsapp-btn">
-                  {t('chatbot.whatsapp')}
-                </a>
-
-                {/* INPUT */}
-                <div className="chatbot-chat__input">
-                  <input
-                    value={userInput}
-                    onChange={(e) => setUserInput(e.target.value)}
-                    placeholder={t('chatbot.inputPlaceholder')}
-                  />
-                  <button onClick={handleSendMessage}>
-                    {t('chatbot.send')}
-                  </button>
-                </div>
-
               </div>
-            )}
 
-            {/* MINIMIZADO */}
-            {isChatActive && isMinimized && (
-              <div className="chatbot-minimized" onClick={reopenChat}>
-                💬 {t('chatbot.whatsapp')}
+              {/* MENSAJES */}
+              <div className="chatbot-chat__messages">
+                {messages.map((m, i) => (
+                  <div key={i} className={`msg msg--${m.from}`}>
+                    {m.text.split('\n').map((line, i2) => (
+                      <div key={i2}>{line}</div>
+                    ))}
+                  </div>
+                ))}
               </div>
-            )}
 
+              {/* WHATS */}
+              <a href={WHATSAPP} className="whatsapp-btn" target="_blank">
+                {t('chatbot.whatsapp')}
+              </a>
+
+              {/* INPUT */}
+              <div className="chatbot-chat__input">
+                <input
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder={t('chatbot.placeholder')}
+                />
+                <button onClick={sendMessage}>
+                  {t('chatbot.send')}
+                </button>
+              </div>
+
+            </div>
           </div>
         </div>
       )}
