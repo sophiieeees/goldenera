@@ -9,7 +9,7 @@ type Message = {
   text: string;
 };
 
-const WHATSAPP = 'https://wa.me/525576966262?text=Hola%20quiero%20información';
+const WHATSAPP = 'https://wa.me/525576966262?text=¡Hola!%20Vengo%20de%20la%20página%20web%20de%20Golden%20Era%20y%20me%20interesa%20mi%20transformación.%20¿Podrían%20darme%20más%20información?';
 
 const ChatbotWidget: React.FC = () => {
   const { t } = useTranslation();
@@ -36,7 +36,7 @@ const ChatbotWidget: React.FC = () => {
     }
   }, [isVisible]);
 
-
+  // RESPUESTAS
   const getResponse = (input: string): string => {
     const text = input.toLowerCase();
 
@@ -84,22 +84,29 @@ const ChatbotWidget: React.FC = () => {
     setChatMessages([{ from: 'bot', text: t('chatbot.welcome') }]);
   };
 
-  const minimizeChat = () => {
-    setIsMinimized(true);
-  };
-
-  const reopenChat = () => {
-    setIsMinimized(false);
-  };
+  const minimizeChat = () => setIsMinimized(true);
+  const reopenChat = () => setIsMinimized(false);
 
   if (!shouldShow || !isVisible) return null;
 
   return (
     <>
-      {/* BOTÓN PRINCIPAL */}
+      {/* BOTÓN */}
       <div className="chatbot-widget-container">
         <div className="chatbot-widget" onClick={() => setShowModal(true)}>
           
+          <div className="chatbot-widget__icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+
+          <div className="chatbot-widget__tooltip">
+            Asistente de IA
+          </div>
         </div>
       </div>
 
@@ -110,7 +117,7 @@ const ChatbotWidget: React.FC = () => {
 
             {!isChatActive && (
               <button className="chatbot-option" onClick={startChat}>
-                 Iniciar chat
+                💬 {t('chatbot.start')}
               </button>
             )}
 
@@ -139,18 +146,15 @@ const ChatbotWidget: React.FC = () => {
                 <div className="chatbot-chat__messages">
                   {chatMessages.map((msg, i) => (
                     <div key={i} className={`msg msg--${msg.from}`}>
-                      {msg.text}
+                      {msg.text.split('\n').map((line, idx) => (
+                        <div key={idx}>{line}</div>
+                      ))}
                     </div>
                   ))}
                 </div>
 
                 {/* WHATSAPP */}
-                <a
-                  href={WHATSAPP}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="whatsapp-btn"
-                >
+                <a href={WHATSAPP} target="_blank" rel="noreferrer" className="whatsapp-btn">
                   {t('chatbot.whatsapp')}
                 </a>
 
@@ -172,7 +176,7 @@ const ChatbotWidget: React.FC = () => {
             {/* MINIMIZADO */}
             {isChatActive && isMinimized && (
               <div className="chatbot-minimized" onClick={reopenChat}>
-                 {t('chatbot.whatsapp')}
+                💬 {t('chatbot.whatsapp')}
               </div>
             )}
 
