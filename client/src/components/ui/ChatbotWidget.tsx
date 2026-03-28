@@ -174,7 +174,7 @@ const ChatbotWidget: React.FC = () => {
                   rel="noreferrer"
                   className="whatsapp-btn"
                 >
-                  {t('home.footer.whatsapp')}
+                  {t('chatbot.whatsapp')}
                 </a>
 
               </div>
