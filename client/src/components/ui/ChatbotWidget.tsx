@@ -89,7 +89,7 @@ const ChatbotWidget: React.FC = () => {
                 </div>
 
                 <div className="actions">
-                  <button onClick={resetChat}>🔄</button>
+                  <button onClick={resetChat}>↻</button>
                   <button onClick={() => setMinimized(true)}>➖</button>
                   <button onClick={() => setOpen(false)}>✖</button>
                 </div>
