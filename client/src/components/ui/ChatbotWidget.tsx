@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import '../ui/ChatbotWidget.scss';
 
-const WHATSAPP_NUMBER = 'https://wa.me/525576966262?text=¡Hola!%20Vengo%20de%20la%20página%20web%20de%20Golden%20Era%20y%20me%20interesa%20mi%20transformación.%20¿Podrían%20darme%20más%20información?';
+const WHATSAPP_NUMBER = `${t('home.footer.whatsapp')}
 
 type Message = {
   from: 'user' | 'bot';
