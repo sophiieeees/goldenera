@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import '../ui/ChatbotWidget.scss';
 
-const WHATSAPP_NUMBER = `${t('home.footer.whatsapp')}
+const WHATSAPP_NUMBER = '525576966262';
 
 type Message = {
   from: 'user' | 'bot';
@@ -20,7 +20,13 @@ const ChatbotWidget: React.FC = () => {
   ]);
   const [input, setInput] = useState('');
 
-  // 🔥 RESPUESTAS INTELIGENTES
+  const getWhatsAppLink = () => {
+    const message = encodeURIComponent(
+      t('chatbot.whatsappMessage')
+    );
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+  };
+
   const getBotResponse = (msg: string): string => {
     const text = msg.toLowerCase();
 
@@ -28,7 +34,11 @@ const ChatbotWidget: React.FC = () => {
       return t('chatbot.packages');
     }
 
-    if (text.includes('unirme') || text.includes('unir') || text.includes('club')) {
+    if (
+      text.includes('unirme') ||
+      text.includes('unir') ||
+      text.includes('club')
+    ) {
       return t('chatbot.join');
     }
 
@@ -51,7 +61,10 @@ const ChatbotWidget: React.FC = () => {
     if (!input.trim()) return;
 
     const userMsg: Message = { from: 'user', text: input };
-    const botMsg: Message = { from: 'bot', text: getBotResponse(input) };
+    const botMsg: Message = {
+      from: 'bot',
+      text: getBotResponse(input)
+    };
 
     setMessages(prev => [...prev, userMsg, botMsg]);
     setInput('');
@@ -99,7 +112,7 @@ const ChatbotWidget: React.FC = () => {
         </div>
       )}
 
-      {/* 🔥 PORTAL (FIX REAL) */}
+      {/* PORTAL */}
       {isOpen &&
         ReactDOM.createPortal(
           <div className="chatbot-modal-overlay">
@@ -113,7 +126,9 @@ const ChatbotWidget: React.FC = () => {
                     <div className="avatar">AI</div>
                     <div>
                       <div className="name">Golden Era</div>
-                      <div className="status">{t('chatbot.online')}</div>
+                      <div className="status">
+                        {t('chatbot.online')}
+                      </div>
                     </div>
                   </div>
 
@@ -143,7 +158,9 @@ const ChatbotWidget: React.FC = () => {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder={t('chatbot.placeholder')}
-                    onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                    onKeyDown={(e) =>
+                      e.key === 'Enter' && sendMessage()
+                    }
                   />
                   <button onClick={sendMessage}>
                     {t('chatbot.send')}
@@ -152,7 +169,7 @@ const ChatbotWidget: React.FC = () => {
 
                 {/* WHATS */}
                 <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  href={getWhatsAppLink()}
                   target="_blank"
                   rel="noreferrer"
                   className="whatsapp-btn"
