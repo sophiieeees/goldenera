@@ -353,5 +353,14 @@
     "cta": "Perfect!\n\nI'll connect you with our team via WhatsApp👇",
 
     "fallback": "For more info, contact us via WhatsApp 👇"
+  },
+
+    "promo": {
+    "badge": "50% OFF",
+    "title": "Exclusive offer",
+    "subtitle": "Start your transformation today",
+    "cta": "Get Started",
+    "spots": "Limited spots available!"
   }
+
 }
