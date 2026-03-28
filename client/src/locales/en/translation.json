@@ -333,15 +333,25 @@
   },
 
   "chatbot": {
-    "welcome": "Welcome to Golden Era!\n\nHow can I help you?\n\nYou can ask about:\n• Prices\n• Plans\n• How to join\n• Merch\n• Coach 💪",
-    "join": "To join:\n1. Go to 'Join the club'\n2. Choose your plan\n3. Complete registration\n\nNeed help?",
-    "plans": "We offer 2 plans:\n\n🥇 Standard – $3,500\n✔ Full access\n✔ Workouts\n✔ Community\n\n👑 Ultra Deluxe – $35,000\n🔥 Personal coaching\n🔥 Premium content",
-    "merch": "Official Golden Era shirts\n💰 Price: $888\n\nAvailable in Merch section 🔥",
-    "coach": "Our coach is Mateo Haces\n🔥 Performance expert\n🔥 Peptides and nootrópicos specialist\n🔥 Elite athlete",
-    "content": "Exclusive content unlocks after joining",
-    "unknown": "I don't have that info...\n\nOur team can help you 👇",
-    "inputPlaceholder": "Type your message...",
+    "welcome": "Welcome to Golden Era!\n\nHow can I help you?\n\n• Packages\n• Join the club\n• Merch\n• Coach",
+    "reset": "Fresh start\n\nHow can I help you?\n\n• Packages\n• Join\n• Merch\n• Coach",
+    "tooltip": "AI Assistant",
+    "open": "Open chat",
+    "online": "Online",
+    "whatsapp": "Chat on WhatsApp",
+    "placeholder": "Type a message...",
     "send": "Send",
-    "whatsapp": "Chat on WhatsApp"
+
+    "packages": "We have 2 options:\n\n1. Standard – $3,500\nBasic access.\n\n2. Ultra Deluxe – $35,000\nExclusive access + coaching 🔥\n\nWant help choosing?",
+
+    "join": "To join:\n\n1. Go to 'Join the club'\n2. Choose a package\n3. Complete registration\n\nNeed guidance?",
+
+    "merch": "Merch available:\n\n• Golden Era shirts\n💰 Price: $888\n\nAvailable in Merch section 🔥",
+
+    "coach": "Our coach:\n\n• Peptides expert\n• High performance\n• Real strategies 🔥",
+
+    "cta": "Perfect!\n\nI'll connect you with our team 👇",
+
+    "fallback": "For more info, contact us here 👇"
   }
 }
