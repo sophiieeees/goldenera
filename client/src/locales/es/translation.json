@@ -334,7 +334,7 @@
 
 "chatbot": {
     "welcome": "¡Bienvenido a Golden Era!\n\n¿En qué puedo ayudarte?\n\n• Paquetes\n• Unirme al club\n• Merch\n• Coach",
-    "reset": "Nuevo inicio\n\n¿En qué puedo ayudarte?\n\n• Paquetes\n• Unirme\n• Merch\n• Coach",
+    "reset": "¿En qué puedo ayudarte?\n\n• Paquetes\n• Unirme\n• Merch\n• Coach",
     "tooltip": "Asistente de IA",
     "open": "Abrir chat",
     "online": "En línea",
