@@ -2,12 +2,10 @@
 
 
 .chatbot-widget-container {
-  position: fixed !important;
-  bottom: 30px !important;
-  left: 30px !important;
-  z-index: 2147483647 !important; 
-
-  transform: none !important;
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 9998;
 
   @media (max-width: 768px) {
     bottom: 20px;
