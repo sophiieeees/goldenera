@@ -2,215 +2,41 @@
 @import '../../../styles/abstracts/mixins';
 
 .join {
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #111 0%, #000 70%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 20px;
-  color: $color-white;
-
-  /* HEADER */
-  &__header {
-    text-align: center;
-    margin-bottom: 40px;
-    max-width: 600px;
-  }
 
   &__title {
     font-size: 3.5rem;
     font-weight: 700;
     letter-spacing: 2px;
-    color: $color-white;
 
-    span {
-      background: linear-gradient(
-        90deg,
-        $color-gold,
-        lighten($color-gold, 20%)
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  }
-
-  &__subtitle {
-    margin-top: 12px;
-    color: rgba($color-white, 0.6);
-    font-size: 1rem;
-  }
-
-  /* PROGRESS */
-  &__progress {
-    width: 100%;
-    max-width: 600px;
-    height: 6px;
-    background: rgba($color-white, 0.08);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    overflow: hidden;
-  }
-
-  &__progress-bar {
-    height: 100%;
     background: linear-gradient(
       90deg,
-      $color-gold,
-      lighten($color-gold, 15%)
+      #d4af37,
+      #f5d76e,
+      #d4af37
     );
-    transition: width 0.4s ease;
-    box-shadow: 0 0 12px rgba($color-gold, 0.6);
+
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: goldShine 4s linear infinite;
+
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
   }
 
-  &__step {
-    text-align: right;
-    font-size: 12px;
-    color: rgba($color-white, 0.5);
-    margin-bottom: 10px;
-  }
-
-  /* CARD */
-  &__form {
-    width: 100%;
-    max-width: 600px;
-  }
-
-  &__card {
-    padding: 40px;
-    border-radius: 20px;
-
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(25px);
-
-    border: 1px solid rgba($color-white, 0.08);
-
-    box-shadow:
-      0 0 40px rgba(0, 0, 0, 0.6),
-      inset 0 0 10px rgba(255, 255, 255, 0.02);
-  }
-
-  /* QUESTION */
-  &__question {
-    font-size: 1.6rem;
-    color: $color-white;
-    margin-bottom: 30px;
+  &__success {
+    color: #d4af37;
     text-align: center;
-    line-height: 1.4;
-  }
-
-  /* OPTIONS */
-  &__options {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  &__option {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba($color-white, 0.15);
-    padding: 16px;
-    border-radius: 10px;
-
-    color: $color-white;
-    text-align: left;
-
-    cursor: pointer;
-    transition: all 0.25s ease;
-
-    &:hover {
-      border-color: $color-gold;
-      color: $color-gold;
-      transform: translateX(6px);
-      background: rgba($color-gold, 0.05);
-    }
-  }
-
-  /* INPUTS */
-  &__input,
-  &__textarea {
-    width: 100%;
-    background: transparent;
-    border: 1px solid rgba($color-white, 0.2);
-    border-radius: 8px;
-    padding: 14px;
-
-    color: $color-white;
-    font-size: 14px;
-
-    margin-bottom: 20px;
-
-    transition: all 0.25s ease;
-
-    &:focus {
-      border-color: $color-gold;
-      box-shadow: 0 0 10px rgba($color-gold, 0.3);
-      outline: none;
-    }
-  }
-
-  &__textarea {
-    min-height: 120px;
-  }
-
-  /* CONTACT */
-  &__contact {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    input {
-      @extend .join__input;
-    }
-  }
-
-  /* NAV */
-  &__nav {
-    display: flex;
-    justify-content: space-between;
     margin-top: 20px;
-
-    button {
-      background: transparent;
-      border: 1px solid rgba($color-white, 0.2);
-      color: $color-white;
-
-      padding: 10px 20px;
-      border-radius: 6px;
-
-      cursor: pointer;
-      transition: all 0.25s ease;
-
-      &:hover {
-        border-color: $color-gold;
-        color: $color-gold;
-      }
-    }
   }
+}
 
-  /* SUBMIT */
-  &__submit {
-    background: linear-gradient(
-      135deg,
-      $color-gold,
-      darken($color-gold, 10%)
-    );
-    color: black;
-    border: none;
-
-    font-weight: 600;
-    letter-spacing: 1px;
-
-    &:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 20px rgba($color-gold, 0.3);
-    }
+@keyframes goldShine {
+  0% {
+    background-position: 0% center;
   }
-
-  /* ERROR */
-  &__error {
-    color: #ff4d4f;
-    font-size: 13px;
-    margin-bottom: 10px;
-    text-align: center;
+  100% {
+    background-position: 200% center;
   }
 }
