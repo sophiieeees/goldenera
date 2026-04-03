@@ -4,221 +4,162 @@ import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import './JoinForm.scss';
 
-
-type Question = {
-  type: "input" | "textarea" | "select";
-  name: string;
-  placeholder?: string;
-  label?: string;
-  options?: string[];
-};
-
-const JoinForm = () => {
+const JoinForm: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const [step, setStep] = useState<number>(0);
+  const formRef = useRef<HTMLDivElement>(null);
 
-  const [formData, setFormData] = useState<Record<string, string>>({
-    name: "",
-    phone: "",
-    email: "",
-    experience: "",
-    obstacle: "",
-    rating: "",
-    goal: "",
-    timeThinking: "",
-    whyYou: "",
-    money: "",
-    credit: "",
-    commitment: ""
+  const [formData, setFormData] = useState<any>({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    experience: '',
+    obstacle: '',
+    rating: '',
+    goal: '',
+    timeThinking: '',
+    whyYou: '',
+    money: '',
+    credit: '',
+    commitment: ''
   });
 
+  useEffect(() => {
+    gsap.fromTo(formRef.current,
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 0.8 }
+    );
+  }, []);
 
-  const questions: Question[] = [
-    {
-      type: "input",
-      name: "name",
-      placeholder: t("form.firstName")
-    },
-    {
-      type: "input",
-      name: "phone",
-      placeholder: t("form.phone")
-    },
-    {
-      type: "input",
-      name: "email",
-      placeholder: t("form.email")
-    },
-    {
-      type: "select",
-      name: "experience",
-      label: t("form.experience"),
-      options: [
-        t("form.experience_options.a"),
-        t("form.experience_options.b"),
-        t("form.experience_options.c")
-      ]
-    },
-    {
-      type: "textarea",
-      name: "obstacle",
-      placeholder: t("form.obstacle")
-    },
-    {
-      type: "input",
-      name: "rating",
-      placeholder: t("form.rating")
-    },
-    {
-      type: "textarea",
-      name: "goal",
-      placeholder: t("form.goal")
-    },
-    {
-      type: "select",
-      name: "timeThinking",
-      label: t("form.timeThinking"),
-      options: [
-        t("form.timeThinking_options.a"),
-        t("form.timeThinking_options.b"),
-        t("form.timeThinking_options.c"),
-        t("form.timeThinking_options.d")
-      ]
-    },
-    {
-      type: "textarea",
-      name: "whyYou",
-      placeholder: t("form.whyYou")
-    },
-    {
-      type: "select",
-      name: "money",
-      label: t("form.money"),
-      options: [
-        t("form.money_options.a"),
-        t("form.money_options.b"),
-        t("form.money_options.c"),
-        t("form.money_options.d")
-      ]
-    },
-    {
-      type: "select",
-      name: "credit",
-      label: t("form.credit"),
-      options: [
-        t("form.credit_options.a"),
-        t("form.credit_options.b"),
-        t("form.credit_options.c"),
-        t("form.credit_options.d"),
-        t("form.credit_options.e")
-      ]
-    },
-    {
-      type: "select",
-      name: "commitment",
-      label: t("form.commitment"),
-      options: [
-        t("form.commitment_options.a"),
-        t("form.commitment_options.b"),
-        t("form.commitment_options.c"),
-        t("form.commitment_options.d")
-      ]
-    }
-  ];
-
-  const current = questions[step];
-
-  const handleChange = (value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [current.name]: value
-    }));
+  const handleChange = (e: any) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
-  const next = () => {
-    if (!formData[current.name]) return; 
-
-    if (step < questions.length - 1) {
-      setStep((prev) => prev + 1);
-    } else {
-      console.log("FINAL DATA:", formData);
-      navigate("/packages");
-    }
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log("DATA:", formData);
+    navigate('/packages');
   };
-
-  const prev = () => {
-    if (step > 0) setStep((prev) => prev - 1);
-  };
-
-  const progress = ((step + 1) / questions.length) * 100;
 
   return (
-    <div className="quiz">
+    <section className="join-form" ref={formRef}>
+      <div className="join-form__container">
 
-      {/* PROGRESS */}
-      <div className="quiz__progress">
-        <div
-          className="quiz__progress-bar"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-
-      <div className="quiz__card">
-
-        {current.label && <h2>{current.label}</h2>}
-
-        {/* INPUT */}
-        {current.type === "input" && (
-          <input
-            value={formData[current.name]}
-            placeholder={current.placeholder}
-            onChange={(e) => handleChange(e.target.value)}
-          />
-        )}
-
-        {/* TEXTAREA */}
-        {current.type === "textarea" && (
-          <textarea
-            value={formData[current.name]}
-            placeholder={current.placeholder}
-            onChange={(e) => handleChange(e.target.value)}
-          />
-        )}
-
-        {/* SELECT SAFE */}
-        {current.type === "select" && current.options && (
-          <div className="quiz__options">
-            {current.options.map((opt, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => handleChange(opt)}
-              >
-                {opt}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {/* NAV */}
-        <div className="quiz__nav">
-          {step > 0 && (
-            <button type="button" onClick={prev}>
-              Back
-            </button>
-          )}
-
-          <button type="button" onClick={next}>
-            {step === questions.length - 1
-              ? t("form.button")
-              : "Next"}
-          </button>
+        {/* HEADER */}
+        <div className="join-form__header">
+          <h1 className="join-form__title">
+            {t("form.title")}
+          </h1>
+          <p className="join-form__subtitle">
+            {t("form.subtitle")}
+          </p>
         </div>
 
+        <form className="join-form__box" onSubmit={handleSubmit}>
+
+          {/* CONTACT */}
+          <h2 className="join-form__section-title">
+            {t("form.contact")}
+          </h2>
+
+          <div className="join-form__grid">
+            <input name="firstName" placeholder={t("form.firstName")} onChange={handleChange} />
+            <input name="lastName" placeholder={t("form.lastName")} onChange={handleChange} />
+            <input name="phone" placeholder={t("form.phone")} onChange={handleChange} />
+            <input name="email" placeholder={t("form.email")} onChange={handleChange} />
+          </div>
+
+          {/* EXPERIENCE */}
+          <div className="join-form__block">
+            <label>{t("form.experience")}</label>
+            <select name="experience" onChange={handleChange}>
+              <option>{t("form.experience_options.a")}</option>
+              <option>{t("form.experience_options.b")}</option>
+              <option>{t("form.experience_options.c")}</option>
+            </select>
+          </div>
+
+          {/* OBSTACLE */}
+          <div className="join-form__block">
+            <label>{t("form.obstacle")}</label>
+            <textarea name="obstacle" onChange={handleChange} />
+          </div>
+
+          {/* RATING */}
+          <div className="join-form__block">
+            <label>{t("form.rating")}</label>
+            <input name="rating" onChange={handleChange} />
+          </div>
+
+          {/* GOAL */}
+          <div className="join-form__block">
+            <label>{t("form.goal")}</label>
+            <textarea name="goal" onChange={handleChange} />
+          </div>
+
+          {/* TIME */}
+          <div className="join-form__block">
+            <label>{t("form.timeThinking")}</label>
+            <select name="timeThinking" onChange={handleChange}>
+              <option>{t("form.timeThinking_options.a")}</option>
+              <option>{t("form.timeThinking_options.b")}</option>
+              <option>{t("form.timeThinking_options.c")}</option>
+              <option>{t("form.timeThinking_options.d")}</option>
+            </select>
+          </div>
+
+          {/* WHY YOU */}
+          <div className="join-form__block">
+            <label>{t("form.whyYou")}</label>
+            <textarea name="whyYou" onChange={handleChange} />
+          </div>
+
+          {/* MONEY */}
+          <div className="join-form__block">
+            <label>{t("form.money")}</label>
+            <select name="money" onChange={handleChange}>
+              <option>{t("form.money_options.a")}</option>
+              <option>{t("form.money_options.b")}</option>
+              <option>{t("form.money_options.c")}</option>
+              <option>{t("form.money_options.d")}</option>
+            </select>
+          </div>
+
+          {/* CREDIT */}
+          <div className="join-form__block">
+            <label>{t("form.credit")}</label>
+            <select name="credit" onChange={handleChange}>
+              <option>{t("form.credit_options.a")}</option>
+              <option>{t("form.credit_options.b")}</option>
+              <option>{t("form.credit_options.c")}</option>
+              <option>{t("form.credit_options.d")}</option>
+              <option>{t("form.credit_options.e")}</option>
+            </select>
+          </div>
+
+          {/* COMMITMENT */}
+          <div className="join-form__block">
+            <label>{t("form.commitment")}</label>
+            <select name="commitment" onChange={handleChange}>
+              <option>{t("form.commitment_options.a")}</option>
+              <option>{t("form.commitment_options.b")}</option>
+              <option>{t("form.commitment_options.c")}</option>
+              <option>{t("form.commitment_options.d")}</option>
+            </select>
+          </div>
+
+          <button className="join-form__submit">
+            {t("form.button")}
+          </button>
+
+        </form>
       </div>
-    </div>
+    </section>
   );
 };
 
