@@ -1,15 +1,25 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import "./JoinForm.scss";
+import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import gsap from 'gsap';
+import './JoinForm.scss';
+
+
+type Question = {
+  type: "input" | "textarea" | "select";
+  name: string;
+  placeholder?: string;
+  label?: string;
+  options?: string[];
+};
 
 const JoinForm = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState<number>(0);
 
-  const [formData, setFormData] = useState<any>({
+  const [formData, setFormData] = useState<Record<string, string>>({
     name: "",
     phone: "",
     email: "",
@@ -24,7 +34,8 @@ const JoinForm = () => {
     commitment: ""
   });
 
-  const questions = [
+
+  const questions: Question[] = [
     {
       type: "input",
       name: "name",
@@ -120,12 +131,17 @@ const JoinForm = () => {
   const current = questions[step];
 
   const handleChange = (value: string) => {
-    setFormData({ ...formData, [current.name]: value });
+    setFormData((prev) => ({
+      ...prev,
+      [current.name]: value
+    }));
   };
 
   const next = () => {
+    if (!formData[current.name]) return; 
+
     if (step < questions.length - 1) {
-      setStep(step + 1);
+      setStep((prev) => prev + 1);
     } else {
       console.log("FINAL DATA:", formData);
       navigate("/packages");
@@ -133,7 +149,7 @@ const JoinForm = () => {
   };
 
   const prev = () => {
-    if (step > 0) setStep(step - 1);
+    if (step > 0) setStep((prev) => prev - 1);
   };
 
   const progress = ((step + 1) / questions.length) * 100;
@@ -141,7 +157,7 @@ const JoinForm = () => {
   return (
     <div className="quiz">
 
-      {/* PROGRESS BAR */}
+      {/* PROGRESS */}
       <div className="quiz__progress">
         <div
           className="quiz__progress-bar"
@@ -153,6 +169,7 @@ const JoinForm = () => {
 
         {current.label && <h2>{current.label}</h2>}
 
+        {/* INPUT */}
         {current.type === "input" && (
           <input
             value={formData[current.name]}
@@ -161,6 +178,7 @@ const JoinForm = () => {
           />
         )}
 
+        {/* TEXTAREA */}
         {current.type === "textarea" && (
           <textarea
             value={formData[current.name]}
@@ -169,19 +187,30 @@ const JoinForm = () => {
           />
         )}
 
-        {current.type === "select" && (
+        {/* SELECT SAFE */}
+        {current.type === "select" && current.options && (
           <div className="quiz__options">
-            {current.options.map((opt: string, i: number) => (
-              <button key={i} onClick={() => handleChange(opt)}>
+            {current.options.map((opt, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => handleChange(opt)}
+              >
                 {opt}
               </button>
             ))}
           </div>
         )}
 
+        {/* NAV */}
         <div className="quiz__nav">
-          {step > 0 && <button onClick={prev}>Back</button>}
-          <button onClick={next}>
+          {step > 0 && (
+            <button type="button" onClick={prev}>
+              Back
+            </button>
+          )}
+
+          <button type="button" onClick={next}>
             {step === questions.length - 1
               ? t("form.button")
               : "Next"}
