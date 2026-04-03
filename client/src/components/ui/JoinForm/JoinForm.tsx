@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import './JoinForm.scss';
 
@@ -26,10 +27,12 @@ const STORAGE_KEY = 'golden-era-form';
 
 const JoinForm: React.FC = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<any>({});
   const [error, setError] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -57,12 +60,12 @@ const JoinForm: React.FC = () => {
     );
   }, [step]);
 
-  // 🔥 HEADER ANIMATION (esto lo hace ver caro)
+  // Header animation
   useEffect(() => {
     gsap.fromTo(
       headerRef.current,
       { opacity: 0, y: -20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
+      { opacity: 1, y: 0, duration: 0.8 }
     );
   }, []);
 
@@ -110,7 +113,13 @@ const JoinForm: React.FC = () => {
       });
 
       localStorage.removeItem(STORAGE_KEY);
-      alert(t('form.success.title'));
+
+      setIsSuccess(true);
+
+      setTimeout(() => {
+        navigate('/packages');
+      }, 1500);
+
     } catch {
       setError(t('form.error'));
     }
@@ -119,7 +128,7 @@ const JoinForm: React.FC = () => {
   return (
     <section className="join">
 
-      {/* 🔥 HEADER */}
+      {/* HEADER */}
       <div className="join__header" ref={headerRef}>
         <h1 className="join__title">
           {t('form.title')}
@@ -209,6 +218,12 @@ const JoinForm: React.FC = () => {
           )}
 
           {error && <p className="join__error">{error}</p>}
+
+          {isSuccess && (
+            <p className="join__success">
+              {t('form.success.title')}
+            </p>
+          )}
 
           <div className="join__nav">
             {step > 0 && (
