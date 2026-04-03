@@ -357,6 +357,66 @@
     "subtitle": "Start your transformation today",
     "cta": "Get Started",
     "spots": "Limited spots available!"
+  },
+
+  "form": {
+    "title": "Start Your Transformation",
+
+    "experience": "Have you been seriously working on your physique, or is this completely new for you?",
+    "experience_options": {
+      "a": "Yes, I’ve been consistently improving my physique",
+      "b": "A little, but nothing serious",
+      "c": "This is completely new to me"
+    },
+
+    "contact": "Where can we contact you?",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phone": "Phone Number",
+    "email": "Email Address",
+
+    "obstacle": "What do you think is your biggest obstacle when it comes to improving your physique and overall presence?",
+
+    "rating": "What would you rate your physique from 1 to 10? (Be honest)",
+
+    "goal": "Where do you want to be in 3–6 months physically, in terms of confidence and presence? What would achieving that change for you?",
+
+    "timeThinking": "How long have you been seriously thinking about improving your physique?",
+    "timeThinking_options": {
+      "a": "Less than 6 months",
+      "b": "6–12 months",
+      "c": "1–2 years",
+      "d": "More than 2 years"
+    },
+
+    "whyYou": "Why do you believe you should work with us directly? (Avoid generic answers)",
+
+    "money": "Transforming your physique requires investment. Which option best describes your situation?",
+    "money_options": {
+      "a": "I can invest $3,000+",
+      "b": "I can invest $1,500–3,000",
+      "c": "I can invest $500–1,500",
+      "d": "I currently don’t have the resources"
+    },
+
+    "credit": "What is your approximate credit score?",
+    "credit_options": {
+      "a": "720+",
+      "b": "660–719",
+      "c": "600–659",
+      "d": "Below 600",
+      "e": "I don’t know"
+    },
+
+    "commitment": "How committed are you to transforming your physique?",
+    "commitment_options": {
+      "a": "100% ready to commit",
+      "b": "80% — almost ready",
+      "c": "50% — interested but unsure",
+      "d": "Not ready"
+    },
+
+    "button": "Continue"
   }
 
 }
