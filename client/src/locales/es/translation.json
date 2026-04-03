@@ -359,7 +359,7 @@
     "spots": "¡Quedan pocos lugares!"
   },
 
-    "form": {
+  "form": {
     "title": "Inicia tu Transformación",
 
     "experience": "¿Has trabajado seriamente en tu físico antes o esto es algo completamente nuevo para ti?",
@@ -375,7 +375,7 @@
     "phone": "Teléfono",
     "email": "Correo electrónico",
 
-    "obstacle": "¿Cuál crees que es tu mayor obstáculo al momento de mejorar tu físico y presencia?",
+    "obstacle": "¿Cuál crees que es tu mayor obstáculo al mejorar tu físico y presencia?",
 
     "rating": "¿Cómo calificarías tu físico del 1 al 10? (Responde honestamente)",
 
@@ -393,9 +393,9 @@
 
     "money": "Transformar tu físico requiere inversión. ¿Cuál describe mejor tu situación actual?",
     "money_options": {
-      "a": "Puedo invertir más de $3,000",
-      "b": "Puedo invertir entre $1,500 y $3,000",
-      "c": "Puedo invertir entre $500 y $1,500",
+      "a": "Puedo invertir más de $3,000 USD",
+      "b": "Puedo invertir entre $1,500 y $3,000 USD",
+      "c": "Puedo invertir entre $500 y $1,500 USD",
       "d": "Actualmente no tengo los recursos"
     },
 
@@ -408,7 +408,7 @@
       "e": "No lo sé"
     },
 
-    "commitment": "¿Qué tan comprometido estás con transformar tu físico?",
+    "commitment": "¿Qué tan comprometido estás con transformar tu físico y disciplina?",
     "commitment_options": {
       "a": "100% listo para comprometerme",
       "b": "80% listo, solo necesito claridad",
@@ -416,6 +416,24 @@
       "d": "No estoy listo"
     },
 
-    "button": "Continuar"
+    "placeholders": {
+      "input": "Escribe tu respuesta...",
+      "textarea": "Cuéntanos más detalles..."
+    },
+
+    "buttons": {
+      "next": "Continuar",
+      "back": "Atrás",
+      "submit": "Finalizar"
+    },
+
+    "progress": "Paso {{current}} de {{total}}",
+
+    "success": {
+      "title": "Aplicación enviada",
+      "subtitle": "Nuestro equipo te contactará pronto"
+    },
+
+    "error": "Hubo un error al enviar. Intenta nuevamente."
   }
 }
