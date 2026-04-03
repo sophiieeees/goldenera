@@ -461,11 +461,52 @@
 
 // MOBILE
 @media (max-width: $mobile) {
+
   .values-grid {
     grid-template-columns: 1fr;
+    gap: 40px; 
   }
 
   .power-gallery {
     grid-template-columns: 1fr;
+
+    .gallery-item {
+      height: 250px; 
+    }
   }
+
+  .content-wrapper {
+    gap: 40px;
+  }
+
+  .about-section {
+    padding: 60px 0; 
+  }
+
+  .text-content {
+
+    .section-title {
+      margin-bottom: 20px;
+    }
+
+    .section-text {
+      font-size: 16px; 
+      text-align: left; 
+    }
+  }
+
+  .image-content {
+
+    .section-image {
+      max-width: 100%; 
+      max-height: 300px; 
+    }
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
 }
+
