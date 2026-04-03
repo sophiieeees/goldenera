@@ -3,13 +3,11 @@ import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import './JoinForm.scss';
 
-
 type Step =
   | { key: string; type: 'options'; options: string[] }
   | { key: string; type: 'input' }
   | { key: string; type: 'textarea' }
   | { key: string; type: 'contact' };
-
 
 const steps: Step[] = [
   { key: 'experience', type: 'options', options: ['a', 'b', 'c'] },
@@ -34,31 +32,39 @@ const JoinForm: React.FC = () => {
   const [error, setError] = useState('');
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   const totalSteps = steps.length;
   const currentStep = steps[step];
 
-  // ✅ LOAD FROM STORAGE
+  // Load
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      setAnswers(JSON.parse(saved));
-    }
+    if (saved) setAnswers(JSON.parse(saved));
   }, []);
 
-  // ✅ SAVE TO STORAGE
+  // Save
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
   }, [answers]);
 
-  // ✅ ANIMATION
+  // Step animation
   useEffect(() => {
     gsap.fromTo(
       containerRef.current,
-      { opacity: 0, x: 40 },
-      { opacity: 1, x: 0, duration: 0.5 }
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.5 }
     );
   }, [step]);
+
+  // 🔥 HEADER ANIMATION (esto lo hace ver caro)
+  useEffect(() => {
+    gsap.fromTo(
+      headerRef.current,
+      { opacity: 0, y: -20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
+    );
+  }, []);
 
   const handleAnswer = (key: string, value: any) => {
     setAnswers((prev: any) => ({
@@ -68,7 +74,6 @@ const JoinForm: React.FC = () => {
     setError('');
   };
 
-  // ✅ VALIDACIÓN
   const validateStep = () => {
     if (currentStep.type === 'contact') {
       if (!answers.firstName || !answers.email) {
@@ -106,7 +111,6 @@ const JoinForm: React.FC = () => {
 
       localStorage.removeItem(STORAGE_KEY);
       alert(t('form.success.title'));
-
     } catch {
       setError(t('form.error'));
     }
@@ -114,6 +118,17 @@ const JoinForm: React.FC = () => {
 
   return (
     <section className="join">
+
+      {/* 🔥 HEADER */}
+      <div className="join__header" ref={headerRef}>
+        <h1 className="join__title">
+          {t('form.title')}
+        </h1>
+
+        <p className="join__subtitle">
+          {t('form.subtitle')}
+        </p>
+      </div>
 
       {/* PROGRESS */}
       <div className="join__progress">
@@ -126,17 +141,14 @@ const JoinForm: React.FC = () => {
       <form className="join__form" onSubmit={handleSubmit}>
         <div className="join__card" ref={containerRef}>
 
-          {/* PROGRESS TEXT */}
           <p className="join__step">
             {t('form.progress', { current: step + 1, total: totalSteps })}
           </p>
 
-          {/* QUESTION */}
           <h2 className="join__question">
             {t(`form.${currentStep.key}`)}
           </h2>
 
-          {/* OPTIONS */}
           {currentStep.type === 'options' && (
             <div className="join__options">
               {currentStep.options.map((opt) => (
@@ -155,7 +167,6 @@ const JoinForm: React.FC = () => {
             </div>
           )}
 
-          {/* INPUT */}
           {currentStep.type === 'input' && (
             <input
               className="join__input"
@@ -166,7 +177,6 @@ const JoinForm: React.FC = () => {
             />
           )}
 
-          {/* TEXTAREA */}
           {currentStep.type === 'textarea' && (
             <textarea
               className="join__textarea"
@@ -177,7 +187,6 @@ const JoinForm: React.FC = () => {
             />
           )}
 
-          {/* CONTACT */}
           {currentStep.type === 'contact' && (
             <div className="join__contact">
               <input
@@ -199,10 +208,8 @@ const JoinForm: React.FC = () => {
             </div>
           )}
 
-          {/* ERROR */}
           {error && <p className="join__error">{error}</p>}
 
-          {/* NAV */}
           <div className="join__nav">
             {step > 0 && (
               <button type="button" onClick={prev}>
