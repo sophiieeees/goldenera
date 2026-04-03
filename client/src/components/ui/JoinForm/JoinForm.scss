@@ -1,154 +1,20 @@
 @import '../../../styles/abstracts/variables';
 @import '../../../styles/abstracts/mixins';
 
+/* 🔴 ESTO YA NO LO USAS (pero puedes dejarlo limpio) */
 .join-form {
   background: $color-black;
-  padding: 70px 20px;
-  display: flex;
-  justify-content: center;
+}
 
-  &__container {
-    width: 100%;
-    max-width: 720px;
-  }
-
-  &__header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  &__title {
-    font-size: 4rem;
-    text-transform: uppercase;
-    color: $color-gold;
-  }
-
-  &__subtitle {
-    color: rgba($color-white, 0.7);
-    margin-top: 10px;
-  }
-
-  &__form {
-    margin-top: 20px;
-  }
-  
-  &__field {
-    margin-bottom: 32px;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 1.5px;
-      width: 0;
-      background: $color-gold;
-      transition: width 0.3s ease;
-    }
-
-    &:focus-within::after {
-      width: 100%;
-    }
-  }
-
-  &__label {
-    display: block;
-    font-size: 14px;
-    color: rgba($color-white, 0.8);
-    margin-bottom: 6px;
-  }
-
-  &__input {
-    width: 100%;
-    height: 50px;
-    padding: 0 14px;
-
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba($color-white, 0.2);
-
-    color: $color-white;
-    font-size: 15px;
-
-    outline: none;
-    transition: all 0.25s ease;
-
-    &::placeholder {
-      color: rgba($color-white, 0.35);
-    }
-
-    &:focus {
-      border-bottom-color: transparent;
-    }
-
-    &--error {
-      border-bottom: 1px solid red;
-    }
-  }
-
-  &__submit {
-    margin-top: 40px;
-    width: 100%;
-    height: 52px;
-
-    background: linear-gradient(
-      135deg,
-      $color-gold 0%,
-      darken($color-gold, 10%) 100%
-    );
-
-    color: black;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-
-    border: none;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-
-    transition: all 0.3s ease;
-
-    &:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 25px rgba($color-gold, 0.25);
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-      );
-      transition: left 0.6s ease;
-    }
-
-    &:hover::after {
-      left: 100%;
-    }
-  }
-
-  &__error {
-    font-size: 12px;
-    color: red;
-    margin-top: 5px;
-  }
-
+/* 🔥 QUIZ (SEPARADO CORRECTAMENTE) */
 .quiz {
   min-height: 100vh;
-  background: black;
+  background: $color-black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: $color-white;
   padding: 20px;
 }
 
@@ -159,34 +25,47 @@
   width: 100%;
   height: 4px;
   background: #111;
+  z-index: 10;
 }
 
 .quiz__progress-bar {
   height: 100%;
-  background: #d4af37;
+  background: $color-gold;
   transition: width 0.3s ease;
 }
 
 .quiz__card {
-  max-width: 500px;
+  max-width: 520px;
   width: 100%;
   text-align: center;
+  background: rgba(255,255,255,0.02);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba($color-white, 0.08);
+  backdrop-filter: blur(10px);
 }
 
 .quiz__card h2 {
-  margin-bottom: 20px;
-  color: #d4af37;
+  margin-bottom: 25px;
+  color: $color-gold;
+  font-size: 1.6rem;
 }
 
 .quiz input,
 .quiz textarea {
   width: 100%;
   padding: 14px;
-  background: #111;
-  border: 1px solid #333;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba($color-white, 0.15);
   border-radius: 8px;
-  color: white;
+  color: $color-white;
   margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.quiz input::placeholder,
+.quiz textarea::placeholder {
+  color: rgba($color-white, 0.4);
 }
 
 .quiz textarea {
@@ -196,34 +75,42 @@
 .quiz__options {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .quiz__options button {
   padding: 14px;
-  background: #111;
-  border: 1px solid #333;
-  color: white;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba($color-white, 0.15);
+  color: $color-white;
   border-radius: 8px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .quiz__options button:hover {
-  border-color: #d4af37;
+  border-color: $color-gold;
+  transform: translateY(-1px);
 }
 
 .quiz__nav {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 25px;
+  gap: 10px;
 }
 
 .quiz__nav button {
-  padding: 12px 20px;
-  background: #d4af37;
+  flex: 1;
+  padding: 12px;
+  background: linear-gradient(
+    135deg,
+    $color-gold,
+    darken($color-gold, 10%)
+  );
   color: black;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-}
+  font-weight: 600;
 }
