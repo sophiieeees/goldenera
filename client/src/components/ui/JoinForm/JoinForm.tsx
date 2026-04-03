@@ -1,303 +1,189 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import gsap from 'gsap';
 import './JoinForm.scss';
-
-interface FormData {
-  name: string;
-  phone: string;
-  email: string;
-}
-
-interface FormErrors {
-  name?: string;
-  phone?: string;
-  email?: string;
-}
 
 const JoinForm: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  
-  // Refs
-  const formRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const formElementRef = useRef<HTMLFormElement>(null);
-  const submitButtonRef = useRef<HTMLButtonElement>(null);
-  
-  // Estados
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
+
+  const [step, setStep] = useState(0);
+
+  const [formData, setFormData] = useState<any>({
+    firstName: '',
+    lastName: '',
     phone: '',
-    email: ''
+    email: '',
+    experience: '',
+    obstacle: '',
+    rating: '',
+    goal: '',
+    timeThinking: '',
+    whyYou: '',
+    money: '',
+    credit: '',
+    commitment: ''
   });
-  
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [focusedField, setFocusedField] = useState<string>('');
 
-  // Animación de entrada simple
-  useEffect(() => {
-    if (!formRef.current) return;
-
-    const tl = gsap.timeline();
-    
-    tl.fromTo(titleRef.current, 
-      { opacity: 0, y: 30 }, 
-      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
-    )
-    .fromTo(formElementRef.current, 
-      { opacity: 0, y: 20 }, 
-      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 
-      "-=0.3"
-    );
-
-  }, []);
-
-  // Validación
-  const validateField = (name: string, value: string): string => {
-    switch (name) {
-      case 'name':
-        if (!value.trim()) return 'El nombre es requerido';
-        if (value.length < 2) return 'Mínimo 2 caracteres';
-        if (!/^[a-zA-ZáéíóúñÑüÜ\s]+$/.test(value)) return 'Solo letras y espacios';
-        return '';
-        
-      case 'phone':
-        if (!value.trim()) return 'El teléfono es requerido';
-        const phoneClean = value.replace(/[\s\-\(\)\.]/g, '');
-        if (!/^[\+]?[0-9]{8,15}$/.test(phoneClean)) return 'Teléfono inválido';
-        return '';
-        
-      case 'email':
-        if (!value.trim()) return 'El email es requerido';
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Email inválido';
-        return '';
-        
-      default:
-        return '';
-    }
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev: any) => ({ ...prev, [field]: value }));
   };
 
-  // Handlers simplificados
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
-    if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
-    }
+  const nextStep = () => setStep(prev => prev + 1);
+
+  const handleSubmit = () => {
+    console.log(formData);
+    navigate('/packages');
   };
 
-  const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    setFocusedField(e.target.name);
-  };
-
-  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFocusedField('');
-    
-    const error = validateField(name, value);
-    if (error) {
-      setErrors(prev => ({ ...prev, [name]: error }));
+  // 🔥 TODAS LAS PREGUNTAS
+  const questions = [
+    {
+      key: 'experience',
+      type: 'options',
+      label: t('form.experience'),
+      options: Object.values(t('form.experience_options', { returnObjects: true }) as any)
+    },
+    {
+      key: 'obstacle',
+      type: 'text',
+      label: t('form.obstacle')
+    },
+    {
+      key: 'rating',
+      type: 'number',
+      label: t('form.rating')
+    },
+    {
+      key: 'goal',
+      type: 'text',
+      label: t('form.goal')
+    },
+    {
+      key: 'timeThinking',
+      type: 'options',
+      label: t('form.timeThinking'),
+      options: Object.values(t('form.timeThinking_options', { returnObjects: true }) as any)
+    },
+    {
+      key: 'whyYou',
+      type: 'text',
+      label: t('form.whyYou')
+    },
+    {
+      key: 'money',
+      type: 'options',
+      label: t('form.money'),
+      options: Object.values(t('form.money_options', { returnObjects: true }) as any)
+    },
+    {
+      key: 'credit',
+      type: 'options',
+      label: t('form.credit'),
+      options: Object.values(t('form.credit_options', { returnObjects: true }) as any)
+    },
+    {
+      key: 'commitment',
+      type: 'options',
+      label: t('form.commitment'),
+      options: Object.values(t('form.commitment_options', { returnObjects: true }) as any)
     }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const newErrors: FormErrors = {};
-    Object.keys(formData).forEach(key => {
-      const error = validateField(key, formData[key as keyof FormData]);
-      if (error) {
-        newErrors[key as keyof FormErrors] = error;
-      }
-    });
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      
-      if (formElementRef.current) {
-        gsap.to(formElementRef.current, {
-          x: 10,
-          duration: 0.1,
-          repeat: 5,
-          yoyo: true,
-          ease: "power2.inOut"
-        });
-      }
-      return;
-    }
-
-    setIsLoading(true);
-    setIsError(false);
-
-    try {
-      console.log('📤 Enviando formulario...', formData);
-      
-      const apiUrl = process.env.REACT_APP_API_URL || '';
-      const response = await fetch(`${apiUrl}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
-      console.log('📨 Respuesta:', result);
-
-      if (result.success) {
-        setIsSuccess(true);
-        
-        if (submitButtonRef.current) {
-          gsap.to(submitButtonRef.current, {
-            scale: 1.05,
-            duration: 0.2,
-            yoyo: true,
-            repeat: 1
-          });
-        }
-        
-        setTimeout(() => {
-          navigate('/join');
-        }, 2000);
-        
-      } else {
-        throw new Error(result.error || 'Error desconocido');
-      }
-      
-    } catch (error: any) {
-      console.error('Error:', error);
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  ];
 
   return (
-    <section id="JoinForm" className="join-form" ref={formRef}>
-      <div className="join-form__container">
-        <div className="join-form__content">
-          
-          <div className="join-form__header" ref={titleRef}>
-            <h1 className="join-form__title">
-              ÚNETE A LA <span className="join-form__title-highlight">GOLDEN ERA</span>
-            </h1>
-            <p className="join-form__subtitle">
-              Reclama tu respeto hoy. Únete a la élite.
-            </p>
-          </div>
+    <section className="quiz">
 
-          <form 
-            className="join-form__form" 
-            ref={formElementRef} 
-            onSubmit={handleSubmit}
-            noValidate
-          >
-            
-            <div className="join-form__field">
-              <label className="join-form__label">
-                Nombre Completo *
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
-                className={`join-form__input ${errors.name ? 'join-form__input--error' : ''} ${focusedField === 'name' ? 'join-form__input--focused' : ''}`}
-                disabled={isLoading}
-                autoComplete="given-name"
-                placeholder="Ingresa tu nombre completo"
-              />
-              {errors.name && (
-                <span className="join-form__error">{errors.name}</span>
-              )}
-            </div>
+      {/* PROGRESS BAR */}
+      <div className="quiz__progress">
+        <div
+          className="quiz__progress-bar"
+          style={{ width: `${(step / (questions.length + 1)) * 100}%` }}
+        />
+      </div>
 
-            <div className="join-form__field">
-              <label className="join-form__label">
-                Teléfono *
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
-                className={`join-form__input ${errors.phone ? 'join-form__input--error' : ''} ${focusedField === 'phone' ? 'join-form__input--focused' : ''}`}
-                disabled={isLoading}
-                autoComplete="tel"
-                placeholder="Ej: +1 234 567 8900"
-              />
-              {errors.phone && (
-                <span className="join-form__error">{errors.phone}</span>
-              )}
-            </div>
+      <div className="quiz__card">
 
-            <div className="join-form__field">
-              <label className="join-form__label">
-                Correo Electrónico *
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
-                className={`join-form__input ${errors.email ? 'join-form__input--error' : ''} ${focusedField === 'email' ? 'join-form__input--focused' : ''}`}
-                disabled={isLoading}
-                autoComplete="email"
-                placeholder="Ej: goldenera@gmail.com"
-              />
-              {errors.email && (
-                <span className="join-form__error">{errors.email}</span>
-              )}
-            </div>
+        {/* STEP 0 → CONTACT */}
+        {step === 0 && (
+          <>
+            <h2>{t('form.contact')}</h2>
 
-            <button
-              type="submit"
-              ref={submitButtonRef}
-              className="join-form__submit"
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <>
-                  <span className="join-form__spinner"></span>
-                  Enviando...
-                </>
-              ) : (
-                'COMENZAR MI TRANSFORMACIÓN'
-              )}
+            <input
+              placeholder={t('form.firstName')}
+              onChange={(e) => handleChange('firstName', e.target.value)}
+            />
+
+            <input
+              placeholder={t('form.lastName')}
+              onChange={(e) => handleChange('lastName', e.target.value)}
+            />
+
+            <input
+              placeholder={t('form.phone')}
+              onChange={(e) => handleChange('phone', e.target.value)}
+            />
+
+            <input
+              placeholder={t('form.email')}
+              onChange={(e) => handleChange('email', e.target.value)}
+            />
+
+            <button onClick={nextStep}>
+              {t('form.button')}
             </button>
+          </>
+        )}
 
-            {isSuccess && (
-              <div className="join-form__message join-form__message--success">
-                ¡Perfecto! Te hemos enviado un email. Redirigiendo...
-              </div>
-            )}
+        {/* QUESTIONS */}
+        {step > 0 && step <= questions.length && (() => {
+          const current = questions[step - 1];
 
-            {isError && (
-              <div className="join-form__message join-form__message--error">
-                Error al enviar. Por favor intenta nuevamente.
-              </div>
-            )}
+          return (
+            <>
+              <h2>{current.label}</h2>
 
-          </form>
+              {current.type === 'text' && (
+                <textarea onChange={(e) => handleChange(current.key, e.target.value)} />
+              )}
 
-        </div>
+              {current.type === 'number' && (
+                <input type="number"
+                  onChange={(e) => handleChange(current.key, e.target.value)}
+                />
+              )}
+
+              {current.type === 'options' && (
+                <div className="quiz__options">
+                  {current.options?.map((opt: string, i: number) => (
+                    <button key={i} onClick={() => {
+                      handleChange(current.key, opt);
+                      nextStep();
+                    }}>
+                      {opt}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {current.type !== 'options' && (
+                <button onClick={nextStep}>
+                  {t('common.next')}
+                </button>
+              )}
+            </>
+          );
+        })()}
+
+        {/* FINAL */}
+        {step > questions.length && (
+          <>
+            <h2> Listo</h2>
+            <button onClick={handleSubmit}>
+              Ver programas
+            </button>
+          </>
+        )}
+
       </div>
     </section>
   );
