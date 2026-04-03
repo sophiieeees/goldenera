@@ -8,290 +8,157 @@ interface FormData {
   name: string;
   phone: string;
   email: string;
-}
-
-interface FormErrors {
-  name?: string;
-  phone?: string;
-  email?: string;
+  experience: string;
+  obstacle: string;
+  rating: string;
+  goal: string;
+  timeThinking: string;
+  whyYou: string;
+  money: string;
+  credit: string;
+  commitment: string;
 }
 
 const JoinForm: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  
-  // Refs
+
   const formRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const formElementRef = useRef<HTMLFormElement>(null);
-  const submitButtonRef = useRef<HTMLButtonElement>(null);
-  
-  // Estados
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     phone: '',
-    email: ''
+    email: '',
+    experience: '',
+    obstacle: '',
+    rating: '',
+    goal: '',
+    timeThinking: '',
+    whyYou: '',
+    money: '',
+    credit: '',
+    commitment: ''
   });
-  
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [focusedField, setFocusedField] = useState<string>('');
 
-  // Animación de entrada simple
+  const [isSuccess, setIsSuccess] = useState(false);
+
   useEffect(() => {
     if (!formRef.current) return;
 
-    const tl = gsap.timeline();
-    
-    tl.fromTo(titleRef.current, 
-      { opacity: 0, y: 30 }, 
-      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
-    )
-    .fromTo(formElementRef.current, 
-      { opacity: 0, y: 20 }, 
-      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 
-      "-=0.3"
+    gsap.fromTo(titleRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.6 }
     );
 
+    gsap.fromTo(formElementRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.6, delay: 0.2 }
+    );
   }, []);
 
-  // Validación
-  const validateField = (name: string, value: string): string => {
-    switch (name) {
-      case 'name':
-        if (!value.trim()) return 'El nombre es requerido';
-        if (value.length < 2) return 'Mínimo 2 caracteres';
-        if (!/^[a-zA-ZáéíóúñÑüÜ\s]+$/.test(value)) return 'Solo letras y espacios';
-        return '';
-        
-      case 'phone':
-        if (!value.trim()) return 'El teléfono es requerido';
-        const phoneClean = value.replace(/[\s\-\(\)\.]/g, '');
-        if (!/^[\+]?[0-9]{8,15}$/.test(phoneClean)) return 'Teléfono inválido';
-        return '';
-        
-      case 'email':
-        if (!value.trim()) return 'El email es requerido';
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Email inválido';
-        return '';
-        
-      default:
-        return '';
-    }
-  };
-
-  // Handlers simplificados
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
-    if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
-    }
-  };
-
-  const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    setFocusedField(e.target.name);
-  };
-
-  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFocusedField('');
-    
-    const error = validateField(name, value);
-    if (error) {
-      setErrors(prev => ({ ...prev, [name]: error }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const newErrors: FormErrors = {};
-    Object.keys(formData).forEach(key => {
-      const error = validateField(key, formData[key as keyof FormData]);
-      if (error) {
-        newErrors[key as keyof FormErrors] = error;
-      }
+  const handleChange = (e: any) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
     });
+  };
 
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      
-      if (formElementRef.current) {
-        gsap.to(formElementRef.current, {
-          x: 10,
-          duration: 0.1,
-          repeat: 5,
-          yoyo: true,
-          ease: "power2.inOut"
-        });
-      }
-      return;
-    }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-    setIsLoading(true);
-    setIsError(false);
+    console.log("FORM DATA:", formData);
 
-    try {
-      console.log('📤 Enviando formulario...', formData);
-      
-      const apiUrl = process.env.REACT_APP_API_URL || '';
-      const response = await fetch(`${apiUrl}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+    setIsSuccess(true);
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
-      console.log('📨 Respuesta:', result);
-
-      if (result.success) {
-        setIsSuccess(true);
-        
-        if (submitButtonRef.current) {
-          gsap.to(submitButtonRef.current, {
-            scale: 1.05,
-            duration: 0.2,
-            yoyo: true,
-            repeat: 1
-          });
-        }
-        
-        setTimeout(() => {
-          navigate('/join');
-        }, 2000);
-        
-      } else {
-        throw new Error(result.error || 'Error desconocido');
-      }
-      
-    } catch (error: any) {
-      console.error('Error:', error);
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
+    setTimeout(() => {
+      navigate('/packages'); 
+    }, 1200);
   };
 
   return (
-    <section id="JoinForm" className="join-form" ref={formRef}>
+    <section className="join-form" ref={formRef}>
       <div className="join-form__container">
         <div className="join-form__content">
-          
+
           <div className="join-form__header" ref={titleRef}>
             <h1 className="join-form__title">
-              ÚNETE A LA <span className="join-form__title-highlight">GOLDEN ERA</span>
+              {t("form.title")}
             </h1>
-            <p className="join-form__subtitle">
-              Reclama tu respeto hoy. Únete a la élite.
-            </p>
           </div>
 
-          <form 
-            className="join-form__form" 
-            ref={formElementRef} 
+          <form
+            className="join-form__form"
+            ref={formElementRef}
             onSubmit={handleSubmit}
-            noValidate
           >
-            
-            <div className="join-form__field">
-              <label className="join-form__label">
-                Nombre Completo *
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
-                className={`join-form__input ${errors.name ? 'join-form__input--error' : ''} ${focusedField === 'name' ? 'join-form__input--focused' : ''}`}
-                disabled={isLoading}
-                autoComplete="given-name"
-                placeholder="Ingresa tu nombre completo"
-              />
-              {errors.name && (
-                <span className="join-form__error">{errors.name}</span>
-              )}
-            </div>
 
-            <div className="join-form__field">
-              <label className="join-form__label">
-                Teléfono *
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
-                className={`join-form__input ${errors.phone ? 'join-form__input--error' : ''} ${focusedField === 'phone' ? 'join-form__input--focused' : ''}`}
-                disabled={isLoading}
-                autoComplete="tel"
-                placeholder="Ej: +1 234 567 8900"
-              />
-              {errors.phone && (
-                <span className="join-form__error">{errors.phone}</span>
-              )}
-            </div>
+            {/* BASICO */}
+            <input name="name" placeholder={t("form.firstName")} onChange={handleChange} required />
+            <input name="phone" placeholder={t("form.phone")} onChange={handleChange} required />
+            <input name="email" type="email" placeholder={t("form.email")} onChange={handleChange} required />
 
-            <div className="join-form__field">
-              <label className="join-form__label">
-                Correo Electrónico *
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
-                className={`join-form__input ${errors.email ? 'join-form__input--error' : ''} ${focusedField === 'email' ? 'join-form__input--focused' : ''}`}
-                disabled={isLoading}
-                autoComplete="email"
-                placeholder="Ej: goldenera@gmail.com"
-              />
-              {errors.email && (
-                <span className="join-form__error">{errors.email}</span>
-              )}
-            </div>
+            {/* EXPERIENCE */}
+            <select name="experience" onChange={handleChange} defaultValue="">
+              <option value="" disabled>{t("form.experience")}</option>
+              <option value="a">{t("form.experience_options.a")}</option>
+              <option value="b">{t("form.experience_options.b")}</option>
+              <option value="c">{t("form.experience_options.c")}</option>
+            </select>
 
-            <button
-              type="submit"
-              ref={submitButtonRef}
-              className="join-form__submit"
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <>
-                  <span className="join-form__spinner"></span>
-                  Enviando...
-                </>
-              ) : (
-                'COMENZAR MI TRANSFORMACIÓN'
-              )}
+            {/* TEXT */}
+            <textarea name="obstacle" placeholder={t("form.obstacle")} onChange={handleChange} />
+            <input name="rating" placeholder={t("form.rating")} onChange={handleChange} />
+            <textarea name="goal" placeholder={t("form.goal")} onChange={handleChange} />
+
+            {/* TIME */}
+            <select name="timeThinking" onChange={handleChange} defaultValue="">
+              <option value="" disabled>{t("form.timeThinking")}</option>
+              <option value="a">{t("form.timeThinking_options.a")}</option>
+              <option value="b">{t("form.timeThinking_options.b")}</option>
+              <option value="c">{t("form.timeThinking_options.c")}</option>
+              <option value="d">{t("form.timeThinking_options.d")}</option>
+            </select>
+
+            {/* WHY */}
+            <textarea name="whyYou" placeholder={t("form.whyYou")} onChange={handleChange} />
+
+            {/* MONEY */}
+            <select name="money" onChange={handleChange} defaultValue="">
+              <option value="" disabled>{t("form.money")}</option>
+              <option value="a">{t("form.money_options.a")}</option>
+              <option value="b">{t("form.money_options.b")}</option>
+              <option value="c">{t("form.money_options.c")}</option>
+              <option value="d">{t("form.money_options.d")}</option>
+            </select>
+
+            {/* CREDIT */}
+            <select name="credit" onChange={handleChange} defaultValue="">
+              <option value="" disabled>{t("form.credit")}</option>
+              <option value="a">{t("form.credit_options.a")}</option>
+              <option value="b">{t("form.credit_options.b")}</option>
+              <option value="c">{t("form.credit_options.c")}</option>
+              <option value="d">{t("form.credit_options.d")}</option>
+              <option value="e">{t("form.credit_options.e")}</option>
+            </select>
+
+            {/* COMMITMENT */}
+            <select name="commitment" onChange={handleChange} defaultValue="">
+              <option value="" disabled>{t("form.commitment")}</option>
+              <option value="a">{t("form.commitment_options.a")}</option>
+              <option value="b">{t("form.commitment_options.b")}</option>
+              <option value="c">{t("form.commitment_options.c")}</option>
+              <option value="d">{t("form.commitment_options.d")}</option>
+            </select>
+
+            <button type="submit">
+              {t("form.button")}
             </button>
 
             {isSuccess && (
-              <div className="join-form__message join-form__message--success">
-                ¡Perfecto! Te hemos enviado un email. Redirigiendo...
-              </div>
-            )}
-
-            {isError && (
-              <div className="join-form__message join-form__message--error">
-                Error al enviar. Por favor intenta nuevamente.
+              <div className="join-form__success">
+                {t("form.success") || "Success! Redirecting..."}
               </div>
             )}
 
