@@ -1,172 +1,195 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import gsap from 'gsap';
-import './JoinForm.scss';
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import "./JoinForm.scss";
 
-interface FormData {
-  name: string;
-  phone: string;
-  email: string;
-  experience: string;
-  obstacle: string;
-  rating: string;
-  goal: string;
-  timeThinking: string;
-  whyYou: string;
-  money: string;
-  credit: string;
-  commitment: string;
-}
-
-const JoinForm: React.FC = () => {
+const JoinForm = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const formRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const formElementRef = useRef<HTMLFormElement>(null);
+  const [step, setStep] = useState(0);
 
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    phone: '',
-    email: '',
-    experience: '',
-    obstacle: '',
-    rating: '',
-    goal: '',
-    timeThinking: '',
-    whyYou: '',
-    money: '',
-    credit: '',
-    commitment: ''
+  const [formData, setFormData] = useState<any>({
+    name: "",
+    phone: "",
+    email: "",
+    experience: "",
+    obstacle: "",
+    rating: "",
+    goal: "",
+    timeThinking: "",
+    whyYou: "",
+    money: "",
+    credit: "",
+    commitment: ""
   });
 
-  const [isSuccess, setIsSuccess] = useState(false);
+  const questions = [
+    {
+      type: "input",
+      name: "name",
+      placeholder: t("form.firstName")
+    },
+    {
+      type: "input",
+      name: "phone",
+      placeholder: t("form.phone")
+    },
+    {
+      type: "input",
+      name: "email",
+      placeholder: t("form.email")
+    },
+    {
+      type: "select",
+      name: "experience",
+      label: t("form.experience"),
+      options: [
+        t("form.experience_options.a"),
+        t("form.experience_options.b"),
+        t("form.experience_options.c")
+      ]
+    },
+    {
+      type: "textarea",
+      name: "obstacle",
+      placeholder: t("form.obstacle")
+    },
+    {
+      type: "input",
+      name: "rating",
+      placeholder: t("form.rating")
+    },
+    {
+      type: "textarea",
+      name: "goal",
+      placeholder: t("form.goal")
+    },
+    {
+      type: "select",
+      name: "timeThinking",
+      label: t("form.timeThinking"),
+      options: [
+        t("form.timeThinking_options.a"),
+        t("form.timeThinking_options.b"),
+        t("form.timeThinking_options.c"),
+        t("form.timeThinking_options.d")
+      ]
+    },
+    {
+      type: "textarea",
+      name: "whyYou",
+      placeholder: t("form.whyYou")
+    },
+    {
+      type: "select",
+      name: "money",
+      label: t("form.money"),
+      options: [
+        t("form.money_options.a"),
+        t("form.money_options.b"),
+        t("form.money_options.c"),
+        t("form.money_options.d")
+      ]
+    },
+    {
+      type: "select",
+      name: "credit",
+      label: t("form.credit"),
+      options: [
+        t("form.credit_options.a"),
+        t("form.credit_options.b"),
+        t("form.credit_options.c"),
+        t("form.credit_options.d"),
+        t("form.credit_options.e")
+      ]
+    },
+    {
+      type: "select",
+      name: "commitment",
+      label: t("form.commitment"),
+      options: [
+        t("form.commitment_options.a"),
+        t("form.commitment_options.b"),
+        t("form.commitment_options.c"),
+        t("form.commitment_options.d")
+      ]
+    }
+  ];
 
-  useEffect(() => {
-    if (!formRef.current) return;
+  const current = questions[step];
 
-    gsap.fromTo(titleRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.6 }
-    );
-
-    gsap.fromTo(formElementRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.6, delay: 0.2 }
-    );
-  }, []);
-
-  const handleChange = (e: any) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleChange = (value: string) => {
+    setFormData({ ...formData, [current.name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    console.log("FORM DATA:", formData);
-
-    setIsSuccess(true);
-
-    setTimeout(() => {
-      navigate('/packages'); 
-    }, 1200);
+  const next = () => {
+    if (step < questions.length - 1) {
+      setStep(step + 1);
+    } else {
+      console.log("FINAL DATA:", formData);
+      navigate("/packages");
+    }
   };
+
+  const prev = () => {
+    if (step > 0) setStep(step - 1);
+  };
+
+  const progress = ((step + 1) / questions.length) * 100;
 
   return (
-    <section className="join-form" ref={formRef}>
-      <div className="join-form__container">
-        <div className="join-form__content">
+    <div className="quiz">
 
-          <div className="join-form__header" ref={titleRef}>
-            <h1 className="join-form__title">
-              {t("form.title")}
-            </h1>
-          </div>
-
-          <form
-            className="join-form__form"
-            ref={formElementRef}
-            onSubmit={handleSubmit}
-          >
-
-            {/* BASICO */}
-            <input name="name" placeholder={t("form.firstName")} onChange={handleChange} required />
-            <input name="phone" placeholder={t("form.phone")} onChange={handleChange} required />
-            <input name="email" type="email" placeholder={t("form.email")} onChange={handleChange} required />
-
-            {/* EXPERIENCE */}
-            <select name="experience" onChange={handleChange} defaultValue="">
-              <option value="" disabled>{t("form.experience")}</option>
-              <option value="a">{t("form.experience_options.a")}</option>
-              <option value="b">{t("form.experience_options.b")}</option>
-              <option value="c">{t("form.experience_options.c")}</option>
-            </select>
-
-            {/* TEXT */}
-            <textarea name="obstacle" placeholder={t("form.obstacle")} onChange={handleChange} />
-            <input name="rating" placeholder={t("form.rating")} onChange={handleChange} />
-            <textarea name="goal" placeholder={t("form.goal")} onChange={handleChange} />
-
-            {/* TIME */}
-            <select name="timeThinking" onChange={handleChange} defaultValue="">
-              <option value="" disabled>{t("form.timeThinking")}</option>
-              <option value="a">{t("form.timeThinking_options.a")}</option>
-              <option value="b">{t("form.timeThinking_options.b")}</option>
-              <option value="c">{t("form.timeThinking_options.c")}</option>
-              <option value="d">{t("form.timeThinking_options.d")}</option>
-            </select>
-
-            {/* WHY */}
-            <textarea name="whyYou" placeholder={t("form.whyYou")} onChange={handleChange} />
-
-            {/* MONEY */}
-            <select name="money" onChange={handleChange} defaultValue="">
-              <option value="" disabled>{t("form.money")}</option>
-              <option value="a">{t("form.money_options.a")}</option>
-              <option value="b">{t("form.money_options.b")}</option>
-              <option value="c">{t("form.money_options.c")}</option>
-              <option value="d">{t("form.money_options.d")}</option>
-            </select>
-
-            {/* CREDIT */}
-            <select name="credit" onChange={handleChange} defaultValue="">
-              <option value="" disabled>{t("form.credit")}</option>
-              <option value="a">{t("form.credit_options.a")}</option>
-              <option value="b">{t("form.credit_options.b")}</option>
-              <option value="c">{t("form.credit_options.c")}</option>
-              <option value="d">{t("form.credit_options.d")}</option>
-              <option value="e">{t("form.credit_options.e")}</option>
-            </select>
-
-            {/* COMMITMENT */}
-            <select name="commitment" onChange={handleChange} defaultValue="">
-              <option value="" disabled>{t("form.commitment")}</option>
-              <option value="a">{t("form.commitment_options.a")}</option>
-              <option value="b">{t("form.commitment_options.b")}</option>
-              <option value="c">{t("form.commitment_options.c")}</option>
-              <option value="d">{t("form.commitment_options.d")}</option>
-            </select>
-
-            <button type="submit">
-              {t("form.button")}
-            </button>
-
-            {isSuccess && (
-              <div className="join-form__success">
-                {t("form.success") || "Success! Redirecting..."}
-              </div>
-            )}
-
-          </form>
-
-        </div>
+      {/* PROGRESS BAR */}
+      <div className="quiz__progress">
+        <div
+          className="quiz__progress-bar"
+          style={{ width: `${progress}%` }}
+        />
       </div>
-    </section>
+
+      <div className="quiz__card">
+
+        {current.label && <h2>{current.label}</h2>}
+
+        {current.type === "input" && (
+          <input
+            value={formData[current.name]}
+            placeholder={current.placeholder}
+            onChange={(e) => handleChange(e.target.value)}
+          />
+        )}
+
+        {current.type === "textarea" && (
+          <textarea
+            value={formData[current.name]}
+            placeholder={current.placeholder}
+            onChange={(e) => handleChange(e.target.value)}
+          />
+        )}
+
+        {current.type === "select" && (
+          <div className="quiz__options">
+            {current.options.map((opt: string, i: number) => (
+              <button key={i} onClick={() => handleChange(opt)}>
+                {opt}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div className="quiz__nav">
+          {step > 0 && <button onClick={prev}>Back</button>}
+          <button onClick={next}>
+            {step === questions.length - 1
+              ? t("form.button")
+              : "Next"}
+          </button>
+        </div>
+
+      </div>
+    </div>
   );
 };
 
