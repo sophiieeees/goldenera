@@ -1,12 +1,11 @@
 @import '../../../styles/abstracts/variables';
 @import '../../../styles/abstracts/mixins';
 
-/* 🔴 ESTO YA NO LO USAS (pero puedes dejarlo limpio) */
 .join-form {
   background: $color-black;
 }
 
-/* 🔥 QUIZ (SEPARADO CORRECTAMENTE) */
+
 .quiz {
   min-height: 100vh;
   background: $color-black;
