@@ -3,7 +3,15 @@ import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import './JoinForm.scss';
 
-const steps = [
+
+type Step =
+  | { key: string; type: 'options'; options: string[] }
+  | { key: string; type: 'input' }
+  | { key: string; type: 'textarea' }
+  | { key: string; type: 'contact' };
+
+
+const steps: Step[] = [
   { key: 'experience', type: 'options', options: ['a', 'b', 'c'] },
   { key: 'contact', type: 'contact' },
   { key: 'obstacle', type: 'textarea' },
@@ -16,16 +24,34 @@ const steps = [
   { key: 'commitment', type: 'options', options: ['a', 'b', 'c', 'd'] }
 ];
 
+const STORAGE_KEY = 'golden-era-form';
+
 const JoinForm: React.FC = () => {
   const { t } = useTranslation();
 
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<any>({});
+  const [error, setError] = useState('');
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   const totalSteps = steps.length;
   const currentStep = steps[step];
 
+  // ✅ LOAD FROM STORAGE
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      setAnswers(JSON.parse(saved));
+    }
+  }, []);
+
+  // ✅ SAVE TO STORAGE
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
+  }, [answers]);
+
+  // ✅ ANIMATION
   useEffect(() => {
     gsap.fromTo(
       containerRef.current,
@@ -39,13 +65,36 @@ const JoinForm: React.FC = () => {
       ...prev,
       [key]: value
     }));
+    setError('');
   };
 
-  const next = () => setStep((s) => Math.min(s + 1, totalSteps - 1));
+  // ✅ VALIDACIÓN
+  const validateStep = () => {
+    if (currentStep.type === 'contact') {
+      if (!answers.firstName || !answers.email) {
+        setError('Completa los campos obligatorios');
+        return false;
+      }
+    } else {
+      if (!answers[currentStep.key]) {
+        setError('Por favor responde antes de continuar');
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const next = () => {
+    if (!validateStep()) return;
+    setStep((s) => Math.min(s + 1, totalSteps - 1));
+  };
+
   const prev = () => setStep((s) => Math.max(s - 1, 0));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateStep()) return;
 
     try {
       const apiUrl = process.env.REACT_APP_API_URL || '';
@@ -55,14 +104,17 @@ const JoinForm: React.FC = () => {
         body: JSON.stringify(answers)
       });
 
-      alert('🔥 Aplicación enviada');
-    } catch (err) {
-      alert('Error al enviar');
+      localStorage.removeItem(STORAGE_KEY);
+      alert(t('form.success.title'));
+
+    } catch {
+      setError(t('form.error'));
     }
   };
 
   return (
     <section className="join">
+
       {/* PROGRESS */}
       <div className="join__progress">
         <div
@@ -73,16 +125,21 @@ const JoinForm: React.FC = () => {
 
       <form className="join__form" onSubmit={handleSubmit}>
         <div className="join__card" ref={containerRef}>
-          
-          {/* PREGUNTA */}
+
+          {/* PROGRESS TEXT */}
+          <p className="join__step">
+            {t('form.progress', { current: step + 1, total: totalSteps })}
+          </p>
+
+          {/* QUESTION */}
           <h2 className="join__question">
             {t(`form.${currentStep.key}`)}
           </h2>
 
-          {/* OPCIONES */}
+          {/* OPTIONS */}
           {currentStep.type === 'options' && (
             <div className="join__options">
-              {currentStep.options.map((opt: string) => (
+              {currentStep.options.map((opt) => (
                 <button
                   key={opt}
                   type="button"
@@ -102,10 +159,10 @@ const JoinForm: React.FC = () => {
           {currentStep.type === 'input' && (
             <input
               className="join__input"
+              placeholder={t('form.placeholders.input')}
               onChange={(e) =>
                 handleAnswer(currentStep.key, e.target.value)
               }
-              placeholder="..."
             />
           )}
 
@@ -113,6 +170,7 @@ const JoinForm: React.FC = () => {
           {currentStep.type === 'textarea' && (
             <textarea
               className="join__textarea"
+              placeholder={t('form.placeholders.textarea')}
               onChange={(e) =>
                 handleAnswer(currentStep.key, e.target.value)
               }
@@ -141,23 +199,26 @@ const JoinForm: React.FC = () => {
             </div>
           )}
 
+          {/* ERROR */}
+          {error && <p className="join__error">{error}</p>}
+
           {/* NAV */}
           <div className="join__nav">
             {step > 0 && (
               <button type="button" onClick={prev}>
-                ←
+                {t('form.buttons.back')}
               </button>
             )}
 
             {currentStep.type !== 'options' && step < totalSteps - 1 && (
               <button type="button" onClick={next}>
-                {t('form.button')}
+                {t('form.buttons.next')}
               </button>
             )}
 
             {step === totalSteps - 1 && (
               <button type="submit" className="join__submit">
-                FINALIZAR
+                {t('form.buttons.submit')}
               </button>
             )}
           </div>
