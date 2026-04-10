@@ -470,9 +470,7 @@
     padding: 0 16px; 
   }
 
-
   .values-section {
-
     .values-grid {
       grid-template-columns: 1fr !important;
       gap: 30px;
@@ -483,13 +481,12 @@
       width: 100%;
       padding: 20px;
     }
-
   }
+
   * {
     max-width: 100%;
   }
 
-}
   .text-content {
     .section-text {
       text-align: left;
@@ -527,8 +524,4 @@
     }
   }
 
-}
-
-* {
-  box-sizing: border-box;
-}
+} 
