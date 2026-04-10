@@ -31,7 +31,7 @@ Página: ${pageTitle}
 
             {/* Instagram */}
             <a 
-              href="https://www.instagram.com/goldenera_wardrobe" 
+              href="https://www.instagram.com/goldenera_fitcoaching?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
               target="_blank" 
               rel="noopener noreferrer"
               aria-label="Instagram"
