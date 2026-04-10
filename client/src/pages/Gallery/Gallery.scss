@@ -113,18 +113,17 @@
       justify-content: center;
       overflow: hidden;
 
-      // 🔥 CAMBIO: fondo elegante tipo blur (premium)
       background: radial-gradient(circle, rgba(0,0,0,0.6) 0%, #000 100%);
 
         img {
         display: block;
 
-        // 🔥 CAMBIO IMPORTANTE (consistencia visual)
+
         width: auto;
         height: 80%;
         max-width: 80%;
     
-        object-fit: contain; // 🔥 antes cover → ahora elegante
+        object-fit: contain; 
     
         user-select: none;
         -webkit-user-drag: none;
@@ -133,7 +132,6 @@
         opacity: 0;
         animation: fadeIn 0.4s ease-out forwards;
     
-        // 🔥 CAMBIO: leve sombra para look premium
         filter: drop-shadow(0 10px 30px rgba(0,0,0,0.6));
       }
       }
@@ -148,81 +146,81 @@
         z-index: 50;
 
         .heart-icon {
-  font-size: 120px;
-
-  // 🔥 CAMBIO: animación más suave
-  animation: heartPulse 0.6s ease-out;
-
-  filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.7));
-}
-      }
-
-     .actions-sidebar {
-  position: absolute;
-  right: 20px;
-  bottom: 90px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  z-index: 40;
-
-  .action-button {
-    background: rgba(255, 255, 255, 0.08); // 🔥 glass
-    backdrop-filter: blur(10px); // 🔥 premium
-    -webkit-backdrop-filter: blur(10px);
-
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-
-    cursor: pointer;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-
-    padding: 10px 12px;
-
-    transition: all 0.25s ease;
-
-    // 🔥 CAMBIO: sombra elegante
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-
-    &:hover {
-      transform: translateY(-3px) scale(1.05);
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-
-    .icon {
-      font-size: 24px; // 🔥 más elegante que 36
-      transition: all 0.3s ease;
-    }
-
-    .count {
-      color: #fff;
-      font-size: 12px;
-      font-weight: 500;
-      opacity: 0.8;
-    }
-
-    &.like-button {
-      &.liked {
-        .icon {
-          color: #ff3b3b;
-
-          // 🔥 glow elegante
-          filter: drop-shadow(0 0 10px rgba(255, 59, 59, 0.6));
-
-          transform: scale(1.1);
+          font-size: 120px;
+        
+        
+          animation: heartPulse 0.6s ease-out;
+        
+          filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.7));
         }
-      }
-    }
-  }
-}
+              }
+        
+          .actions-sidebar {
+          position: absolute;
+          right: 20px;
+          bottom: 90px;
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+          z-index: 40;
+        
+          .action-button {
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+        
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+        
+            cursor: pointer;
+        
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        
+            padding: 10px 12px;
+        
+            transition: all 0.25s ease;
+        
+      
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        
+            &:hover {
+              transform: translateY(-3px) scale(1.05);
+              background: rgba(255, 255, 255, 0.15);
+            }
+        
+            &:active {
+              transform: scale(0.95);
+            }
+        
+            .icon {
+              font-size: 24px; 
+              transition: all 0.3s ease;
+            }
+        
+            .count {
+              color: #fff;
+              font-size: 12px;
+              font-weight: 500;
+              opacity: 0.8;
+            }
+        
+            &.like-button {
+              &.liked {
+                .icon {
+                  color: #ff3b3b;
+        
+          
+                  filter: drop-shadow(0 0 10px rgba(255, 59, 59, 0.6));
+        
+                  transform: scale(1.1);
+                }
+              }
+            }
+          }
+        }
 
       .navigation-hint {
         position: absolute;
