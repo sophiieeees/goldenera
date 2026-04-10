@@ -122,7 +122,7 @@ const JoinForm: React.FC = () => {
   };
 
   return (
-    <section id="join" className="join">
+    <section id="JoinForm" className="join">
 
       {/* HEADER */}
       <div className="join__header" ref={headerRef}>
