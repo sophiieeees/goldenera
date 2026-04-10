@@ -40,18 +40,15 @@ const JoinForm: React.FC = () => {
   const totalSteps = steps.length;
   const currentStep = steps[step];
 
-  // Load
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) setAnswers(JSON.parse(saved));
   }, []);
 
-  // Save
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
   }, [answers]);
 
-  // Step animation
   useEffect(() => {
     gsap.fromTo(
       containerRef.current,
@@ -60,7 +57,6 @@ const JoinForm: React.FC = () => {
     );
   }, [step]);
 
-  // Header animation
   useEffect(() => {
     gsap.fromTo(
       headerRef.current,
@@ -126,7 +122,7 @@ const JoinForm: React.FC = () => {
   };
 
   return (
-    <section className="join">
+    <section className="join" className="join">
 
       {/* HEADER */}
       <div className="join__header" ref={headerRef}>
