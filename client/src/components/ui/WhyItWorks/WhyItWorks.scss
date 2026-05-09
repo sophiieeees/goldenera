@@ -6,8 +6,8 @@
   background-color: $color-white;
   padding: 100px 15px;
 
-  @include tablet { padding: 80px 15px; }
-  @include mobile { padding: 60px 10px; }
+  @include tablet { padding: 40px 10px; }
+  @include mobile { padding: 30px 10px; }
 
   &__wrapper { max-width: 1440px; margin: 0 auto; text-align: center; position: relative; }
 
@@ -47,7 +47,7 @@
     padding: 40px 20px;
     text-align: center;
     position: relative;
-///////////////////////////////
+
      @include tablet {
     padding: 24px 16px;
   }
@@ -55,7 +55,7 @@
   @include mobile {
     padding: 14px 8px;
   }
-///////////////////////////////
+
     &:not(:last-child)::after {
       content: '';
       position: absolute;
@@ -78,7 +78,6 @@
       font-size: 18px; 
       line-height: 1.5; 
       color: #333;
-      ///////////////
       max-width: 320px;
       margin: 0 auto;
 
@@ -94,7 +93,7 @@
     max-width: 280px;
   }
 }
-  ///////////////////////////  
+
   }
 
     &__stats {
@@ -109,10 +108,15 @@
     grid-template-columns: repeat(3, 1fr);
     text-align: center;
 
-    @include mobile {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
+   @include tablet {
+  gap: 24px;
+}
+
+@include mobile {
+  grid-template-columns: 1fr;
+  gap: 18px;
+  padding: 10px 0;
+}
   }
 
   &__stat {
@@ -128,9 +132,13 @@
       color: $black;
       line-height: 1;
       letter-spacing: 1px;
+     
+      @include tablet {
+      font-size: 38px;
+      }
 
       @include mobile {
-        font-size: 48px;
+        font-size: 38px;
       }
     }
 
@@ -141,9 +149,14 @@
       max-width: 180px;
       line-height: 1.4;
 
-      @include mobile {
+        @include tablet {
         font-size: 14px;
-      }
+        }
+
+        @include mobile {
+          font-size: 12px;
+          max-width: 140px;
+        }
     }
   }
 
@@ -162,6 +175,7 @@
     @include mobile {
     grid-template-columns: 1fr;
     gap: 20px;
+    font-size: 9px;
       }
 
     p {
