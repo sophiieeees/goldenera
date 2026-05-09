@@ -5,89 +5,220 @@
   width: 100%;
   background-color: $color-white;
   padding: 100px 15px;
+  overflow: hidden;
 
-  @include tablet { padding: 80px 15px; }
-  @include mobile { padding: 60px 10px; }
+  @include tablet {
+    padding: 80px 15px;
+  }
 
-  &__wrapper { max-width: 1440px; margin: 0 auto; text-align: center; position: relative; }
+  @include mobile {
+    padding: 60px 10px;
+  }
 
-  &__container { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  &__wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ========================= */
+  /* TEXTO ÁRABE DECORATIVO */
+  /* ========================= */
 
   &__arabic-text {
     position: absolute;
-    top: -35px; left: 55%;
+    top: -35px;
+    left: 50%;
     transform: translateX(-50%);
     font-family: 'Mohave', sans-serif;
-    font-size: 80px; font-weight: 300; color: #EAC31B;
-    pointer-events: none; z-index: 0;
-    @include tablet { font-size: 60px; top: -5px; }
-    @include mobile { font-size: 40px; top: 0; }
+    font-size: 80px;
+    font-weight: 300;
+    color: rgba(234, 195, 27, 0.15);
+    pointer-events: none;
+    z-index: 0;
+    white-space: nowrap;
+
+    @include tablet {
+      font-size: 56px;
+      top: -10px;
+    }
+
+    @include mobile {
+      font-size: 34px;
+      top: 5px;
+    }
   }
 
-  &__title { font-family: 'Mohave', sans-serif; font-size: 72px; font-weight: 600; margin-bottom: 16px; color: $black;
-    @include tablet { font-size: 56px; } @include mobile { font-size: 42px; }
+  /* ========================= */
+  /* TÍTULO */
+  /* ========================= */
+
+  &__title {
+    font-family: 'Mohave', sans-serif;
+    font-size: 72px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: $black;
+    line-height: 1.05;
+    position: relative;
+    z-index: 2;
+
+    @include tablet {
+      font-size: 56px;
+    }
+
+    @include mobile {
+      font-size: 42px;
+    }
   }
 
-  &__subtitle { font-size: 18px; opacity: 0.8; margin-bottom: 10px; 
-    @include tablet { font-size: 18px; margin-bottom: 30px; } @include mobile { font-size: 16px; margin-bottom: 20px; }
+  /* ========================= */
+  /* SUBTÍTULO */
+  /* ========================= */
+
+  &__subtitle {
+    font-size: 18px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+    max-width: 760px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+
+    @include tablet {
+      font-size: 17px;
+      margin-bottom: 30px;
+      padding: 0 20px;
+    }
+
+    @include mobile {
+      font-size: 16px;
+      margin-bottom: 20px;
+      padding: 0 10px;
+    }
   }
+
+  /* ========================= */
+  /* FEATURES */
+  /* ========================= */
 
   &__features {
     display: flex;
     justify-content: center;
-    gap: 0;
-    overflow: hidden;
+    align-items: stretch;
+    gap: 24px;
     margin-top: 10px;
+    width: 100%;
 
-    @include mobile { flex-direction: column; }
+    @include tablet {
+      gap: 16px;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 
   &__feature {
     flex: 1;
-    padding: 40px 20px;
+    min-width: 0;
+    padding: 32px 20px;
     text-align: center;
     position: relative;
+
+    @include tablet {
+      padding: 24px 16px;
+    }
+
+    @include mobile {
+      padding: 20px 10px;
+    }
 
     &:not(:last-child)::after {
       content: '';
       position: absolute;
       top: 25%;
-      right: 0;
+      right: -12px;
       width: 2px;
       height: 50%;
-      background-color: rgba(234,195,27,0.5);
+      background-color: rgba(234, 195, 27, 0.5);
+
+      @include mobile {
+        display: none;
+      }
     }
 
-    &-title { 
-      font-family: 'Mohave', sans-serif; 
-      font-size: 32px; 
-      font-weight: 600; 
-      margin-bottom: 10px; 
+    &-title {
+      font-family: 'Mohave', sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 12px;
       color: #EAC31B;
+      line-height: 1.1;
+
+      @include tablet {
+        font-size: 26px;
+      }
+
+      @include mobile {
+        font-size: 22px;
+      }
     }
 
-    &-description { 
-      font-size: 18px; 
-      line-height: 1.5; 
+    &-description {
+      font-size: 18px;
+      line-height: 1.6;
       color: #333;
+      max-width: 320px;
+      margin: 0 auto;
+
+      @include tablet {
+        font-size: 16px;
+        max-width: 260px;
+      }
+
+      @include mobile {
+        font-size: 15px;
+        max-width: 100%;
+      }
     }
   }
 
-    &__stats {
+  /* ========================= */
+  /* STATS */
+  /* ========================= */
+
+  &__stats {
     width: 100%;
     max-width: 1100px;
-    margin-top: -25px;
     margin: 0 auto;
     padding: 45px 20px 25px;
-    gap: 275px;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+
     text-align: center;
+
+    @include tablet {
+      gap: 24px;
+    }
 
     @include mobile {
       grid-template-columns: 1fr;
       gap: 30px;
+      padding-top: 30px;
     }
   }
 
@@ -104,6 +235,10 @@
       color: $black;
       line-height: 1;
       letter-spacing: 1px;
+
+      @include tablet {
+        font-size: 40px;
+      }
 
       @include mobile {
         font-size: 48px;
@@ -123,22 +258,25 @@
     }
   }
 
+  /* ========================= */
+  /* CITATIONS */
+  /* ========================= */
+
   &__citations {
     padding: 10px 15px 0;
-    text-align: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 60px;
     text-align: center;
 
     @include tablet {
-    gap: 40px;
-      }
+      gap: 40px;
+    }
 
     @include mobile {
-    grid-template-columns: 1fr;
-    gap: 20px;
-      }
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
 
     p {
       font-family: 'Helvetica', sans-serif;
@@ -146,6 +284,11 @@
       color: rgba(black, 0.6);
       margin: 4px 0;
       font-style: italic;
+      line-height: 1.5;
+
+      @include mobile {
+        font-size: 11px;
+      }
     }
   }
 }
