@@ -574,7 +574,9 @@ const galleryImages = Array.from(new Set(images.gallery));
                   
                   {showHeart === slide.id && (
                     <div className="heart-animation-overlay">
-                      <div className="heart-icon">❤️</div>
+                      <div className="heart-icon">
+                          <Heart fill="white" strokeWidth={2.5} />
+                      </div>
                     </div>
                   )}
 
@@ -586,7 +588,13 @@ const galleryImages = Array.from(new Set(images.gallery));
                         handleDoubleTap(slide.id);
                       }}
                     >
-                      <span className="icon">❤️</span>
+                      <span className="icon">
+                        <Heart
+                          fill={isLiked[slide.id] ? '#EAC31B' : 'transparent'}
+                          color="white"
+                          strokeWidth={2.3}
+                        />
+                      </span>
                       <span className="count">
                         {getLikeCount(slide.id).toLocaleString()}
                       </span>
@@ -595,7 +603,9 @@ const galleryImages = Array.from(new Set(images.gallery));
 
                   {index === 0 && showHint && currentIndex === 0 && (
                     <div className="navigation-hint">
-                      <div className="swipe-icon">👆</div>
+                      <div className="swipe-icon">
+                        <ChevronUp strokeWidth={2.5} />
+                      </div>
                       <p>Swipe up</p>
                     </div>
                   )}
