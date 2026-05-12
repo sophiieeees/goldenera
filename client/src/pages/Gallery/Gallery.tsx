@@ -484,7 +484,7 @@ const Gallery: React.FC = () => {
                       <span className="icon">
                         <Heart
                           size={30}
-                          fill={isLiked[slide.id] ? '#EAC31B' : 'transparent'}
+                          fill={isLiked[slide.id] ? '#ffffff' : 'transparent'}
                           color="#ffffff"
                           strokeWidth={2.2}
                         />
