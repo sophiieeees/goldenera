@@ -328,28 +328,30 @@
     }
   },
 
-  "chatbot": {
-    "welcome": "Welcome to Golden Era!\n\nHow can I help you?\n\n• Packages\n• Join the club\n• Merch\n• Coach",
-    "reset": "How can I help you?\n\n• Packages\n• Join\n• Merch\n• Coach",
-    "tooltip": "AI Assistant",
-    "open": "Open chat",
-    "online": "Online",
-    "whatsapp": "Chat on WhatsApp",
-    "placeholder": "Type a message...",
-    "send": "Send",
+ "chatbot": {
+  "welcome": "Welcome to Golden Era 🔥\n\nTell me what you're looking for and I’ll help you.\n\n• View packages\n• Join the club\n• Official merch\n• Talk to a coach",
 
-    "packages": "We have 2 options:\n\n1. Standard – $3,500\nBasic access.\n\n2. Ultra Deluxe – $35,000\nExclusive access + coaching 🔥\n\nWant help choosing?",
+  "reset": "What would you like to do?\n\n• View packages\n• Join\n• Merch\n• Coach",
 
-    "join": "To join:\n\n1. Go to 'Join the club'\n2. Choose a package\n3. Complete registration\n\nNeed guidance?",
+  "tooltip": "Golden Era Assistant",
+  "open": "Open chat",
+  "online": "Online",
+  "whatsapp": "Continue on WhatsApp",
+  "placeholder": "Type your message...",
+  "send": "Send",
 
-    "merch": "Merch available:\n\n• Golden Era shirts\n💰 Price: $888\n\nAvailable in Merch section 🔥",
+  "packages": "We have different options depending on your goals 🔥\n\n• Standard — $3,500\nPerfect for getting started and entering the system.\n\n• Ultra Deluxe — $35,000\nPersonalized guidance, exclusive access, and advanced strategy.\n\nIf you want, I can help you choose the best option for you.",
 
-    "coach": "Our coach:\n\n• Peptides expert\n• High performance\n• Real strategies 🔥",
+  "join": "Joining Golden Era is simple 🔥\n\n1. Go to the 'Join the Club' section\n2. Choose your access\n3. Complete your registration\n\nOr, if you prefer, you can talk directly with the team on WhatsApp.",
 
-    "cta": "Perfect!\n\nI'll connect you with our team via WhatsApp👇",
+  "merch": "Official Golden Era merch is now available 🔥\n\n• Golden Era T-shirts\n💰 Starting at $888\n\nEverything is available in the Merch section.\n\nIf you're looking for something specific, I can connect you with the team.",
 
-    "fallback": "For more info, contact us via WhatsApp 👇"
-  },
+  "coach": "Our team focuses on physique, discipline, and real performance 🔥\n\nYou can receive personalized guidance depending on your goals.\n\nIf you want more details, I can connect you directly on WhatsApp.",
+
+  "cta": "Perfect 🔥\n\nI’ll connect you directly with the team on WhatsApp so they can help you further 👇",
+
+  "fallback": "I can give you general information here, but for personalized support and faster answers, it’s best to talk directly with the team on WhatsApp 👇"
+},
 
     "promo": {
     "badge": "50% OFF",
