@@ -3,23 +3,24 @@
 
 .motivational-phrase-section {
   width: 100%;
-  margin-top: -70px; 
-  padding: 10px 0;
   overflow: hidden;
   background: $color-white;
-  display: flex;
-  justify-content: center;
   position: relative;
+
+  margin-top: -70px;
+  padding: 12px 0;
+
+  display: flex;
+  align-items: center;
 
   &::before,
   &::after {
     content: '';
     position: absolute;
-    left: 0%;
-    right: 0%;
-    height: 2px;
-    background: linear-gradient(to right, $color-primary);
-    background-size: 100% 1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: $color-primary;
   }
 
   &::before {
@@ -29,21 +30,42 @@
   &::after {
     bottom: 0;
   }
+
+  @media (max-width: 768px) {
+    margin-top: -30px;
+    padding: 10px 0;
+  }
 }
 
 .motivational-ticker {
   display: flex;
-  white-space: nowrap;
+  align-items: center;
   gap: 60px;
+
+  width: max-content;
+
+  white-space: nowrap;
+
   font-family: 'Mohave', sans-serif;
-  font-size: 28px; // tamaño un poco más grande
+  font-size: 28px;
   font-weight: 700;
-  padding: 20px 0;
+
+  will-change: transform;
+
+  @media (max-width: 768px) {
+    gap: 30px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 20px;
+    font-size: 14px;
+  }
 }
 
 .motivational-phrase-item {
-  display: inline-block;
-  
+  flex-shrink: 0;
+
   &.text-black {
     color: $color-black;
   }
