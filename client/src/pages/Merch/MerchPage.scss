@@ -274,3 +274,109 @@
     }
   }
 }
+////
+
+@media (max-width: 768px) {
+  .merch-page {
+
+    .merch-hero {
+      min-height: auto;
+      padding: 120px 20px 80px;
+
+      .hero-content {
+        width: 100%;
+      }
+
+      .hero-title {
+        margin-bottom: 20px;
+
+        .title-line {
+          letter-spacing: 1px;
+          line-height: 1.05;
+
+          &:first-child {
+            font-size: clamp(1.5rem, 7vw, 2.2rem);
+          }
+
+          &.golden {
+            font-size: clamp(3rem, 14vw, 5rem);
+            line-height: 0.95;
+            word-break: break-word;
+          }
+
+          &:last-child {
+            font-size: clamp(1.8rem, 8vw, 2.8rem);
+          }
+        }
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+        padding: 0 10px;
+      }
+
+      .hero-badges {
+        gap: 10px;
+
+        .badge {
+          padding: 8px 14px;
+          font-size: 0.65rem;
+          letter-spacing: 0.5px;
+        }
+      }
+
+      .scroll-indicator {
+        bottom: 20px;
+
+        .scroll-text {
+          font-size: 0.7rem;
+          letter-spacing: 1px;
+        }
+
+        .scroll-arrow {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .merch-footer-section {
+      margin-top: 40px;
+      padding: 60px 20px 40px;
+
+      .footer-content {
+        gap: 30px;
+      }
+
+      .footer-column {
+
+        h3 {
+          font-size: 1.2rem;
+          margin-bottom: 12px;
+        }
+
+        p {
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+      }
+
+      .final-cta {
+        padding: 40px 10px;
+
+        h2 {
+          font-size: clamp(2rem, 10vw, 3rem);
+          letter-spacing: 1px;
+          line-height: 1.1;
+        }
+
+        p {
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
