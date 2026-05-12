@@ -465,7 +465,7 @@ const Gallery: React.FC = () => {
                       <div className="heart-icon">
                         <Heart
                           size={120}
-                          fill="#EAC31B"
+                          fill="#ffffff"
                           color="#ffffff"
                           strokeWidth={2}
                         />
