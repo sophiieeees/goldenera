@@ -438,6 +438,24 @@
     },
 
     "error": "Something went wrong. Please try again."
+  },
+
+"merch": {
+  "availableSizes": "Available sizes:",
+  "buyNow": "Buy now",
+  "exclusive": "EXCLUSIVE",
+
+  "products": {
+    "shirt1": {
+      "name": "The Racist T-Shirt",
+      "description": "Be proud of being white, embrace your race. Fuck anyone who tells you should be ashamed to be white."
+    },
+
+    "shirt2": {
+      "name": "End Wokeness",
+      "description": "No more mentally ill liberals. Wokeness ends where masculine traditional values arise. We are stronger together. Be masculine and defend your values."
+    }
   }
+}
 
 }
