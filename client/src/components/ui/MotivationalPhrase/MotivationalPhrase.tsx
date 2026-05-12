@@ -55,7 +55,7 @@ const MotivationalPhrase: React.FC = () => {
       { x: 0 },
       {
         x: -totalWidth,
-        duration: 40,
+        duration: 150,
         ease: 'none',
         repeat: -1
       }
