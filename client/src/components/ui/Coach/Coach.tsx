@@ -183,7 +183,7 @@ const Coach: React.FC = () => {
             <h3 className="coach-name">{t('home.coach.name')}</h3>
             
             <div className="coach-quote" ref={quoteRef}>
-              <div className="quote-icon">💪</div>
+              <div className="quote-icon"></div>
               <blockquote>
                 {t('home.coach.quote')}
               </blockquote>
