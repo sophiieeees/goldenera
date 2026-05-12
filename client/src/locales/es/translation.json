@@ -329,27 +329,29 @@
   },
 
 "chatbot": {
-    "welcome": "¡Bienvenido a Golden Era!\n\n¿En qué puedo ayudarte?\n\n• Paquetes\n• Unirme al club\n• Merch\n• Coach",
-    "reset": "¿En qué puedo ayudarte?\n\n• Paquetes\n• Unirme\n• Merch\n• Coach",
-    "tooltip": "Asistente de IA",
-    "open": "Abrir chat",
-    "online": "En línea",
-    "whatsapp": "Hablar por WhatsApp",
-    "placeholder": "Escribe tu mensaje...",
-    "send": "Enviar",
+  "welcome": "Bienvenido a Golden Era 🔥\n\nCuéntame qué estás buscando y te ayudo.\n\n• Ver paquetes\n• Unirme al club\n• Merch oficial\n• Hablar con un coach",
 
-    "packages": "Tenemos 2 opciones:\n\n1. Estándar – $3,500\nIncluye acceso básico.\n\n2. Ultra Deluxe – $35,000\nIncluye acceso exclusivo y seguimiento personalizado 🔥\n\n¿Quieres ayuda para elegir?",
+  "reset": "¿Qué te gustaría hacer?\n\n• Ver paquetes\n• Unirme\n• Merch\n• Coach",
 
-    "join": "Para unirte:\n\n1. Ve a 'Únete al club'\n2. Elige tu paquete\n3. Completa tu registro\n\n¿Quieres que te guiemos?",
+  "tooltip": "Asistente Golden Era",
+  "open": "Abrir chat",
+  "online": "En línea",
+  "whatsapp": "Continuar por WhatsApp",
+  "placeholder": "Escribe tu mensaje...",
+  "send": "Enviar",
 
-    "merch": "Merch disponible:\n\n• Camisetas Golden Era\n💰 Precio: $888\n\nDisponible en la sección Merch 🔥",
+  "packages": "Tenemos opciones para diferentes objetivos 🔥\n\n• Estándar — $3,500\nIdeal para comenzar y entrar al sistema.\n\n• Ultra Deluxe — $35,000\nSeguimiento personalizado, acceso exclusivo y estrategia avanzada.\n\nSi quieres, puedo ayudarte a elegir cuál te conviene más.",
 
-    "coach": "Nuestro coach:\n\n• Experto en péptidos\n• Alto rendimiento\n• Estrategias reales 🔥",
+  "join": "Entrar a Golden Era es simple 🔥\n\n1. Ve a la sección 'Únete al club'\n2. Elige tu acceso\n3. Completa tu registro\n\nSi prefieres, también puedes hablar directamente con el equipo por WhatsApp.",
 
-    "cta": "¡Perfecto!\n\nTe conecto con el equipo por WhatsApp👇",
+  "merch": "La merch oficial ya está disponible 🔥\n\n• Camisetas Golden Era\n💰 Desde $888\n\nTodo está en la sección Merch.\n\nSi buscas algo específico, te puedo redirigir al equipo.",
 
-    "fallback": "Para más info personalizada, contáctanos por WhatsApp 👇"
-  },
+  "coach": "Nuestro equipo trabaja enfoque físico, disciplina y rendimiento real 🔥\n\nPuedes recibir orientación personalizada dependiendo de tu objetivo.\n\nSi quieres más detalles, te conecto directamente por WhatsApp.",
+
+  "cta": "Perfecto 🔥\n\nTe paso directamente con el equipo por WhatsApp para ayudarte mejor 👇",
+
+  "fallback": "Te puedo dar información general aquí, pero para atención personalizada y respuestas más rápidas, lo mejor es hablar directamente con el equipo por WhatsApp 👇"
+}
 
   "promo": {
     "badge": "50% OFF",
