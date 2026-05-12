@@ -438,8 +438,7 @@
     },
 
     "error": "Hubo un error al enviar. Intenta nuevamente."
-  }
-},
+  },
 
 "merch": {
   "availableSizes": "Tallas disponibles:",
@@ -457,4 +456,5 @@
       "description": "No más liberales mentalmente enfermos. La cultura woke termina donde nacen los valores masculinos tradicionales. Somos más fuertes juntos. Sé masculino y defiende tus valores."
     }
   }
+}
 }
