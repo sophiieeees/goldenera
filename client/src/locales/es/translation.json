@@ -439,4 +439,22 @@
 
     "error": "Hubo un error al enviar. Intenta nuevamente."
   }
+},
+
+"merch": {
+  "availableSizes": "Tallas disponibles:",
+  "buyNow": "Comprar ahora",
+  "exclusive": "EXCLUSIVO",
+
+  "products": {
+    "shirt1": {
+      "name": "The Racist T-Shirt",
+      "description": "Sé orgulloso de ser blanco y abraza tu raza. Que se joda cualquiera que te diga que deberías avergonzarte de ser blanco."
+    },
+
+    "shirt2": {
+      "name": "End Wokeness",
+      "description": "No más liberales mentalmente enfermos. La cultura woke termina donde nacen los valores masculinos tradicionales. Somos más fuertes juntos. Sé masculino y defiende tus valores."
+    }
+  }
 }
